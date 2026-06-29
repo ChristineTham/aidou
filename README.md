@@ -1,4 +1,4 @@
-# ai-dō (AI 道)
+# AI-dō (AI 道)
 
 **The Way of AI — guided by love, grounded in practice**
 
@@ -6,14 +6,14 @@
 
 ## 📖 Overview
 
-**ai-dō** is a practical, opinionated guide to using artificial intelligence for **productivity** and **software development**.
+**AI-dō** is a practical, opinionated guide to using artificial intelligence for **productivity** and **software development**.
 
 It combines:
 - **AI** (Artificial Intelligence)
 - **愛 (ai)** — the Japanese word for *love*
 - **道 (dō)** — *the way, path, or disciplined practice*
 
-Together, **ai-dō** represents:
+Together, **AI-dō** represents:
 
 > **A disciplined way of working with AI, guided by human-centred principles.**
 
@@ -35,7 +35,7 @@ Examples include:
 - **Kendō** — the way of the sword  
 - **Aikidō** — the way of harmonising energy  
 
-ai-dō applies this concept to modern knowledge work.
+AI-dō applies this concept to modern knowledge work.
 
 ---
 
@@ -54,7 +54,7 @@ In this context:
 
 ### 3. The Combined Idea
 
-**ai-dō = The Way of AI guided by love**
+**AI-dō = The Way of AI guided by love**
 
 Practically, this means:
 - Prioritising **human outcomes over technical novelty**
@@ -154,9 +154,9 @@ AI should:
 
 ## 🧩 Target Audience
 
-- Engineers and developers
-- Architects and technical leaders
-- Knowledge workers
+- Thoughtful professionals: leaders, consultants, analysts, builders
+- Engineers, architects, and technical leaders
+- Knowledge workers who can read a chart, a code snippet, or a paper
 - Anyone seeking structured, effective use of AI
 
 ---
@@ -181,7 +181,7 @@ There are many AI resources focused on:
 - Prompts
 - Features
 
-ai-dō focuses on:
+AI-dō focuses on:
 - **Methodology**
 - **Discipline**
 - **Repeatability**
@@ -190,8 +190,51 @@ ai-dō focuses on:
 
 ## 🧭 Guiding Statement
 
-> **ai-dō is the disciplined way of using AI — grounded in human intent, refined through practice, and applied to real work.**
+> **AI-dō is the disciplined way of using AI — grounded in human intent, refined through practice, and applied to real work.**
 
 ---
 
-## 📂 Structure (indicative)
+## 📂 Structure
+
+```
+AI-dō/
+├── 0. Preface
+├── 1. Foundations
+├── 2. Personal Productivity
+├── 3. Software Development
+├── 4. Engineering Disciplines
+├── 5. Responsibility & Governance
+└── 6. Mastery & Forward Practice
+```
+
+> **Methodology is the product.** Separate **intent → expectations → implementation**
+> (ICE), assign the **four crafts** to human vs system, treat **memory** as the
+> prerequisite for continuity, and **accumulate** knowledge (an LLM Wiki). Discipline
+> beats tooling — ask "who is this for, why build it?"
+
+---
+
+## 📚 Chapters
+
+- **[Preface — Why This Book Exists](book/00-preface.md)** — the motivation, who it is for, and how to read it.
+
+1. **[Foundations](book/01-foundations.md)** — Meaning of AI-dō; mental models; the 2026 landscape; capabilities & limits.
+2. **[Personal Productivity](book/02-productivity.md)** — Ambient teammates; knowledge work; operating models; the LLM Wiki.
+3. **[Software Development](book/03-software-development.md)** — Dev stack; coding patterns; spec vs vibe; ICE (intent/expectations/implementation); quality over slop; agents in the channel.
+4. **[Engineering Disciplines](book/04-engineering-disciplines.md)** — Four crafts; context; harness; loopcraft; meta-harnesses; substrate stack & memory.
+5. **[Responsibility & Governance](book/05-governance.md)** — Safety & red-teaming; liability & provenance; governed access.
+6. **[Mastery & Forward Practice](book/06-mastery.md)** — The human edge; continuous refinement.
+
+Each chapter's sections follow: principle → why it matters → practice → pitfalls.
+
+---
+
+## ✍️ Status
+
+A philosophy of working with AI, written first-person and grounded in primary sources cited inline. Chapter 1 and the preface have had a full research-and-style pass; later chapters are drafted and being revised. Research dossiers live in `research/papers/`; authoring conventions are in `AGENTS.md`.
+
+| Phase | Chapters | State |
+| --- | --- | --- |
+| 1 | Preface, 1–2 | Preface + Ch 1 revised; Ch 2 in progress |
+| 2 | 3–4 | Drafted |
+| 3 | 5–6 | Drafted |
