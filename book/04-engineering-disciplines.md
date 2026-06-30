@@ -4,9 +4,22 @@ Every craft has a moment where you stop doing the work and start designing how t
 
 They form a ladder — crafts, context, harness, loops, orchestration, substrate — and the theme is constant: as models improve, your job climbs from writing prompts to designing the systems that run them.
 
+```mermaid
+flowchart BT
+    A["Crafts — intent, spec, context, prompt"] --> B[Context engineering]
+    B --> C["Harness — tools, retries, sandbox"]
+    C --> D["Loopcraft — self-correcting cycles"]
+    D --> E["Orchestration — agents coordinating agents"]
+    E --> F["Substrate — memory, identity, governance"]
+    classDef low fill:#eef,stroke:#88a
+    classDef high fill:#efe,stroke:#3a3
+    class A,B low
+    class E,F high
+```
+
 ## The Four Crafts
 
-Prompting has not vanished; it has split into four skills — intent, spec, context, and prompt — and the useful question is who owns each.
+Prompting has not vanished; it has split into four skills — intent, spec, context, and prompt — and the useful question is who owns each ([Ahuja, 2026](https://howtoarchitect.io/c00609f72496?sk=2da01d7d2abfb5bc0acaed7050a0e797)).
 
 | Craft | Owner | What it produces |
 | --- | --- | --- |
@@ -15,7 +28,7 @@ Prompting has not vanished; it has split into four skills — intent, spec, cont
 | Context | Harness | The tokens the model sees at each step |
 | Prompt | Harness | The reusable interaction patterns (plays) |
 
-Clear ownership is what stops drift, and it has a sharp security edge: compartment the evaluations so the builder cannot see the tests it will be judged on, or it will optimise for the checks instead of the outcome. The harder discipline is presence. It is tempting to step out and bless a diff at the end, but a drifted result is worse than no result because it lies with confidence; staying in the loop while the work runs beats approving it at the gate ([idd-vs-sdd summary](../research/idd-vs-sdd.md)).
+Clear ownership is what stops drift, and it has a sharp security edge: compartment the evaluations so the builder cannot see the tests it will be judged on, or it will optimise for the checks instead of the outcome — the reward-hacking failure that a systematic survey of RLHF traces to optimising any imperfect proxy hard enough ([Casper et al., TMLR](https://arxiv.org/abs/2307.15217)). The harder discipline is presence. It is tempting to step out and sign off only at the end, but a drifted result is worse than no result because it lies with confidence ([Ahuja, 2026](https://howtoarchitect.io/c00609f72496?sk=2da01d7d2abfb5bc0acaed7050a0e797)); staying in the loop while the work runs beats approving it at the final gate ([Ahuja, 2026](https://howtoarchitect.io/66e921f6cdf7?sk=2ae7d323c6b780291bfc760ff2bdc592)). Presence is also calibration, not just supervision: when people receive real-time, ground-truth feedback as an agent works, their own confidence stops drifting to match the model's — the one intervention shown to break that pull ([Li et al. 2025](https://arxiv.org/abs/2501.12868)).
 
 ## Context Engineering
 
@@ -25,7 +38,20 @@ That yields concrete techniques. Compaction summarises a near-full conversation 
 
 ## Harness Engineering
 
-A harness is the runtime around the model: tool use, planning, retries, sandboxes. The reliable design is to let the program own control flow and call the model only for judgement, so that token explosion and erratic stopping stop being mysteries and become engineering ([2606.15874](../research/papers/2606.15874-llm-as-code.md)). Decomposing tasks at runtime, so only the failed step reruns rather than the whole pipeline, cuts retry cost by half or more in measured workloads ([2605.15425](../research/papers/2605.15425-runtime-decomposition.md)). The fragile alternative is handing all the looping and branching to a probabilistic system and hoping a better prompt rescues it.
+A harness is the runtime around the model: tool use, planning, retries, and sandboxes (isolated environments where generated code can run without touching the real system). The reliable design is to let the program own control flow — the order in which steps run and branch — and call the model only for judgement, so that runaway token use and erratic stopping stop being mysteries and become engineering ([2606.15874](../research/papers/2606.15874-llm-as-code.md)). Decomposing tasks at runtime, so only the failed step reruns rather than the whole pipeline, cuts retry cost by half or more in measured workloads ([2605.15425](../research/papers/2605.15425-runtime-decomposition.md)). The fragile alternative is handing all the looping and branching to a probabilistic system and hoping a better prompt rescues it.
+
+```mermaid
+flowchart TB
+    subgraph Reliable [Program owns control flow]
+      direction LR
+      PR["Program: order, retries, sandbox"] -->|asks for judgement| MR[Model]
+      MR -->|returns one decision| PR
+    end
+    subgraph Fragile [Model owns control flow]
+      direction LR
+      MF["Model plans, loops, and branches"] --> X["Token blow-up ·<br/>erratic stopping"]
+    end
+```
 
 ## Loopcraft
 
@@ -37,7 +63,7 @@ Above the harness sit harnesses that orchestrate other harnesses — coordinatin
 
 ## The Substrate Stack & Memory
 
-It helps to locate yourself on a ladder of maturity, where each rung is a genuine technological bet rather than a slogan:
+It helps to locate yourself on a ladder of maturity, where each rung is a genuine technological bet rather than a slogan ([Ahuja, 2026](https://howtoarchitect.io/c00609f72496?sk=2da01d7d2abfb5bc0acaed7050a0e797)):
 
 | Level | Substrate | Reality |
 | --- | --- | --- |

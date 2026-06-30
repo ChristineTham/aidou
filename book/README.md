@@ -1,5 +1,6 @@
 # AI-dō — Table of Contents
 
+- [Title Page](00-title.md)
 - [Preface — Why This Book Exists](00-preface.md)
 1. [Foundations](01-foundations.md)
 2. [Personal Productivity](02-productivity.md)
