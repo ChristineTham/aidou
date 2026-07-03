@@ -10,11 +10,5 @@ quarto/*_files/                  # generated per-doc figure dirs (Mermaid PNGs, 
 quarto/*.qmd
 !quarto/index.qmd
 
-# Oversized research PDFs (image-heavy, 36–39 MB each) — the dossiers capture
-# their findings and `fetch_arxiv.py <id>` re-downloads them on demand, so we
-# don't vendor them into git history. See the note in each dossier.
-research/papers/pdf/2411.19537.pdf
-research/papers/pdf/2506.08872.pdf
-
 # OS / editor cruft
 .DS_Store
