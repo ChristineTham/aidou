@@ -8,8 +8,9 @@ frontier models, so the model was never the edge — **method is**. *AI-dō* is 
 method: a structured, human-centred way of working with AI, earned task by task
 and checked at every step.
 
-It is a short book, written first-person by a former sceptic and grounded in
-primary sources throughout. Read it online from the sidebar, or take it with you:
+It's a short, personal read — one former sceptic's honest account of what
+changed their mind, with every claim grounded in a primary source. Settle in
+online from the sidebar, or take it with you:
 
 ::: {.dl-buttons}
 [Download PDF](ai-do.pdf){.btn-dl .primary}

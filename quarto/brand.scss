@@ -31,11 +31,12 @@ h1, h2, h3, h4, h5, h6,
 }
 
 // ---- Reading surface -------------------------------------------------------
-body { background: $r-warm; }
+body { background: #ffffff; }
 main.content {
   max-width: 46rem;
   line-height: 1.72;
   color: $r-velvet;
+  background: #ffffff;
 }
 p { margin-bottom: 1.05rem; }
 
@@ -60,11 +61,20 @@ main.content a {
 main.content a:hover { color: $r-purple; text-decoration-color: $r-purple; }
 
 // ---- Sidebar / chrome ------------------------------------------------------
-.sidebar, #quarto-sidebar, .quarto-sidebar { background: $r-cream; }
-#quarto-sidebar .sidebar-item-text { color: $r-mauve; }
+// Left nav: pale pink. Right TOC: pale lilac. Content stays white.
+.sidebar, #quarto-sidebar, .quarto-sidebar { background: mix($r-blossom, #ffffff, 58%); }
+#quarto-sidebar .sidebar-item-text { color: $r-velvet; }
 #quarto-sidebar .sidebar-item .active,
 #quarto-sidebar a.active { color: $r-purple !important; font-weight: 600; }
-#quarto-margin-sidebar .sidebar-item-text:hover { color: $r-rose; }
+
+#quarto-margin-sidebar {
+  background: mix($r-lilac, #ffffff, 42%);
+  border-radius: 10px;
+  padding: 0.8rem 0.9rem;
+}
+#quarto-margin-sidebar .sidebar-item-text { color: $r-grey; }
+#quarto-margin-sidebar .sidebar-item-text:hover,
+#quarto-margin-sidebar a.active { color: $r-rose; }
 
 // Separate PDF / ePub tool buttons in the sidebar header
 .sidebar-tools-main .sidebar-tool, .sidebar-tools-collapse .sidebar-tool {
