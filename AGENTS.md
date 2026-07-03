@@ -5,6 +5,7 @@ Guidelines for any AI agent (or human) drafting this book.
 ## Structure
 
 - 6 chapters; former chapters are now sections. Keep it that way.
+- **Number section headings.** H2 sections are numbered `N.M` (chapter.section, e.g. `## 1.2 Mental Models for AI`) and H3 subsections `N.M.K` (e.g. `### 2.2.1 …`). The chapter `# ` title and the `## References` section stay unnumbered; the preface is front matter and stays unnumbered. Renumber if sections are added, removed, or reordered.
 - Each section flows through principle → why it matters → practice → pitfalls, mostly as connected prose. Use bullet lists where they genuinely aid scanning, not as a default.
 - Always review sources before writing
 
@@ -16,15 +17,20 @@ Guidelines for any AI agent (or human) drafting this book.
 
 ## Style
 
-- Teach, don't summarise. Write like a great university textbook — Kernighan & Ritchie's *C*, Kernighan & Pike's *The Unix Programming Environment*, Knuth's *The Art of Computer Programming*: a professor who is warm, friendly, and engaging but never chatty, rigorous and exact yet quietly playful. No "let's", pep, or hand-holding.
-- Explain the mechanism before the evidence: state the idea, give the intuition for why it holds, then the example or number that proves it. The reader should finish understanding *why*, not just *that*.
-- Build ideas in order — each concept rests on the previous one, so a careful reader never meets a term before it is defined. Introduce each major source in its own paragraph: name it, explain its method, give the concrete result, draw the lesson.
-- Prefer correct technical terms over layman substitutes; define each once on first use, then use it plainly. Favour short, concrete examples that carry weight over abstraction.
-- **Prefer the plainest precise word.** Choose the simplest wording that stays exact: "explains" not "glosses", "a trick" not "stagecraft", "the main limit" not "the binding constraint", "changes what the model can do" not "changes the arithmetic". Spell a term out in full on first use ("large language model", not "model") where it helps a non-specialist. This is not a licence to dumb down — keep the right technical terms — only to drop ornamentation that adds nothing.
-- Keep a vivid metaphor only when it makes an idea clearer or more memorable, never to show range. If a reader has to decode the metaphor before the point, cut it.
-- Stay dense but unhurried: every sentence earns its place, yet leave room to develop a point fully. Lead with a clear claim, then develop it.
+The model to imitate is Kernighan & Pike's *The Unix Programming Environment* (a full copy is at `research/the-unix-programming-environment-kernighan-pike.md` — read a few pages when in doubt). Its hallmarks are plainness, mechanism over metaphor, understatement, and worked examples that carry the argument. Also in the tradition: Kernighan & Ritchie's *C* and Knuth's *TAOCP*. Teach, don't summarise; be a professor who is warm and exact but never chatty. No pep, no hype, no hand-holding. Natural contractions are welcome.
+
+- **One idea per sentence; keep sentences short.** Two clauses is usually the limit. When a sentence stacks three or more clauses joined by dashes and semicolons, break it into two or three plain sentences. Kernighan & Pike almost never run a sentence past two clauses, and neither should we. This is the single biggest lever for sounding like the model.
+- **Explain the mechanism, plainly.** State how the thing actually works before the evidence: the idea, the intuition for why it holds, then the example or number that proves it. The reader should finish understanding *why*, not just *that*. Prefer a direct description of the mechanism ("the kernel moves the data through the pipe") to an image that stands in for it.
+- **Metaphor is rare and functional.** Reach for one only when it makes an idea clearer or more memorable, and keep it to a phrase, not a set piece. Cut showy closings and "clever" flourishes — the courtier, the parlour game, the stagecraft. If a reader has to decode the metaphor before the point, cut it. State the point and stop.
+- **Understatement over flourish.** Make the claim and let it stand; don't reach for a rhetorical peak to end a paragraph. Be frank about limits and imperfection — name what doesn't work — and never sell. A dry, quiet wit is welcome; exclamation and drama are not.
+- **Prefer the plainest precise word.** Choose the simplest wording that stays exact: "explains" not "glosses", "a trick" not "stagecraft", "the main limit" not "the binding constraint". Spell a term out in full on first use ("large language model", not "model") where it helps a non-specialist. This is not a licence to dumb down — keep the right technical terms — only to drop ornamentation that adds nothing.
+- **Let real examples carry the argument.** Prefer concrete, tested, real examples over invented or abstract ones; give the specifics, because the specifics are the argument (the three projects in Chapter 3 are the model). Favour a short worked example over a paragraph of abstraction.
+- **Use numbered enumerations for principles and summaries.** When drawing several lessons together, count them out — "First… Second… Third…" — as Kernighan & Pike do in their look-backs. It is clearer and more memorable than a run of prose.
+- **Pose a question, then answer it directly.** "What makes this work? Three things." is a good shape for opening a hard topic.
+- **Close a dense stretch with a brief look back.** Where a section has covered a lot, restate plainly what was shown and draw the lesson, then move on.
+- Build ideas in order — each concept rests on the previous one, so a careful reader never meets a term before it is defined. Introduce each major source in its own paragraph: name it, explain its method, give the concrete result, draw the lesson. Give credit to the people behind ideas by name.
 - Keep paragraphs short — three to five sentences, one idea each. Break long stretches into multiple paragraphs so the page stays easy to read.
-- Favour short, plain sentences; cut clauses that don't carry weight. Bullet lists are welcome for steps, options, or contrasts — keep ideas balanced and skimmable.
+- Stay dense but unhurried: every sentence earns its place, yet leave room to develop a point fully. Lead with a clear claim, then develop it. Bullet lists are welcome for steps, options, or contrasts — keep ideas balanced and skimmable.
 - Use GitHub-Flavored Markdown: `> [!NOTE]`/`> [!TIP]`/`> [!IMPORTANT]` alerts for asides and definitions, tables for complex breakdowns, ```mermaid diagrams for relationships, fenced code with a language. No H1 inside chapters.
 
 ## Voice
@@ -38,6 +44,12 @@ Guidelines for any AI agent (or human) drafting this book.
 
 - **Never hallucinate.** No invented facts, stats, dates, or quotes.
 - **Always cite sources.** Every claim, figure, or quote links to its origin.
+- **Citation style is APA 7.** In-text citations are hyperlinked, pointing to the original source (URL, DOI, or arXiv link), never an internal download. Disambiguate same-author-same-year works with letters (`2026a`, `2026b`, …) consistently across the book.
+  - **First mention of a source in a chapter names the author and title**, then the year: `([Wolfram, *What is ChatGPT doing … and why does it work?*, 2023](url))`. The title is italicised. First-mention resets per chapter (each chapter has its own reference list and may be read on its own).
+  - **Subsequent mentions of the same source in that chapter use plain author–year**: `([Wolfram, 2023](url))`.
+  - Title-authored works (e.g. Wikipedia pages) keep their short quoted form on every mention, since the author already is the title.
+  - Every chapter (and the preface) ends with a `## References` section: full APA 7 entries, alphabetised, with the URL/DOI shown and clickable. Prefer the published venue where known; fall back to arXiv/preprint otherwise.
+  - Source metadata (authors, titles, venues, DOIs) comes from the `research/papers/*.md` dossier headers; verify web/news titles and bylines against the live page before citing. Never invent an author list or title.
 - **Research before writing.** Read official/primary sources first; assume internal knowledge is stale.
 - Mark anything uncertain as a draft assumption; do not present it as fact.
 

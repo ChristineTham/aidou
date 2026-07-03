@@ -1,0 +1,52 @@
+project:
+  type: book
+  output-dir: _book
+
+book:
+  title: "AI-dō"
+  subtitle: "The Way of AI — guided by love (愛), grounded in practice (道)"
+  author: "Chris Tham"
+  site-url: "https://christinetham.github.io/aidou/"
+  repo-url: "https://github.com/ChristineTham/aidou"
+  output-file: "ai-do"
+  downloads: [pdf, epub]
+  search: true
+  sidebar:
+    style: docked
+  page-footer:
+    left: "© Chris Tham"
+    right: "Built with Quarto from one Markdown source."
+  chapters:
+    - index.qmd
+    - preface.qmd
+    - foundations.qmd
+    - productivity.qmd
+    - software-development.qmd
+    - engineering-disciplines.qmd
+    - governance.qmd
+    - mastery.qmd
+
+format:
+  html:
+    theme:
+      light: [cosmo, brand.scss]
+      dark: [darkly, brand.scss]
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    number-depth: 3
+    code-copy: true
+    link-external-newwindow: true
+    mermaid:
+      theme: neutral
+  typst:
+    toc: true
+    number-sections: true
+    papersize: a4
+    mainfont: "Georgia"
+    # Mermaid rasterised to PNG (Typst's SVG parser rejects Mermaid's HTML labels).
+  epub:
+    toc: true
+    number-sections: true
+    css: epub.css
+    mermaid-format: svg   # vector diagrams in the ePub

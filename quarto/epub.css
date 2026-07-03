@@ -1,0 +1,32 @@
+/* ePub styling — keep diagrams and images within the reader viewport. */
+img, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Centre figures (Mermaid diagrams are exported as SVG). */
+figure, .quarto-figure {
+  text-align: center;
+  margin: 1em 0;
+}
+
+body {
+  line-height: 1.5;
+}
+
+h1, h2, h3 {
+  line-height: 1.25;
+}
+
+/* Callouts: a light bordered block that survives e-reader CSS. */
+.callout {
+  border: 1px solid #d0d7de;
+  border-left: 4px solid #1f6feb;
+  border-radius: 4px;
+  padding: 0.5em 0.8em;
+  margin: 1em 0;
+}
+.callout-title { font-weight: 700; }
+
+table { border-collapse: collapse; }
+th, td { border: 1px solid #ccc; padding: 4px 8px; }

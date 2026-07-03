@@ -1,0 +1,39 @@
+/*-- scss:defaults --*/
+// AI-dō house style — a calm, book-like reading surface.
+$font-family-sans-serif: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$font-family-serif: Georgia, Cambria, "Times New Roman", serif !default;
+
+// Body reads as a book (serif); headings stay in a clean sans.
+$font-family-base: $font-family-serif !default;
+$headings-font-family: $font-family-sans-serif !default;
+$font-size-root: 18px !default;
+
+$primary: #1f6feb !default;         // links / accents
+$body-color: #1a1a1a !default;
+$link-color: $primary !default;
+
+$toc-font-size: 0.85rem !default;
+
+/*-- scss:rules --*/
+// Comfortable measure for long-form reading.
+main.content, .page-columns .content {
+  line-height: 1.65;
+}
+main.content { max-width: 46rem; }
+
+h1, h2, h3, h4 { line-height: 1.25; letter-spacing: -0.01em; }
+h2 { margin-top: 1.6em; }
+
+// Diagrams centred and never overflowing.
+.mermaid, .mermaid-js, figure.quarto-figure { text-align: center; }
+.mermaid svg, .mermaid-js svg, figure img { max-width: 100%; height: auto; }
+
+// Tables: quiet, readable.
+table { font-size: 0.92em; }
+thead th { border-bottom: 2px solid #d0d7de; }
+
+// Callouts a touch softer.
+.callout { border-radius: 6px; }
+
+// References list: smaller, hanging-ish, easy to scan.
+#references, div:has(> h2#references) { font-size: 0.95em; }

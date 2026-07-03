@@ -1,0 +1,12 @@
+# Quarto build artefacts
+quarto/_book/
+quarto/.quarto/
+quarto/site_libs/
+
+# Generated chapter pages — produced from book/*.md by the pre-render hook.
+# index.qmd is hand-authored and kept; the rest are ephemeral.
+quarto/*.qmd
+!quarto/index.qmd
+
+# OS / editor cruft
+.DS_Store

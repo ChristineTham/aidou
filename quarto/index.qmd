@@ -1,0 +1,23 @@
+# AI-dō {.unnumbered}
+
+**The Way of AI — guided by love (愛), grounded in practice (道).**
+
+Anyone can open a chat window and get a fluent answer in seconds. Far fewer can
+turn that fluency into work worth standing behind. We all draw on the same
+frontier models, so the model was never the edge — **method is**. *AI-dō* is that
+method: a disciplined, human-centred way of working with AI, earned task by task
+and checked at every step.
+
+It is a short book, written first-person by a former sceptic and grounded in
+primary sources throughout. Read it online from the sidebar, or download the
+**PDF** or **ePub** from the toolbar above.
+
+::: {.callout-note}
+This site, the PDF, and the ePub are all built from one set of Markdown
+chapters with Quarto — the same source, three outputs, diagrams and citations
+included.
+:::
+
+Start with the [Preface](preface.qmd), then follow the six-chapter climb from
+personal productivity to software, to the disciplines that keep the work sound,
+to responsibility, and finally to mastery.

@@ -1,0 +1,808 @@
+[
+  {
+    "urls": [
+      "https://agentskills.io/"
+    ],
+    "intext": "Agent Skills, n.d.",
+    "reference": "Agent Skills. (n.d.). *Agent Skills*. [https://agentskills.io/](https://agentskills.io/)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://howtoarchitect.io/1597e5a16659?sk=836b8eeaf97cda521f0ad195162011c3"
+    ],
+    "intext": "Ahuja, 2026a",
+    "reference": "Ahuja, K. V. (2026a). *The anatomy of intent (ICE in IDSD): Built from where spec-driven breaks*. Activated Thinker (Medium). [https://howtoarchitect.io/1597e5a16659?sk=836b8eeaf97cda521f0ad195162011c3](https://howtoarchitect.io/1597e5a16659?sk=836b8eeaf97cda521f0ad195162011c3)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://howtoarchitect.io/66e921f6cdf7?sk=2ae7d323c6b780291bfc760ff2bdc592"
+    ],
+    "intext": "Ahuja, 2026b",
+    "reference": "Ahuja, K. V. (2026b). *The method that replaces spec-driven development — IDSD*. Activated Thinker (Medium). [https://howtoarchitect.io/66e921f6cdf7?sk=2ae7d323c6b780291bfc760ff2bdc592](https://howtoarchitect.io/66e921f6cdf7?sk=2ae7d323c6b780291bfc760ff2bdc592)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://howtoarchitect.io/78431acba162?sk=cd2a36f452af96ccbfbcfcdeaa92ec06"
+    ],
+    "intext": "Ahuja, 2026c",
+    "reference": "Ahuja, K. V. (2026c). *Spec-driven development is also breaking the fifty-year-old iron triangle*. Activated Thinker (Medium). [https://howtoarchitect.io/78431acba162?sk=cd2a36f452af96ccbfbcfcdeaa92ec06](https://howtoarchitect.io/78431acba162?sk=cd2a36f452af96ccbfbcfcdeaa92ec06)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://howtoarchitect.io/c00609f72496?sk=2da01d7d2abfb5bc0acaed7050a0e797"
+    ],
+    "intext": "Ahuja, 2026d",
+    "reference": "Ahuja, K. V. (2026d). *Spec-driven development isn’t broken. It will collapse*. Activated Thinker (Medium). [https://howtoarchitect.io/c00609f72496?sk=2da01d7d2abfb5bc0acaed7050a0e797](https://howtoarchitect.io/c00609f72496?sk=2da01d7d2abfb5bc0acaed7050a0e797)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://howtoarchitect.io/48b2ad4f9cdc?sk=e6bd922772cb6798056d597886ec108d"
+    ],
+    "intext": "Ahuja, 2026e",
+    "reference": "Ahuja, K. V. (2026e). *The trap spec-driven development is setting*. Activated Thinker (Medium). [https://howtoarchitect.io/48b2ad4f9cdc?sk=e6bd922772cb6798056d597886ec108d](https://howtoarchitect.io/48b2ad4f9cdc?sk=e6bd922772cb6798056d597886ec108d)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://aider.chat/"
+    ],
+    "intext": "aider, n.d.",
+    "reference": "aider. (n.d.). *aider*. [https://aider.chat/](https://aider.chat/)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2410.18745"
+    ],
+    "intext": "An et al., 2024",
+    "reference": "An, C., et al. (2024). *Why does the effective context length of LLMs fall short?* arXiv. [https://arxiv.org/abs/2410.18745](https://arxiv.org/abs/2410.18745)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://www.anthropic.com/engineering/building-effective-agents",
+      "https://www.anthropic.com/research/building-effective-agents"
+    ],
+    "intext": "Anthropic, 2024a",
+    "reference": "Anthropic. (2024a). *Building effective agents*. [https://www.anthropic.com/research/building-effective-agents](https://www.anthropic.com/research/building-effective-agents)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://www.anthropic.com/news/model-context-protocol"
+    ],
+    "intext": "Anthropic, 2024b",
+    "reference": "Anthropic. (2024b). *Introducing the Model Context Protocol*. [https://www.anthropic.com/news/model-context-protocol](https://www.anthropic.com/news/model-context-protocol)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://claude.com/product/claude-code"
+    ],
+    "intext": "Anthropic, 2025a",
+    "reference": "Anthropic. (2025a). *Claude Code*. [https://claude.com/product/claude-code](https://claude.com/product/claude-code)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents"
+    ],
+    "intext": "Anthropic, 2025b",
+    "reference": "Anthropic. (2025b). *Effective context engineering for AI agents*. [https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills"
+    ],
+    "intext": "Anthropic, 2025c",
+    "reference": "Anthropic. (2025c). *Equipping agents for the real world with Agent Skills*. [https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2605.05287"
+    ],
+    "intext": "Arceo & Narsing, 2026",
+    "reference": "Arceo & Narsing. (2026). *Securing the agent: Vendor-neutral, multitenant enterprise retrieval and tool use*. Proceedings of ACM CAIS ’26. [https://arxiv.org/abs/2605.05287](https://arxiv.org/abs/2605.05287)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2605.15425"
+    ],
+    "intext": "Asthana et al., 2026",
+    "reference": "Asthana et al. (2026). *Runtime-structured task decomposition for agentic coding systems*. Proceedings of ACM CAIS ’26. [https://arxiv.org/abs/2605.15425](https://arxiv.org/abs/2605.15425)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://www.stateof.ai/"
+    ],
+    "intext": "Benaich, 2025",
+    "reference": "Benaich, N. (2025). *State of AI report 2025*. [https://www.stateof.ai/](https://www.stateof.ai/)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2606.27406"
+    ],
+    "intext": "Bogomolov & Zharov, 2026",
+    "reference": "Bogomolov, E., & Zharov, Y. (2026). *Towards evaluation of implicit software world models in coding LLMs*. DL4Code @ ICML 2026. [https://arxiv.org/abs/2606.27406](https://arxiv.org/abs/2606.27406)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2005.14165"
+    ],
+    "intext": "Brown et al., 2020",
+    "reference": "Brown, T. B., et al. (2020). *Language models are few-shot learners*. Advances in Neural Information Processing Systems. [https://arxiv.org/abs/2005.14165](https://arxiv.org/abs/2005.14165)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2606.05608"
+    ],
+    "intext": "Cao, 2026",
+    "reference": "Cao, Z. (2026). *Agentic software: How AI agents are restructuring the software paradigm*. arXiv. [https://arxiv.org/abs/2606.05608](https://arxiv.org/abs/2606.05608)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2307.15217"
+    ],
+    "intext": "Casper et al., 2023",
+    "reference": "Casper, S., Davies, X., Shi, C., Gilbert, T. K., Scheurer, J., Rando, J., Freedman, R., Korbak, T., Lindner, D., et al. (2023). *Open problems and fundamental limitations of reinforcement learning from human feedback*. Transactions on Machine Learning Research. [https://arxiv.org/abs/2307.15217](https://arxiv.org/abs/2307.15217)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://www.cbsnews.com/news/google-gemini-spark-ai-agent/"
+    ],
+    "intext": "Cerullo, 2026",
+    "reference": "Cerullo, M. (2026). *Why Google’s Gemini Spark AI agent could be a game changer*. CBS News. [https://www.cbsnews.com/news/google-gemini-spark-ai-agent/](https://www.cbsnews.com/news/google-gemini-spark-ai-agent/)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://research.trychroma.com/context-rot"
+    ],
+    "intext": "Chroma, 2025",
+    "reference": "Chroma. (2025). *Context rot: How increasing input tokens impacts LLM performance*. [https://research.trychroma.com/context-rot](https://research.trychroma.com/context-rot)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://c2pa.org/"
+    ],
+    "intext": "C2PA, n.d.",
+    "reference": "Coalition for Content Provenance and Authenticity. (n.d.). *Overview*. [https://c2pa.org/](https://c2pa.org/)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://en.wikipedia.org/wiki/Cursor_(company)"
+    ],
+    "intext": "\"Cursor,\" n.d.",
+    "reference": "Cursor (company). (n.d.). In *Wikipedia*. [https://en.wikipedia.org/wiki/Cursor_(company)](https://en.wikipedia.org/wiki/Cursor_(company))",
+    "title_authored": true
+  },
+  {
+    "urls": [
+      "https://www.promptingguide.ai/",
+      "https://www.promptingguide.ai/introduction/elements",
+      "https://www.promptingguide.ai/introduction/tips",
+      "https://www.promptingguide.ai/techniques",
+      "https://www.promptingguide.ai/techniques/fewshot",
+      "https://www.promptingguide.ai/techniques/zeroshot"
+    ],
+    "intext": "DAIR.ai, n.d.",
+    "reference": "DAIR.ai. (n.d.). *Prompt engineering guide*. [https://www.promptingguide.ai/](https://www.promptingguide.ai/)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://www.deloitte.com/au/en/issues/generative-ai/state-of-ai-in-enterprise.html"
+    ],
+    "intext": "Deloitte, 2026",
+    "reference": "Deloitte. (2026). *State of AI in the enterprise*. [https://www.deloitte.com/au/en/issues/generative-ai/state-of-ai-in-enterprise.html](https://www.deloitte.com/au/en/issues/generative-ai/state-of-ai-in-enterprise.html)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2603.07670"
+    ],
+    "intext": "Du et al., 2026",
+    "reference": "Du, P., et al. (2026). *Memory for autonomous LLM agents: Mechanisms, evaluation, and emerging frontiers*. arXiv. [https://arxiv.org/abs/2603.07670](https://arxiv.org/abs/2603.07670)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2606.14796"
+    ],
+    "intext": "Ehsani et al., 2026",
+    "reference": "Ehsani, R., Rawal, S., Cai, Y., & Chatterjee, P. (2026). *Faster code, deeper debt? A multivocal literature review on technical debt and its early signs in LLM-assisted software development*. arXiv. [https://arxiv.org/abs/2606.14796](https://arxiv.org/abs/2606.14796)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://en.wikipedia.org/wiki/Ethics_of_care"
+    ],
+    "intext": "\"Ethics of care,\" n.d.",
+    "reference": "Ethics of care. (n.d.). In *Wikipedia*. [https://en.wikipedia.org/wiki/Ethics_of_care](https://en.wikipedia.org/wiki/Ethics_of_care)",
+    "title_authored": true
+  },
+  {
+    "urls": [
+      "https://doi.org/10.1037/xge0000098"
+    ],
+    "intext": "Fazio et al., 2015",
+    "reference": "Fazio, L. K., Brashier, N. M., Payne, B. K., & Marsh, E. J. (2015). *Knowledge does not protect against illusory truth*. Journal of Experimental Psychology: General, 144(5), 993–1002. [https://doi.org/10.1037/xge0000098](https://doi.org/10.1037/xge0000098)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://doi.org/10.1016/j.chb.2025.108779"
+    ],
+    "intext": "Fernandes et al., 2026",
+    "reference": "Fernandes, D., et al. (2026). *AI makes you smarter but none the wiser: The disconnect between performance and metacognition*. Computers in Human Behavior, 168, 108779. [https://doi.org/10.1016/j.chb.2025.108779](https://doi.org/10.1016/j.chb.2025.108779)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://github.blog/2021-06-29-introducing-github-copilot-ai-pair-programmer/"
+    ],
+    "intext": "GitHub, 2021",
+    "reference": "GitHub. (2021). *Introducing GitHub Copilot: AI pair programmer*. GitHub Blog. [https://github.blog/2021-06-29-introducing-github-copilot-ai-pair-programmer/](https://github.blog/2021-06-29-introducing-github-copilot-ai-pair-programmer/)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://github.blog/changelog/2023-11-30-github-copilot-november-30th-update/"
+    ],
+    "intext": "GitHub, 2023",
+    "reference": "GitHub. (2023). *GitHub Copilot November 30th update*. GitHub Blog. [https://github.blog/changelog/2023-11-30-github-copilot-november-30th-update/](https://github.blog/changelog/2023-11-30-github-copilot-november-30th-update/)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://github.blog/news-insights/product-news/github-copilot-meet-the-new-coding-agent/"
+    ],
+    "intext": "GitHub, 2025a",
+    "reference": "GitHub. (2025a). *GitHub Copilot: Meet the new coding agent*. GitHub Blog. [https://github.blog/news-insights/product-news/github-copilot-meet-the-new-coding-agent/](https://github.blog/news-insights/product-news/github-copilot-meet-the-new-coding-agent/)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://github.blog/news-insights/product-news/github-copilot-the-agent-awakens/"
+    ],
+    "intext": "GitHub, 2025b",
+    "reference": "GitHub. (2025b). *GitHub Copilot: The agent awakens*. GitHub Blog. [https://github.blog/news-insights/product-news/github-copilot-the-agent-awakens/](https://github.blog/news-insights/product-news/github-copilot-the-agent-awakens/)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://github.blog/ai-and-ml/generative-ai/spec-driven-development-with-ai-get-started-with-a-new-open-source-toolkit/"
+    ],
+    "intext": "GitHub, 2025c",
+    "reference": "GitHub. (2025c). *Spec-driven development with AI: Get started with a new open-source toolkit*. GitHub Blog. [https://github.blog/ai-and-ml/generative-ai/spec-driven-development-with-ai-get-started-with-a-new-open-source-toolkit/](https://github.blog/ai-and-ml/generative-ai/spec-driven-development-with-ai-get-started-with-a-new-open-source-toolkit/)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://en.wikipedia.org/wiki/Google_Antigravity"
+    ],
+    "intext": "\"Google Antigravity,\" n.d.",
+    "reference": "Google Antigravity. (n.d.). In *Wikipedia*. [https://en.wikipedia.org/wiki/Google_Antigravity](https://en.wikipedia.org/wiki/Google_Antigravity)",
+    "title_authored": true
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2606.27045"
+    ],
+    "intext": "Grabowski, 2026",
+    "reference": "Grabowski, H. (2026). *The spec growth engine: Spec-anchored, code-coupled, drift-enforced*. arXiv. [https://arxiv.org/abs/2606.27045](https://arxiv.org/abs/2606.27045)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2602.20122"
+    ],
+    "intext": "Gu et al., 2026",
+    "reference": "Gu, Jedidi, & Lin. (2026). *NanoKnow: How to know what your language model knows*. Proceedings of the 49th International ACM SIGIR Conference. [https://arxiv.org/abs/2602.20122](https://arxiv.org/abs/2602.20122)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://futurism.com/artificial-intelligence/bosses-obsessed-with-ai"
+    ],
+    "intext": "Harrison Dupré, 2026",
+    "reference": "Harrison Dupré, M. (2026). *Bosses are becoming obsessed with AI, using it to make every decision, barraging their employees with nonsensical ChatGPT directives, and even asking it who to fire*. Futurism. [https://futurism.com/artificial-intelligence/bosses-obsessed-with-ai](https://futurism.com/artificial-intelligence/bosses-obsessed-with-ai)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://thinkingmachines.ai/blog/defeating-nondeterminism-in-llm-inference/"
+    ],
+    "intext": "He, 2025",
+    "reference": "He, H. (2025). *Defeating nondeterminism in LLM inference*. Thinking Machines Lab. [https://thinkingmachines.ai/blog/defeating-nondeterminism-in-llm-inference/](https://thinkingmachines.ai/blog/defeating-nondeterminism-in-llm-inference/)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2406.16008"
+    ],
+    "intext": "Hsieh et al., 2024",
+    "reference": "Hsieh, C.-Y., Chuang, Y.-S., Li, C.-L., Wang, Z., Le, L. T., Kumar, A., Glass, J., Ratner, A., Lee, C.-Y., Krishna, R., & Pfister, T. (2024). *Found in the middle: Calibrating positional attention bias improves long context utilization*. Findings of the Association for Computational Linguistics: ACL 2024. [https://arxiv.org/abs/2406.16008](https://arxiv.org/abs/2406.16008)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2311.05232"
+    ],
+    "intext": "Huang et al., 2024",
+    "reference": "Huang, L., Yu, W., Ma, W., Zhong, W., Feng, Z., Wang, H., Chen, Q., Peng, W., Feng, X., Qin, B., & Liu, T. (2024). *A survey on hallucination in large language models: Principles, taxonomy, challenges, and open questions*. ACM Transactions on Information Systems. [https://arxiv.org/abs/2311.05232](https://arxiv.org/abs/2311.05232)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2512.14012"
+    ],
+    "intext": "Huang et al., 2025",
+    "reference": "Huang, R., Reyna, A., Lerner, S., Xia, H., & Hempel, B. (2025). *Professional software developers don’t vibe, they control: AI agent use for coding in 2025*. arXiv. [https://arxiv.org/abs/2512.14012](https://arxiv.org/abs/2512.14012)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2309.02524"
+    ],
+    "intext": "Huschens et al., 2023",
+    "reference": "Huschens, M., Briesch, M., Sobania, D., & Rothlauf, F. (2023). *Do you trust ChatGPT? Perceived credibility of human and AI-generated content*. arXiv. [https://arxiv.org/abs/2309.02524](https://arxiv.org/abs/2309.02524)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://en.wikipedia.org/wiki/Intelligence_amplification"
+    ],
+    "intext": "\"Intelligence amplification,\" n.d.",
+    "reference": "Intelligence amplification. (n.d.). In *Wikipedia*. [https://en.wikipedia.org/wiki/Intelligence_amplification](https://en.wikipedia.org/wiki/Intelligence_amplification)",
+    "title_authored": true
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2302.00560"
+    ],
+    "intext": "Jakesch et al., 2023",
+    "reference": "Jakesch, M., Bhat, A., Buschek, D., Zalmanson, L., & Naaman, M. (2023). *Co-writing with opinionated language models affects users’ views*. Proceedings of the 2023 CHI Conference on Human Factors in Computing Systems. [https://arxiv.org/abs/2302.00560](https://arxiv.org/abs/2302.00560)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://www.linkedin.com/pulse/ai-jester-how-makes-you-confident-wrong-johnson-spink-gg3df/"
+    ],
+    "intext": "Johnson Spink, 2026",
+    "reference": "Johnson Spink, D. (2026). *The AI jester: How AI makes you confident and wrong*. LinkedIn. [https://www.linkedin.com/pulse/ai-jester-how-makes-you-confident-wrong-johnson-spink-gg3df/](https://www.linkedin.com/pulse/ai-jester-how-makes-you-confident-wrong-johnson-spink-gg3df/)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f"
+    ],
+    "intext": "Karpathy, 2026a",
+    "reference": "Karpathy, A. (2026a). *LLM wiki*. GitHub. [https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://karpathy.github.io/2026/02/12/microgpt/"
+    ],
+    "intext": "Karpathy, 2026b",
+    "reference": "Karpathy, A. (2026b). *microGPT*. [https://karpathy.github.io/2026/02/12/microgpt/](https://karpathy.github.io/2026/02/12/microgpt/)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://doi.org/10.1145/1922649.1922658"
+    ],
+    "intext": "Ko et al., 2011",
+    "reference": "Ko, A. J., Abraham, R., Beckwith, L., Blackwell, A., Burnett, M., Erwig, M., Scaffidi, C., Lawrance, J., Lieberman, H., Myers, B. A., Rosson, M. B., Rothermel, G., Shaw, M., & Wiedenbeck, S. (2011). *The state of the art in end-user software engineering*. ACM Computing Surveys, 43(3), Article 21. [https://doi.org/10.1145/1922649.1922658](https://doi.org/10.1145/1922649.1922658)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2205.11916"
+    ],
+    "intext": "Kojima et al., 2022",
+    "reference": "Kojima, T., Gu, S. S., Reid, M., Matsuo, Y., & Iwasawa, Y. (2022). *Large language models are zero-shot reasoners*. Advances in Neural Information Processing Systems. [https://arxiv.org/abs/2205.11916](https://arxiv.org/abs/2205.11916)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2603.11768"
+    ],
+    "intext": "Lam, 2026",
+    "reference": "Lam, C. (2026). *Governing evolving memory in LLM agents*. arXiv. [https://arxiv.org/abs/2603.11768](https://arxiv.org/abs/2603.11768)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://www.latent.space/s/ainews"
+    ],
+    "intext": "Latent Space, 2026a",
+    "reference": "Latent Space. (2026a). *AINews*. [https://www.latent.space/s/ainews](https://www.latent.space/s/ainews)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://www.latent.space/p/ainews-loopcraft-the-art-of-stacking"
+    ],
+    "intext": "Latent Space, 2026b",
+    "reference": "Latent Space. (2026b). *Loopcraft: The art of stacking*. [https://www.latent.space/p/ainews-loopcraft-the-art-of-stacking](https://www.latent.space/p/ainews-loopcraft-the-art-of-stacking)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2501.12868"
+    ],
+    "intext": "J. Li et al., 2025",
+    "reference": "Li, J., et al. (2025). *As confidence aligns: Effect of AI confidence on human self-confidence in human–AI decision making*. Proceedings of the 2025 CHI Conference on Human Factors in Computing Systems. [https://arxiv.org/abs/2501.12868](https://arxiv.org/abs/2501.12868)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2210.13382"
+    ],
+    "intext": "K. Li et al., 2023",
+    "reference": "Li, K., Hopkins, A. K., Bau, D., Viégas, F., Pfister, H., & Wattenberg, M. (2023). *Emergent world representations: Exploring a sequence model trained on a synthetic task*. International Conference on Learning Representations. [https://arxiv.org/abs/2210.13382](https://arxiv.org/abs/2210.13382)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2606.26979"
+    ],
+    "intext": "Lin et al., 2026",
+    "reference": "Lin, Zhou, Yang, & Li. (2026). *How much static structure do code agents need? Deterministic anchoring*. arXiv. [https://arxiv.org/abs/2606.26979](https://arxiv.org/abs/2606.26979)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2307.03172"
+    ],
+    "intext": "Liu et al., 2023",
+    "reference": "Liu, N. F., Lin, K., Hewitt, J., Paranjape, A., Bevilacqua, M., Petroni, F., & Liang, P. (2023). *Lost in the middle: How language models use long contexts*. Transactions of the Association for Computational Linguistics. [https://arxiv.org/abs/2307.03172](https://arxiv.org/abs/2307.03172)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2107.07482"
+    ],
+    "intext": "Luo et al., 2021",
+    "reference": "Luo, Y., Liang, P., Wang, C., Shahin, M., & Zhan, J. (2021). *Characteristics and challenges of low-code development: The practitioners’ perspective*. arXiv. [https://arxiv.org/abs/2107.07482](https://arxiv.org/abs/2107.07482)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2606.26924"
+    ],
+    "intext": "Madatha, 2026",
+    "reference": "Madatha, P. (2026). *A deterministic control plane for LLM coding agents*. arXiv. [https://arxiv.org/abs/2606.26924](https://arxiv.org/abs/2606.26924)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://doi.org/10.1111/1467-9280.00282"
+    ],
+    "intext": "McGlone & Tofighbakhsh, 2000",
+    "reference": "McGlone, M. S., & Tofighbakhsh, J. (2000). *Birds of a feather flock conjointly? Rhyme as reason in aphorisms*. Psychological Science, 11(5), 424–428. [https://doi.org/10.1111/1467-9280.00282](https://doi.org/10.1111/1467-9280.00282)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai"
+    ],
+    "intext": "McKinsey & Company, 2025",
+    "reference": "McKinsey & Company. (2025). *The state of AI*. [https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai](https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2310.07923"
+    ],
+    "intext": "Merrill & Sabharwal, 2024",
+    "reference": "Merrill, W., & Sabharwal, A. (2024). *The expressive power of transformers with chain of thought*. International Conference on Learning Representations. [https://arxiv.org/abs/2310.07923](https://arxiv.org/abs/2310.07923)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://modelcontextprotocol.io/introduction"
+    ],
+    "intext": "Model Context Protocol, n.d.",
+    "reference": "Model Context Protocol. (n.d.). *Introduction*. [https://modelcontextprotocol.io/introduction](https://modelcontextprotocol.io/introduction)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://www.nist.gov/itl/ai-risk-management-framework"
+    ],
+    "intext": "NIST, 2023",
+    "reference": "National Institute of Standards and Technology. (2023). *AI risk management framework (AI RMF 1.0)*. [https://www.nist.gov/itl/ai-risk-management-framework](https://www.nist.gov/itl/ai-risk-management-framework)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://hermes-agent.nousresearch.com/docs/"
+    ],
+    "intext": "Nous Research, 2026",
+    "reference": "Nous Research. (2026). *Hermes Agent*. [https://hermes-agent.nousresearch.com/docs/](https://hermes-agent.nousresearch.com/docs/)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://openai.com/index/chatgpt/"
+    ],
+    "intext": "OpenAI, 2022",
+    "reference": "OpenAI. (2022). *Introducing ChatGPT*. [https://openai.com/index/chatgpt/](https://openai.com/index/chatgpt/)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://openai.com/index/function-calling-and-other-api-updates/"
+    ],
+    "intext": "OpenAI, 2023",
+    "reference": "OpenAI. (2023). *Function calling and other API updates*. [https://openai.com/index/function-calling-and-other-api-updates/](https://openai.com/index/function-calling-and-other-api-updates/)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://owasp.org/www-project-top-10-for-large-language-model-applications/"
+    ],
+    "intext": "OWASP, n.d.",
+    "reference": "OWASP. (n.d.). *OWASP top 10 for large language model applications*. [https://owasp.org/www-project-top-10-for-large-language-model-applications/](https://owasp.org/www-project-top-10-for-large-language-model-applications/)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2304.03442"
+    ],
+    "intext": "Park et al., 2023",
+    "reference": "Park, J. S., O’Brien, J. C., Cai, C. J., Morris, M. R., Liang, P., & Bernstein, M. S. (2023). *Generative agents: Interactive simulacra of human behavior*. Proceedings of the 36th Annual ACM Symposium on User Interface Software and Technology. [https://arxiv.org/abs/2304.03442](https://arxiv.org/abs/2304.03442)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://hbr.org/2025/07/research-executives-who-used-gen-ai-made-worse-predictions"
+    ],
+    "intext": "Parra-Moyano et al., 2025",
+    "reference": "Parra-Moyano, J., Reinmoeller, P., & Schmedders, K. (2025). *Research: Executives who used gen AI made worse predictions*. Harvard Business Review. [https://hbr.org/2025/07/research-executives-who-used-gen-ai-made-worse-predictions](https://hbr.org/2025/07/research-executives-who-used-gen-ai-made-worse-predictions)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2502.19573"
+    ],
+    "intext": "Prato et al., 2025",
+    "reference": "Prato, G., Huang, J., Parthasarathi, P., Sodhani, S., & Chandar, S. (2025). *Do large language models know how much they know?* Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing. [https://arxiv.org/abs/2502.19573](https://arxiv.org/abs/2502.19573)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2304.03843"
+    ],
+    "intext": "Prystawski et al., 2023",
+    "reference": "Prystawski, B., Li, M. Y., & Goodman, N. D. (2023). *Why think step by step? Reasoning emerges from the locality of experience*. Advances in Neural Information Processing Systems. [https://arxiv.org/abs/2304.03843](https://arxiv.org/abs/2304.03843)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2606.15874"
+    ],
+    "intext": "Qi et al., 2026",
+    "reference": "Qi et al. (2026). *LLM-as-code: Agentic programming for agent harness*. arXiv. [https://arxiv.org/abs/2606.15874](https://arxiv.org/abs/2606.15874)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://www.wired.com/story/anthropic-claude-cowork-agent/"
+    ],
+    "intext": "Rogers, 2026",
+    "reference": "Rogers, R. (2026). *Anthropic’s Claude Cowork is an AI agent that actually works*. Wired. [https://www.wired.com/story/anthropic-claude-cowork-agent/](https://www.wired.com/story/anthropic-claude-cowork-agent/)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://hbr.org/2026/03/researchers-asked-llms-for-strategic-advice-they-got-trendslop-in-return"
+    ],
+    "intext": "Romasanta et al., 2026",
+    "reference": "Romasanta, A., Thomas, L. D. W., & Levina, N. (2026). *Researchers asked LLMs for strategic advice. They got “trendslop” in return*. Harvard Business Review. [https://hbr.org/2026/03/researchers-asked-llms-for-strategic-advice-they-got-trendslop-in-return](https://hbr.org/2026/03/researchers-asked-llms-for-strategic-advice-they-got-trendslop-in-return)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2606.28235"
+    ],
+    "intext": "Russo, 2026",
+    "reference": "Russo, D. (2026). *Govern the repository, not the agent: Ecosystem-level risk in AI-native software*. arXiv. [https://arxiv.org/abs/2606.28235](https://arxiv.org/abs/2606.28235)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2511.09268"
+    ],
+    "intext": "Santos et al., 2025",
+    "reference": "Santos, R., Costa, H., Montandon, J. E., & Valente, M. T. (2025). *Decoding the configuration of AI coding agents: Claude Code projects*. arXiv. [https://arxiv.org/abs/2511.09268](https://arxiv.org/abs/2511.09268)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2304.15004"
+    ],
+    "intext": "Schaeffer et al., 2023",
+    "reference": "Schaeffer, R., Miranda, B., & Koyejo, S. (2023). *Are emergent abilities of large language models a mirage?* Advances in Neural Information Processing Systems. [https://arxiv.org/abs/2304.15004](https://arxiv.org/abs/2304.15004)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2606.25867"
+    ],
+    "intext": "Sivakumar et al., 2026",
+    "reference": "Sivakumar, Lochner, Nejati, & Sabetzadeh. (2026). *LLM-based discovery of latent requirements from stakeholder conversations*. arXiv. [https://arxiv.org/abs/2606.25867](https://arxiv.org/abs/2606.25867)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://transformer-circuits.pub/2026/emotions/index.html"
+    ],
+    "intext": "Sofroniew et al., 2026",
+    "reference": "Sofroniew, N., Kauvar, I., Saunders, W., Chen, A., et al. (2026). *Emotion concepts and their function in a large language model*. Transformer Circuits Thread. [https://transformer-circuits.pub/2026/emotions/index.html](https://transformer-circuits.pub/2026/emotions/index.html)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://hai.stanford.edu/ai-index/2026-ai-index-report"
+    ],
+    "intext": "Stanford HAI, 2026",
+    "reference": "Stanford Institute for Human-Centered AI. (2026). *The AI index 2026 annual report*. Stanford University. [https://hai.stanford.edu/ai-index/2026-ai-index-report](https://hai.stanford.edu/ai-index/2026-ai-index-report)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://en.wikipedia.org/wiki/Tabnine"
+    ],
+    "intext": "\"Tabnine,\" n.d.",
+    "reference": "Tabnine. (n.d.). In *Wikipedia*. [https://en.wikipedia.org/wiki/Tabnine](https://en.wikipedia.org/wiki/Tabnine)",
+    "title_authored": true
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2603.14133"
+    ],
+    "intext": "Thorgeirsson et al., 2026",
+    "reference": "Thorgeirsson, S., Weidmann, T. B., & Su, Z. (2026). *Computer science achievement and writing skills predict vibe coding proficiency*. arXiv. [https://arxiv.org/abs/2603.14133](https://arxiv.org/abs/2603.14133)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2604.14867"
+    ],
+    "intext": "Töpfer et al., 2026",
+    "reference": "Töpfer, M., Plášil, F., Bureš, T., & Hnětynka, P. (2026). *Vibe-coding: Feedback-based automated verification with no human code inspection, a feasibility study*. arXiv. [https://arxiv.org/abs/2604.14867](https://arxiv.org/abs/2604.14867)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2512.21354"
+    ],
+    "intext": "Wang et al., 2025",
+    "reference": "Wang, Quan, Yu, Hu, & Tsang. (2025). *Reflection-driven control for trustworthy code agents*. arXiv. [https://arxiv.org/abs/2512.21354](https://arxiv.org/abs/2512.21354)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2206.07682"
+    ],
+    "intext": "Wei et al., 2022b",
+    "reference": "Wei, J., Tay, Y., Bommasani, R., Raffel, C., Zoph, B., Borgeaud, S., Yogatama, D., Bosma, M., Zhou, D., Metzler, D., Chi, E. H., Hashimoto, T., Vinyals, O., Liang, P., Dean, J., & Fedus, W. (2022b). *Emergent abilities of large language models*. Transactions on Machine Learning Research. [https://arxiv.org/abs/2206.07682](https://arxiv.org/abs/2206.07682)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2201.11903"
+    ],
+    "intext": "Wei et al., 2022a",
+    "reference": "Wei, J., Wang, X., Schuurmans, D., Bosma, M., Ichter, B., Xia, F., Chi, E., Le, Q., & Zhou, D. (2022a). *Chain-of-thought prompting elicits reasoning in large language models*. Advances in Neural Information Processing Systems. [https://arxiv.org/abs/2201.11903](https://arxiv.org/abs/2201.11903)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://simonwillison.net/2025/Sep/18/agents/"
+    ],
+    "intext": "Willison, 2025",
+    "reference": "Willison, S. (2025). *I think “agent” may finally have a widely enough agreed upon definition to be useful jargon now*. Simon Willison’s Weblog. [https://simonwillison.net/2025/Sep/18/agents/](https://simonwillison.net/2025/Sep/18/agents/)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://www.wired.com/story/googles-response-to-openclaws-24-7-ai-agent/"
+    ],
+    "intext": "Wired, 2026",
+    "reference": "Wired. (2026). *Gemini Spark is Google’s response to OpenClaw’s 24/7 AI agent*. Wired. [https://www.wired.com/story/googles-response-to-openclaws-24-7-ai-agent/](https://www.wired.com/story/googles-response-to-openclaws-24-7-ai-agent/)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://writings.stephenwolfram.com/2023/02/what-is-chatgpt-doing-and-why-does-it-work/"
+    ],
+    "intext": "Wolfram, 2023",
+    "reference": "Wolfram, S. (2023). *What is ChatGPT doing … and why does it work?* Stephen Wolfram Writings. [https://writings.stephenwolfram.com/2023/02/what-is-chatgpt-doing-and-why-does-it-work/](https://writings.stephenwolfram.com/2023/02/what-is-chatgpt-doing-and-why-does-it-work/)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2506.09501"
+    ],
+    "intext": "Yuan et al., 2025",
+    "reference": "Yuan, J., Li, H., Ding, X., Xie, W., Li, Y.-J., Zhao, W., Wan, K., Shi, J., Hu, X., & Liu, Z. (2025). *Understanding and mitigating numerical sources of nondeterminism in LLM inference*. arXiv. [https://arxiv.org/abs/2506.09501](https://arxiv.org/abs/2506.09501)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2606.26289"
+    ],
+    "intext": "Zhang et al., 2026",
+    "reference": "Zhang, Jiang, & Koziolek. (2026). *Augmentation with dilution: Human contributor ecosystems after AI coding agent adoption*. arXiv. [https://arxiv.org/abs/2606.26289](https://arxiv.org/abs/2606.26289)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://en.wikipedia.org/wiki/Unix_philosophy"
+    ],
+    "intext": "\"Unix philosophy,\" n.d.",
+    "reference": "Unix philosophy. (n.d.). In *Wikipedia*. [https://en.wikipedia.org/wiki/Unix_philosophy](https://en.wikipedia.org/wiki/Unix_philosophy)",
+    "title_authored": true
+  },
+  {
+    "urls": [
+      "http://www.catb.org/esr/writings/taoup/"
+    ],
+    "intext": "Raymond, 2003",
+    "reference": "Raymond, E. S. (2003). *The art of Unix programming*. Addison-Wesley. [http://www.catb.org/esr/writings/taoup/](http://www.catb.org/esr/writings/taoup/)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2501.17887"
+    ],
+    "intext": "Livathinos et al., 2025",
+    "reference": "Livathinos, N., et al. (2025). *Docling: An efficient open-source toolkit for AI-driven document conversion*. arXiv. [https://arxiv.org/abs/2501.17887](https://arxiv.org/abs/2501.17887)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://github.com/microsoft/markitdown"
+    ],
+    "intext": "Microsoft, n.d.",
+    "reference": "Microsoft. (n.d.). *MarkItDown* [Computer software]. GitHub. [https://github.com/microsoft/markitdown](https://github.com/microsoft/markitdown)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://pandoc.org"
+    ],
+    "intext": "MacFarlane, n.d.",
+    "reference": "MacFarlane, J. (n.d.). *Pandoc: A universal document converter* [Computer software]. [https://pandoc.org](https://pandoc.org)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://obsidian.md"
+    ],
+    "intext": "Obsidian, n.d.",
+    "reference": "Obsidian. (n.d.). *Obsidian* [Computer software]. [https://obsidian.md](https://obsidian.md)",
+    "title_authored": false
+  }
+]
