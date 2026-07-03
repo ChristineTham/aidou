@@ -119,6 +119,18 @@ code:not(pre code) { color: $r-purple; background: rgba($r-blossom, .35); paddin
 figure, .quarto-figure { text-align: center; }
 figure img, .mermaid svg, .mermaid-js svg { max-width: 100%; height: auto; }
 
+// ---- Landing byline --------------------------------------------------------
+.byline {
+  font-family: "Raleway", "Noto Sans JP", sans-serif;
+  color: $r-mauve; letter-spacing: 0.03em; font-size: 1.02rem;
+  margin: -0.3rem 0 1.5rem;
+}
+.byline a {
+  color: $r-rose; font-weight: 600; text-decoration: none;
+  border-bottom: 1.5px solid $r-blossom; transition: border-color .12s, color .12s;
+}
+.byline a:hover { color: $r-purple; border-bottom-color: $r-purple; }
+
 // ---- Landing download buttons ---------------------------------------------
 .dl-buttons { display: flex; gap: 0.75rem; flex-wrap: wrap; margin: 1.6rem 0; }
 .dl-buttons a.btn-dl {
