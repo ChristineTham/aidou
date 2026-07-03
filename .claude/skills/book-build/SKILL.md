@@ -40,11 +40,23 @@ Outputs: `quarto/_book/index.html` (+ chapters), `quarto/_book/ai-do.pdf`,
 
 ## Diagram fidelity (Mermaid)
 
-- **HTML** — client-side SVG (vector).
-- **ePub** — SVG (vector; `mermaid-format: svg` in `_quarto.yml`).
-- **PDF** — PNG raster. Typst's SVG parser rejects Mermaid's HTML labels, so PDF
-  uses PNG. For a fully vector PDF you'd switch the PDF engine to LaTeX + librsvg
-  (heavier toolchain).
+- **HTML** — client-side SVG (vector), rendered by the browser.
+- **PDF and ePub** — PNG raster, rendered by headless Chrome at build time.
+
+SVG (vector) for the PDF/ePub is **not viable through this toolchain**: Quarto
+does not expose Mermaid's `htmlLabels:false`, so Mermaid emits SVG whose node
+labels are HTML (`foreignObject`/`<p>`). Typst's SVG parser rejects that, and
+e-readers render it inconsistently. A genuinely vector PDF needs the **LaTeX**
+PDF engine plus `rsvg-convert` (librsvg) or Inkscape to convert the SVGs — those
+install cleanly on the CI Ubuntu runner (`apt-get install librsvg2-bin`) but not
+on a stock macOS without Homebrew, so PNG is the reliable default.
+
+## Cover
+
+`quarto/cover.html` is a typographic cover; `quarto/cover.png` (1600×2400) is
+rasterised from it with headless Chrome and wired in via `book: cover-image`.
+Regenerate after edits:
+`"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless --screenshot=cover.png --window-size=800,1200 --force-device-scale-factor=2 file://$PWD/cover.html`
 
 ## Requirements
 

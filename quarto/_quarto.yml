@@ -8,6 +8,8 @@ book:
   author: "Chris Tham"
   site-url: "https://christinetham.github.io/aidou/"
   repo-url: "https://github.com/ChristineTham/aidou"
+  cover-image: cover.png
+  cover-image-alt: "AI-dō — The Way of AI, guided by love (愛), grounded in practice (道), by Chris Tham"
   output-file: "ai-do"
   downloads: [pdf, epub]
   search: true
@@ -44,9 +46,11 @@ format:
     number-sections: true
     papersize: a4
     mainfont: "Georgia"
-    # Mermaid rasterised to PNG (Typst's SVG parser rejects Mermaid's HTML labels).
+    # Mermaid -> PNG: Quarto doesn't expose Mermaid's htmlLabels:false, so its
+    # SVG carries HTML (foreignObject) labels that Typst can't render. PNG is
+    # reliable and high quality. (A fully vector PDF needs the LaTeX engine +
+    # librsvg/rsvg-convert — installable in CI; see the book-build skill.)
   epub:
     toc: true
     number-sections: true
     css: epub.css
-    mermaid-format: svg   # vector diagrams in the ePub

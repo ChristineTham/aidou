@@ -12,9 +12,8 @@ cleanly to HTML + PDF (Typst) + ePub:
     natively (consistent across all three formats, with working cross-refs);
   * `## References` is marked `{.unnumbered}`;
   * GitHub alerts (`> [!NOTE]`) become native Quarto callouts (`::: {.callout-note}`);
-  * ```mermaid fences become executable ```{mermaid} cells with an init that
-    disables HTML labels (so the ePub SVG is self-contained vector, and the
-    PDF PNG renders cleanly).
+  * ```mermaid fences become executable ```{mermaid} cells so Quarto renders
+    them to images (PNG) for the PDF/ePub and client-side SVG for HTML.
 
 `book/*.md` is never modified. Run it directly, or let Quarto's `pre-render`
 hook call it before every render/preview.
@@ -37,7 +36,6 @@ CHAPTERS = [
 ]
 ALERT = {"NOTE": "note", "TIP": "tip", "IMPORTANT": "important",
          "WARNING": "warning", "CAUTION": "caution"}
-MERMAID_INIT = '%%{init: {"theme":"neutral","flowchart":{"htmlLabels":false}}}%%'
 CHAPTER_PREFIX = re.compile(r"^Chapter\s+\d+\s*[—–-]\s*")
 
 
@@ -62,11 +60,13 @@ def convert_alerts(lines):
 
 
 def mermaid_cells(lines):
+    """Turn ```mermaid fences into executable ```{mermaid} cells so Quarto
+    renders them to images for the PDF/ePub (and client-side SVG for HTML).
+    Diagrams keep their `<br/>` labels, which Mermaid renders as line breaks."""
     out = []
     for l in lines:
         if re.match(r"^```mermaid\s*$", l):
             out.append("```{mermaid}")
-            out.append(MERMAID_INIT)
         else:
             out.append(l)
     return out
