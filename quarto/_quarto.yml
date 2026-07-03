@@ -55,9 +55,11 @@ format:
   typst:
     toc: true
     number-sections: true
-    papersize: a4
-    margin: { x: 2.2cm, y: 2.4cm }
-    include-in-header: typst-fonts.typ     # body serif (brand only sets headings)
+    # Page size, margins, and the cover are set in typst-show.typ (orange-book's
+    # book() takes them there — Quarto doesn't pass them through otherwise).
+    template-partials:
+      - typst-show.typ
+    include-in-header: typst-fonts.typ     # body serif + fit diagrams to the page
     # Colours + Spectral come from _brand.yml. Mermaid -> PNG: Quarto doesn't
     # expose Mermaid's htmlLabels:false, so its SVG carries HTML (foreignObject)
     # labels Typst can't render; PNG is reliable and high quality.

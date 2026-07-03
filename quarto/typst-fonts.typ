@@ -6,3 +6,16 @@
 // deploy.yml), a system CJK font locally — in every context, including page
 // headers and callout titles that our own show-rules can't reach.
 #set text(font: "Noto Serif")
+
+// Fit diagrams to the page. Quarto emits each Mermaid PNG at its natural size
+// (often far wider than the page), which overflows and crops. Shrink any image
+// wider than the text column to fit, preserving aspect ratio; leave smaller
+// images untouched.
+#show image: it => layout(size => {
+  let w = measure(it).width
+  if w > size.width {
+    scale(x: size.width / w * 100%, y: size.width / w * 100%, origin: top + left, reflow: true, it)
+  } else {
+    it
+  }
+})
