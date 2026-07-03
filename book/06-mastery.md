@@ -15,7 +15,7 @@ There is an inner edge as well as an organisational one: your sense of your own 
 The book closes on the idea it opened with: a path. Treat your practice as a loop — experiment, get feedback, refine, repeat — and keep AI human-centred at each turn. The evidence is consistent that the gain comes not from the tool but from redesigning work around it, which is why the high performers move pilots into production while others count demos ([McKinsey & Company, *The state of AI*, 2025](https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai)).
 
 ```mermaid
-flowchart LR
+flowchart TB
     E[Experiment] --> F[Feedback]
     F --> R[Refine]
     R --> E

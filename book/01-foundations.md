@@ -43,7 +43,7 @@ Two differences matter, and they are the reason this is a book and not a footnot
 The most useful shift I made early on was to stop treating the model as an oracle. An oracle gives one answer and you take it or leave it. A good model is more like a clever junior colleague: ask, glance at the draft, say "closer, but tighten the intro," and go again. So treat it as a loop — intent enters, context is assembled, a response comes back, you refine — iterating until the output is good enough.
 
 ```mermaid
-flowchart LR
+flowchart TB
     A[Your intent] --> B[Assemble context]
     B --> C[Model responds]
     C --> D{Good enough?}
@@ -100,7 +100,7 @@ flowchart TB
 The brittleness is not anecdotal, and the strongest evidence names where the failure lives. Huang and colleagues survey hundreds of studies and split hallucination along two axes worth holding apart. *Factuality* asks whether output matches the world; *faithfulness* asks whether it matches the input you gave it — a summary can be perfectly factual yet unfaithful by adding true claims you never supplied. They trace both to three stages: the *data*, with its gaps and bias; the *training*, which rewards fluent guessing over admitting ignorance; and *inference*, where sampling wanders. The unifying idea is the *knowledge boundary* — the edge of what a model has stored, past which it cannot tell what it knows from what it does not ([Huang et al., *A survey on hallucination in large language models: Principles, taxonomy, challenges, and open questions*, 2024](https://arxiv.org/abs/2311.05232)). Everything below measures that boundary.
 
 ```mermaid
-flowchart LR
+flowchart TB
     D[Data — gaps and bias] --> KB[Knowledge boundary]
     T[Training — rewards fluent guessing] --> KB
     I[Inference — sampling wanders] --> KB

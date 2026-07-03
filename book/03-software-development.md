@@ -23,7 +23,7 @@ Before the theory, the evidence. Each project below began as a single sentence o
 My intent was almost that short — *run Rogue and its bot in the browser* — with a constraint that the original C code should keep working unchanged in spirit, and a check that the bot could still finish a game. The agent's answer was an architecture I would never have thought to name. It compiled both C codebases to *WebAssembly* (a portable binary format browsers run at near-native speed) with Emscripten, wrote a custom terminal layer to stand in for the Unix `curses` library, and replaced the pipe with a `SharedArrayBuffer` ring buffer — a fixed block of memory that two browser *workers* (background threads) read and write in turn — so the game and the bot run side by side and talk exactly as they once did. For the dashboard it went one better: instead of scraping the terminal for the bot's health and intent, it had the C code write that state straight into shared memory for a VT100-style panel to display, live and at no cost. I specified none of those words.
 
 ```mermaid
-flowchart LR
+flowchart TB
     B["Rog-O-Matic worker<br/>(WASM)"] <-->|virtual pipe| SAB[("SharedArrayBuffer:<br/>ring buffer + stats")]
     SAB <-->|virtual pipe| R["Rogue worker<br/>(WASM)"]
     R -->|writes HP, gold, intent| SAB
@@ -144,7 +144,7 @@ One rule sorts any borderline item: does it change how the builder designs? If y
 > **Worked example, from *rogoweb*.** Goal: "run Rogue and its bot in the browser" — one sentence, no "and," and two quite different builds could satisfy it. Constraints: the original C should keep working; the whole thing runs client-side, with nothing to install. Failure conditions: the build breaks, or the bot can no longer finish a game. Notice what is absent — I never wrote "WebAssembly," "`SharedArrayBuffer`," "ring buffer," or "two web workers." Those were the system's answers to the constraints, not parts of my intent, and that is exactly the line ICE draws.
 
 ```mermaid
-flowchart LR
+flowchart TB
     subgraph You [You own]
       I["Intent:<br/>goal + constraints + failure conditions"]
       E["Expectations:<br/>definition of done"]

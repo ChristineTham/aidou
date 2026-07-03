@@ -194,7 +194,7 @@ A wiki accumulates instead. Add a source and the model reads it once, extracts w
 Three layers make it work: read-only raw sources you never let the model edit, an LLM-owned wiki of summaries and concept pages, and a schema file — CLAUDE.md or AGENTS.md — that tells the agent how the wiki is structured and how to maintain it.
 
 ```mermaid
-flowchart LR
+flowchart TB
     R["Raw sources<br/>read-only"] -->|ingest| W
     subgraph W [LLM-owned wiki]
       direction LR
@@ -225,7 +225,7 @@ The patterns form a rough ladder, from "stuff it into the prompt" to "manage it 
 - **Governed memory.** Once memory is something the agent writes to and edits, it needs rules: what may be remembered, when stale or contradictory entries are evicted, what must be checked before it enters the long-term store. A governance layer guards against the failure modes of evolving memory — drift, corruption, and leaks of private data ([Lam, *Governing evolving memory in LLM agents*, 2026](https://arxiv.org/abs/2603.11768)).
 
 ```mermaid
-flowchart LR
+flowchart TB
     WM["Working memory<br/>the live scratchpad"] --> EM["Episodic memory<br/>recent events"]
     EM --> SM["Semantic memory<br/>durable facts"]
     SM --> PM["Procedural memory<br/>learned skills"]

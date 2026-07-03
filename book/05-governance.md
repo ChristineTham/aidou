@@ -21,7 +21,7 @@ The response is structural: least-privilege access per agent, deliberate red-tea
 > Give each agent its own **service-account identity** with **least-privilege** tokens scoped per tool, not a human's broad credentials. Impersonation grants capability without protection and erases the audit trail.
 
 ```mermaid
-flowchart LR
+flowchart TB
     U[Human owner] -->|delegates| A
     subgraph TB [Trust boundary]
       A["Agent · own service account"] -->|least-privilege tokens| T[Scoped tools]
