@@ -1,8 +1,8 @@
 # AI-dō (AI 道)
 
-**The Way of AI — guided by love (愛), grounded in practice (道).**
+**The Way of AI, grounded in practice (道).**
 
-Anyone can open a chat window and get a fluent answer in seconds. Far fewer can turn that fluency into work worth standing behind. We all draw on the same frontier models, so the model was never the edge — **method is**. *AI-dō* is that method: a disciplined, human-centred way of working with AI, earned task by task and checked at every step.
+Anyone can open a chat window and get a fluent answer in seconds. Far fewer can turn that fluency into work worth standing behind. We all draw on the same frontier models, so the model was never the edge — **method is**. *AI-dō* is that method: a structured, human-centred way of working with AI, earned task by task and checked at every step.
 
 It's a short book, written first-person by a former sceptic, and grounded in primary sources throughout. If you have ten minutes, start reading.
 
@@ -36,7 +36,7 @@ Most AI writing sells tools, prompts, and features. Those go stale in a release.
 
 Every claim is cited inline to a primary source, and each chapter reads like a good textbook: state the idea, show why it holds, then prove it with a real example.
 
-**The name** says it in miniature. **愛 (ai)** — *love*: care for the people the work touches. **道 (dō)** — *the way*: a craft refined over time, the suffix in jūdō and kendō. **AI-dō** is the way of AI guided by love.
+**The name** says it in miniature. **愛 (ai)** — *love*: care for the people the work touches. **道 (dō)** — *the way*: a craft refined over time, the suffix in jūdō and kendō. **AI-dō** joins the two: human care and a practised craft.
 
 **Who it's for** — thoughtful professionals (leaders, consultants, analysts, builders) and engineers who want a durable practice, not a bag of prompts. You can read a chart, a code snippet, or a paper when it helps; you don't live in a terminal.
 

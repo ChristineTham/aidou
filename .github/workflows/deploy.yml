@@ -20,6 +20,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install a CJK font (for the 愛 / 道 kanji in the PDF)
+        run: sudo apt-get update && sudo apt-get install -y fonts-noto-cjk
+
       - name: Set up Python (for the book -> Quarto generator)
         uses: actions/setup-python@v5
         with:
@@ -37,6 +40,8 @@ jobs:
 
       - name: Render HTML + PDF + ePub
         working-directory: quarto
+        env:
+          TYPST_FONT_PATHS: fonts   # bundled Spectral fonts for the Typst PDF
         run: quarto render
 
       - name: Upload Pages artifact

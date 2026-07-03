@@ -2,9 +2,9 @@
 
 # AI-dō
 
-### 愛道 — The Way of AI, Guided by Love
+### 愛道 — The Way of AI, Grounded in Practice
 
-*A disciplined, human-centred method for working with artificial intelligence*
+*A structured, human-centred method for working with artificial intelligence*
 
 <br/>
 
@@ -33,4 +33,4 @@ Published by
 > **愛 (ai)** — *love*: the human care at the centre of the work.
 > **道 (dō)** — *the way*: a craft practised and refined over a lifetime.
 >
-> **AI-dō** is the way of AI guided by love — augmentation, not replacement; method over hacks; human intent at the centre of every loop.
+> **AI-dō** joins the two — augmentation, not replacement; method over hacks; human intent at the centre of every loop.

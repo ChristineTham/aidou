@@ -1,32 +1,56 @@
-/* ePub styling — keep diagrams and images within the reader viewport. */
-img, svg {
-  max-width: 100%;
-  height: auto;
-}
-
-/* Centre figures (Mermaid diagrams are exported as SVG). */
-figure, .quarto-figure {
-  text-align: center;
-  margin: 1em 0;
-}
+/* ePub styling — Rosely palette (https://rosely.hellotham.com).
+   Note: most e-readers let the reader override fonts, so we set a serif
+   family with graceful fallback and focus on the Rosely colour scheme. */
 
 body {
-  line-height: 1.5;
+  color: #27272a;               /* velvet ink */
+  font-family: "Noto Serif", "Noto Serif JP", Georgia, "Times New Roman", serif;
+  line-height: 1.6;
 }
 
-h1, h2, h3 {
-  line-height: 1.25;
+h1, h2, h3, h4 {
+  /* Sans headings over the serif body (e-readers supply the sans face). */
+  font-family: "Raleway", "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
+  color: #27272a;
+  line-height: 1.2;
+}
+h1 { color: #b565a7; }          /* chapter titles in Rosely purple */
+.header-section-number { color: #b565a7; }
+
+a { color: #d2386c; }           /* rose links */
+
+/* Diagrams / images stay within the viewport (Mermaid exported as PNG). */
+img, svg { max-width: 100%; height: auto; }
+figure, .quarto-figure { text-align: center; margin: 1em 0; }
+
+/* Blockquotes */
+blockquote {
+  border-left: 3px solid #be9cc1;
+  color: #615f5f;
+  font-style: italic;
+  margin: 1em 0; padding: 0.3em 1em;
 }
 
-/* Callouts: a light bordered block that survives e-reader CSS. */
+/* Callouts — Rosely bordered blocks (survives e-reader CSS). */
 .callout {
-  border: 1px solid #d0d7de;
-  border-left: 4px solid #1f6feb;
-  border-radius: 4px;
-  padding: 0.5em 0.8em;
+  border: 1px solid #f4dede;
+  border-left: 4px solid #b565a7;
+  border-radius: 6px;
+  padding: 0.5em 0.85em;
   margin: 1em 0;
+  background: #faf7f4;
 }
-.callout-title { font-weight: 700; }
+.callout-title { font-weight: 700; color: #b565a7; }
+.callout-tip { border-left-color: #64bfa4; }
+.callout-tip .callout-title { color: #3f9e83; }
+.callout-important { border-left-color: #d2386c; }
+.callout-important .callout-title { color: #d2386c; }
 
-table { border-collapse: collapse; }
-th, td { border: 1px solid #ccc; padding: 4px 8px; }
+/* Tables */
+table { border-collapse: collapse; width: 100%; }
+thead th { background: #f4eee8; border-bottom: 2px solid #b565a7; }
+th, td { border: 1px solid #f4dede; padding: 4px 8px; }
+
+/* Code */
+pre { background: #f4eee8; border: 1px solid #f4dede; border-radius: 6px; padding: 0.6em; }
+code { color: #b565a7; }

@@ -1,0 +1,93 @@
+# Rosely — a warm, serene millennial-pink palette (https://rosely.hellotham.com)
+# Applied across the HTML site and the Typst PDF for one consistent design.
+color:
+  palette:
+    velvet:  "#27272a"   # near-black ink
+    grey:    "#615f5f"
+    mauve:   "#85677b"   # muted secondary text
+    warmgrey: "#a49e9e"
+    blossom: "#f7caca"   # pale pink (borders)
+    petal:   "#f4dede"   # pink surface
+    cream:   "#f4eee8"   # warm surface
+    lilac:   "#be9cc1"
+    mauvep:  "#b0879b"
+    purple:  "#b565a7"   # primary accent
+    rose:    "#d2386c"   # vivid accent / links
+    pink:    "#ec809e"
+    yellow:  "#eada4f"
+    teal:    "#64bfa4"
+    blue:    "#93a9d1"
+  background: "#ffffff"
+  foreground: velvet
+  primary: purple
+  secondary: mauve
+  tertiary: cream
+  success: teal
+  info: blue
+  warning: yellow
+  danger: rose
+  light: cream
+  dark: velvet
+
+typography:
+  fonts:
+    # Body — Noto Serif: an elegant, highly readable book serif with true
+    # italics and very broad Latin/European coverage. Japanese (愛 道) comes from
+    # the Noto Serif JP / Noto Sans JP fallbacks below — a normal font fallback,
+    # no glyph substitution.
+    - family: Noto Serif
+      source: file
+      files:
+        - path: fonts/NotoSerif-Regular.ttf
+          weight: 400
+          style: normal
+        - path: fonts/NotoSerif-Italic.ttf
+          weight: 400
+          style: italic
+        - path: fonts/NotoSerif-Medium.ttf
+          weight: 500
+          style: normal
+        - path: fonts/NotoSerif-SemiBold.ttf
+          weight: 600
+          style: normal
+        - path: fonts/NotoSerif-Bold.ttf
+          weight: 700
+          style: normal
+        - path: fonts/NotoSerif-BoldItalic.ttf
+          weight: 700
+          style: italic
+    # Headings — Raleway sans (static instances).
+    - family: Raleway
+      source: file
+      files:
+        - path: fonts/Raleway-Medium.ttf
+          weight: 500
+          style: normal
+        - path: fonts/Raleway-SemiBold.ttf
+          weight: 600
+          style: normal
+        - path: fonts/Raleway-Bold.ttf
+          weight: 700
+          style: normal
+    # CJK fallbacks (愛 道 only) — serif for the body, sans for headings.
+    - family: Noto Serif JP
+      source: file
+      files:
+        - path: fonts/NotoSerifJP-subset.ttf
+          weight: 400
+          style: normal
+    - family: Noto Sans JP
+      source: file
+      files:
+        - path: fonts/NotoSansJP-subset.ttf
+          weight: 400
+          style: normal
+  base:
+    family: Noto Serif
+    line-height: 1.7
+  headings:
+    family: Raleway
+    weight: 600
+    color: velvet
+  link:
+    color: rose

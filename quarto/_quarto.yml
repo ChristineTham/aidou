@@ -1,20 +1,33 @@
 project:
   type: book
   output-dir: _book
+  # After render, append a content-hash query to the PDF/ePub download links
+  # so a redeploy always yields a fresh URL (defeats browser/CDN caching of a
+  # stale file). See .claude/skills/book-build/scripts/cachebust.py.
+  post-render:
+    - python3 ../.claude/skills/book-build/scripts/cachebust.py
 
 book:
   title: "AI-dō"
-  subtitle: "The Way of AI — guided by love (愛), grounded in practice (道)"
+  subtitle: "The Way of AI, grounded in practice (道)"
   author: "Chris Tham"
   site-url: "https://christinetham.github.io/aidou/"
   repo-url: "https://github.com/ChristineTham/aidou"
   cover-image: cover.png
-  cover-image-alt: "AI-dō — The Way of AI, guided by love (愛), grounded in practice (道), by Chris Tham"
+  cover-image-alt: "AI-dō — The Way of AI, grounded in practice (道), by Chris Tham"
   output-file: "ai-do"
-  downloads: [pdf, epub]
   search: true
   sidebar:
     style: docked
+    tools:
+      - icon: file-pdf-fill
+        text: "Download PDF"
+        href: ai-do.pdf
+      - icon: book-half
+        text: "Download ePub"
+        href: ai-do.epub
+      - icon: github
+        href: "https://github.com/ChristineTham/aidou"
   page-footer:
     left: "© Chris Tham"
     right: "Built with Quarto from one Markdown source."
@@ -30,9 +43,7 @@ book:
 
 format:
   html:
-    theme:
-      light: [cosmo, brand.scss]
-      dark: [darkly, brand.scss]
+    theme: brand.scss          # Rosely palette + Spectral come from _brand.yml
     toc: true
     toc-depth: 3
     number-sections: true
@@ -45,11 +56,11 @@ format:
     toc: true
     number-sections: true
     papersize: a4
-    mainfont: "Georgia"
-    # Mermaid -> PNG: Quarto doesn't expose Mermaid's htmlLabels:false, so its
-    # SVG carries HTML (foreignObject) labels that Typst can't render. PNG is
-    # reliable and high quality. (A fully vector PDF needs the LaTeX engine +
-    # librsvg/rsvg-convert — installable in CI; see the book-build skill.)
+    margin: { x: 2.2cm, y: 2.4cm }
+    include-in-header: typst-fonts.typ     # body serif (brand only sets headings)
+    # Colours + Spectral come from _brand.yml. Mermaid -> PNG: Quarto doesn't
+    # expose Mermaid's htmlLabels:false, so its SVG carries HTML (foreignObject)
+    # labels Typst can't render; PNG is reliable and high quality.
   epub:
     toc: true
     number-sections: true

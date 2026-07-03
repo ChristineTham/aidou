@@ -53,6 +53,38 @@ PDF engine plus `rsvg-convert` (librsvg) or Inkscape to convert the SVGs — tho
 install cleanly on the CI Ubuntu runner (`apt-get install librsvg2-bin`) but not
 on a stock macOS without Homebrew, so PNG is the reliable default.
 
+## Design & theme (Rosely)
+
+One design spans the website, PDF, and ePub, driven by Quarto's cross-format
+brand system:
+
+- **`quarto/_brand.yml`** — the [Rosely](https://rosely.hellotham.com) palette
+  (warm millennial-pink/purple: cream surfaces, velvet ink, purple primary, rose
+  links) plus the **Spectral** serif. Quarto applies it to **both HTML and the
+  Typst PDF**.
+- **Fonts** are self-hosted in `quarto/fonts/` (Spectral TTFs, OFL). HTML gets
+  them via `_brand.yml`; the Typst PDF finds them because `build.sh` (and CI)
+  export `TYPST_FONT_PATHS=fonts`.
+- **`quarto/brand.scss`** — HTML polish only (reading measure, warm section
+  rules, Rosely-tinted callouts, tables, blockquotes, code, and the download
+  buttons). Palette/fonts stay in `_brand.yml`.
+- **`quarto/epub.css`** — Rosely colours for the ePub (e-readers usually control
+  the font, so Spectral is set with a serif fallback).
+- **Separate download buttons**: two pill buttons (PDF + ePub) on the landing
+  page (`index.qmd`, styled in `brand.scss`), plus separate PDF/ePub tool icons
+  in the sidebar (`book: sidebar: tools:` in `_quarto.yml`).
+
+## Cache-busting the downloads
+
+The PDF and ePub live at stable URLs (`ai-do.pdf`, `ai-do.epub`), which
+browsers and the GitHub Pages CDN cache — so readers can get a stale file after
+a redeploy. A Quarto **`project: post-render`** step runs
+`scripts/cachebust.py`, which appends a short content-hash query
+(`ai-do.pdf?v=<md5>`) to every download link in the rendered HTML. The hash
+changes only when the file's bytes change, so each new build yields a fresh URL
+that no cache can match. It runs on every `quarto render` (local and CI) — no
+extra wiring.
+
 ## Cover
 
 `quarto/cover.html` is a typographic cover; `quarto/cover.png` (1600×2400) is
@@ -65,6 +97,7 @@ Regenerate after edits:
 - **Quarto** (bundles Typst — no LaTeX needed for the PDF).
 - **Headless Chrome** for Mermaid rasterisation in the PDF: `quarto install chrome-headless-shell`.
 - **Python 3** for the generator.
+- Fonts: bundled in `quarto/fonts/` (no install). `build.sh` exports `TYPST_FONT_PATHS=fonts` so Typst finds them.
 
 ## Deploy to GitHub Pages
 

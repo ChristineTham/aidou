@@ -1,39 +1,123 @@
 /*-- scss:defaults --*/
-// AI-dō house style — a calm, book-like reading surface.
-$font-family-sans-serif: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
-$font-family-serif: Georgia, Cambria, "Times New Roman", serif !default;
+// _brand.yml supplies the Rosely palette + Spectral. This file is polish only.
+$font-size-root: 18px;
+$toc-font-size: 0.82rem;
+$blockquote-font-size: 1rem;
 
-// Body reads as a book (serif); headings stay in a clean sans.
-$font-family-base: $font-family-serif !default;
-$headings-font-family: $font-family-sans-serif !default;
-$font-size-root: 18px !default;
-
-$primary: #1f6feb !default;         // links / accents
-$body-color: #1a1a1a !default;
-$link-color: $primary !default;
-
-$toc-font-size: 0.85rem !default;
+// Rosely (for use in rules below)
+$r-velvet:  #27272a;
+$r-grey:    #615f5f;
+$r-mauve:   #85677b;
+$r-blossom: #f7caca;
+$r-petal:   #f4dede;
+$r-cream:   #f4eee8;
+$r-lilac:   #be9cc1;
+$r-purple:  #b565a7;
+$r-rose:    #d2386c;
+$r-pink:    #ec809e;
+$r-teal:    #64bfa4;
+$r-blue:    #93a9d1;
+$r-warm:    #faf7f4;  // near-white warm tint
 
 /*-- scss:rules --*/
-// Comfortable measure for long-form reading.
-main.content, .page-columns .content {
-  line-height: 1.65;
+
+// ---- Type families ---------------------------------------------------------
+// Sans headings (Raleway) over serif body (Noto Serif), each with a matching
+// Noto JP fallback so 愛 / 道 render.
+body { font-family: "Noto Serif", "Noto Serif JP", Georgia, serif; }
+h1, h2, h3, h4, h5, h6,
+.quarto-title-block .title, .sidebar-title, #title-block-header .title {
+  font-family: "Raleway", "Noto Sans JP", system-ui, sans-serif;
 }
-main.content { max-width: 46rem; }
 
-h1, h2, h3, h4 { line-height: 1.25; letter-spacing: -0.01em; }
-h2 { margin-top: 1.6em; }
+// ---- Reading surface -------------------------------------------------------
+body { background: $r-warm; }
+main.content {
+  max-width: 46rem;
+  line-height: 1.72;
+  color: $r-velvet;
+}
+p { margin-bottom: 1.05rem; }
 
-// Diagrams centred and never overflowing.
-.mermaid, .mermaid-js, figure.quarto-figure { text-align: center; }
-.mermaid svg, .mermaid-js svg, figure img { max-width: 100%; height: auto; }
+// ---- Headings --------------------------------------------------------------
+h1, h2, h3, h4, h5 { letter-spacing: -0.012em; line-height: 1.18; }
+h1.title { font-weight: 600; letter-spacing: -0.02em; }
+main.content h2 {
+  margin-top: 1.9rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid $r-petal;
+}
+.header-section-number { color: $r-purple; font-weight: 600; }
+.chapter-number, .quarto-title .chapter-number { color: $r-purple; }
 
-// Tables: quiet, readable.
-table { font-size: 0.92em; }
-thead th { border-bottom: 2px solid #d0d7de; }
+// ---- Links -----------------------------------------------------------------
+main.content a {
+  text-decoration: underline;
+  text-decoration-color: $r-blossom;
+  text-underline-offset: 2px;
+  transition: color .12s, text-decoration-color .12s;
+}
+main.content a:hover { color: $r-purple; text-decoration-color: $r-purple; }
 
-// Callouts a touch softer.
-.callout { border-radius: 6px; }
+// ---- Sidebar / chrome ------------------------------------------------------
+.sidebar, #quarto-sidebar, .quarto-sidebar { background: $r-cream; }
+#quarto-sidebar .sidebar-item-text { color: $r-mauve; }
+#quarto-sidebar .sidebar-item .active,
+#quarto-sidebar a.active { color: $r-purple !important; font-weight: 600; }
+#quarto-margin-sidebar .sidebar-item-text:hover { color: $r-rose; }
 
-// References list: smaller, hanging-ish, easy to scan.
-#references, div:has(> h2#references) { font-size: 0.95em; }
+// Separate PDF / ePub tool buttons in the sidebar header
+.sidebar-tools-main .sidebar-tool, .sidebar-tools-collapse .sidebar-tool {
+  color: $r-purple;
+}
+.sidebar-tools-main .sidebar-tool:hover { color: $r-rose; }
+
+// ---- Callouts (recoloured to Rosely) --------------------------------------
+.callout { border-radius: 8px; border-width: 1px; }
+.callout.callout-style-default > .callout-header { font-weight: 600; }
+div.callout-note   { border-left-color: $r-purple; }
+div.callout-note   > .callout-header { background: rgba($r-purple, .10); }
+div.callout-tip    { border-left-color: $r-teal; }
+div.callout-tip    > .callout-header { background: rgba($r-teal, .12); }
+div.callout-important { border-left-color: $r-rose; }
+div.callout-important > .callout-header { background: rgba($r-rose, .10); }
+div.callout-warning { border-left-color: $r-pink; }
+div.callout-warning > .callout-header { background: rgba($r-pink, .12); }
+div.callout-caution { border-left-color: $r-blue; }
+div.callout-caution > .callout-header { background: rgba($r-blue, .12); }
+
+// ---- Blockquotes -----------------------------------------------------------
+blockquote {
+  border-left: 3px solid $r-lilac;
+  color: $r-grey;
+  font-style: italic;
+  background: $r-warm;
+  padding: 0.4rem 1rem;
+}
+
+// ---- Tables ----------------------------------------------------------------
+table { font-size: 0.95em; }
+thead th { background: $r-cream; border-bottom: 2px solid $r-purple; }
+tbody tr:nth-child(even) { background: rgba($r-cream, .5); }
+th, td { border-color: $r-petal; }
+
+// ---- Code ------------------------------------------------------------------
+pre { background: #fbf8f4; border: 1px solid $r-petal; border-radius: 8px; }
+code:not(pre code) { color: $r-purple; background: rgba($r-blossom, .35); padding: .05em .3em; border-radius: 4px; }
+
+// ---- Figures / diagrams ----------------------------------------------------
+figure, .quarto-figure { text-align: center; }
+figure img, .mermaid svg, .mermaid-js svg { max-width: 100%; height: auto; }
+
+// ---- Landing download buttons ---------------------------------------------
+.dl-buttons { display: flex; gap: 0.75rem; flex-wrap: wrap; margin: 1.6rem 0; }
+.dl-buttons a.btn-dl {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.55rem 1.1rem; border-radius: 999px;
+  font-weight: 600; text-decoration: none; font-size: 0.95rem;
+  border: 1.5px solid $r-purple;
+}
+.dl-buttons a.btn-dl.primary { background: $r-purple; color: #fff; }
+.dl-buttons a.btn-dl.primary:hover { background: $r-rose; border-color: $r-rose; }
+.dl-buttons a.btn-dl.ghost { color: $r-purple; background: transparent; }
+.dl-buttons a.btn-dl.ghost:hover { background: rgba($r-purple, .08); color: $r-rose; border-color: $r-rose; }

@@ -53,14 +53,14 @@ timeline
 
 Working with artificial intelligence has become strangely easy to do and strangely hard to do well. Anyone can open a chat window and get a fluent answer in seconds; far fewer can turn that fluency into work that is reliable, repeatable, and worth standing behind.
 
-Notice that the gap is not one of access. We all draw from the same handful of frontier models, so the model cannot be what separates good work from poor. What separates them is method — the practised habits by which a skilled person turns a capable tool toward a dependable result, the way a chef and a novice handed the same kitchen produce very different dinners. This book is about that method: a disciplined way of working with AI, grounded in human intent and refined through repetition.
+Notice that the gap is not one of access. We all draw from the same handful of frontier models, so the model cannot be what separates good work from poor. What separates them is method — the practised habits by which a skilled person turns a capable tool toward a dependable result, the way a chef and a novice handed the same kitchen produce very different dinners. This book is about that method: a structured way of working with AI, grounded in human intent and refined through repetition.
 
 The name of the book deserves a few words of explanation, because it carries the whole argument in miniature. It joins **AI** with two Japanese ideas. The first is **愛 (ai)**, love — the human care that should sit at the centre of the work. The second is **道 (dō)**, the way — a path of patient, lifelong improvement, the same character that ends jūdō and kendō.
 
 Read together, AI-dō is the way of AI guided by love: it puts human outcomes ahead of technical novelty, uses the machine to augment thinking rather than replace it, and builds ways of working that are effective, transparent, and responsible. Keep that stance in mind, because every chapter is, in the end, a defence of it.
 
 > [!TIP]
-> **愛 (ai)** — love, the human care at the centre of the work. **道 (dō)** — the way, a path of lifelong refinement. *AI-dō*: the way of AI guided by love. Augmentation, not replacement; method over hacks.
+> **愛 (ai)** — love, the human care at the centre of the work. **道 (dō)** — the way, a path of lifelong refinement. Augmentation, not replacement; method over hacks.
 
 ## The cost of getting it wrong
 
