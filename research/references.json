@@ -804,5 +804,181 @@
     "intext": "Obsidian, n.d.",
     "reference": "Obsidian. (n.d.). *Obsidian* [Computer software]. [https://obsidian.md](https://obsidian.md)",
     "title_authored": false
+  },
+  {
+    "urls": [
+      "https://doi.org/10.1145/3442188.3445922"
+    ],
+    "intext": "Bender et al., 2021",
+    "reference": "Bender, E. M., Gebru, T., McMillan-Major, A., & Shmitchell, S. (2021). *On the dangers of stochastic parrots: Can language models be too big?* Proceedings of the 2021 ACM Conference on Fairness, Accountability, and Transparency, 610–623. [https://doi.org/10.1145/3442188.3445922](https://doi.org/10.1145/3442188.3445922)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/1810.03993"
+    ],
+    "intext": "Mitchell et al., 2019",
+    "reference": "Mitchell, M., Wu, S., Zaldivar, A., Barnes, P., Vasserman, L., Hutchinson, B., Spitzer, E., Raji, I. D., & Gebru, T. (2019). *Model cards for model reporting*. Proceedings of the Conference on Fairness, Accountability, and Transparency (FAT* '19), 220–229. [https://arxiv.org/abs/1810.03993](https://arxiv.org/abs/1810.03993)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2001.00973"
+    ],
+    "intext": "Raji et al., 2020",
+    "reference": "Raji, I. D., Smart, A., White, R. N., Mitchell, M., Gebru, T., Hutchinson, B., Smith-Loud, J., Theron, D., & Barnes, P. (2020). *Closing the AI accountability gap: Defining an end-to-end framework for internal algorithmic auditing*. Proceedings of the 2020 Conference on Fairness, Accountability, and Transparency, 33–44. [https://arxiv.org/abs/2001.00973](https://arxiv.org/abs/2001.00973)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2012.07805"
+    ],
+    "intext": "Carlini et al., 2021",
+    "reference": "Carlini, N., Tramèr, F., Wallace, E., Jagielski, M., Herbert-Voss, A., Lee, K., Roberts, A., Brown, T., Song, D., Erlingsson, Ú., Oprea, A., & Raffel, C. (2021). *Extracting training data from large language models*. 30th USENIX Security Symposium (USENIX Security 21). [https://arxiv.org/abs/2012.07805](https://arxiv.org/abs/2012.07805)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2311.17035"
+    ],
+    "intext": "Nasr et al., 2023",
+    "reference": "Nasr, M., Carlini, N., Hayase, J., Jagielski, M., Cooper, A. F., Ippolito, D., Choquette-Choo, C. A., Wallace, E., Tramèr, F., & Lee, K. (2023). *Scalable extraction of training data from (production) language models*. arXiv. [https://arxiv.org/abs/2311.17035](https://arxiv.org/abs/2311.17035)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2110.05679"
+    ],
+    "intext": "X. Li et al., 2022",
+    "reference": "Li, X., Tramèr, F., Liang, P., & Hashimoto, T. (2022). *Large language models can be strong differentially private learners*. International Conference on Learning Representations (ICLR 2022). [https://arxiv.org/abs/2110.05679](https://arxiv.org/abs/2110.05679)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2411.19537"
+    ],
+    "intext": "Croitoru et al., 2024",
+    "reference": "Croitoru, F.-A., Hîji, A.-I., Hondru, V., Ristea, N. C., Irofti, P., Popescu, M., Rusu, C., Ionescu, R. T., Khan, F. S., & Shah, M. (2024). *Deepfake media generation and detection in the generative AI era: A survey and outlook*. arXiv. [https://arxiv.org/abs/2411.19537](https://arxiv.org/abs/2411.19537)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://www.iea.org/reports/energy-and-ai"
+    ],
+    "intext": "IEA, 2025",
+    "reference": "International Energy Agency. (2025). *Energy and AI* (World Energy Outlook special report). [https://www.iea.org/reports/energy-and-ai](https://www.iea.org/reports/energy-and-ai)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2508.15734"
+    ],
+    "intext": "Elsworth et al., 2025",
+    "reference": "Elsworth, C., Huang, K., Patterson, D., Schneider, I., Sedivy, R., Goodman, S., Townsend, B., Ranganathan, P., Dean, J., Vahdat, A., Gomes, B., & Manyika, J. (2025). *Measuring the environmental impact of delivering AI at Google scale*. arXiv. [https://arxiv.org/abs/2508.15734](https://arxiv.org/abs/2508.15734)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2506.08872"
+    ],
+    "intext": "Kosmyna et al., 2025",
+    "reference": "Kosmyna, N., Hauptmann, E., Yuan, Y. T., Situ, J., Liao, X.-H., Beresnitzky, A. V., Braunstein, I., & Maes, P. (2025). *Your brain on ChatGPT: Accumulation of cognitive debt when using an AI assistant for essay writing task*. arXiv. [https://arxiv.org/abs/2506.08872](https://arxiv.org/abs/2506.08872)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://doi.org/10.3390/soc15010006"
+    ],
+    "intext": "Gerlich, 2025",
+    "reference": "Gerlich, M. (2025). *AI tools in society: Impacts on cognitive offloading and the future of critical thinking*. Societies, 15(1), 6. [https://doi.org/10.3390/soc15010006](https://doi.org/10.3390/soc15010006)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://doi.org/10.1126/sciadv.adn5290"
+    ],
+    "intext": "Doshi & Hauser, 2024",
+    "reference": "Doshi, A. R., & Hauser, O. P. (2024). *Generative AI enhances individual creativity but reduces the collective diversity of novel content*. Science Advances, 10(28), eadn5290. [https://doi.org/10.1126/sciadv.adn5290](https://doi.org/10.1126/sciadv.adn5290)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://doi.org/10.1037/0033-295X.100.3.363"
+    ],
+    "intext": "Ericsson et al., 1993",
+    "reference": "Ericsson, K. A., Krampe, R. T., & Tesch-Römer, C. (1993). *The role of deliberate practice in the acquisition of expert performance*. Psychological Review, 100(3), 363–406. [https://doi.org/10.1037/0033-295X.100.3.363](https://doi.org/10.1037/0033-295X.100.3.363)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://doi.org/10.1038/s41562-024-02024-1"
+    ],
+    "intext": "Vaccaro et al., 2024",
+    "reference": "Vaccaro, M., Almaatouq, A., & Malone, T. (2024). *When combinations of humans and AI are useful: A systematic review and meta-analysis*. Nature Human Behaviour, 8(12), 2293–2303. [https://doi.org/10.1038/s41562-024-02024-1](https://doi.org/10.1038/s41562-024-02024-1)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2402.07632"
+    ],
+    "intext": "J. Li et al., 2024",
+    "reference": "Li, J., Yang, Y., Zhang, R., Liao, Q. V., Song, T., Xu, Z., & Lee, Y.-C. (2024). *Understanding the effects of miscalibrated AI confidence on user trust, reliance, and decision efficacy*. arXiv. [https://arxiv.org/abs/2402.07632](https://arxiv.org/abs/2402.07632)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2503.19159"
+    ],
+    "intext": "Marguerit, 2025",
+    "reference": "Marguerit, D. (2025). *Augmenting or automating labor? The effect of AI development on new work, employment, and wages*. arXiv. [https://arxiv.org/abs/2503.19159](https://arxiv.org/abs/2503.19159)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://www.iso.org/standard/74296.html"
+    ],
+    "intext": "ISO/IEC, 2022",
+    "reference": "ISO/IEC. (2022). *Artificial intelligence — Concepts and terminology* (ISO/IEC 22989:2022). International Organization for Standardization. [https://www.iso.org/standard/74296.html](https://www.iso.org/standard/74296.html)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://www.iso.org/standard/77304.html"
+    ],
+    "intext": "ISO/IEC, 2023a",
+    "reference": "ISO/IEC. (2023a). *Artificial intelligence — Guidance on risk management* (ISO/IEC 23894:2023). International Organization for Standardization. [https://www.iso.org/standard/77304.html](https://www.iso.org/standard/77304.html)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://www.iso.org/standard/81230.html"
+    ],
+    "intext": "ISO/IEC, 2023b",
+    "reference": "ISO/IEC. (2023b). *Artificial intelligence — Management system* (ISO/IEC 42001:2023). International Organization for Standardization. [https://www.iso.org/standard/81230.html](https://www.iso.org/standard/81230.html)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://en.wikipedia.org/wiki/Shuhari"
+    ],
+    "intext": "\"Shuhari,\" n.d.",
+    "reference": "Shuhari. (n.d.). In *Wikipedia*. [https://en.wikipedia.org/wiki/Shuhari](https://en.wikipedia.org/wiki/Shuhari)",
+    "title_authored": true
+  },
+  {
+    "urls": [
+      "https://artificialintelligenceact.eu/article/14/"
+    ],
+    "intext": "European Union, 2024",
+    "reference": "European Union. (2024). *Article 14: Human oversight*. In EU Artificial Intelligence Act (Regulation (EU) 2024/1689). [https://artificialintelligenceact.eu/article/14/](https://artificialintelligenceact.eu/article/14/)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://www.nber.org/papers/w31161"
+    ],
+    "intext": "Brynjolfsson et al., 2023",
+    "reference": "Brynjolfsson, E., Li, D., & Raymond, L. R. (2023). *Generative AI at work* (NBER Working Paper No. 31161). National Bureau of Economic Research. [https://www.nber.org/papers/w31161](https://www.nber.org/papers/w31161)",
+    "title_authored": false
   }
 ]
