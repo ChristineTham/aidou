@@ -1,55 +1,6 @@
 # Preface — Why This Book Exists
 
-I began 2026 as an AI sceptic. I read Ed Zitron — the tech critic whose newsletter [Where's Your Ed At](https://www.wheresyoured.at/) dismantles industry hype — and Gary Marcus, the cognitive scientist whose [Marcus on AI](https://garymarcus.substack.com/) has argued for years that large language models are shallow pattern-matchers rather than reasoners, and I cheered them both on. Cory Doctorow's [Pluralistic](https://pluralistic.net/) sharpened the same suspicion from the political side, naming the slow rot by which platforms turn on their own users. I laughed at the vibe coders for their naivety, and assumed anyone who installed OpenClaw was an idiot.
-
-So when a global client hired me to write their AI strategy, I expected the deliverable to be a cautionary tale: be realistic, resist the hype, install guardrails, avoid the traps. Over the last several months, I realised I was the one who was naive. The AI landscape had been transformed. Claude Desktop with Cowork, Microsoft 365 Copilot with WorkIQ, and Google's Gemini Spark turned the ordinary instruments of knowledge work — documents, spreadsheets, inboxes, slide decks — into things an agent could draft, revise, and act on; Claude Code and GitHub Copilot did the same for software, crossing from clever autocomplete to systems that plan, edit across a whole codebase, and run their own work. Personal agents like OpenClaw and Hermes Agent pushed that capability out of the labs and into anyone's hands. Using them in earnest changed my mind: the productivity gains are now genuinely real.
-
-Vibe coding is real. I managed to refactor and clean every line of code I have ever written (not a lot, since my career has never been in software development) and all my projects now feature gleaming, shiny, clean code. I have successfully finished dozens of vibe coded projects without reviewing a single line of code. I now firmly believe I will never read or write code ever again in my life.
-
-I also believe using AI to do research, analytics, planning and a bunch of other white collar activities are also real.
-
-And yet Ed and Gary are still right: AI does not think or create, it transforms and multiplies. It vibe-codes well only if you already understand large systems; it makes good art only if you are a good artist. Used carelessly it produces slop. Using it well is itself a skill, and most people do not yet have it. That gap — between a tool anyone can touch and a craft few have learned — is why I wrote this book.
-
-Let me be plain about where I have landed, because it is narrower than my enthusiasm might suggest. I remain a sceptic. The conversion I describe is confined to my work — the productivity of knowledge work and the building of software — and even there it is conditional, earned task by task and checked at every step. In my personal life I keep AI at arm's length: I do not hand it my relationships, my judgement, or my inner weather, and the chapter on the cost of getting it wrong explains why. So read this as a work book with a deliberate boundary. Much of my motivation for writing it is defensive — to spare you the common mistakes and quiet pitfalls that come from trusting these tools where they have not earned it.
-
-## A short bearing on where AI stands
-
-Before the argument, let me set the scene, since the terms move quickly. When I say *artificial intelligence*, I mean the present generation of large language models — systems trained on enormous quantities of text, and increasingly images and sound, that respond to plain-language requests with fluent prose, working code, and structured analysis.
-
-The most capable of these are called *frontier models*: the handful of largest, most general systems from a few well-resourced labs, the ones that set the pace and that everyone else measures against. ChatGPT, Claude, and Gemini are the familiar names; behind them sits a *foundation model*, a single large network trained once at great expense and then adapted to countless tasks.
-
-> [!NOTE]
-> A few terms used throughout, defined plainly:
->
-> - **Large language model (LLM)** — a network trained to predict the next word, which in scale yields fluent prose, code, and analysis.
-> - **Foundation model** — one large model trained once, then adapted to many tasks.
-> - **Frontier model** — the largest, most general foundation models that set the pace (ChatGPT, Claude, Gemini).
-> - **Loopcraft** — the practice of working in tight cycles of ask, check, and adjust, rather than chasing one perfect instruction.
-
-Two facts about 2026 frame everything that follows. The first is that these tools are everywhere: roughly 88% of organisations report using AI, even as most are still experimenting rather than depending on it ([Stanford HAI, *The AI index 2026 annual report*, 2026](https://hai.stanford.edu/ai-index/2026-ai-index-report); [McKinsey & Company, *The state of AI*, 2025](https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai)). The second is that the field has quietly conceded the model alone is no longer the product; the leading labs now compete on the scaffolding around it — the workflows, the memory, the economics of running it well.
-
-Capability has rocketed, yet so has its unevenness, and the hard part has shifted from getting an answer to trusting one. That shift is what this book is for.
-
-## From chatbot to agent
-
-It helps to remember how fast the tools themselves have changed, because the kind of work you can trust to them changed at each step. The ChatGPT that startled everyone in late 2022 was a closed box: it answered only from what it had absorbed during training, with no memory of you, no access to the internet, and no way to act in the world ([OpenAI, *Introducing ChatGPT*, 2022](https://openai.com/index/chatgpt/)). It was articulate and frozen — confident inside its training data, and blind, often cheerfully, beyond it.
-
-The first real change was giving the model hands. In 2023 OpenAI added *function calling* — a way for the model to recognise that a question needs a tool and to emit a structured request to run it — alongside plugins and a browser, so it could search the web, run code, or query a database instead of guessing ([OpenAI, *Function calling and other API updates*, 2023](https://openai.com/index/function-calling-and-other-api-updates/)). The predictor of text became something that could also take actions and read back the results.
-
-At first each of those connections was hand-built, one wiring job per tool. In late 2024 Anthropic published the *Model Context Protocol*, an open standard that lets any model plug into any tool or data store through one shared interface — much as a single USB port replaced a drawer of incompatible cables ([Anthropic, *Introducing the Model Context Protocol*, 2024b](https://www.anthropic.com/news/model-context-protocol)). Connecting a model to your files, your code, or your systems stopped being a custom project and became a setting.
-
-What that unlocked is the *agent*: a model placed in a loop and allowed to plan, call a tool, read what comes back, and try again until a goal is met. By 2026 this is where the work is. Coding platforms like Claude Code and GitHub Copilot edit across a whole codebase and run their own tests; the more capable agents now reach for *skills* — packaged, reusable know-how they can load on demand — and even hand sub-tasks to other agents. The arc, in one line, runs from a clever box that only talked, to a system that acts, checks, and coordinates. Everything in this book assumes that second world.
-
-```mermaid
-timeline
-    title From chatbot to agent
-    2022 : ChatGPT, a closed box with no tools and frozen knowledge
-    2023 : Function calling, plugins and a browser give the model hands
-    2024 : Model Context Protocol, one standard plug for any tool
-    2026 : Agents that plan, call tools, use skills and coordinate other agents
-```
-
-## The problem this book solves
+## Why This Book
 
 Working with artificial intelligence has become strangely easy to do and strangely hard to do well. Anyone can open a chat window and get a fluent answer in seconds; far fewer can turn that fluency into work that is reliable, repeatable, and worth standing behind.
 
@@ -61,16 +12,6 @@ Read together, AI-dō is the way of AI guided by love: it puts human outcomes ah
 
 > [!TIP]
 > **愛 (ai)** — love, the human care at the centre of the work. **道 (dō)** — the way, a path of lifelong refinement. Augmentation, not replacement; method over hacks.
-
-## The cost of getting it wrong
-
-Used badly, these tools do not just waste time — they distort judgement. Clinicians have begun describing "AI psychosis," where heavy users spiral into delusion after a chatbot mirrors and amplifies their worst ideas instead of pushing back. Others form genuine attachments to a companion app, mistaking fluent warmth for understanding, and grieve when a model is retired. A confident voice that never tires is easy to trust and hard to doubt; one writer likens it to a court jester — fluent, flattering, and so easy to follow that its answers *feel* right whether or not they are, leaving you confident and wrong ([Johnson Spink, *The AI jester: How AI makes you confident and wrong*, 2026](https://www.linkedin.com/pulse/ai-jester-how-makes-you-confident-wrong-johnson-spink-gg3df/)).
-
-The quieter harm is over-reliance. People paste in an answer they never checked, accept a summary that dropped the one caveat that mattered, or treat a tidy explanation as proof the system understands. It does not. Believing the machine is sentient, or simply infallible, is the fastest way to ship its mistakes as your own.
-
-This is not a private failing; it scales with authority. Futurism has documented bosses who route every decision through a chatbot — drafting their messages with it, demanding staff "discuss with the AI" before speaking to a human, even asking it whom to hire and fire ([Harrison Dupré, *Bosses are becoming obsessed with AI, using it to make every decision, barraging their employees with nonsensical ChatGPT directives, and even asking it who to fire*, 2026](https://futurism.com/artificial-intelligence/bosses-obsessed-with-ai)). The pattern is always the same: a leader mistakes the model's sycophancy for counsel, since it will, as one worker put it, "spit out the narrative that you want it to spit out," and so the tool meant to raise productivity instead manufactures whiplash, distrust, and resignations. The danger is not that the machine decides, but that a person stops.
-
-So the public mood has soured. Trust in AI is falling even as use rises, and every fabricated citation, biased decision, or polished falsehood deepens the suspicion. That distrust is rational — and it is also a gap to be closed. The cure is not blind faith or blanket refusal, but skill: knowing when to lean in, when to verify, and when to walk away. Teaching that skill is the rest of this book.
 
 ## Why now
 
@@ -130,19 +71,3 @@ Each section follows a single arc — a claim, why it matters, how to practise i
 A few words about who is writing, so you can weigh what follows. I run a strategy consultancy, Hello Tham, and I lecture in technology and information systems to undergraduate and master's students at Torrens University Australia. My work has centred on technology strategy, operating models, governance, process standardisation and quality, and enterprise architecture — first as a strategy executive in banking and finance, and over the last fifteen years as a consultant across many industries, government included.
 
 After more than forty working years I have reached a comfortable place, which mostly means I am free to take risks and stretch myself. I admire how different strengths complement one another, and I like work that brings talented people together to do more than any of us could alone. Consulting scales me out; teaching lets me hand the lessons on. AI is my current obsession: I have just delivered an AI strategy for a global firm, I keep a clutch of open-source projects on the go, and I teach my students to use it well. This book is where I have written that practice down.
-
-## References
-
-Anthropic. (2024b). *Introducing the Model Context Protocol*. [https://www.anthropic.com/news/model-context-protocol](https://www.anthropic.com/news/model-context-protocol)
-
-Harrison Dupré, M. (2026). *Bosses are becoming obsessed with AI, using it to make every decision, barraging their employees with nonsensical ChatGPT directives, and even asking it who to fire*. Futurism. [https://futurism.com/artificial-intelligence/bosses-obsessed-with-ai](https://futurism.com/artificial-intelligence/bosses-obsessed-with-ai)
-
-Johnson Spink, D. (2026). *The AI jester: How AI makes you confident and wrong*. LinkedIn. [https://www.linkedin.com/pulse/ai-jester-how-makes-you-confident-wrong-johnson-spink-gg3df/](https://www.linkedin.com/pulse/ai-jester-how-makes-you-confident-wrong-johnson-spink-gg3df/)
-
-McKinsey & Company. (2025). *The state of AI*. [https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai](https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai)
-
-OpenAI. (2022). *Introducing ChatGPT*. [https://openai.com/index/chatgpt/](https://openai.com/index/chatgpt/)
-
-OpenAI. (2023). *Function calling and other API updates*. [https://openai.com/index/function-calling-and-other-api-updates/](https://openai.com/index/function-calling-and-other-api-updates/)
-
-Stanford Institute for Human-Centered AI. (2026). *The AI index 2026 annual report*. Stanford University. [https://hai.stanford.edu/ai-index/2026-ai-index-report](https://hai.stanford.edu/ai-index/2026-ai-index-report)

@@ -65,7 +65,6 @@
   },
   {
     "urls": [
-      "https://www.anthropic.com/engineering/building-effective-agents",
       "https://www.anthropic.com/research/building-effective-agents"
     ],
     "intext": "Anthropic, 2024a",
@@ -980,5 +979,37 @@
     "intext": "Brynjolfsson et al., 2023",
     "reference": "Brynjolfsson, E., Li, D., & Raymond, L. R. (2023). *Generative AI at work* (NBER Working Paper No. 31161). National Bureau of Economic Research. [https://www.nber.org/papers/w31161](https://www.nber.org/papers/w31161)",
     "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/1706.03762"
+    ],
+    "intext": "Vaswani et al., 2017",
+    "reference": "Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, Ł., & Polosukhin, I. (2017). *Attention is all you need*. Advances in Neural Information Processing Systems. [https://arxiv.org/abs/1706.03762](https://arxiv.org/abs/1706.03762)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://en.wikipedia.org/wiki/History_of_artificial_intelligence"
+    ],
+    "intext": "\"History of artificial intelligence,\" n.d.",
+    "reference": "History of artificial intelligence. (n.d.). In *Wikipedia*. [https://en.wikipedia.org/wiki/History_of_artificial_intelligence](https://en.wikipedia.org/wiki/History_of_artificial_intelligence)",
+    "title_authored": true
+  },
+  {
+    "urls": [
+      "https://en.wikipedia.org/wiki/Perceptron"
+    ],
+    "intext": "\"Perceptron,\" n.d.",
+    "reference": "Perceptron. (n.d.). In *Wikipedia*. [https://en.wikipedia.org/wiki/Perceptron](https://en.wikipedia.org/wiki/Perceptron)",
+    "title_authored": true
+  },
+  {
+    "urls": [
+      "https://en.wikipedia.org/wiki/Deep_learning"
+    ],
+    "intext": "\"Deep learning,\" n.d.",
+    "reference": "Deep learning. (n.d.). In *Wikipedia*. [https://en.wikipedia.org/wiki/Deep_learning](https://en.wikipedia.org/wiki/Deep_learning)",
+    "title_authored": true
   }
 ]
