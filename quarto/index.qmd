@@ -4,6 +4,9 @@
 <style>#title-block-header{ display: none; }</style>
 ```
 
+::::: {.content-visible when-format="html"}
+:::: {.content-hidden when-format="epub"}
+
 **The Way of AI, grounded in practice (道).**
 
 ::: {.byline}
@@ -29,3 +32,37 @@ source. It's meant to be read online — and it's yours to download too:
 Start with the [Preface](preface.qmd), then follow the six-chapter climb from
 personal productivity to software, to the disciplines that keep the work sound,
 to responsibility, and finally to mastery.
+
+::::
+:::::
+
+::: {.content-visible unless-format="html"}
+*The Way of AI, grounded in practice (道)*
+
+**愛 (ai)** — love: care for the people the work touches.
+**道 (dō)** — the way: a craft refined over a lifetime.
+
+*AI-dō* joins the two: human care and a practised craft. Read it as a path, not
+a manual — the methods will change; the way of holding the work does not.
+:::
+
+::: {.content-visible when-format="epub"}
+*The Way of AI, grounded in practice (道)*
+
+**愛 (ai)** — love: care for the people the work touches.
+**道 (dō)** — the way: a craft refined over a lifetime.
+
+*AI-dō* joins the two: human care and a practised craft. Read it as a path, not
+a manual — the methods will change; the way of holding the work does not.
+
+------------------------------------------------------------------------
+
+Read it online, or get the latest PDF and ePub, at
+[christham.net/aidou](https://christham.net/aidou).
+
+This book is open source — the text, the code it discusses, and the toolchain
+that builds it — on GitHub:
+[github.com/ChristineTham/aidou](https://github.com/ChristineTham/aidou).
+
+First published 2026. © 2026 Chris Tham · Hello Tham.
+:::

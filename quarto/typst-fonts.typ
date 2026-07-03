@@ -7,15 +7,22 @@
 // headers and callout titles that our own show-rules can't reach.
 #set text(font: "Noto Serif")
 
-// Fit diagrams to the page. Quarto emits each Mermaid PNG at its natural size
-// (often far wider than the page), which overflows and crops. Shrink any image
-// wider than the text column to fit, preserving aspect ratio; leave smaller
-// images untouched.
+// Smart-scale Mermaid diagrams. Quarto renders every diagram PNG at the same
+// high effective density and tags it at a natural size whose on-page text ends
+// up far larger than the body text (and often wider than the page too). Because
+// the density is uniform, a single factor normalises the diagram text to roughly
+// body size; the text-column width then caps anything still too wide to show at
+// that size — whichever comes first. The full-page 6x9in cover image is left
+// untouched (identified by its height).
+#let diagram-scale = 0.55
 #show image: it => layout(size => {
-  let w = measure(it).width
-  if w > size.width {
-    scale(x: size.width / w * 100%, y: size.width / w * 100%, origin: top + left, reflow: true, it)
+  let m = measure(it)
+  let given = m.width
+  if given <= 0pt or m.height >= 8.5in {
+    it                              // full-page cover / unmeasurable — leave as-is
   } else {
-    it
+    let target = calc.min(given * diagram-scale, size.width)
+    let f = target / given
+    scale(x: f * 100%, y: f * 100%, origin: top + left, reflow: true, it)
   }
 })

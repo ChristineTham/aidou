@@ -46,11 +46,21 @@ blockquote {
 .callout-important { border-left-color: #d2386c; }
 .callout-important .callout-title { color: #d2386c; }
 
-/* Tables */
-table { border-collapse: collapse; width: 100%; }
+/* Tables — scroll wide tables inside their own box so they never stretch the
+   page (which would clip the surrounding text on narrow phone screens). */
+table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-size: 0.92em;
+}
 thead th { background: #f4eee8; border-bottom: 2px solid #b565a7; }
-th, td { border: 1px solid #f4dede; padding: 4px 8px; }
+th, td { border: 1px solid #f4dede; padding: 4px 8px; overflow-wrap: break-word; }
 
-/* Code */
-pre { background: #f4eee8; border: 1px solid #f4dede; border-radius: 6px; padding: 0.6em; }
-code { color: #b565a7; }
+/* Code — wrap or scroll long lines rather than widening the page. */
+pre {
+  background: #f4eee8; border: 1px solid #f4dede; border-radius: 6px;
+  padding: 0.6em; max-width: 100%; overflow-x: auto;
+}
+code { color: #b565a7; overflow-wrap: break-word; }

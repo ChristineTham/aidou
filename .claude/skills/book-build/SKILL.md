@@ -51,6 +51,26 @@ PDF engine plus `rsvg-convert` (librsvg) or Inkscape to convert the SVGs — tho
 install cleanly on the CI Ubuntu runner (`apt-get install librsvg2-bin`) but not
 on a stock macOS without Homebrew, so PNG is the reliable default.
 
+### Diagram sizing (smart scaling)
+
+Quarto renders every Mermaid PNG at the same high effective density and tags it
+at a natural size whose on-page **text is much larger than the body text** (and
+often wider than the page). Because the density is uniform, one factor normalises
+diagram text to roughly body size across all diagrams.
+
+- **PDF** — a `#show image` rule in `quarto/typst-fonts.typ` multiplies each
+  diagram by `diagram-scale` (≈0.55, calibrated so diagram labels ≈ body text),
+  then caps the result at the text-column width — whichever comes first. The
+  full-page cover image is exempted (identified by height ≥ 8.5in). Without this,
+  narrow diagrams escape any width cap and render comically large.
+- **ePub / HTML** — need no scaling: e-readers treat the tagged `in` as 96px and
+  cap at the container (`epub.css` `img{max-width:100%}`), and the HTML site
+  renders Mermaid as vector SVG whose text already ≈ body. Both land near body
+  size on their own; only the Typst PDF needs the explicit factor.
+
+To recalibrate: render `--to typst`, screenshot a page with a narrow diagram, and
+adjust `diagram-scale` until the labels match body text.
+
 ## Design & theme (Rosely)
 
 One design spans the website, PDF, and ePub, driven by Quarto's cross-format

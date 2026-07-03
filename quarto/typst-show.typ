@@ -16,6 +16,24 @@
   width: 6in,
   height: 9in,
   margin: (x: 1.7cm, top: 2.1cm, bottom: 2.1cm),
+  copyright: [
+    #set text(size: 9.5pt)
+    #set par(leading: 0.72em)
+    #text(weight: "bold")[AI-dō] — The Way of AI, grounded in practice (道) \
+    Chris Tham
+    #v(1.1em)
+    Read it online, or download the latest PDF and ePub: \
+    #link("https://christham.net/aidou")[christham.net/aidou] \
+    #link("https://christham.net/aidou/ai-do.pdf")[christham.net/aidou/ai-do.pdf] · PDF \
+    #link("https://christham.net/aidou/ai-do.epub")[christham.net/aidou/ai-do.epub] · ePub
+    #v(1.1em)
+    This book is open source. The text, the code it discusses, and the full
+    toolchain that builds the website, PDF, and ePub are on GitHub: \
+    #link("https://github.com/ChristineTham/aidou")[github.com/ChristineTham/aidou]
+    #v(1.1em)
+    First published 2026. \
+    © 2026 Chris Tham · Hello Tham (#link("https://christham.net")[christham.net])
+  ],
 $if(lang)$
   lang: "$lang$",
 $endif$
