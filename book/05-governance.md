@@ -91,6 +91,14 @@ The useful frame is to govern the place the work lands rather than the agent —
 
 The config layer that steers agents is itself unmanaged supply chain: a study of 10,008 repos found 10% of agent-config paths are exact duplicates across orgs and under 1% declare permission boundaries. Governance must be deterministic and tool-agnostic, not delegated to more LLM orchestration ([Madatha, *A deterministic control plane for LLM coding agents*, 2026](https://arxiv.org/abs/2606.26924)). Single-vendor dependence under geopolitical release risk is the exposure to retire first — the cheapest outage is the one you planned for.
 
+## 5.6 The Duty, Made Accountable
+
+Pull the five threads together and they are one duty. Securing an agent, owning what it says, guarding against convergence, pricing the deferred bill, governing access — each is a way of keeping a human answerable for what the machine does. The failure mode is the same throughout: capability arrives faster than responsibility for it, and the gap between the two is where organisations get hurt.
+
+That gap is now written into law. The European Union's AI Act requires high-risk systems to be built so that a named person can effectively oversee them — understand the system's limits, monitor its operation, resist the pull to over-rely on plausible output, which the Act names *automation bias*, and decide, in any given case, to override the system or not use it at all ([European Union, *Article 14: Human oversight*, 2024](https://artificialintelligenceact.eu/article/14/)). It is this chapter's argument made statutory: oversight is not a courtesy the confident may skip, and "the model did it" is not a defence anyone will accept.
+
+None of this is a brake on building. It is the 愛 made concrete — care expressed as guardrails, and a person who stays answerable at every boundary the work crosses. Capability is something you buy; responsibility is something you keep. Hold the second as deliberately as the first, and the question the next chapter turns to — what stays distinctly yours — has an answer worth protecting.
+
 ## References
 
 Ahuja, K. V. (2026c). *Spec-driven development is also breaking the fifty-year-old iron triangle*. Activated Thinker (Medium). [https://howtoarchitect.io/78431acba162?sk=cd2a36f452af96ccbfbcfcdeaa92ec06](https://howtoarchitect.io/78431acba162?sk=cd2a36f452af96ccbfbcfcdeaa92ec06)
@@ -102,6 +110,8 @@ Arceo & Narsing. (2026). *Securing the agent: Vendor-neutral, multitenant enterp
 Coalition for Content Provenance and Authenticity. (n.d.). *Overview*. [https://c2pa.org/](https://c2pa.org/)
 
 Deloitte. (2026). *State of AI in the enterprise*. [https://www.deloitte.com/au/en/issues/generative-ai/state-of-ai-in-enterprise.html](https://www.deloitte.com/au/en/issues/generative-ai/state-of-ai-in-enterprise.html)
+
+European Union. (2024). Article 14: Human oversight. In *EU Artificial Intelligence Act (Regulation (EU) 2024/1689)*. [https://artificialintelligenceact.eu/article/14/](https://artificialintelligenceact.eu/article/14/)
 
 Huschens, M., Briesch, M., Sobania, D., & Rothlauf, F. (2023). *Do you trust ChatGPT? Perceived credibility of human and AI-generated content*. arXiv. [https://arxiv.org/abs/2309.02524](https://arxiv.org/abs/2309.02524)
 

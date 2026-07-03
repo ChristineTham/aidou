@@ -29,6 +29,16 @@ No method will be the last word, and that is the point of treating practice as a
 
 Measure value, not output. Features shipped is a flattering number while whether anyone needed them goes quietly unasked. The way of AI turns out to be that one question, asked again and again — who is this for, and is it worth building — until it hardens into habit. That habit, more than any model, is what AI-dō is for.
 
+## 6.3 Shuhari — The Way From Here
+
+A 道 has a shape to its learning, and the arts that end in 道 named it long before software did: *shuhari* — 守 *shu*, keep to the form; 破 *ha*, break from it; 離 *ri*, leave it behind and move freely (["Shuhari," n.d.](https://en.wikipedia.org/wiki/Shuhari)). Read this book as its *shu*. Follow the forms closely at first — one clear ask at a time, intent kept apart from implementation, Markdown as the medium, verification at the boundaries, a human answerable for what ships. As your judgement grows and the tools shift beneath you, enter *ha*: bend the forms, drop the ones that stop fitting, keep what holds. In time comes *ri*, where the forms are instinct and you invent your own — which is only the promise of Chapter 1 come round again: learn the philosophy, and the methods become yours to invent.
+
+The argument has run in six moves. AI-dō is the Unix philosophy re-run on a model and given a human centre (Chapter 1). In daily work that means turning what you know into Markdown, keeping it where a model can read it, and building up one clear ask at a time (Chapter 2). In software it means separating the *what* from the *how*, and refusing both the over-specified spec and the unowned vibe (Chapter 3). What keeps any of it sound is ordinary engineering discipline — tests, review, version control, small reversible steps — now more necessary, not less (Chapter 4). What keeps it safe is the duty: security, provenance, protected divergence, an honest ledger, and someone who stays answerable (Chapter 5). And what keeps it improving is the human edge you protect and the loop you never stop running (this one).
+
+The rest is yours to begin, and the first steps are small and specific. First, take one real task you already do and run it as a loop — draft, check, refine — instead of waiting on a perfect prompt. Second, start an LLM wiki: put the context you keep re-explaining into a few Markdown notes the model can draw on. Third, add one verification step at the boundary that matters most, and name the person answerable for what leaves it. Fourth, before you open a chat window on anything that counts, write your own view down first, so you can tell the model's confidence from your own. Fifth, keep a second model on the bench, and ask of everything you make: who is this for, and is it worth building?
+
+Method over model; the question over the answer; care over cleverness. The tools will keep changing — that is the one safe prediction — and the way does not. Begin.
+
 ## References
 
 Ahuja, K. V. (2026c). *Spec-driven development is also breaking the fifty-year-old iron triangle*. Activated Thinker (Medium). [https://howtoarchitect.io/78431acba162?sk=cd2a36f452af96ccbfbcfcdeaa92ec06](https://howtoarchitect.io/78431acba162?sk=cd2a36f452af96ccbfbcfcdeaa92ec06)
@@ -40,6 +50,8 @@ Fernandes, D., et al. (2026). *AI makes you smarter but none the wiser: The disc
 Li, J., et al. (2025). *As confidence aligns: Effect of AI confidence on human self-confidence in human–AI decision making*. Proceedings of the 2025 CHI Conference on Human Factors in Computing Systems. [https://arxiv.org/abs/2501.12868](https://arxiv.org/abs/2501.12868)
 
 McKinsey & Company. (2025). *The state of AI*. [https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai](https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai)
+
+Shuhari. (n.d.). In Wikipedia. [https://en.wikipedia.org/wiki/Shuhari](https://en.wikipedia.org/wiki/Shuhari)
 
 Stanford Institute for Human-Centered AI. (2026). *The AI index 2026 annual report*. Stanford University. [https://hai.stanford.edu/ai-index/2026-ai-index-report](https://hai.stanford.edu/ai-index/2026-ai-index-report)
 
