@@ -12,7 +12,13 @@ The architecture that made language work arrived in 2017, when researchers at Go
 
 Two facts about 2026 frame everything that follows. The first is that these tools are everywhere: roughly 88% of organisations report using AI, even as most are still experimenting rather than depending on it ([Stanford HAI, *The AI index 2026 annual report*, 2026](https://hai.stanford.edu/ai-index/2026-ai-index-report); [McKinsey & Company, *The state of AI*, 2025](https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai)). The second is that the field has quietly conceded the model alone is no longer the product; the leading labs now compete on the scaffolding around it — the workflows, the memory, the economics of running it well.
 
-Capability has rocketed, yet so has its unevenness, and the hard part has shifted from getting an answer to trusting one. That shift is what this book is for.
+| Signal (2026) | Figure | What it means |
+| --- | --- | --- |
+| Organisations using AI | ~88% | Access is near-universal |
+| Coding benchmark cleared in a year | ~60% → nearly all | Capability is accelerating |
+| Organisations reporting real value | a minority | Value, not access, is the scarce skill |
+
+Sources: [Stanford HAI, 2026](https://hai.stanford.edu/ai-index/2026-ai-index-report); [Benaich, *State of AI report 2025*, 2025](https://www.stateof.ai/). Capability has rocketed, yet so has its unevenness, and the hard part has shifted from getting an answer to trusting one. That shift is what this book is for.
 
 ## 1.2 How a Language Model Works
 
@@ -41,70 +47,50 @@ flowchart TB
 
 ## 1.3 From Chatbot to Agent
 
-It helps to remember how fast the tools themselves have changed, because the kind of work you can trust to them changed at each step. The ChatGPT that startled everyone in late 2022 was a closed box: it answered only from what it had absorbed during training, with no memory of you, no access to the internet, and no way to act in the world ([OpenAI, *Introducing ChatGPT*, 2022](https://openai.com/index/chatgpt/)). It was articulate and frozen — confident inside its training data, and blind, often cheerfully, beyond it.
+The tools changed fast, and at each step the kind of work you could trust to them changed with it. The arc runs from a closed box that could only talk, to an open ecosystem of agents that act.
 
-The first real change was giving the model hands. In 2023 OpenAI added *function calling* — a way for the model to recognise that a question needs a tool and to emit a structured request to run it — alongside plugins and a browser, so it could search the web, run code, or query a database instead of guessing ([OpenAI, *Function calling and other API updates*, 2023](https://openai.com/index/function-calling-and-other-api-updates/)). The predictor of text became something that could also take actions and read back the results.
+```mermaid
+timeline
+    title From chatbot to agent
+    Chatbot : Answers from frozen training data — no memory, no tools, no way to act
+    Tool use : The model calls tools — search, code, files — and reads the results back
+    Agent : A model in a loop — plan, act, observe, retry — until a goal is met
+    Ecosystem : Many kinds of agent, from simple assistants to governed enterprise platforms
+```
 
-At first each of those connections was hand-built, one wiring job per tool. In late 2024 Anthropic published the *Model Context Protocol*, an open standard that lets any model plug into any tool or data store through one shared interface — much as a single USB port replaced a drawer of incompatible cables ([Anthropic, *Introducing the Model Context Protocol*, 2024b](https://www.anthropic.com/news/model-context-protocol)). Connecting a model to your files, your code, or your systems stopped being a custom project and became a setting. MCP was only the first plug. An ecosystem of interoperability standards has since grown up around agents; one survey catalogues four and lays them out as a stack to adopt in stages — MCP for tool access, then further protocols for structured messaging, for one agent to delegate to another, and for open agent discovery ([Ehtesham et al., *A survey of agent interoperability protocols: MCP, ACP, A2A, and ANP*, 2025](https://arxiv.org/abs/2505.02279)).
+The first mass-market chatbots were articulate but frozen: they answered only from what they had absorbed in training, with no memory of you, no live information, and no way to act in the world. The first real change was giving the model hands — a way to recognise that a task needs a tool and to emit a structured call for it, so it could search, run code, or query data instead of guessing. The predictor of text became something that could also take actions and read back the result.
 
-What that unlocked is the *agent*: a model placed in a loop and allowed to plan, call a tool, read what comes back, and try again until a goal is met. The research community named the shift early: a 2023 survey recast the language model as the *brain* of an agent — wrapped in perception and action — and charted the field's climb from single agents to cooperating multi-agent systems ([Xi et al., *The rise and potential of large language model based agents: A survey*, 2023](https://arxiv.org/abs/2309.07864)). By 2026 this is where the work is. Coding platforms like Claude Code and GitHub Copilot edit across a whole codebase and run their own tests; the more capable agents now reach for *skills* — packaged, reusable know-how they can load on demand — and even hand sub-tasks to other agents. The arc, in one line, runs from a clever box that only talked, to a system that acts, checks, and coordinates. Everything in this book assumes that second world.
+At first each connection was hand-built, one wiring job per tool; that soon gave way to shared standards, so a model could plug into tools and data through common interfaces rather than custom code. Those standards have since multiplied into an interoperability stack — one survey catalogues several and lays them out as stages to adopt, from tool access, to structured messaging, to one agent delegating to another, to open agent discovery ([Ehtesham et al., *A survey of agent interoperability protocols: MCP, ACP, A2A, and ANP*, 2025](https://arxiv.org/abs/2505.02279)).
+
+Tools are what turn a predictor of text into an *agent*: a model placed in a loop and allowed to plan, call a tool, read what comes back, and try again until a goal is met. The research community named the shift early, recasting the language model as the *brain* of an agent — wrapped in perception and action — and charting the climb from single agents to cooperating multi-agent systems ([Xi et al., *The rise and potential of large language model based agents: A survey*, 2023](https://arxiv.org/abs/2309.07864)).
 
 > [!NOTE]
 > An **agent** is an LLM running tools in a loop to reach a goal ([Willison, *I think “agent” may finally have a widely enough agreed upon definition to be useful jargon now*, 2025](https://simonwillison.net/2025/Sep/18/agents/)). A **tool** is an action it may take — web search, code execution, file edits — and the **loop** runs until a stopping condition is met. An agent has no agency in the moral sense: a computer cannot be held accountable, so you stay responsible for what it ships.
 
 ```mermaid
-timeline
-    title From chatbot to agent
-    2022 : ChatGPT, a closed box with no tools and frozen knowledge
-    2023 : Function calling, plugins and a browser give the model hands
-    2024 : Model Context Protocol, one standard plug for any tool
-    2026 : Agents that plan, call tools, use skills and coordinate other agents
+flowchart LR
+    G[Goal] --> P[Plan]
+    P --> A[Act — call a tool]
+    A --> O[Observe result]
+    O --> C{Goal met?}
+    C -->|no| P
+    C -->|yes| D[Done]
 ```
 
-It is worth watching how fast the coding tools themselves climbed, because each rung changed what you could safely hand off. The earliest assistants barely earned the name. Tabnine, which began in 2018 as a deep-learning autocompleter, simply finished the line you were already typing — a cleverer tab key (["Tabnine," n.d.](https://en.wikipedia.org/wiki/Tabnine)). GitHub Copilot, launched in 2021 and trained on public code, went a step further: from a comment or a function name it would draft the whole body, though it still lived inside your editor and volunteered only the next few lines ([GitHub, *Introducing GitHub Copilot: AI pair programmer*, 2021](https://github.blog/2021-06-29-introducing-github-copilot-ai-pair-programmer/)).
+By 2026 that single loop had fanned out into a whole ecosystem. The same pattern scales from an assistant anyone can open in a browser to a governed platform running fleets of agents across an organisation; what changes along the way is how much you hand off, and how much scaffolding it takes to do so safely.
 
-The next rung was conversation. Through 2023 these tools grew a chat window: you could ask why a test failed, request a refactor, or have a tangle of code explained in plain English ([GitHub, *GitHub Copilot November 30th update*, 2023](https://github.blog/changelog/2023-11-30-github-copilot-november-30th-update/)). The autocompleter became something you could interrogate — but you were still driving, accepting or rejecting each suggestion line by line.
+| Tier | What it is | Autonomy | Your role |
+| --- | --- | --- | --- |
+| Assistant | Answers from training and the context you supply | None — you drive | Ask, and judge each reply |
+| Tool-using assistant | Calls tools on request — search, code, files | Acts one step at a time | Approve each action |
+| Agent | Loops toward a goal and checks its own work | Runs a whole task | Set the goal, review the result |
+| Personal agent | An always-on agent for one person — on your own machine or account, writing its own skills and building a model of your work | Runs continuously, for you | Delegate; check what it ships |
+| Multi-agent system | Agents coordinate; one delegates to another | Runs many tasks at once | Supervise a fleet |
+| Enterprise agentic platform | Fleets wired into an organisation's systems — async, governed, audited, with shared memory and evaluation | Runs continuously, at org scale | Set policy, audit outcomes |
 
-The next leap came from tools built for AI from the ground up rather than bolted onto an existing editor. Cursor, launched in 2023 as a fork of VS Code, put the agent at the centre: it could search a whole codebase, edit many files, and run terminal commands from a plain-language request (["Cursor," n.d.](https://en.wikipedia.org/wiki/Cursor_(company))). The open-source *aider* did the same from the command line, pairing with you in the terminal and committing each change to version control so nothing was lost ([aider, *aider*, n.d.](https://aider.chat/)).
+The two always-on kinds sit at opposite ends and should not be confused: a *personal agent* works for one individual and answers to them, whereas an *enterprise agentic platform* runs fleets under central governance and audit. They share the round-the-clock habit but differ in scale, ownership, and control.
 
-Then the agent stepped out of the editor altogether. In February 2025 Anthropic released *Claude Code*, an agent that lives in your terminal — describe a task and it plans, edits, runs the tests, and iterates until it is done ([Anthropic, *Claude Code*, 2025a](https://claude.com/product/claude-code)); OpenAI's Codex CLI and Google's Gemini CLI soon followed. GitHub Copilot, the tool that began the wave, grew its own *agent mode* in early 2025 ([GitHub, *GitHub Copilot: The agent awakens*, 2025b](https://github.blog/news-insights/product-news/github-copilot-the-agent-awakens/)) and then an asynchronous *coding agent* you assign an issue, which spins up a cloud workspace and opens a pull request for review ([GitHub, *GitHub Copilot: Meet the new coding agent*, 2025a](https://github.blog/news-insights/product-news/github-copilot-meet-the-new-coding-agent/)).
-
-By late 2025 the frontier shifted again, from one agent to many. Cursor 2.0 and Google's *Antigravity* — announced in November 2025 alongside the Gemini 3 model — added a manager's view for running several agents in parallel across a codebase, each labouring away while you supervise from above (["Google Antigravity," n.d.](https://en.wikipedia.org/wiki/Google_Antigravity)). The human's seat moved from typing each line to setting goals, reviewing results, and directing a small fleet.
-
-By 2026 the editor itself is no longer the centre of gravity. With capable models available from every lab, the model became the commodity, and the value moved into the system wrapped around it — what practitioners now call the *dev stack* ([Latent Space, *AINews*, 2026a](https://www.latent.space/s/ainews)).
-
-| Layer | What it does | Examples (2026) |
-| --- | --- | --- |
-| Model | Generates the code | GPT-5.6 Sol, Claude Opus 4.8, Gemini 3.5, GLM-5.2 |
-| Harness | Wraps the model into an agent: tools, retries, sandbox | Claude Code, Codex CLI, Gemini CLI, Cursor SDK |
-| Meta-harness | Coordinates several harnesses | Conductor, Zed ACP, Vercel Eve, Heypi |
-| Workflow / async | Fire-and-forget delegation in shared channels | Claude Tag (Slack), Copilot coding agent, Devin, Google Spark |
-| Memory | State kept outside the context window | agentmemory, codegraph, channel memory |
-| Eval | Automated judgement of quality | FrontierCode, Terminal-Bench 2.1, SWE-bench Pro |
-
-Each layer is a discipline in its own right, and the rest of this book climbs them: the *harness* that turns a model into an agent, the *meta-harness* that coordinates several, the *memory* that lets work persist, and the *eval* that decides whether the result is good enough. The lesson is the one the landscape already hinted at — the model is the easy part; the craft is everything you build around it. The research now frames it the same way: a 2026 survey reads the whole progression from question-answering to task completion through a *model–harness lens*, and locates agent quality in the coupling of the model and the harness around it, not in the model alone ([Guo et al., *From question answering to task completion: A survey on agent system and harness design*, 2026](https://arxiv.org/abs/2606.20683)).
-
-By 2026 the same pattern spilled out of the developer's editor and into everyone's hands. Open-source personal agents led the way: OpenClaw popularised the always-on assistant that runs around the clock on your own machine ([Wired, *Gemini Spark is Google’s response to OpenClaw’s 24/7 AI agent*, 2026](https://www.wired.com/story/googles-response-to-openclaws-24-7-ai-agent/)), and Nous Research's *Hermes Agent* gave it a self-improving twist — an autonomous agent that lives on a cheap server, reachable from Telegram or Slack, writing its own skills from experience and deepening a model of your work across sessions ([Nous Research, *Hermes Agent*, 2026](https://hermes-agent.nousresearch.com/docs/)). The labs followed onto the desktop and into the cloud: Google's *Gemini Spark*, unveiled at I/O in May 2026, runs continuously across Gmail, Calendar, and Docs even with your laptop shut ([Cerullo, *Why Google’s Gemini Spark AI agent could be a game changer*, 2026](https://www.cbsnews.com/news/google-gemini-spark-ai-agent/)), while Anthropic's *Claude Cowork* — a research preview from January 2026 — handed the coding agent's powers to non-programmers, working files and documents on the desktop inside a sandbox ([Rogers, *Anthropic’s Claude Cowork is an AI agent that actually works*, 2026](https://www.wired.com/story/anthropic-claude-cowork-agent/)). The agent had left the editor; what remains is to use that shift with judgement rather than awe.
-
-In the first half of 2026, AI stopped being a platform shift and became a regulated strategic technology. Three things happened at once, and they explain the world this book is written into.
-
-First, the models grew up. A year ago they could resolve about three in five real software issues; today the best clear nearly all of them. Capability raced ahead — though, as we just saw, unevenly. Adoption followed: roughly 88% of organisations now use AI, and four in five students. Power, not chips, became the main limit on training.
-
-Second, the advantage moved. The frontier labs no longer sell a model; they sell the system around it — the harness, the workflow, the memory, the economics. Prompt-crafting gave way to *loopcraft*: working in tight cycles of ask, check, and adjust, stacking those iterations around a model rather than chasing one perfect instruction. Agents climbed out of the chat box into shared channels, async and proactive. And open-weight models from China drew level, so no single vendor is safe to lean on.
-
-Third, the rules arrived. Governments now gate frontier releases, and courts have begun treating AI output as the deploying organisation's own words. Access, not just compute, is now a geopolitical lever. The figures below tell the two halves of the story — capability soaring, value still scarce.
-
-| Signal | Figure | Implication |
-| --- | --- | --- |
-| Organisations using AI | 88% | Adoption is universal; scaling is not |
-| SWE-bench Verified (coding) | 60% → ~100% in a year | Capability accelerating |
-| US businesses paying for AI | 5% (2023) → 44% | Commercial traction is real |
-| US–China top-model gap | ~2.7% | No single safe vendor; open weights close behind |
-| Orgs reporting enterprise value | minority | Usage is easy; value is the scarce skill |
-
-Sources: [Stanford HAI, 2026](https://hai.stanford.edu/ai-index/2026-ai-index-report); [McKinsey & Company, 2025](https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai); [Benaich, *State of AI report 2025*, 2025](https://www.stateof.ai/). (*SWE-bench Verified* is a standard benchmark of real GitHub software issues a model is asked to fix.)
-
-The pattern that matters most is the gap between using AI and getting value from it. Nearly everyone has access; only a minority report real returns. The lesson for us is that the edge no longer comes from picking the best model — it comes from how you wrap it: the workflow you build, the context you feed it, the way you check its work. That is what the rest of this book teaches.
+The tiers differ in reach, but the lesson is constant: the model is the easy part. Once capable models became a commodity, the value moved into the system built around one — the harness that runs it, the memory that lets work persist, the checks that decide whether a result is good enough. A 2026 survey frames the whole progression from question-answering to task completion through exactly this *model–harness lens*, locating agent quality in the coupling of model and harness rather than the model alone ([Guo et al., *From question answering to task completion: A survey on agent system and harness design*, 2026](https://arxiv.org/abs/2606.20683)). That system is a set of engineering disciplines, and the next chapters divide them. Chapter 2 is about a *single* agent — the three crafts that make one dependable: prompt engineering, context engineering, and loop engineering. Chapter 4 turns to the disciplines of humans and agents working *together* — what the human brings (intent, judgment, accountability), what the agent system provides (harness, orchestration, memory), and what the two require of each other (division of labour, delegation, presence).
 
 ## 1.4 The Limits That Remain
 
@@ -157,7 +143,7 @@ These limits are a map, not a verdict. Spend effort where the model is strong, v
 
 ## 1.5 From Sceptic to Practitioner
 
-When I first started cooking, my early attempts did not fare well. I had the recipe and the ingredients, yet the results were grim — onions scorched while I chopped the next thing, pasta turned to glue, unbalanced taste. The problem was not the recipe. I had skipped the fundamentals: heat control, timing, tasting as you go, getting everything prepped before the pan ever warmed. Once those became second nature, almost any recipe came out well.
+When I first started cooking, my early attempts did not fare well. I had the recipe and the ingredients, yet the results were grim — onions scorched while I chopped the next thing, pasta turned to glue, the flavours never balanced. The problem was not the recipe. I had skipped the fundamentals: heat control, timing, tasting as you go, getting everything prepped before the pan ever warmed. Once those became second nature, almost any recipe came out well.
 
 Working with AI is the same. How you use the tool matters as much as the tool itself.
 
@@ -202,7 +188,7 @@ So frame each task as a goal, the context it needs, and a check; then iterate. B
 
 ## 1.7 Principles to Carry Forward
 
-The practice that fills the rest of this book rests on a stance, worth stating plainly before the principles that follow. The name in the title carries it in miniature, and each half pulls in a direction worth understanding.
+The practice that fills the rest of this book rests on a stance worth stating plainly.
 
 My reason is pragmatic: tools commoditise, and so, in time, do methods. A prompt is one model release from obsolete; a clever technique lasts a little longer, then it too is overtaken. What endures is the stance beneath them — how you frame a problem, gather context, and verify a result. So this book is less a kit of methods than a philosophy of working with AI, one that outlives any particular trick or tool. Learn the philosophy, and the methods become yours to invent.
 
@@ -221,35 +207,15 @@ The chapter rests on a handful of claims worth carrying into everything that fol
 
 ## References
 
-aider. (n.d.). *aider*. [https://aider.chat/](https://aider.chat/)
-
-Anthropic. (2024b). *Introducing the Model Context Protocol*. [https://www.anthropic.com/news/model-context-protocol](https://www.anthropic.com/news/model-context-protocol)
-
-Anthropic. (2025a). *Claude Code*. [https://claude.com/product/claude-code](https://claude.com/product/claude-code)
-
 Benaich, N. (2025). *State of AI report 2025*. [https://www.stateof.ai/](https://www.stateof.ai/)
 
 Bogomolov, E., & Zharov, Y. (2026). *Towards evaluation of implicit software world models in coding LLMs*. DL4Code @ ICML 2026. [https://arxiv.org/abs/2606.27406](https://arxiv.org/abs/2606.27406)
 
 Casper, S., Davies, X., Shi, C., Gilbert, T. K., Scheurer, J., Rando, J., Freedman, R., Korbak, T., Lindner, D., et al. (2023). *Open problems and fundamental limitations of reinforcement learning from human feedback*. Transactions on Machine Learning Research. [https://arxiv.org/abs/2307.15217](https://arxiv.org/abs/2307.15217)
 
-Cerullo, M. (2026). *Why Google’s Gemini Spark AI agent could be a game changer*. CBS News. [https://www.cbsnews.com/news/google-gemini-spark-ai-agent/](https://www.cbsnews.com/news/google-gemini-spark-ai-agent/)
-
-Cursor (company). (n.d.). In *Wikipedia*. [https://en.wikipedia.org/wiki/Cursor_(company)](https://en.wikipedia.org/wiki/Cursor_(company))
-
 Ehtesham, A., et al. (2025). *A survey of agent interoperability protocols: MCP, ACP, A2A, and ANP*. arXiv. [https://arxiv.org/abs/2505.02279](https://arxiv.org/abs/2505.02279)
 
-GitHub. (2021). *Introducing GitHub Copilot: AI pair programmer*. GitHub Blog. [https://github.blog/2021-06-29-introducing-github-copilot-ai-pair-programmer/](https://github.blog/2021-06-29-introducing-github-copilot-ai-pair-programmer/)
-
-GitHub. (2023). *GitHub Copilot November 30th update*. GitHub Blog. [https://github.blog/changelog/2023-11-30-github-copilot-november-30th-update/](https://github.blog/changelog/2023-11-30-github-copilot-november-30th-update/)
-
-GitHub. (2025a). *GitHub Copilot: Meet the new coding agent*. GitHub Blog. [https://github.blog/news-insights/product-news/github-copilot-meet-the-new-coding-agent/](https://github.blog/news-insights/product-news/github-copilot-meet-the-new-coding-agent/)
-
-GitHub. (2025b). *GitHub Copilot: The agent awakens*. GitHub Blog. [https://github.blog/news-insights/product-news/github-copilot-the-agent-awakens/](https://github.blog/news-insights/product-news/github-copilot-the-agent-awakens/)
-
-Google Antigravity. (n.d.). In *Wikipedia*. [https://en.wikipedia.org/wiki/Google_Antigravity](https://en.wikipedia.org/wiki/Google_Antigravity)
-
-Gu, Jedidi, & Lin. (2026). *NanoKnow: How to know what your language model knows*. Proceedings of the 49th International ACM SIGIR Conference. [https://arxiv.org/abs/2602.20122](https://arxiv.org/abs/2602.20122)
+Gu, L., Jedidi, N., & Lin, J. (2026). *NanoKnow: How to know what your language model knows*. Proceedings of the 49th International ACM SIGIR Conference. [https://arxiv.org/abs/2602.20122](https://arxiv.org/abs/2602.20122)
 
 Guo, J., et al. (2026). *From question answering to task completion: A survey on agent system and harness design*. arXiv. [https://arxiv.org/abs/2606.20683](https://arxiv.org/abs/2606.20683)
 
@@ -267,8 +233,6 @@ Karpathy, A. (2026b). *microGPT*. [https://karpathy.github.io/2026/02/12/microgp
 
 Krizhevsky, A., Sutskever, I., & Hinton, G. E. (2012). *ImageNet classification with deep convolutional neural networks*. Advances in Neural Information Processing Systems, 25. [https://papers.nips.cc/paper_files/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html](https://papers.nips.cc/paper_files/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html)
 
-Latent Space. (2026a). *AINews*. [https://www.latent.space/s/ainews](https://www.latent.space/s/ainews)
-
 Li, K., Hopkins, A. K., Bau, D., Viégas, F., Pfister, H., & Wattenberg, M. (2023). *Emergent world representations: Exploring a sequence model trained on a synthetic task*. International Conference on Learning Representations. [https://arxiv.org/abs/2210.13382](https://arxiv.org/abs/2210.13382)
 
 Liu, N. F., Lin, K., Hewitt, J., Paranjape, A., Bevilacqua, M., Petroni, F., & Liang, P. (2023). *Lost in the middle: How language models use long contexts*. Transactions of the Association for Computational Linguistics. [https://arxiv.org/abs/2307.03172](https://arxiv.org/abs/2307.03172)
@@ -281,17 +245,9 @@ Merrill, W., & Sabharwal, A. (2024). *The expressive power of transformers with 
 
 Nilsson, N. J. (2010). *The quest for artificial intelligence: A history of ideas and achievements*. Cambridge University Press. [https://ai.stanford.edu/~nilsson/QAI/qai.pdf](https://ai.stanford.edu/~nilsson/QAI/qai.pdf)
 
-Nous Research. (2026). *Hermes Agent*. [https://hermes-agent.nousresearch.com/docs/](https://hermes-agent.nousresearch.com/docs/)
-
-OpenAI. (2022). *Introducing ChatGPT*. [https://openai.com/index/chatgpt/](https://openai.com/index/chatgpt/)
-
-OpenAI. (2023). *Function calling and other API updates*. [https://openai.com/index/function-calling-and-other-api-updates/](https://openai.com/index/function-calling-and-other-api-updates/)
-
 Prato, G., Huang, J., Parthasarathi, P., Sodhani, S., & Chandar, S. (2025). *Do large language models know how much they know?* Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing. [https://arxiv.org/abs/2502.19573](https://arxiv.org/abs/2502.19573)
 
 Prystawski, B., Li, M. Y., & Goodman, N. D. (2023). *Why think step by step? Reasoning emerges from the locality of experience*. Advances in Neural Information Processing Systems. [https://arxiv.org/abs/2304.03843](https://arxiv.org/abs/2304.03843)
-
-Rogers, R. (2026). *Anthropic’s Claude Cowork is an AI agent that actually works*. Wired. [https://www.wired.com/story/anthropic-claude-cowork-agent/](https://www.wired.com/story/anthropic-claude-cowork-agent/)
 
 Rosenblatt, F. (1958). *The perceptron: A probabilistic model for information storage and organization in the brain*. Psychological Review, 65(6), 386–408. [https://doi.org/10.1037/h0042519](https://doi.org/10.1037/h0042519)
 
@@ -301,8 +257,6 @@ Sofroniew, N., Kauvar, I., Saunders, W., Chen, A., et al. (2026). *Emotion conce
 
 Stanford Institute for Human-Centered AI. (2026). *The AI index 2026 annual report*. Stanford University. [https://hai.stanford.edu/ai-index/2026-ai-index-report](https://hai.stanford.edu/ai-index/2026-ai-index-report)
 
-Tabnine. (n.d.). In *Wikipedia*. [https://en.wikipedia.org/wiki/Tabnine](https://en.wikipedia.org/wiki/Tabnine)
-
 Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, Ł., & Polosukhin, I. (2017). *Attention is all you need*. Advances in Neural Information Processing Systems. [https://arxiv.org/abs/1706.03762](https://arxiv.org/abs/1706.03762)
 
 Wei, J., Tay, Y., Bommasani, R., Raffel, C., Zoph, B., Borgeaud, S., Yogatama, D., Bosma, M., Zhou, D., Metzler, D., Chi, E. H., Hashimoto, T., Vinyals, O., Liang, P., Dean, J., & Fedus, W. (2022b). *Emergent abilities of large language models*. Transactions on Machine Learning Research. [https://arxiv.org/abs/2206.07682](https://arxiv.org/abs/2206.07682)
@@ -310,8 +264,6 @@ Wei, J., Tay, Y., Bommasani, R., Raffel, C., Zoph, B., Borgeaud, S., Yogatama, D
 Wei, J., Wang, X., Schuurmans, D., Bosma, M., Ichter, B., Xia, F., Chi, E., Le, Q., & Zhou, D. (2022a). *Chain-of-thought prompting elicits reasoning in large language models*. Advances in Neural Information Processing Systems. [https://arxiv.org/abs/2201.11903](https://arxiv.org/abs/2201.11903)
 
 Willison, S. (2025). *I think “agent” may finally have a widely enough agreed upon definition to be useful jargon now*. Simon Willison’s Weblog. [https://simonwillison.net/2025/Sep/18/agents/](https://simonwillison.net/2025/Sep/18/agents/)
-
-Wired. (2026). *Gemini Spark is Google’s response to OpenClaw’s 24/7 AI agent*. Wired. [https://www.wired.com/story/googles-response-to-openclaws-24-7-ai-agent/](https://www.wired.com/story/googles-response-to-openclaws-24-7-ai-agent/)
 
 Wolfram, S. (2023). *What is ChatGPT doing … and why does it work?* Stephen Wolfram Writings. [https://writings.stephenwolfram.com/2023/02/what-is-chatgpt-doing-and-why-does-it-work/](https://writings.stephenwolfram.com/2023/02/what-is-chatgpt-doing-and-why-does-it-work/)
 

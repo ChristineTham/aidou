@@ -105,6 +105,14 @@
   },
   {
     "urls": [
+      "https://www.anthropic.com/research/emergent-misalignment-reward-hacking"
+    ],
+    "intext": "Anthropic, 2025d",
+    "reference": "Anthropic. (2025d). *From shortcuts to sabotage: natural emergent misalignment from reward hacking*. [https://www.anthropic.com/research/emergent-misalignment-reward-hacking](https://www.anthropic.com/research/emergent-misalignment-reward-hacking)",
+    "title_authored": false
+  },
+  {
+    "urls": [
       "https://arxiv.org/abs/2605.05287"
     ],
     "intext": "Arceo & Narsing, 2026",
@@ -313,7 +321,7 @@
       "https://arxiv.org/abs/2602.20122"
     ],
     "intext": "Gu et al., 2026",
-    "reference": "Gu, Jedidi, & Lin. (2026). *NanoKnow: How to know what your language model knows*. Proceedings of the 49th International ACM SIGIR Conference. [https://arxiv.org/abs/2602.20122](https://arxiv.org/abs/2602.20122)",
+    "reference": "Gu, L., Jedidi, N., & Lin, J. (2026). *NanoKnow: How to know what your language model knows*. Proceedings of the 49th International ACM SIGIR Conference. [https://arxiv.org/abs/2602.20122](https://arxiv.org/abs/2602.20122)",
     "title_authored": false
   },
   {

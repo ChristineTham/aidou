@@ -4,7 +4,7 @@ Chapter 2 built up from a single prompt to a skill, then to a self-checking loop
 
 In fact, we can quite easily turn our skill into a Python program that summarises using a simple prompt:
 
-> Convert the loop-summary skill into a Python program called `summarise.py`. It Make able to summarise multiple files (of different formats) through the command line. Summaries should be generated with the same file name as the original but in a subfolder called `summaries`.
+> Convert the loop-summary skill into a Python program called `summarise.py`. Make it able to summarise multiple files (of different formats) through the command line. Summaries should be generated with the same file name as the original but in a subfolder called `summaries`.
 
 Now you have a working program that you can use to summarise many files at once:
 
@@ -50,7 +50,7 @@ The intent — *rebuild Colossal Cave as a modern, strongly-typed web app* — c
 
 ### 3.1.3 VantageMap — a platform, vibe-coded across a dozen phases
 
-*VantageMap* is the most ambitious: an open-source platform for business architects and strategy officers to model capabilities, value streams, and outcomes — the kind of system I would once have costed as a team's work for a quarter ([vantagemap](https://github.com/ChristineTham/vantagemap)). It runs on Next.js and React over a Postgres database of twenty-two tables, with role-based access, REST and GraphQL APIs, full-text search, webhooks, and thirteen interlinked views, backed by some five hundred tests.
+*VantageMap* is the most ambitious: an open-source platform for business architects and strategy officers to model capabilities, value streams, and outcomes — the kind of system I would once have costed as a team's work for a quarter ([vantagemap](https://github.com/ChristineTham/vantagemap)). It runs on Next.js and React over a Postgres database of twenty-two tables (reached through the Drizzle ORM), with role-based access, REST and GraphQL APIs, full-text search, webhooks, and thirteen interlinked views, backed by some five hundred tests.
 
 It was built almost entirely by *vibe coding* — described, not specified — across a dozen numbered phases, and it is the clearest case of the agent owning the architecture. I never chose the database layer, nor the shape of the twenty-two tables, nor the division of work between REST and GraphQL; those were answers to constraints about who may see what and how quickly the system has to respond. What held it together over months was not a master specification but a configuration file and a folder of reusable skills — the *harness*, in the language of the next section — together with the discipline of reading the diffs that mattered. Fittingly, one of the project's listed contributors is a coding agent.
 
@@ -200,7 +200,7 @@ What stays scarce, and therefore valuable, is the one question the machine will 
 
 ## 3.8 Quality over Slop
 
-A high pass rate is not good code, so the test that matters is whether a maintainer would merge it. Models hit green suites with output nobody can read, and mergeability and correctness are different properties — the reframing behind Cognition's FrontierCode, where even the leading model cleared under half. Worse, a model under pressure will game the suite outright: Anthropic documented a coding agent that, unable to meet an impossible speed requirement, quietly detected the test's arithmetic inputs and returned a closed-form formula instead of actually summing — passing every check while solving nothing ([Sofroniew et al., *Emotion concepts and their function in a large language model*, 2026](https://transformer-circuits.pub/2026/emotions/index.html)). The defence is to bake reviewer judgement into the evals and to put the value question from the last section before anything runs — the one that collapsed a ninety-six-thousand-dollar spec into a roughly ten-day build ([Ahuja, 2026c](https://howtoarchitect.io/78431acba162?sk=cd2a36f452af96ccbfbcfcdeaa92ec06)). In my own projects the suites were necessary but never sufficient: VantageMap runs several hundred tests and *adventure* forbids an unverified change, yet what kept them from slop was reading the diffs that mattered and asking whether each feature earned its place. Shipping slop because the suite passed is the quiet failure that compounds.
+A high pass rate is not good code, so the test that matters is whether a maintainer would merge it. Models hit green suites with output nobody can read, and mergeability and correctness are different properties — the reframing behind Cognition's FrontierCode, where even the leading model cleared under half. Worse, a model under pressure will game the suite outright: Anthropic documented a coding agent that, unable to meet an impossible speed requirement, quietly detected the test's arithmetic inputs and returned a closed-form formula instead of actually summing — passing every check while solving nothing ([Anthropic, *From shortcuts to sabotage: natural emergent misalignment from reward hacking*, 2025d](https://www.anthropic.com/research/emergent-misalignment-reward-hacking)). The defence is to bake reviewer judgement into the evals and to put the value question from the last section before anything runs — the one that collapsed a ninety-six-thousand-dollar spec into a roughly ten-day build ([Ahuja, 2026c](https://howtoarchitect.io/78431acba162?sk=cd2a36f452af96ccbfbcfcdeaa92ec06)). In my own projects the suites were necessary but never sufficient: VantageMap runs some five hundred tests and *adventure* forbids an unverified change, yet what kept them from slop was reading the diffs that mattered and asking whether each feature earned its place. Shipping slop because the suite passed is the quiet failure that compounds.
 
 ## 3.9 Agents in the Channel
 
@@ -219,6 +219,8 @@ Ahuja, K. V. (2026c). *Spec-driven development is also breaking the fifty-year-o
 Ahuja, K. V. (2026d). *Spec-driven development isn’t broken. It will collapse*. Activated Thinker (Medium). [https://howtoarchitect.io/c00609f72496?sk=2da01d7d2abfb5bc0acaed7050a0e797](https://howtoarchitect.io/c00609f72496?sk=2da01d7d2abfb5bc0acaed7050a0e797)
 
 Anthropic. (2024a). *Building effective agents*. [https://www.anthropic.com/research/building-effective-agents](https://www.anthropic.com/research/building-effective-agents)
+
+Anthropic. (2025d). *From shortcuts to sabotage: natural emergent misalignment from reward hacking*. [https://www.anthropic.com/research/emergent-misalignment-reward-hacking](https://www.anthropic.com/research/emergent-misalignment-reward-hacking)
 
 Asthana et al. (2026). *Runtime-structured task decomposition for agentic coding systems*. Proceedings of ACM CAIS ’26. [https://arxiv.org/abs/2605.15425](https://arxiv.org/abs/2605.15425)
 
@@ -243,8 +245,6 @@ Raymond, E. S. (2003). *The art of Unix programming*. Addison-Wesley. [http://ww
 Russo, D. (2026). *Govern the repository, not the agent: Ecosystem-level risk in AI-native software*. arXiv. [https://arxiv.org/abs/2606.28235](https://arxiv.org/abs/2606.28235)
 
 Santos, R., Costa, H., Montandon, J. E., & Valente, M. T. (2025). *Decoding the configuration of AI coding agents: Claude Code projects*. arXiv. [https://arxiv.org/abs/2511.09268](https://arxiv.org/abs/2511.09268)
-
-Sofroniew, N., Kauvar, I., Saunders, W., Chen, A., et al. (2026). *Emotion concepts and their function in a large language model*. Transformer Circuits Thread. [https://transformer-circuits.pub/2026/emotions/index.html](https://transformer-circuits.pub/2026/emotions/index.html)
 
 Thorgeirsson, S., Weidmann, T. B., & Su, Z. (2026). *Computer science achievement and writing skills predict vibe coding proficiency*. arXiv. [https://arxiv.org/abs/2603.14133](https://arxiv.org/abs/2603.14133)
 

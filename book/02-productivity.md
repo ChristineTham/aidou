@@ -6,6 +6,8 @@ Today AI summarisation can be very good and is commonly used for meeting transcr
 
 Chapter 1 sets the scene; this is where it touches the desk. Productivity is the most personal use of AI, and the easiest to do superficially. The aim is a system that moves from chatting to producing, generating useful outputs, and improving rather than resetting every morning.
 
+This chapter is about a *single* agent working for you, and the three crafts that make one dependable: **prompt engineering** (§2.3) — asking well; **context engineering** (§2.5) — curating what the agent sees; and **loop engineering** (§2.6) — wrapping it in self-correcting cycles. Chapter 4 takes the step beyond one agent, to the disciplines of humans and agents working together.
+
 ## 2.1 From a Prompt to a Teammate
 
 How will I use AI to summarise a document today? I would probably do something like this:
@@ -14,7 +16,7 @@ How will I use AI to summarise a document today? I would probably do something l
 >
 >The summary should be in the style of a Cliff Notes or study guide. It uses tables, bullet points and diagrams where possible, makes use of GFM alerts to call out asides, definitions, or notes.
 
-The above may seem complex, but it is a single prompt: you send it with the text to be summarised, read the result, and it may produce a better summary than a simple prompt. This is a good start, but you have to type it in every time. And you have to check the results every time as the response can still be wrong. Finally, you are the only person who knows that prompt, others will use different variations. Addressing those issues is the whole journey from prompting to agents, so let's explore ways of improving our method.
+The above may seem complex, but it is a single prompt: you send it with the text to be summarised and read the result — and it may produce a better summary than a simple prompt would. This is a good start, but you have to type it in every time. And you have to check the results every time as the response can still be wrong. Finally, you are the only person who knows that prompt, others will use different variations. Addressing those issues is the whole journey from prompting to agents, so let's explore ways of improving our method.
 
 ### 2.1.1 Step one: save the prompt as a skill
 
@@ -48,7 +50,7 @@ flowchart TB
     E -- none, or round limit --> Out[Final summary]
 ```
 
-Depending on the agent platform you are using, the specific way you will construct a loop may be slightly different. Here is a naive approach (that will actually work with some agent platforms)
+Depending on the agent platform you are using, the specific way you will construct a loop may be slightly different. Here is a naive approach (that will actually work with some agent platforms):
 
 ```markdown
 ---
@@ -182,7 +184,7 @@ The deeper point is the Unix one. Markdown is the *text stream* of the AI era �
 
 ## 2.5 Context & Memory
 
-Skills and Markdown compound only if the model can keep what it learns from one session to the next — and by default it cannot. Everything a model knows about your task lives in the context you place in front of it, and that context is both finite and forgotten the moment the window closes. Managing it is a discipline of its own. The clearest example is Karpathy's LLM Wiki, and it is worth a careful look because it inverts the usual pattern. Most document workflows are retrieval: you upload files, the model fetches chunks at query time, answers, and forgets. It rediscovers knowledge on every question, and nothing is built up.
+Skills and Markdown compound only if the model can keep what it learns from one session to the next — and by default it cannot. Everything a model knows about your task lives in the context you place in front of it, and that context is both finite and forgotten the moment the window closes. Managing it well is a discipline of its own — *context engineering*, the craft this section is about. The clearest example is Karpathy's LLM Wiki, and it is worth a careful look because it inverts the usual pattern. Most document workflows are retrieval: you upload files, the model fetches chunks at query time, answers, and forgets. It rediscovers knowledge on every question, and nothing is built up.
 
 A wiki accumulates instead. Add a source and the model reads it once, extracts what matters, and integrates it into interlinked markdown pages — updating entity pages, flagging where new data contradicts old, strengthening the synthesis. The cross-references are resolved ahead of the next question rather than reconstructed each time ([Karpathy, *LLM wiki*, 2026a](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f)).
 
@@ -206,14 +208,15 @@ The loop is ingest, query, lint: drop in a source and it touches a dozen pages; 
 
 The wiki is one good answer to a problem every long-running agent faces, and it helps to see the whole family it belongs to.
 
-A model has no memory of its own: its knowledge is frozen in its weights, and each request starts from nothing but the text you place in front of it. The obvious fix — pour everything into an ever-larger context window — works less well than it looks. Context is a finite resource with diminishing returns; every extra token spends part of the model's "attention budget," and recall sags as the window fills, the *lost in the middle* effect from Chapter 1 ([Anthropic, *Effective context engineering for AI agents*, 2025b](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)). In practice the *effective* context — the span a model actually uses well — often falls to around half its advertised maximum ([An et al., *Why does the effective context length of LLMs fall short?*, 2024](https://arxiv.org/abs/2410.18745)). So memory must be engineered rather than merely supplied, and the gap between an agent with good memory and one without can exceed the gap between model versions ([Du et al., *Memory for autonomous LLM agents: Mechanisms, evaluation, and emerging frontiers*, 2026](https://arxiv.org/abs/2603.07670)).
+Since a model keeps nothing between requests, the obvious fix — pour everything into an ever-larger context window — works less well than it looks. Context is a finite resource with diminishing returns; every extra token spends part of the model's "attention budget," and recall sags as the window fills, the *lost in the middle* effect from Chapter 1 ([Anthropic, *Effective context engineering for AI agents*, 2025b](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)); a study of 18 models finds the same *context rot* — accuracy drops further as the window grows, and the reassuring needle-in-a-haystack test flatters the model because it only measures lexical lookup, not the harder case where a fact must be inferred ([Chroma, *Context rot: How increasing input tokens impacts LLM performance*, 2025](https://research.trychroma.com/context-rot)). In practice the *effective* context — the span a model actually uses well — often falls to around half its advertised maximum ([An et al., *Why does the effective context length of LLMs fall short?*, 2024](https://arxiv.org/abs/2410.18745)). So memory must be engineered rather than merely supplied, and the gap between an agent with good memory and one without can exceed the gap between model versions ([Du et al., *Memory for autonomous LLM agents: Mechanisms, evaluation, and emerging frontiers*, 2026](https://arxiv.org/abs/2603.07670)).
 
 The patterns form a rough ladder, from "stuff it into the prompt" to "manage it outside the prompt":
 
 - **Retrieval (RAG).** Fetch the relevant chunks from a store and paste them into the context. Simple and auditable — the answer quotes real text — but it re-discovers everything on every question and bloats the window as you add more.
 - **Compaction.** When the conversation nears the window limit, summarise it and start fresh with the recap. This is how Claude Code keeps going on long tasks, preserving decisions and open threads while dropping spent tool output ([Anthropic, 2025b](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)). It buys space at the cost of detail, and repeated summarising can quietly drift from the source.
 - **Structured notes — the wiki.** The pattern we just built: durable pages the agent reads and rewrites, from a single `NOTES.md` to an interlinked wiki. Because the notes live outside the conversation and stay human-readable, they survive context resets and can be audited ([Anthropic, 2025b](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)).
-- **External store, fetched just in time.** Keep the memory out of the prompt entirely; the agent holds only lightweight pointers — file paths, saved queries, links — and pulls in what it needs at runtime through tools, the way we use folders and bookmarks instead of memorising everything ([Anthropic, 2025b](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)).
+- **External store, fetched just in time.** Keep the memory out of the prompt entirely; the agent holds only lightweight pointers — file paths, saved queries, links — and pulls in what it needs at runtime through tools, the way we use folders and bookmarks instead of memorising everything ([Anthropic, 2025b](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)). Consistent naming, folders, and inline structure turn navigation from lucky into reproducible — inline call and inheritance tags alone measurably improve a code agent's ability to locate the right file ([Lin et al., *How much static structure do code agents need? Deterministic anchoring*, 2026](https://arxiv.org/abs/2606.26979)).
+- **Sub-agents.** Spin off a fresh agent on a clean context to explore or research, and return only a distilled summary to the main thread — so the primary window stays uncluttered while the digging happens elsewhere.
 - **Layered memory.** Separate memory by how long it should last: a *working* scratchpad for the task at hand, *episodic* memory of recent events, *semantic* memory of durable facts, and *procedural* memory of learned skills, each managed differently ([Du et al., 2026](https://arxiv.org/abs/2603.07670)). The idea is not new: the Generative Agents experiment stored each observation and retrieved it by a blend of relevance, recency, and importance ([Park et al., *Generative agents: Interactive simulacra of human behavior*, 2023](https://arxiv.org/abs/2304.03442)).
 - **Governed memory.** Once memory is something the agent writes to and edits, it needs rules: what may be remembered, when stale or contradictory entries are evicted, what must be checked before it enters the long-term store. A governance layer guards against the failure modes of evolving memory — drift, corruption, and leaks of private data ([Lam, *Governing evolving memory in LLM agents*, 2026](https://arxiv.org/abs/2603.11768)).
 
@@ -240,12 +243,14 @@ No single pattern wins; real systems combine them — a wiki for stable knowledg
 
 ## 2.6 Loops and Ambient Teammates
 
-That self-running loop is a small taste of a larger shift in how you work. Most people still meet AI as a chat box, and that framing quietly caps what they get: a conversation is synchronous — you ask, you wait, you steer, you ask again — so your attention sets the pace. The loop you just built does not wait on you. You hand it a bounded task, it works while you are elsewhere, and you come back to a result rather than a transcript. Make that the default rather than the exception, and the chat assistant becomes an *ambient teammate*.
+The self-checking loop you built in §2.1 is a small taste of a larger shift in how you work. Most people still meet AI as a chat box, and that framing quietly caps what they get: a conversation is synchronous — you ask, you wait, you steer, you ask again — so your attention sets the pace. The loop you just built does not wait on you. You hand it a bounded task, it works while you are elsewhere, and you come back to a result rather than a transcript. Make that the default rather than the exception, and the chat assistant becomes an *ambient teammate*.
 
 > [!NOTE]
 > An **ambient teammate** is an agent that runs asynchronously in the background — given a scoped task and the tools to finish it — rather than waiting on each instruction. You delegate the task, not the keystrokes.
 
 The shift sounds small and is not, because it changes who the bottleneck is. As Karpathy puts it, the goal is to remove yourself from the keystroke loop and maximise throughput rather than steer every step ([Latent Space, *Loopcraft: The art of stacking*, 2026b](https://www.latent.space/p/ainews-loopcraft-the-art-of-stacking)). OpenAI's internal figures make the leverage tangible: agent output grew many-fold across functions once people delegated whole tasks instead of supervising each one. The throughput is real — but it counts as work done only once someone has checked the result, a distinction the rest of this book keeps insisting on.
+
+The craft here is *loop engineering*: the loop, not the prompt. Practitioners are blunt that they now write loops, not prompts, and design the loops that prompt their agents rather than chasing one perfect instruction ([Latent Space, 2026b](https://www.latent.space/p/ainews-loopcraft-the-art-of-stacking)); the real skill is knowing when to drop a loop for reliability and when to climb one for leverage.
 
 The practice is simple to state: scope work tightly, fire it off, review the outcome. The temptation worth resisting is hovering over each keystroke, which pins your leverage to your own typing speed. But delegating the keystrokes is not the same as looking away. A model can fix on the wrong approach early and then pursue it well, and fast — building the wrong thing with conviction. So watch the *trajectory* rather than the typing: glance at where a run is heading, and if it has taken a wrong turn, stop it and re-steer instead of letting it finish. A wrong run caught in its first minute costs a fraction of one you discover at the end, in your time and in tokens both. Interrupting is not a failure of delegation; it is delegation done well.
 
@@ -305,6 +310,8 @@ Brown, T. B., et al. (2020). *Language models are few-shot learners*. Advances i
 
 Brynjolfsson, E., Li, D., & Raymond, L. R. (2023). *Generative AI at work* (NBER Working Paper No. 31161). National Bureau of Economic Research. [https://www.nber.org/papers/w31161](https://www.nber.org/papers/w31161)
 
+Chroma. (2025). *Context rot: How increasing input tokens impacts LLM performance*. [https://research.trychroma.com/context-rot](https://research.trychroma.com/context-rot)
+
 DAIR.ai. (n.d.). *Prompt engineering guide*. [https://www.promptingguide.ai/](https://www.promptingguide.ai/)
 
 Du, P., et al. (2026). *Memory for autonomous LLM agents: Mechanisms, evaluation, and emerging frontiers*. arXiv. [https://arxiv.org/abs/2603.07670](https://arxiv.org/abs/2603.07670)
@@ -326,6 +333,8 @@ Lam, C. (2026). *Governing evolving memory in LLM agents*. arXiv. [https://arxiv
 Latent Space. (2026b). *Loopcraft: The art of stacking*. [https://www.latent.space/p/ainews-loopcraft-the-art-of-stacking](https://www.latent.space/p/ainews-loopcraft-the-art-of-stacking)
 
 Li, J., et al. (2025). *As confidence aligns: Effect of AI confidence on human self-confidence in human–AI decision making*. Proceedings of the 2025 CHI Conference on Human Factors in Computing Systems. [https://arxiv.org/abs/2501.12868](https://arxiv.org/abs/2501.12868)
+
+Lin, Zhou, Yang, & Li. (2026). *How much static structure do code agents need? Deterministic anchoring*. arXiv. [https://arxiv.org/abs/2606.26979](https://arxiv.org/abs/2606.26979)
 
 Livathinos, N., et al. (2025). *Docling: An efficient open-source toolkit for AI-driven document conversion*. arXiv. [https://arxiv.org/abs/2501.17887](https://arxiv.org/abs/2501.17887)
 
