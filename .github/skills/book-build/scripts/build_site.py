@@ -47,6 +47,34 @@ BANNER_KANJI = {
 }
 
 
+# Per-chapter accent colour (matches the banner medallion) for the PDF title.
+PDF_ACCENT = {
+    "foundations": "#85677B", "productivity": "#D2386C",
+    "software-development": "#EC809E", "engineering-disciplines": "#BE9CC1",
+    "governance": "#93A9D1", "mastery": "#B565A7",
+}
+
+
+def pdf_title(title, number, slug):
+    """A clean chapter/front-matter title for the PDF only.
+
+    orange-book's boxed title is suppressed in the Typst build (heading-style is
+    out of range), so we render our own: the chapter number in the chapter's
+    accent colour + the title in ink, matching the web/ePub and sitting above
+    the banner. Emitted as a ```{=typst}``` block so HTML/ePub ignore it (they
+    show the real heading)."""
+    ink = '#text(fill: rgb("#27272A"))[' + title + "]"
+    if number is not None:
+        acc = PDF_ACCENT.get(slug, "#B565A7")
+        inner = f'#text(fill: rgb("{acc}"))[{number}]#h(0.5em)' + ink
+    else:
+        inner = ink
+    return ("```{=typst}\n"
+            '#block(below: 0.55em, text(font: "Raleway", weight: 800, '
+            f"size: 30pt)[{inner}])\n"
+            "```\n\n")
+
+
 def banner_markdown(slug):
     """A full-width, caption-less banner image for `slug`, or "" if none.
 
@@ -102,6 +130,7 @@ def strip_section_number(l):
 
 def build(book_dir, out_dir):
     os.makedirs(out_dir, exist_ok=True)
+    chapter_no = 0
     for src, slug, numbered in CHAPTERS:
         path = os.path.join(book_dir, src)
         if not os.path.exists(path):
@@ -117,11 +146,15 @@ def build(book_dir, out_dir):
         body = [re.sub(r"^## References\s*$", "## References {.unnumbered}", l) for l in body]
         text = "\n".join(body).lstrip("\n")
         if numbered:
-            head = '---\ntitle: "' + CHAPTER_PREFIX.sub("", title) + '"\n---\n\n'
+            chapter_no += 1
+            disp = CHAPTER_PREFIX.sub("", title)
+            head = '---\ntitle: "' + disp + '"\n---\n\n'
+            pdf = pdf_title(disp, chapter_no, slug)
         else:
             head = "# " + title + " {.unnumbered}\n\n"
+            pdf = pdf_title(title, None, slug) if slug == "preface" else ""
         with open(os.path.join(out_dir, slug + ".qmd"), "w", encoding="utf-8") as f:
-            f.write(head + banner_markdown(slug) + text + "\n")
+            f.write(head + pdf + banner_markdown(slug) + text + "\n")
         print(f"{src} -> {os.path.join(out_dir, slug + '.qmd')}")
 
 

@@ -4,10 +4,6 @@
 <style>#title-block-header{ display: none; }</style>
 ```
 
-::: {.content-visible when-format="html"}
-![](chapter-art/frontmatter.png){.chapter-banner fig-alt="Decorative banner: a seigaiha wave pattern"}
-:::
-
 ::: {.epigraph}
 *The Way of AI, grounded in practice (道)*
 

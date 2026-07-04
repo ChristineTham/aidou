@@ -38,6 +38,11 @@ $if(lang)$
   lang: "$lang$",
 $endif$
   main-color: brand-color.at("primary", default: blue),
+  // Suppress orange-book's boxed chapter title (its style branches handle only
+  // 0/1/2); an out-of-range value keeps the page-break + counter resets but
+  // renders no box. Our own clean title is injected into the body, PDF-only,
+  // by build_site.py so it can sit above the seigaiha banner.
+  heading-style: 99,
 $if(toc-depth)$
   outline-depth: $toc-depth$,
 $endif$
