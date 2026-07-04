@@ -20,6 +20,14 @@
 by [Chris Tham](https://christham.net)
 :::
 
+Most AI writing sells tools, prompts, and features — and those go stale in a release. *AI-dō* is about what lasts underneath: how you frame a problem, gather context, and verify a result.
+
+- **Method over model** — the advantage is the scaffolding you build, not the model you pick.
+- **Discipline over hacks** — repeatable patterns, not one-off prompts.
+- **Augmentation, not replacement** — AI to extend human judgement, never to outsource it.
+
+Every claim is cited to a primary source, and each chapter reads like a good textbook: state the idea, show why it holds, then prove it with a real example. It's for thoughtful professionals and engineers who want a durable practice, not a bag of prompts.
+
 It's a short, personal read — meant to be read online, and yours to download too:
 
 ::: {.dl-buttons}

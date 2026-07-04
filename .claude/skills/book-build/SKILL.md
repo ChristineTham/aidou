@@ -110,6 +110,19 @@ rasterised from it with headless Chrome and wired in via `book: cover-image`.
 Regenerate after edits:
 `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless --screenshot=cover.png --window-size=800,1200 --force-device-scale-factor=2 file://$PWD/cover.html`
 
+## Back cover (blurb)
+
+The same blurb appears in three places, one per format:
+
+- **Web** — woven into the landing page (`index.qmd`, the "Why read it" bullets).
+- **PDF** — a designed final page, `quarto/typst-back-cover.typ`, wired via
+  `format: typst: include-after-body`. Rosely palette, a faint 道 watermark
+  echoing the front cover.
+- **ePub** — the `format: epub: description` sets the reader-library blurb (the
+  ebook-native back cover), and `scripts/epub_backcover.py` (a `post-render`
+  step, after `epub_fix.py`, before `cachebust.py`) injects a visible
+  back-cover page at the end of the spine and repackages the `.epub`.
+
 ## Requirements
 
 - **Quarto** (bundles Typst — no LaTeX needed for the PDF).

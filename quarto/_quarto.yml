@@ -7,6 +7,8 @@ project:
   post-render:
     # Repair Quarto's malformed Mermaid <figure> markup so the ePub is valid XHTML.
     - python3 ../.claude/skills/book-build/scripts/epub_fix.py
+    # Inject a back-cover page at the end of the ePub spine.
+    - python3 ../.claude/skills/book-build/scripts/epub_backcover.py
     - python3 ../.claude/skills/book-build/scripts/cachebust.py
 
 book:
@@ -62,6 +64,7 @@ format:
     template-partials:
       - typst-show.typ
     include-in-header: typst-fonts.typ     # body serif + fit diagrams to the page
+    include-after-body: typst-back-cover.typ   # designed back-cover page (blurb)
     # Colours + Spectral come from _brand.yml. Mermaid -> PNG: Quarto doesn't
     # expose Mermaid's htmlLabels:false, so its SVG carries HTML (foreignObject)
     # labels Typst can't render; PNG is reliable and high quality.
@@ -69,3 +72,10 @@ format:
     toc: true
     number-sections: true
     css: epub.css
+    # Blurb shown as the ebook description in readers' library/info (the
+    # ePub-native "back cover"); a visible back-cover page is injected by the
+    # epub_backcover.py post-render step.
+    description: >-
+      A structured, human-centred way of working with AI — method over model,
+      discipline over hacks, augmentation not replacement. A short, first-person,
+      primary-sourced practice guide, not a bag of prompts.
