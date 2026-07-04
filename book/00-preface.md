@@ -6,6 +6,16 @@ Working with artificial intelligence has become strangely easy to do and strange
 
 The gap is not one of access. We all draw on the same handful of frontier models, so the model cannot be what separates good work from poor. What separates them is method — the practised habits by which a skilled person turns a capable tool toward a dependable result, the way a chef and a novice handed the same kitchen produce very different dinners. This book is about that method: a structured way of working with AI, grounded in human intent and refined through repetition.
 
+A quick word on the terms, since they move quickly. When I say *artificial intelligence*, I mean the present generation of large language models — systems trained on enormous quantities of text, and increasingly images and sound, that respond to plain-language requests with fluent prose, working code, and structured analysis. The most capable are called *frontier models*: the handful of largest, most general systems from a few well-resourced labs, the ones that set the pace and that everyone else measures against. ChatGPT, Claude, and Gemini are the familiar names; behind them sits a *foundation model*, a single large network trained once at great expense and then adapted to countless tasks.
+
+> [!NOTE]
+> A few terms used throughout, defined plainly:
+>
+> - **Large language model (LLM)** — a network trained to predict the next word, which in scale yields fluent prose, code, and analysis.
+> - **Foundation model** — one large model trained once, then adapted to many tasks.
+> - **Frontier model** — the largest, most general foundation models that set the pace (ChatGPT, Claude, Gemini).
+> - **Loopcraft** — the practice of working in tight cycles of ask, check, and adjust, rather than chasing one perfect instruction.
+
 ## Why I wrote it
 
 A few words about who is writing, so you can weigh what follows. I run a strategy consultancy, Hello Tham, and I teach technology and information systems to undergraduate and master's students at Torrens University Australia. My work has centred on technology strategy, operating models, governance, and enterprise architecture — first as a strategy executive in banking and finance, then over fifteen years as a consultant across many industries, government included.

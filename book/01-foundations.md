@@ -8,19 +8,7 @@ Artificial intelligence is older than the chatbots that made it famous. The term
 
 A different idea ran quietly alongside the rules: let a machine learn from data instead of being told the rules. The perceptron, a simple mathematical model of a neuron, dates to 1958 (["Perceptron," n.d.](https://en.wikipedia.org/wiki/Perceptron)), but neural networks stayed a backwater for decades, starved of the data and computing power they needed. That changed around 2012, when *deep learning* — neural networks many layers deep, each layer learning features at a higher level of abstraction — began to win at image recognition by a wide margin, and the approach moved to the centre of the field (["Deep learning," n.d.](https://en.wikipedia.org/wiki/Deep_learning)). The shift was from telling a machine the rules to letting it find them in examples.
 
-The architecture that made language work arrived in 2017, when researchers at Google introduced the *transformer*. Its *attention* mechanism lets the model weigh every word against every other, so it could learn the long-range structure of text far better than anything before it ([Vaswani et al., *Attention is all you need*, 2017](https://arxiv.org/abs/1706.03762)). Scale did the rest. Train a transformer to predict the next word across enough text and it becomes a *large language model*; make it large enough and it turns fluent. That is the line that runs to ChatGPT in late 2022, and to everything in this book.
-
-Before the argument, let me set the scene, since the terms move quickly. When I say *artificial intelligence*, I mean the present generation of large language models — systems trained on enormous quantities of text, and increasingly images and sound, that respond to plain-language requests with fluent prose, working code, and structured analysis.
-
-The most capable of these are called *frontier models*: the handful of largest, most general systems from a few well-resourced labs, the ones that set the pace and that everyone else measures against. ChatGPT, Claude, and Gemini are the familiar names; behind them sits a *foundation model*, a single large network trained once at great expense and then adapted to countless tasks.
-
-> [!NOTE]
-> A few terms used throughout, defined plainly:
->
-> - **Large language model (LLM)** — a network trained to predict the next word, which in scale yields fluent prose, code, and analysis.
-> - **Foundation model** — one large model trained once, then adapted to many tasks.
-> - **Frontier model** — the largest, most general foundation models that set the pace (ChatGPT, Claude, Gemini).
-> - **Loopcraft** — the practice of working in tight cycles of ask, check, and adjust, rather than chasing one perfect instruction.
+The architecture that made language work arrived in 2017, when researchers at Google introduced the *transformer*. Its *attention* mechanism lets the model weigh every word against every other, so it could learn the long-range structure of text far better than anything before it ([Vaswani et al., *Attention is all you need*, 2017](https://arxiv.org/abs/1706.03762)). Scale did the rest. Train a transformer to predict the next word across enough text and it becomes a *large language model*; make it large enough and it turns fluent. That is the line that runs to ChatGPT in late 2022, and to everything in this book. Those terms — *large language model*, *frontier model*, *foundation model* — are the ones the preface set out; this chapter looks under them.
 
 Two facts about 2026 frame everything that follows. The first is that these tools are everywhere: roughly 88% of organisations report using AI, even as most are still experimenting rather than depending on it ([Stanford HAI, *The AI index 2026 annual report*, 2026](https://hai.stanford.edu/ai-index/2026-ai-index-report); [McKinsey & Company, *The state of AI*, 2025](https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai)). The second is that the field has quietly conceded the model alone is no longer the product; the leading labs now compete on the scaffolding around it — the workflows, the memory, the economics of running it well.
 
