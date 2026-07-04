@@ -17,25 +17,13 @@
   #set text(font: "Noto Serif", fill: rgb("#3a3038"), size: 10.5pt)
   #set par(justify: true, leading: 0.72em)
 
-  #text(font: "Raleway", weight: "bold", size: 22pt, fill: rgb("#b565a7"))[AI-dō] \
+  #text(font: "Raleway", weight: 800, size: 22pt, fill: rgb("#b565a7"))[AI-dō] \
   #v(0.15em)
   #text(font: "Cormorant Garamond", style: "italic", size: 13pt, fill: rgb("#85677b"))[The Way of AI, grounded in practice (道)]
 
   #v(1.5em)
 
-  Most AI writing sells tools, prompts, and features. Those go stale in a release. #emph[AI-dō] is about what lasts underneath — how you frame a problem, gather context, and verify a result.
-
-  #v(0.9em)
-
-  #stack(spacing: 0.6em,
-    [#text(weight: "bold", fill: rgb("#b565a7"))[Method over model] — the advantage is the scaffolding you build, not the model you pick.],
-    [#text(weight: "bold", fill: rgb("#b565a7"))[Discipline over hacks] — repeatable patterns, not one-off prompts.],
-    [#text(weight: "bold", fill: rgb("#b565a7"))[Augmentation, not replacement] — AI to extend human judgement, never to outsource it.],
-  )
-
-  #v(0.9em)
-
-  Written first-person by a former sceptic, with every claim cited to a primary source. Each chapter reads like a good textbook: state the idea, show why it holds, then prove it with a real example. It is for thoughtful professionals and engineers who want a durable practice, not a bag of prompts — a practice guide, not a reference manual.
+  #include "_blurb.typ"
 
   #v(1fr)
 

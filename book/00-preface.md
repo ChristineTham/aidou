@@ -2,9 +2,9 @@
 
 ## Why this book
 
-Working with artificial intelligence has become strangely easy to do and strangely hard to do well. Anyone can open a chat window and get a fluent answer in seconds; far fewer can turn that fluency into work that is reliable, repeatable, and worth standing behind.
+Working with artificial intelligence has become strangely easy to do and strangely hard to do well. Anyone can open a chat window and get an answer in seconds; far fewer can rely on output that is accurate, consistent, and worth using.
 
-The gap is not one of access. We all draw on the same handful of frontier models, so the model cannot be what separates good work from poor. What separates them is method — the practised habits by which a skilled person turns a capable tool toward a dependable result, the way a chef and a novice handed the same kitchen produce very different dinners. This book is about that method: a structured way of working with AI, grounded in human intent and refined through repetition.
+We all tend to use the same handful of frontier models, so it is not the model that separates good quality from slop. The *method* matters — the practised habits by which an experienced person turns a capable tool toward a dependable result, in the same way that a chef and a novice handed the same kitchen produce very different dinners. This book is about that method: a structured way of working with AI, grounded in human intent and refined through iteration.
 
 A quick word on the terms, since they move quickly. When I say *artificial intelligence*, I mean the present generation of large language models — systems trained on enormous quantities of text, and increasingly images and sound, that respond to plain-language requests with fluent prose, working code, and structured analysis. The most capable are called *frontier models*: the handful of largest, most general systems from a few well-resourced labs, the ones that set the pace and that everyone else measures against. ChatGPT, Claude, and Gemini are the familiar names; behind them sits a *foundation model*, a single large network trained once at great expense and then adapted to countless tasks.
 
@@ -18,19 +18,25 @@ A quick word on the terms, since they move quickly. When I say *artificial intel
 
 ## Why I wrote it
 
-A few words about who is writing, so you can weigh what follows. I run a strategy consultancy, Hello Tham, and I teach technology and information systems to undergraduate and master's students at Torrens University Australia. My work has centred on technology strategy, operating models, governance, and enterprise architecture — first as a strategy executive in banking and finance, then over fifteen years as a consultant across many industries, government included.
+A few words about me. My name is Chris Tham. I run a boutique strategy consulting company, **Hello Tham**, and I also teach technology and information systems to undergraduate and master's students at **Torrens University Australia**.
 
-This book grew out of two things that happened at once. I had just finished delivering an AI strategy for a global firm, and I was teaching the same ground to my students — and I wanted to capture what both had taught me before the particular tools dated. Consulting scales me out; teaching lets me hand the lessons on. Writing it down is a third way to do the same thing: to set down a practice worth keeping, and pass it on.
+This book grew out of my recent experiences using AI in my work, and documents what I have learnt. I had just finished delivering an AI strategy for a global client, and I was also teaching AI to my students. Consulting stretches my experience; teaching lets me hand the lessons on. Writing it down is a third way to do the same thing: to set down a practice worth keeping, and pass it on.
 
 ## Why now, and won't it date?
 
 Why write this in 2026? Because the ground has shifted in a way that rewards method over tooling. Adoption is broad but shallow — most organisations have AI somewhere in the building, yet few can point to value won rather than effort spent — and as capability climbed, the model alone stopped being the product. The advantage moved into everything built around it: the workflow, the context, the checks.
 
-That is also why the book should outlast its examples. The field moves in weeks, and a book of prompts and tool tips would be stale a model release later. This one rests on a steadier layer — *how* the models work, not which model leads this quarter — and those properties have held across the whole current generation. Where a point is tied to a 2026 product or figure, I mark it as such; the way of working around it is meant to last.
+That is also why the book should outlast its examples. The field moves in weeks, and a book of prompts and tool tips would be stale a model release later. This one rests on a steadier layer — *how* the models work, not which model leads this quarter — and those properties have held across generations of models. Where a point is tied to a 2026 product or figure, I mark it as such; the way of working around it is meant to last.
 
 ## Who it is for
 
-This book is for the thoughtful professional — a leader, a consultant, an analyst, a builder — who wants structured, effective use of AI rather than a bag of prompts. I assume you are numerate and can read a chart, a code snippet, or a research paper when it helps; that you have already used these tools and felt both edges, the power and the unreliability; and that you want to *use* AI well, not to build models. Using AI well is its own discipline, and the one we pursue here. My promise is modest and practical: a set of repeatable patterns you can apply tomorrow and keep sharpening for years.
+This book is for the thoughtful professional — a leader, a consultant, an analyst, a builder — who wants structured, effective use of AI rather than a bag of prompts. I assume
+
+- you are numerate and can read a chart, a code snippet, or a research paper when it helps;
+- that you have already used these tools and felt both edges, the power and the unreliability;
+- and that you want to *use* AI well, not to build models.
+
+Using AI well is its own discipline, and the one we pursue here. My promise is modest and practical: an approach you can apply tomorrow and keep sharpening for years.
 
 ## How to read it
 

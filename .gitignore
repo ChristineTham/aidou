@@ -2,8 +2,13 @@
 quarto/_book/
 quarto/.quarto/
 quarto/site_libs/
-quarto/index.typ                 # generated Typst (from keep-typ); source is index.qmd
-quarto/*_files/                  # generated per-doc figure dirs (Mermaid PNGs, etc.)
+# generated Typst (from keep-typ); source is index.qmd
+quarto/index.typ
+# generated per-doc figure dirs (Mermaid PNGs, etc.)
+quarto/*_files/
+# generated blurb partials (source: quarto/blurb.json)
+quarto/_blurb.md
+quarto/_blurb.typ
 
 # Generated chapter pages — produced from book/*.md by the pre-render hook.
 # index.qmd is hand-authored and kept; the rest are ephemeral.

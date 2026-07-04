@@ -14,7 +14,7 @@ h1, h2, h3, h4 {
   color: #27272a;
   line-height: 1.2;
 }
-h1 { color: #b565a7; }          /* chapter titles in Rosely purple */
+h1 { color: #b565a7; font-weight: 800; }   /* chapter titles: Rosely purple, extra bold */
 .header-section-number { color: #b565a7; }
 
 a { color: #d2386c; }           /* rose links */

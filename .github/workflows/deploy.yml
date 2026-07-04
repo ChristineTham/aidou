@@ -38,6 +38,10 @@ jobs:
         working-directory: quarto
         run: python3 ../.claude/skills/book-build/scripts/build_site.py --book ../book --out .
 
+      - name: Generate blurb partials from blurb.json (single source)
+        working-directory: quarto
+        run: python3 ../.claude/skills/book-build/scripts/gen_blurb.py .
+
       - name: Render HTML + PDF + ePub
         working-directory: quarto
         env:

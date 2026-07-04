@@ -114,16 +114,22 @@ Regenerate after edits:
 
 ## Back cover (blurb)
 
-The same blurb appears in three places, one per format:
+The blurb is authored **once** in `quarto/blurb.json` (lead, convictions, close,
+and a short `description`). Edit that file only; the four places it appears are
+generated from it:
 
-- **Web** — woven into the landing page (`index.qmd`, the "Why read it" bullets).
-- **PDF** — a designed final page, `quarto/typst-back-cover.typ`, wired via
-  `format: typst: include-after-body`. Rosely palette, a faint 道 watermark
-  echoing the front cover.
-- **ePub** — the `format: epub: description` sets the reader-library blurb (the
-  ebook-native back cover), and `scripts/epub_backcover.py` (a `post-render`
-  step, after `epub_fix.py`, before `cachebust.py`) injects a visible
-  back-cover page at the end of the spine and repackages the `.epub`.
+- **Source → partials.** `scripts/gen_blurb.py` runs in `build.sh` and CI
+  *before* `quarto render` (Quarto resolves `{{< include >}}` before its own
+  pre-render hooks, so a Quarto `pre-render` step is too late). It writes
+  `quarto/_blurb.md` and `quarto/_blurb.typ` (both git-ignored).
+- **Web** — the landing (`index.qmd`) pulls it in with `{{< include _blurb.md >}}`.
+- **PDF** — `quarto/typst-back-cover.typ` (a designed final page via
+  `format: typst: include-after-body`, Rosely palette + faint 道 watermark)
+  pulls it in with `#include "_blurb.typ"`.
+- **ePub** — `scripts/epub_backcover.py` (a `post-render` step, after
+  `epub_fix.py`, before `cachebust.py`) reads `blurb.json` directly to build a
+  back-cover page at the end of the spine **and** set the ePub
+  `<dc:description>`, then repackages the `.epub`.
 
 ## Requirements
 

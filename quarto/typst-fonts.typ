@@ -7,6 +7,11 @@
 // headers and callout titles that our own show-rules can't reach.
 #set text(font: "Noto Serif")
 
+// Chapter titles (level-1 headings) always in Raleway ExtraBold. The heading
+// font is Raleway (from _brand.yml); this bumps only the weight, and Typst
+// finds Raleway-ExtraBold in TYPST_FONT_PATHS. Section headings keep their weight.
+#show heading.where(level: 1): set text(weight: 800)
+
 // Smart-scale Mermaid diagrams. Quarto renders every diagram PNG at the same
 // high effective density and tags it at a natural size whose on-page text ends
 // up far larger than the body text (and often wider than the page too). Because

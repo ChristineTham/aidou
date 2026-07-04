@@ -19,7 +19,7 @@
   copyright: [
     #set text(size: 9.5pt)
     #set par(leading: 0.72em)
-    #text(weight: "bold")[AI-dō] — The Way of AI, grounded in practice (道) \
+    #text(font: "Raleway", weight: 800)[AI-dō] — The Way of AI, grounded in practice (道) \
     Chris Tham
     #v(1.1em)
     Read it online, or download the latest PDF and ePub: \

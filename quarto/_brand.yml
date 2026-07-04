@@ -69,6 +69,9 @@ typography:
         - path: fonts/Raleway-Bold.ttf
           weight: 700
           style: normal
+        - path: fonts/Raleway-ExtraBold.ttf
+          weight: 800
+          style: normal
     # CJK fallbacks (愛 道 only) — serif for the body, sans for headings.
     - family: Noto Serif JP
       source: file
