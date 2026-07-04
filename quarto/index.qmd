@@ -4,6 +4,10 @@
 <style>#title-block-header{ display: none; }</style>
 ```
 
+```{=typst}
+#block(below: 0.6em, text(font: "Raleway", weight: 800, size: 34pt, fill: rgb("#27272A"))[AI-dō])
+```
+
 ::: {.epigraph}
 *The Way of AI, grounded in practice (道)*
 

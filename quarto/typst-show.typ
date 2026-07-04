@@ -2,6 +2,23 @@
 
 #set document(title: "AI-dō", author: "Chris Tham")
 
+// Restore the Table of Contents heading. heading-style: 99 blanks orange-book's
+// level-1 heading rendering, which also suppresses Typst's auto outline title
+// (and its page-break would orphan a prepended title). So we drop the auto title
+// entirely and render our own "Contents", only for the main ToC: the mini page
+// outlines use depth 2 and the figure/table lists target figures, so keying on
+// the main outline depth (outline-depth = toc-depth = 3) isolates it. Defined
+// before `#show: book` so it is active when the outline is rendered.
+#set outline(title: none)
+#show outline: it => {
+  if it.depth == 3 {
+    pagebreak(to: "odd")
+    block(text(font: "Raleway", weight: 800, size: 24pt, fill: rgb("#27272A"))[Contents])
+    v(0.5em)
+  }
+  it
+}
+
 // Custom cover + page size for the PDF.
 // - cover: our designed cover.png, full-bleed (6:9 image on a 6x9 page, no distortion).
 // - cover-background transparent + no title/subtitle/author passed, so orange-book's
