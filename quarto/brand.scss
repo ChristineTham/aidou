@@ -131,6 +131,23 @@ figure img, .mermaid svg, .mermaid-js svg { max-width: 100%; height: auto; }
 }
 .byline a:hover { color: $r-purple; border-bottom-color: $r-purple; }
 
+// ---- Landing epigraph (teaser) --------------------------------------------
+.epigraph {
+  margin: 0.6rem 0 2rem;
+  padding: 1.3rem 1.6rem;
+  border-left: 3px solid $r-blossom;
+  background: rgba($r-blossom, .12);
+  border-radius: 0 10px 10px 0;
+}
+.epigraph > p { margin-bottom: 0.6rem; }
+.epigraph > p:last-child { margin-bottom: 0; }
+.epigraph > p:first-child {
+  font-family: "Raleway", "Noto Sans JP", sans-serif;
+  font-size: 1.3rem; font-weight: 600; color: $r-purple;
+  margin-top: 0;
+}
+.epigraph strong { color: $r-rose; font-weight: 700; }
+
 // ---- Landing download buttons ---------------------------------------------
 .dl-buttons { display: flex; gap: 0.75rem; flex-wrap: wrap; margin: 1.6rem 0; }
 .dl-buttons a.btn-dl {

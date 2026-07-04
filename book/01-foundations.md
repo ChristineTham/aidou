@@ -214,16 +214,11 @@ So frame each task as a goal, the context it needs, and a check; then iterate. B
 
 ## 1.7 Principles to Carry Forward
 
-The practice that fills the rest of this book rests on a stance, worth stating plainly before the principles that follow. The name fuses **AI** with two Japanese ideas, and each pulls in a direction worth understanding.
+The practice that fills the rest of this book rests on a stance, worth stating plainly before the principles that follow. The name in the title carries it in miniature, and each half pulls in a direction worth understanding.
 
-> [!NOTE]
-> **愛 (ai)** — *love*: not sentiment, but care for the people the work touches. **道 (dō)** — *the way*: a craft practised and refined over time, the suffix in jūdō, kendō, and aikidō. **AI-dō** is "the way of AI guided by love": using these tools deliberately, in service of human outcomes.
+The care half, the 愛, is not vague. Care ethics names concrete duties — attentiveness, responsibility, competence, responsiveness — and they translate into accountability for what the machine produces (["Ethics of care," n.d.](https://en.wikipedia.org/wiki/Ethics_of_care)).
 
-The care half is not vague. Care ethics names concrete duties — attentiveness, responsibility, competence, responsiveness — and they translate into accountability for what the machine produces (["Ethics of care," n.d.](https://en.wikipedia.org/wiki/Ethics_of_care)).
-
-The second character is important. A discipline ending in 道 is never finished; it is practised. AI-dō treats AI the same way: a discipline to refine, not a trick to copy. It descends from the intelligence-augmentation tradition, which sees machines as complements to human judgement, not substitutes (["Intelligence amplification," n.d.](https://en.wikipedia.org/wiki/Intelligence_amplification)).
-
-Say the name aloud, too: *AI-dō* rhymes with Play-Doh, and the pun is worth keeping. Clay is the opposite of a carved statue. You press it into shape, look, and press again; nothing you make is precious, and anything can be remade. Working with a model has the same feel — you shape it with your intent one push at a time, and when a shape comes out wrong you squash it and re-roll rather than fight to repair it. Held loosely, like clay, the tool is forgiving; gripped too hard, it only frustrates. The rest of the book turns that instinct into habits — one clear ask at a time, and stopping a drifting run to re-form it — but it is already there in the name.
+The other half, the 道, matters as much. A discipline ending in 道 is never finished; it is practised. AI-dō treats AI the same way: a discipline to refine, not a trick to copy. It descends from the intelligence-augmentation tradition, which sees machines as complements to human judgement, not substitutes (["Intelligence amplification," n.d.](https://en.wikipedia.org/wiki/Intelligence_amplification)).
 
 My reason is pragmatic, not romantic: tools commoditise, and so, in time, do methods. A prompt is one model release from obsolete; a clever technique lasts a little longer, then it too is overtaken. What endures is the stance beneath them — how you frame a problem, gather context, and verify a result. So this book is less a kit of methods than a philosophy of working with AI, one that outlives any particular trick or tool. Learn the philosophy, and the methods become yours to invent.
 

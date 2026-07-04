@@ -4,24 +4,23 @@
 <style>#title-block-header{ display: none; }</style>
 ```
 
+::: {.epigraph}
+*The Way of AI, grounded in practice (道)*
+
+**愛 (ai)** — love: care for the people the work touches.
+**道 (dō)** — the way: a craft refined over a lifetime.
+
+*AI-dō* joins the two — the way of AI guided by love. Say it aloud and it rhymes with *Play-Doh*, and that is the right instinct: hold the tool loosely, like clay, shaping and reshaping one push at a time. Read it as a path, not a manual.
+:::
+
 ::::: {.content-visible when-format="html"}
 :::: {.content-hidden when-format="epub"}
-
-**The Way of AI, grounded in practice (道).**
 
 ::: {.byline}
 by [Chris Tham](https://christham.net)
 :::
 
-Anyone can open a chat window and get a fluent answer in seconds. Far fewer can
-turn that fluency into work worth standing behind. We all draw on the same
-frontier models, so the model was never the edge — **method is**. *AI-dō* is that
-method: a structured, human-centred way of working with AI, earned task by task
-and checked at every step.
-
-It's a short, personal read — a candid, first-hand account of learning to get
-dependable, worthwhile work from AI, with every claim grounded in a primary
-source. It's meant to be read online — and it's yours to download too:
+It's a short, personal read — meant to be read online, and yours to download too:
 
 ::: {.dl-buttons}
 [Read Online](preface.qmd){.btn-dl .primary}
@@ -36,24 +35,7 @@ to responsibility, and finally to mastery.
 ::::
 :::::
 
-::: {.content-visible unless-format="html"}
-*The Way of AI, grounded in practice (道)*
-
-**愛 (ai)** — love: care for the people the work touches.
-**道 (dō)** — the way: a craft refined over a lifetime.
-
-*AI-dō* joins the two: human care and a practised craft. Read it as a path, not
-a manual — the methods will change; the way of holding the work does not.
-:::
-
 ::: {.content-visible when-format="epub"}
-*The Way of AI, grounded in practice (道)*
-
-**愛 (ai)** — love: care for the people the work touches.
-**道 (dō)** — the way: a craft refined over a lifetime.
-
-*AI-dō* joins the two: human care and a practised craft. Read it as a path, not
-a manual — the methods will change; the way of holding the work does not.
 
 ------------------------------------------------------------------------
 

@@ -6,13 +6,6 @@ Working with artificial intelligence has become strangely easy to do and strange
 
 Notice that the gap is not one of access. We all draw from the same handful of frontier models, so the model cannot be what separates good work from poor. What separates them is method — the practised habits by which a skilled person turns a capable tool toward a dependable result, the way a chef and a novice handed the same kitchen produce very different dinners. This book is about that method: a structured way of working with AI, grounded in human intent and refined through repetition.
 
-The name of the book deserves a few words of explanation, because it carries the whole argument in miniature. It joins **AI** with two Japanese ideas. The first is **愛 (ai)**, love — the human care that should sit at the centre of the work. The second is **道 (dō)**, the way — a path of patient, lifelong improvement, the same character that ends jūdō and kendō.
-
-Read together, AI-dō is the way of AI guided by love: it puts human outcomes ahead of technical novelty, uses the machine to augment thinking rather than replace it, and builds ways of working that are effective, transparent, and responsible. Keep that stance in mind, because every chapter is, in the end, a defence of it.
-
-> [!TIP]
-> **愛 (ai)** — love, the human care at the centre of the work. **道 (dō)** — the way, a path of lifelong refinement. Augmentation, not replacement; method over hacks.
-
 ## Why now
 
 Why write this in 2026 rather than two years earlier or later? Because the ground has shifted, and shifted in a way that rewards method over tooling. Adoption is broad but mostly shallow: most organisations have AI somewhere in the building, yet few have woven it into how they truly work, and fewer still can point to value won rather than effort spent.
