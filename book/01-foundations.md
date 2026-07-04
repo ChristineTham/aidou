@@ -216,11 +216,7 @@ So frame each task as a goal, the context it needs, and a check; then iterate. B
 
 The practice that fills the rest of this book rests on a stance, worth stating plainly before the principles that follow. The name in the title carries it in miniature, and each half pulls in a direction worth understanding.
 
-The care half, the 愛, is not vague. Care ethics names concrete duties — attentiveness, responsibility, competence, responsiveness — and they translate into accountability for what the machine produces (["Ethics of care," n.d.](https://en.wikipedia.org/wiki/Ethics_of_care)).
-
-The other half, the 道, matters as much. A discipline ending in 道 is never finished; it is practised. AI-dō treats AI the same way: a discipline to refine, not a trick to copy. It descends from the intelligence-augmentation tradition, which sees machines as complements to human judgement, not substitutes (["Intelligence amplification," n.d.](https://en.wikipedia.org/wiki/Intelligence_amplification)).
-
-My reason is pragmatic, not romantic: tools commoditise, and so, in time, do methods. A prompt is one model release from obsolete; a clever technique lasts a little longer, then it too is overtaken. What endures is the stance beneath them — how you frame a problem, gather context, and verify a result. So this book is less a kit of methods than a philosophy of working with AI, one that outlives any particular trick or tool. Learn the philosophy, and the methods become yours to invent.
+My reason is pragmatic: tools commoditise, and so, in time, do methods. A prompt is one model release from obsolete; a clever technique lasts a little longer, then it too is overtaken. What endures is the stance beneath them — how you frame a problem, gather context, and verify a result. So this book is less a kit of methods than a philosophy of working with AI, one that outlives any particular trick or tool. Learn the philosophy, and the methods become yours to invent.
 
 The chapter rests on a handful of claims worth carrying into everything that follows.
 
@@ -255,8 +251,6 @@ Cursor (company). (n.d.). In *Wikipedia*. [https://en.wikipedia.org/wiki/Cursor_
 
 Deep learning. (n.d.). In *Wikipedia*. [https://en.wikipedia.org/wiki/Deep_learning](https://en.wikipedia.org/wiki/Deep_learning)
 
-Ethics of care. (n.d.). In *Wikipedia*. [https://en.wikipedia.org/wiki/Ethics_of_care](https://en.wikipedia.org/wiki/Ethics_of_care)
-
 GitHub. (2021). *Introducing GitHub Copilot: AI pair programmer*. GitHub Blog. [https://github.blog/2021-06-29-introducing-github-copilot-ai-pair-programmer/](https://github.blog/2021-06-29-introducing-github-copilot-ai-pair-programmer/)
 
 GitHub. (2023). *GitHub Copilot November 30th update*. GitHub Blog. [https://github.blog/changelog/2023-11-30-github-copilot-november-30th-update/](https://github.blog/changelog/2023-11-30-github-copilot-november-30th-update/)
@@ -278,8 +272,6 @@ History of artificial intelligence. (n.d.). In *Wikipedia*. [https://en.wikipedi
 Hsieh, C.-Y., Chuang, Y.-S., Li, C.-L., Wang, Z., Le, L. T., Kumar, A., Glass, J., Ratner, A., Lee, C.-Y., Krishna, R., & Pfister, T. (2024). *Found in the middle: Calibrating positional attention bias improves long context utilization*. Findings of the Association for Computational Linguistics: ACL 2024. [https://arxiv.org/abs/2406.16008](https://arxiv.org/abs/2406.16008)
 
 Huang, L., Yu, W., Ma, W., Zhong, W., Feng, Z., Wang, H., Chen, Q., Peng, W., Feng, X., Qin, B., & Liu, T. (2024). *A survey on hallucination in large language models: Principles, taxonomy, challenges, and open questions*. ACM Transactions on Information Systems. [https://arxiv.org/abs/2311.05232](https://arxiv.org/abs/2311.05232)
-
-Intelligence amplification. (n.d.). In *Wikipedia*. [https://en.wikipedia.org/wiki/Intelligence_amplification](https://en.wikipedia.org/wiki/Intelligence_amplification)
 
 Johnson Spink, D. (2026). *The AI jester: How AI makes you confident and wrong*. LinkedIn. [https://www.linkedin.com/pulse/ai-jester-how-makes-you-confident-wrong-johnson-spink-gg3df/](https://www.linkedin.com/pulse/ai-jester-how-makes-you-confident-wrong-johnson-spink-gg3df/)
 
