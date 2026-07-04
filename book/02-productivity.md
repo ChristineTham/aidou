@@ -1,10 +1,10 @@
 # Chapter 2 — Personal Productivity (愛 in practice)
 
-My first prompt to ChatGPT, in early 2024, was a small disaster. I asked it to summarise an academic paper, and almost nothing went smoothly. The model could not read a PDF, so I had to convert the file to text and paste it in by hand. The paper then proved too long for the model to hold at once, so I chopped it into sections and fed them in one at a time. When I finally had a summary, it underwhelmed me: fluent enough, but it missed the paper's central argument and skipped several points that mattered.
+My first prompt to ChatGPT, in early 2024, did not turned out the way I expected. I asked it to summarise an academic paper, and almost nothing went smoothly. The model could not read a PDF, so I had to convert the file to text and paste it in by hand. The paper then proved too long for the model to hold at once, so I chopped it into sections and fed them in one at a time. When I finally had a summary, it underwhelmed me: the summary missed the paper's central argument and skipped several points that mattered.
 
-Today that friction is mostly gone, and summarisation is the task everyone reaches for first — meeting transcripts, long email threads, YouTube videos. Yet my original complaint has not entirely aged away. On dense, tightly argued material like an academic paper, a one-shot summary still tends to flatten the argument and lose the very points that make it worth reading. Holding on to that doubt is useful, because closing it is a thread that runs through this whole chapter.
+Today AI summarisation can be very good and is commonly used for meeting transcripts, long email threads, YouTube videos, etc. However, on dense, tightly argued material like an academic paper, an AI summary can still get it hilariously wrong. Holding on to that doubt is useful, because closing it is a thread that runs through this whole chapter.
 
-Chapter 1 set the stance; this is where it touches the desk. Productivity is the most personal use of AI, and the easiest to do superficially. The aim is to move from chatting to delegating, put the gains where they actually are, and build a system that compounds rather than resets every morning.
+Chapter 1 sets the scene; this is where it touches the desk. Productivity is the most personal use of AI, and the easiest to do superficially. The aim is a system that moves from chatting to producing, generating useful outputs, and improving rather than resetting every morning.
 
 ## 2.1 From a Prompt to a Teammate
 
@@ -14,11 +14,11 @@ How will I use AI to summarise a document today? I would probably do something l
 >
 >The summary should be in the style of a Cliff Notes or study guide. It uses tables, bullet points and diagrams where possible, makes use of GFM alerts to call out asides, definitions, or notes.
 
-The summary prompt above is a single shot: you fire it, read the result, and judge it yourself. That is the right place to start, but it leaves three things on the table — the prompt is not reusable, it does not check its own work, and only you can run it. Closing those three gaps is the whole journey from prompting to agents, and our humble summary makes a good worked example.
+The above may seem complex, but it is a single prompt: you send it with the text to be summarised, read the result, and it may produce a better summary than a simple prompt. This is a good start, but you have to type it in every time. And you have to check the results every time as the response can still be wrong. Finally, you are the only person who knows that prompt, others will use different variations. Addressing those issues is the whole journey from prompting to agents, so let's explore ways of improving our method.
 
 ### 2.1.1 Step one: save the prompt as a skill
 
-The first upgrade is to stop retyping. Package the prompt as a *skill* — at its simplest, a folder with a `SKILL.md` file: a short name and description so the agent knows when to reach for it, followed by the instructions themselves ([Anthropic, *Equipping agents for the real world with Agent Skills*, 2025c](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills)). Anthropic likens a skill to an onboarding guide for a new hire: written once, it turns a general agent into one that knows your house style for summaries.
+The first improvement is to stop retyping. Package the prompt as a *skill* — at its simplest, a folder with a `SKILL.md` file: a short name and description so the agent knows when to reach for it, followed by the instructions themselves ([Anthropic, *Equipping agents for the real world with Agent Skills*, 2025c](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills)). Anthropic likens a skill to an onboarding guide for a new hire: written once, it turns a general agent into one that knows your house style for summaries.
 
 > [!NOTE]
 > A **skill** is a directory containing a `SKILL.md` file — YAML metadata (a `name` and a `description`) plus the instructions, and optionally bundled reference files and scripts the agent loads only when it needs them. Published as an open standard in late 2025, the same skill works across Claude, Claude Code, and other agents ([Agent Skills, *Agent Skills*, n.d.](https://agentskills.io/)).
@@ -29,9 +29,9 @@ name: study-guide-summary
 description: Summarise a document as a Cliff Notes study guide, preserving its structure.
 ---
 
-Summarise the document the user provides. Preserve its chapters, headings, and
-subheadings; cover every major point. Use tables, bullet lists, and GFM alerts
-for asides and definitions. Flag anything the source leaves unclear.
+>Summarise a document for the user. It should capture the original structure of the document, preserving chapters, headings and subheadings. The summary should be detailed, concise and covers all the major points and topics in the original document.
+>
+>The summary should be in the style of a Cliff Notes or study guide. It uses tables, bullet points and diagrams where possible, makes use of GFM alerts to call out asides, definitions, or notes.
 ```
 
 Now the expertise lives in a file, not in your head, and anyone — or any agent — can apply it the same way every time.
@@ -48,6 +48,21 @@ flowchart TB
     E -- none, or round limit --> Out[Final summary]
 ```
 
+Depending on the agent platform you are using, the specific way you will construct a loop may be slightly different. Here is a naive approach (that will actually work with some agent platforms)
+
+```markdown
+---
+name: loop-summary
+description: Summarise a document and loop until the summary is correct.
+---
+
+>Create a subagent that summarises a document for the user. It should capture the original structure of the document, preserving chapters, headings and subheadings. The summary should be detailed, concise and covers all the major points and topics in the original document. The summary should be in the style of a Cliff Notes or study guide. It uses tables, bullet points and diagrams where possible, makes use of GFM alerts to call out asides, definitions, or notes.
+>
+>When the subagent has finished create another subagent to compare the summary against the original document. Identify gaps, issues and inconsistencies. The subagent must fix all problems and return an updated summary.
+>
+>Keep running the second subagent until there are no more problems. Output the final summary.
+```
+
 This is the loop you wanted — keep reviewing the summary against the document, find the gaps, and iterate until there are none. Whether it counts as a *workflow* or a true *agent* is a useful distinction: if the steps are fixed in code it is a workflow; if the model itself decides what to re-check, whether to re-read a section, and when it is done, it is an agent — an LLM using tools in a loop until a stopping condition is met ([Anthropic, 2024a](https://www.anthropic.com/research/building-effective-agents)). Either way the stopping condition matters: without a cap on rounds, a perfectionist evaluator can loop forever and run up the bill.
 
 ### 2.1.3 Step three: share it through MCP
@@ -56,6 +71,10 @@ The loop is still yours alone. To let other agents use it, wrap it as a *Model C
 
 > [!NOTE]
 > The **Model Context Protocol (MCP)** is an open standard for connecting AI applications to outside systems — data sources, tools, and workflows — through one common interface, so a capability built once works across many agents and clients ([Model Context Protocol, n.d.](https://modelcontextprotocol.io/introduction)).
+
+In some agent platforms, creating an MCP server can be as simple as a single prompt:
+
+> Create an MCP server for the loop-summary skill.
 
 The arc is the whole book in miniature: a prompt becomes a skill, the skill becomes a self-correcting loop, and the loop becomes a shared capability other agents can stand on. This is the Unix Rule of Composition — programs built to connect to other programs — on a new substrate ([Raymond, *The art of Unix programming*, 2003](http://www.catb.org/esr/writings/taoup/)). Each step trades a little setup for leverage that compounds — and at every step the human still owns the one thing the loop cannot supply: the judgement of whether the summary was worth making. Do this often enough and it stops being a trick you pull for one document; it becomes the way you work.
 
