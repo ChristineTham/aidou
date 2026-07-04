@@ -125,6 +125,19 @@ code:not(pre code) { color: $r-purple; background: rgba($r-blossom, .35); paddin
 figure, .quarto-figure { text-align: center; }
 figure img, .mermaid svg, .mermaid-js svg { max-width: 100%; height: auto; }
 
+// ---- Chapter opener banner -------------------------------------------------
+// Full-width decorative banner (kanji + seigaiha sea) under each chapter title.
+img.chapter-banner {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0.4rem 0 2.2rem;
+  border-radius: 10px;
+}
+// Drop the figure chrome (centering/margins) around the banner.
+figure:has(> img.chapter-banner),
+p:has(> img.chapter-banner) { margin: 0; text-align: initial; }
+
 // ---- Landing byline --------------------------------------------------------
 .byline {
   font-family: "Raleway", "Noto Sans JP", sans-serif;
@@ -139,12 +152,18 @@ figure img, .mermaid svg, .mermaid-js svg { max-width: 100%; height: auto; }
 
 // ---- Landing epigraph (teaser) --------------------------------------------
 .epigraph {
+  // Establish a block-formatting context so the tinted box sits *beside* the
+  // floated cover image rather than sliding under it — leaving white space in
+  // the gap between the box and the cover.
+  display: flow-root;
   margin: 0.6rem 0 2rem;
   padding: 1.3rem 1.6rem;
   border-left: 3px solid $r-blossom;
   background: rgba($r-blossom, .12);
   border-radius: 0 10px 10px 0;
 }
+// A little more breathing room between the cover and the epigraph/text.
+.quarto-cover-image { margin-left: 2rem; margin-bottom: 1rem; }
 .epigraph > p { margin-bottom: 0.6rem; }
 .epigraph > p:last-child { margin-bottom: 0; }
 .epigraph > p:first-child {

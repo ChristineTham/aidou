@@ -38,6 +38,29 @@ ALERT = {"NOTE": "note", "TIP": "tip", "IMPORTANT": "important",
          "WARNING": "warning", "CAUTION": "caution"}
 CHAPTER_PREFIX = re.compile(r"^Chapter\s+\d+\s*[—–-]\s*")
 
+# Thin decorative chapter banner (a seigaiha wave ribbon with the chapter's
+# kanji medallion), placed under the chapter title. PNG (not SVG) so it renders
+# reliably across HTML + Typst PDF + ePub. The kanji is used for the alt text.
+BANNER_KANJI = {
+    "foundations": "基", "productivity": "愛", "software-development": "創",
+    "engineering-disciplines": "匠", "governance": "責", "mastery": "道",
+}
+
+
+def banner_markdown(slug):
+    """A full-width, caption-less banner image for `slug`, or "" if none.
+
+    Chapters get their kanji-medallion tide; the preface gets the plain
+    (no-kanji) front-matter tide."""
+    if slug in BANNER_KANJI:
+        alt = (f"Decorative chapter banner: the kanji {BANNER_KANJI[slug]} on a "
+               "medallion over a seigaiha wave pattern")
+        return f'![](chapter-art/{slug}.png){{.chapter-banner fig-alt="{alt}"}}\n\n'
+    if slug == "preface":
+        alt = "Decorative banner: a seigaiha wave pattern"
+        return f'![](chapter-art/frontmatter.png){{.chapter-banner fig-alt="{alt}"}}\n\n'
+    return ""
+
 
 def convert_alerts(lines):
     out, i = [], 0
@@ -98,7 +121,7 @@ def build(book_dir, out_dir):
         else:
             head = "# " + title + " {.unnumbered}\n\n"
         with open(os.path.join(out_dir, slug + ".qmd"), "w", encoding="utf-8") as f:
-            f.write(head + text + "\n")
+            f.write(head + banner_markdown(slug) + text + "\n")
         print(f"{src} -> {os.path.join(out_dir, slug + '.qmd')}")
 
 
