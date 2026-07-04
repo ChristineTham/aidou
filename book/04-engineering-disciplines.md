@@ -1,42 +1,52 @@
-# Chapter 4 — Engineering Disciplines (the climb)
+# Chapter 4 — Human and Agent Disciplines (the climb)
 
-Every craft has a moment where you stop doing the work and start designing how the work gets done. A cook becomes a head chef; a coder becomes an architect. With AI, that moment arrives fast. The previous chapter described what good AI software looks like; this one is about the disciplines that produce it.
-
-They form a ladder — crafts, context, harness, loops, orchestration, substrate — and the theme is constant: as models improve, your job climbs from writing prompts to designing the systems that run them.
+Chapter 2 was about a *single* agent — the prompt, context, and loop engineering that make one dependable. Real work is bigger than one agent and one person: it is a human directing many agents, and agents working alongside each other. That raises three sets of disciplines, and this chapter is built around them — what the **human** must bring, what the **agent** system must provide, and what the **two together** require. The theme from here inverts the usual worry: as the agents get better, the human disciplines matter *more*, not less.
 
 ```mermaid
-flowchart BT
-    A["Crafts — intent, spec, context, prompt"] --> B[Context engineering]
-    B --> C["Harness — tools, retries, sandbox"]
-    C --> D["Loopcraft — self-correcting cycles"]
-    D --> E["Orchestration — agents coordinating agents"]
-    E --> F["Substrate — memory, identity, governance"]
-    classDef low fill:#eef,stroke:#88a
-    classDef high fill:#efe,stroke:#3a3
-    class A,B low
-    class E,F high
+flowchart LR
+    subgraph HUM [Human disciplines]
+      direction TB
+      H1[Intent & spec]
+      H2[Judgment & taste]
+      H3[Accountability]
+    end
+    subgraph BOTH [Human + agent disciplines]
+      direction TB
+      T1[Division of labour]
+      T2[Delegation & review]
+      T3[Presence & calibration]
+    end
+    subgraph AG [Agent disciplines]
+      direction TB
+      A1[Harness engineering]
+      A2[Orchestration]
+      A3[Substrate & memory]
+    end
+    HUM --- BOTH
+    BOTH --- AG
 ```
 
-## 4.1 The Four Crafts
+## 4.1 Human Disciplines
 
-Prompting has not vanished; it has split into four skills — intent, spec, context, and prompt — and the useful question is who owns each ([Ahuja, *Spec-driven development isn’t broken. It will collapse*, 2026d](https://howtoarchitect.io/c00609f72496?sk=2da01d7d2abfb5bc0acaed7050a0e797)).
+However capable the agents become, some work stays with the human — and it is the work that decides whether everything else is worth anything. These are the disciplines a model cannot take from you.
 
-| Craft | Owner | What it produces |
-| --- | --- | --- |
-| Intent | Human | The goal, constraints, failure conditions |
-| Spec / expectations | Human | The evaluable definition of done |
-| Context | Harness | The tokens the model sees at each step |
-| Prompt | Harness | The reusable interaction patterns (plays) |
+### 4.1.1 Intent and Specification
 
-Clear ownership is what stops drift, and it has a sharp security edge. Compartment the evaluations so the builder cannot see the tests it will be judged on. Otherwise it optimises for the checks instead of the outcome — the reward-hacking failure that a systematic survey of RLHF traces to optimising any imperfect proxy hard enough ([Casper et al., *Open problems and fundamental limitations of reinforcement learning from human feedback*, 2023](https://arxiv.org/abs/2307.15217)). The harder discipline is presence. It is tempting to step out and sign off only at the end, but a drifted result is worse than no result because it lies with confidence ([Ahuja, 2026d](https://howtoarchitect.io/c00609f72496?sk=2da01d7d2abfb5bc0acaed7050a0e797)); staying in the loop while the work runs beats approving it at the final gate ([Ahuja, *The method that replaces spec-driven development — IDSD*, 2026b](https://howtoarchitect.io/66e921f6cdf7?sk=2ae7d323c6b780291bfc760ff2bdc592)). Presence is also calibration, not just supervision: when people receive real-time, ground-truth feedback as an agent works, their own confidence stops drifting to match the model's — the one intervention shown to break that pull ([J. Li et al., *As confidence aligns: Effect of AI confidence on human self-confidence in human–AI decision making*, 2025](https://arxiv.org/abs/2501.12868)).
+The first is knowing what you actually want and making it checkable. *Intent* is the goal, its constraints, and the conditions under which a result would count as a failure; a *specification* turns that into a definition of done that something can be judged against ([Ahuja, *Spec-driven development isn’t broken. It will collapse*, 2026d](https://howtoarchitect.io/c00609f72496?sk=2da01d7d2abfb5bc0acaed7050a0e797)). Agents are literal and fast, so a vague intent is not quietly softened — it is amplified into a confident wrong answer. The discipline is to spend your effort at the top, where a sentence of clarity saves an hour of correction.
 
-## 4.2 Context Engineering
+### 4.1.2 Judgment and Taste
 
-Anthropic calls context engineering the successor to prompt engineering: less about finding the right words, more about curating the tokens an agent sees at each step ([Anthropic, *Effective context engineering for AI agents*, 2025b](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)). It matters because attention is finite. Chroma's "context rot" study of 18 models shows recall decays as the window fills, and the reassuring needle-in-a-haystack test only measures lexical lookup; once a needle needs a semantic inference, accuracy falls further with length — every token spends an attention budget, a cost of the transformer's n² scaling ([Chroma, *Context rot: How increasing input tokens impacts LLM performance*, 2025](https://research.trychroma.com/context-rot)). Context is a scarce resource, not a dumping ground; aim for the smallest set of high-signal tokens that does the job.
+An agent can generate a dozen options; only a human can say which is good, and why. As raw generation becomes nearly free, judgment — knowing what "good" looks like in your domain and holding out for it — becomes the scarce, differentiating skill. Quality has no external oracle: no benchmark will tell you the summary missed the point, the design will not age well, or the tone is wrong for this reader. Taste is the compressed experience that lets you see it, and it is built the slow way — by doing the work often enough to recognise when the machine has drifted.
 
-That yields concrete techniques. Compaction summarises a near-full conversation and reopens a fresh window with the essentials. Note-taking lets an agent keep a NOTES.md and read it back after a reset. Sub-agents explore on clean contexts and return distilled summaries. Just-in-time retrieval keeps lightweight references — file paths, queries — and loads detail only when needed, so naming and folders become signal. Structure can be injected too: inline call/inheritance tags give a grep-first agent +2.2pp localisation, shorter trajectories, and roughly half the variance — helping less by making agents smarter than by making navigation reproducible ([Lin et al., *How much static structure do code agents need? Deterministic anchoring*, 2026](https://arxiv.org/abs/2606.26979)). The recurring waste is re-reading the whole store every turn; the discipline is to feed context progressively.
+### 4.1.3 Accountability
 
-## 4.3 Harness Engineering
+An agent has no agency in the moral sense: a computer cannot be blamed, sued, or fired, so responsibility does not transfer with the task. Whatever an agent ships, *you* shipped. That is a design constraint, not a disclaimer — it means staying close enough to answer for the result, keeping a record of what was decided and why, and never delegating the part you cannot afford to get wrong. Accountability is the discipline that turns "the AI did it" back into "I did it, with help." Chapter 5 makes this a duty with teeth.
+
+## 4.2 Agent Disciplines
+
+The second set is the engineering of the agents themselves — the system around the model that turns a text predictor into something that acts reliably, and lets one agent become many.
+
+### 4.2.1 Harness Engineering
 
 A harness is the runtime around the model: tool use, planning, retries, and sandboxes (isolated environments where generated code can run without touching the real system). The reliable design is to let the program own control flow — the order in which steps run and branch — and call the model only for judgement, so that runaway token use and erratic stopping stop being mysteries and become engineering ([Qi et al., *LLM-as-code: Agentic programming for agent harness*, 2026](https://arxiv.org/abs/2606.15874)). Decomposing tasks at runtime, so only the failed step reruns rather than the whole pipeline, cuts retry cost by half or more in measured workloads ([Asthana et al., *Runtime-structured task decomposition for agentic coding systems*, 2026](https://arxiv.org/abs/2605.15425)). The fragile alternative is handing all the looping and branching to a probabilistic system and hoping a better prompt rescues it.
 
@@ -53,15 +63,11 @@ flowchart TB
     end
 ```
 
-## 4.4 Loopcraft
+### 4.2.2 Orchestration
 
-The craft of the moment is stacking self-correcting cycles and watching their trajectories, since non-deterministic loops break ordinary unit tests and leverage comes from loops, not prompts. The practitioners are blunt about it — Steinberger says design the loops that prompt your agents; Cherny says he writes loops, not prompts; Karpathy says arrange things so they run autonomously and hit go ([Latent Space, *Loopcraft: The art of stacking*, 2026b](https://www.latent.space/p/ainews-loopcraft-the-art-of-stacking)). The skill is knowing when to drop a loop for reliability and when to climb one for leverage. The trap is fixing things by hand as you always have, instead of building systems that scale with more agents.
+Above a single harness sit harnesses that orchestrate other harnesses — coordinating agents, selecting models, and enforcing governance. Leverage now scales with the number of agents rather than your own speed, which makes standard primitives for identity, memory, and orchestration worth real investment. The danger is multi-agent sprawl with no shared identity and no audit trail, where the leverage you bought turns into liability you did not.
 
-## 4.5 Meta-Harnesses & Orchestration
-
-Above the harness sit harnesses that orchestrate other harnesses — coordinating agents, selecting models, enforcing governance. Leverage now scales with agents rather than your own speed, which makes standard primitives for identity, memory, and orchestration worth real investment. The danger is multi-agent sprawl with no shared identity and no audit trail, where the leverage you bought turns into liability you did not.
-
-## 4.6 The Substrate Stack & Memory
+### 4.2.3 The Substrate Stack and Memory
 
 It helps to locate yourself on a ladder of maturity, where each rung is a genuine technological bet rather than a slogan ([Ahuja, 2026d](https://howtoarchitect.io/c00609f72496?sk=2da01d7d2abfb5bc0acaed7050a0e797)):
 
@@ -75,24 +81,88 @@ It helps to locate yourself on a ladder of maturity, where each rung is a genuin
 
 Memory is the prerequisite for the upper rungs, because continuity needs an empirical record to reason over, and most teams are honestly nearer the middle than they admit. Name your level before committing to the next; claiming a rung whose substrate you have not built is how certainty gets sold that no one has earned.
 
+## 4.3 Human + Agent Disciplines
+
+The third set is where the two meet: a person and a fleet of agents working as one system. This is the hardest to get right, because it is a relationship, not a component.
+
+### 4.3.1 Division of Labour
+
+Start by drawing the line clearly — the human owns the judgement, the harness owns the mechanics ([Ahuja, 2026d](https://howtoarchitect.io/c00609f72496?sk=2da01d7d2abfb5bc0acaed7050a0e797)):
+
+| Craft | Owner | What it produces |
+| --- | --- | --- |
+| Intent | Human | The goal, constraints, failure conditions |
+| Spec / expectations | Human | The evaluable definition of done |
+| Context | Harness | The tokens the model sees at each step |
+| Prompt | Harness | The reusable interaction patterns (plays) |
+
+Clear ownership stops drift, and it has a sharp security edge: compartment the evaluations so the builder cannot see the tests it will be judged on, or it optimises for the checks instead of the outcome — the reward-hacking failure a systematic survey of RLHF traces to optimising any imperfect proxy hard enough ([Casper et al., *Open problems and fundamental limitations of reinforcement learning from human feedback*, 2023](https://arxiv.org/abs/2307.15217)).
+
+### 4.3.2 Delegation and Review
+
+The move from doing the work to directing it is a real skill, and it is closer to management than to coding. Scope work tightly, hand it off, and judge the result rather than the keystrokes; leverage now scales with how many agents you can keep usefully busy, not with how fast you type. A manager's habits transfer better than an individual contributor's — clear briefs, checkable deliverables, and the sense of when to step in. Two rules keep it honest: review the output against the spec you wrote, not a vague feeling that it "looks fine"; and keep the reviews cheap, because small reversible steps beat one big irreversible drop.
+
+### 4.3.3 Presence and Calibration
+
+The temptation is to step out and sign off only at the end, but a drifted result is worse than no result because it lies with confidence ([Ahuja, 2026d](https://howtoarchitect.io/c00609f72496?sk=2da01d7d2abfb5bc0acaed7050a0e797)); staying in the loop while the work runs beats approving it at the final gate ([Ahuja, *The method that replaces spec-driven development — IDSD*, 2026b](https://howtoarchitect.io/66e921f6cdf7?sk=2ae7d323c6b780291bfc760ff2bdc592)). Presence means watching the *trajectory* rather than the keystrokes: a model can fix on the wrong approach early and pursue it well and fast, and a wrong run caught in its first minute costs a fraction of one found at the end. And presence is calibration, not only supervision: when people get real-time, ground-truth feedback as an agent works, their own confidence stops drifting to match the model's — the one intervention shown to break that pull ([J. Li et al., *As confidence aligns: Effect of AI confidence on human self-confidence in human–AI decision making*, 2025](https://arxiv.org/abs/2501.12868)).
+
+## 4.4 From Autocomplete to Agent Fleets
+
+These disciplines did not arrive as theory. They emerged as the coding tools themselves climbed, rung by rung — and each rung changed what you could safely hand off, moving the human from typing each line to directing a fleet.
+
+| Rung | Emblematic tools | What it did | Your role |
+| --- | --- | --- | --- |
+| Autocomplete | Tabnine (2018), GitHub Copilot (2021) | Finished the line, then drafted whole function bodies from a name or comment | Wrote the rest; accepted line by line |
+| Chat in the editor | Copilot Chat (2023) | Explained code, proposed refactors, diagnosed failures on request | Drove; asked and judged |
+| Agentic editor | Cursor (2023), aider | Searched the whole codebase, edited many files, ran commands from a plain-language ask | Reviewed the diff |
+| Terminal & async agent | Claude Code, Codex CLI, Gemini CLI (2025); Copilot coding agent | Planned, edited, ran tests, iterated; some opened a pull request from a cloud workspace | Set goals; reviewed results |
+| Agent fleets | Cursor 2.0, Google Antigravity (2025) | Ran several agents in parallel across a codebase | Supervised from above |
+
+Sources: ["Tabnine," n.d.](https://en.wikipedia.org/wiki/Tabnine); [GitHub, *Introducing GitHub Copilot: AI pair programmer*, 2021](https://github.blog/2021-06-29-introducing-github-copilot-ai-pair-programmer/); [GitHub, *GitHub Copilot November 30th update*, 2023](https://github.blog/changelog/2023-11-30-github-copilot-november-30th-update/); ["Cursor," n.d.](https://en.wikipedia.org/wiki/Cursor_(company)); [aider, *aider*, n.d.](https://aider.chat/); [Anthropic, *Claude Code*, 2025a](https://claude.com/product/claude-code); [GitHub, *GitHub Copilot: The agent awakens*, 2025b](https://github.blog/news-insights/product-news/github-copilot-the-agent-awakens/); [GitHub, *GitHub Copilot: Meet the new coding agent*, 2025a](https://github.blog/news-insights/product-news/github-copilot-meet-the-new-coding-agent/); ["Google Antigravity," n.d.](https://en.wikipedia.org/wiki/Google_Antigravity).
+
+By 2026 the editor itself is no longer the centre of gravity. With capable models available from every lab, the model became the commodity and the value moved into the system wrapped around it — what practitioners now call the *dev stack* ([Latent Space, *AINews*, 2026a](https://www.latent.space/s/ainews)).
+
+| Layer | What it does | Examples (2026) |
+| --- | --- | --- |
+| Model | Generates the code | GPT-5.6 Sol, Claude Opus 4.8, Gemini 3.5, GLM-5.2 |
+| Harness | Wraps the model into an agent: tools, retries, sandbox | Claude Code, Codex CLI, Gemini CLI, Cursor SDK |
+| Meta-harness | Coordinates several harnesses | Conductor, Zed ACP, Vercel Eve, Heypi |
+| Workflow / async | Fire-and-forget delegation in shared channels | Claude Tag (Slack), Copilot coding agent, Devin, Google Spark |
+| Memory | State kept outside the context window | agentmemory, codegraph, channel memory |
+| Eval | Automated judgement of quality | FrontierCode, Terminal-Bench 2.1, SWE-bench Pro |
+
+Each layer is a discipline this chapter has climbed — the harness that turns a model into an agent, the meta-harness that coordinates several, the memory that lets work persist, the eval that decides whether a result is good enough. The lesson the toolchain teaches is the one the whole book turns on: the model is the easy part; the craft is everything you build around it — and the judgement that stays with you.
+
 ## References
 
 Ahuja, K. V. (2026b). *The method that replaces spec-driven development — IDSD*. Activated Thinker (Medium). [https://howtoarchitect.io/66e921f6cdf7?sk=2ae7d323c6b780291bfc760ff2bdc592](https://howtoarchitect.io/66e921f6cdf7?sk=2ae7d323c6b780291bfc760ff2bdc592)
 
 Ahuja, K. V. (2026d). *Spec-driven development isn’t broken. It will collapse*. Activated Thinker (Medium). [https://howtoarchitect.io/c00609f72496?sk=2da01d7d2abfb5bc0acaed7050a0e797](https://howtoarchitect.io/c00609f72496?sk=2da01d7d2abfb5bc0acaed7050a0e797)
 
-Anthropic. (2025b). *Effective context engineering for AI agents*. [https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)
+aider. (n.d.). *aider*. [https://aider.chat/](https://aider.chat/)
+
+Anthropic. (2025a). *Claude Code*. [https://claude.com/product/claude-code](https://claude.com/product/claude-code)
 
 Asthana et al. (2026). *Runtime-structured task decomposition for agentic coding systems*. Proceedings of ACM CAIS ’26. [https://arxiv.org/abs/2605.15425](https://arxiv.org/abs/2605.15425)
 
 Casper, S., Davies, X., Shi, C., Gilbert, T. K., Scheurer, J., Rando, J., Freedman, R., Korbak, T., Lindner, D., et al. (2023). *Open problems and fundamental limitations of reinforcement learning from human feedback*. Transactions on Machine Learning Research. [https://arxiv.org/abs/2307.15217](https://arxiv.org/abs/2307.15217)
 
-Chroma. (2025). *Context rot: How increasing input tokens impacts LLM performance*. [https://research.trychroma.com/context-rot](https://research.trychroma.com/context-rot)
+Cursor (company). (n.d.). In *Wikipedia*. [https://en.wikipedia.org/wiki/Cursor_(company)](https://en.wikipedia.org/wiki/Cursor_(company))
 
-Latent Space. (2026b). *Loopcraft: The art of stacking*. [https://www.latent.space/p/ainews-loopcraft-the-art-of-stacking](https://www.latent.space/p/ainews-loopcraft-the-art-of-stacking)
+GitHub. (2021). *Introducing GitHub Copilot: AI pair programmer*. GitHub Blog. [https://github.blog/2021-06-29-introducing-github-copilot-ai-pair-programmer/](https://github.blog/2021-06-29-introducing-github-copilot-ai-pair-programmer/)
+
+GitHub. (2023). *GitHub Copilot November 30th update*. GitHub Blog. [https://github.blog/changelog/2023-11-30-github-copilot-november-30th-update/](https://github.blog/changelog/2023-11-30-github-copilot-november-30th-update/)
+
+GitHub. (2025a). *GitHub Copilot: Meet the new coding agent*. GitHub Blog. [https://github.blog/news-insights/product-news/github-copilot-meet-the-new-coding-agent/](https://github.blog/news-insights/product-news/github-copilot-meet-the-new-coding-agent/)
+
+GitHub. (2025b). *GitHub Copilot: The agent awakens*. GitHub Blog. [https://github.blog/news-insights/product-news/github-copilot-the-agent-awakens/](https://github.blog/news-insights/product-news/github-copilot-the-agent-awakens/)
+
+Google Antigravity. (n.d.). In *Wikipedia*. [https://en.wikipedia.org/wiki/Google_Antigravity](https://en.wikipedia.org/wiki/Google_Antigravity)
+
+Latent Space. (2026a). *AINews*. [https://www.latent.space/s/ainews](https://www.latent.space/s/ainews)
 
 Li, J., et al. (2025). *As confidence aligns: Effect of AI confidence on human self-confidence in human–AI decision making*. Proceedings of the 2025 CHI Conference on Human Factors in Computing Systems. [https://arxiv.org/abs/2501.12868](https://arxiv.org/abs/2501.12868)
 
-Lin, Zhou, Yang, & Li. (2026). *How much static structure do code agents need? Deterministic anchoring*. arXiv. [https://arxiv.org/abs/2606.26979](https://arxiv.org/abs/2606.26979)
-
 Qi et al. (2026). *LLM-as-code: Agentic programming for agent harness*. arXiv. [https://arxiv.org/abs/2606.15874](https://arxiv.org/abs/2606.15874)
+
+Tabnine. (n.d.). In *Wikipedia*. [https://en.wikipedia.org/wiki/Tabnine](https://en.wikipedia.org/wiki/Tabnine)
