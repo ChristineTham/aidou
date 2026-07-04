@@ -1,4 +1,5 @@
 #import "@preview/orange-book:0.7.1": book, part, chapter, appendices
+#import "_tokens.typ": *   // colour tokens generated from theme.yml
 
 #set document(title: "AI-dō", author: "Chris Tham")
 
@@ -13,7 +14,7 @@
 #show outline: it => {
   if it.depth == 3 {
     pagebreak(to: "odd")
-    block(text(font: "Raleway", weight: 800, size: 24pt, fill: rgb("#27272A"))[Contents])
+    block(text(font: "Raleway", weight: 800, size: 24pt, fill: c-velvet)[Contents])
     v(0.5em)
   }
   it

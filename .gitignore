@@ -6,9 +6,20 @@ quarto/site_libs/
 quarto/index.typ
 # generated per-doc figure dirs (Mermaid PNGs, etc.)
 quarto/*_files/
-# generated blurb partials (source: quarto/blurb.json)
+# generated landing partials (sources: book/blurb.md, book/epigraph.md)
 quarto/_blurb.md
 quarto/_blurb.typ
+quarto/_blurb.json
+quarto/_epigraph.md
+# art copied in from images/ at build time (source of truth: images/)
+quarto/cover.png
+quarto/chapter-art/
+# generated design tokens (source: theme.yml)
+quarto/_brand.yml
+quarto/_tokens.scss
+quarto/_tokens.css
+quarto/_tokens.typ
+quarto/_tokens.json
 
 # Generated chapter pages — produced from book/*.md by the pre-render hook.
 # index.qmd is hand-authored and kept; the rest are ephemeral.

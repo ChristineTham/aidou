@@ -47,7 +47,7 @@ book:
 
 format:
   html:
-    theme: brand.scss          # Rosely palette + Spectral come from _brand.yml
+    theme: [_tokens.scss, brand.scss]   # tokens (from theme.yml) + polish rules
     toc: true
     toc-depth: 3
     number-sections: true
@@ -71,7 +71,7 @@ format:
   epub:
     toc: true
     number-sections: true
-    css: epub.css
+    css: [_tokens.css, epub.css]   # :root tokens (from theme.yml) + ePub rules
     # The ePub description (reader-library blurb) and the visible back-cover
     # page are both set by the epub_backcover.py post-render step, from the
     # single source blurb.json.

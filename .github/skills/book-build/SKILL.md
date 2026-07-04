@@ -1,156 +1,178 @@
 ---
 name: book-build
-description: 'Build and publish the book from one Markdown source to a GitHub Pages website, a print-quality PDF, and a reflowable ePub, using Quarto. Covers regenerating the Quarto pages from book/*.md, local render/preview, Mermaid + GFM-alert + numbering handling, and the GitHub Actions deploy. Use when rendering, previewing, exporting, or deploying the book.'
-argument-hint: 'Say whether to render, preview, or deploy, and which formats.'
-user-invocable: true
+description: 'Build and publish the book from one Markdown source to a GitHub Pages website, a print-quality PDF, and a reflowable ePub, using Quarto. Covers where content/art/tokens live (book/, images/, theme.yml), regenerating the Quarto pages, local render/preview, Mermaid + GFM-alert + numbering handling, cover and chapter-art generation, and the GitHub Actions deploy. Use when rendering, previewing, exporting, deploying, or restyling the book.'
 ---
 
 # Build & publish the book
 
-The production pipeline is **Quarto**: one Markdown source (`book/*.md`) → an HTML
-site (GitHub Pages) + a **PDF** (Typst) + a reflowable **ePub**, with the site
-offering the PDF/ePub as downloads. The Quarto project lives in `quarto/`.
+The production pipeline is **Quarto**: one Markdown source → an HTML site (GitHub
+Pages) + a **PDF** (Typst) + a reflowable **ePub**, the site offering the PDF/ePub
+as downloads. The Quarto project lives in `quarto/` and holds **only the
+pipeline** — config, templates, `build.sh`, and fonts. All authored content,
+art, and design tokens live outside it:
 
-## Single source → three formats
+| Where | What (edit these) |
+| --- | --- |
+| `book/*.md` | the chapters (`00-preface` … `06-mastery`), plus `blurb.md` and `epigraph.md` |
+| `images/` | `cover.svg` / `cover.png`, and `chapter-art/` (banner SVGs + PNGs) |
+| `theme.yml` (repo root) | design tokens: palette, colour roles, type sizes, fonts, per-chapter accents |
 
-`book/*.md` stays canonical. A generator turns it into Quarto pages; nothing in
-`book/` is edited.
+Everything the build writes into `quarto/` is generated and **git-ignored**
+(the `*.qmd`, `_brand.yml`, `_tokens.*`, `_blurb.*`, `_epigraph.md`, `cover.png`,
+`chapter-art/`). The one hand-authored file kept in `quarto/` is `index.qmd`, the
+landing *template* (thin glue that `{{< include >}}`s the epigraph and blurb).
 
-- **`scripts/build_site.py`** — reads `book/*.md`, writes `quarto/*.qmd`:
-  lifts the `# ` heading to the page title; strips our manual `1.1` section
-  numbers so **Quarto numbers natively** (consistent across all formats, working
-  cross-refs); marks `## References` unnumbered; converts `> [!NOTE]` alerts to
-  native `::: {.callout-note}`; converts ```mermaid fences to executable
-  ```{mermaid} cells with `htmlLabels:false` (so the ePub gets clean vector SVG
-  and the PDF a clean PNG).
-- **`quarto/build.sh`** — convenience: runs the generator, then `quarto render`
-  (or `./build.sh preview`).
+## Build order
 
-The generated `quarto/*.qmd` are **gitignored** (ephemeral); `quarto/index.qmd`
-(the cover) is hand-authored and kept.
+`build.sh` (and CI) run these before `quarto render`, in this order:
+
+1. **`scripts/gen_theme.py`** — `theme.yml` → `_brand.yml`, `_tokens.scss`,
+   `_tokens.css`, `_tokens.typ`, `_tokens.json` (see *Design & theme*).
+2. **`scripts/build_site.py`** — `book/*.md` → `quarto/*.qmd`, and copies the
+   rasters the renderer needs (`cover.png`, `chapter-art/*.png`) in from
+   `images/`. It lifts the `# ` heading to the page title; strips manual `1.1`
+   section numbers so **Quarto numbers natively**; marks `## References`
+   unnumbered; converts `> [!NOTE]` alerts to `::: {.callout-note}`; converts
+   ```` ```mermaid ```` fences to executable ```` ```{mermaid} ```` cells; and
+   injects each chapter's banner (and the preface/front-matter band) under the
+   title, with the PDF title accent read from `_tokens.json`.
+3. **`scripts/gen_blurb.py`** — `book/blurb.md` + `book/epigraph.md` → the
+   landing/back-cover partials (see *Back cover & epigraph*). Runs *before*
+   render because Quarto resolves `{{< include >}}` before its own pre-render
+   hooks.
+
+Then post-render (`project: post-render` in `_quarto.yml`): `epub_fix.py` →
+`epub_backcover.py` → `cachebust.py`.
 
 ## Build locally
 
 ```bash
 cd quarto
 ./build.sh            # generate + render HTML + PDF + ePub into quarto/_book/
-./build.sh preview    # live preview (re-run after editing book/*.md)
+./build.sh preview    # live preview (re-run after editing sources)
 ```
 
 Outputs: `quarto/_book/index.html` (+ chapters), `quarto/_book/ai-do.pdf`,
 `quarto/_book/ai-do.epub`.
 
-## Diagram fidelity (Mermaid)
+## Design & theme (tokens in `theme.yml`)
 
-- **HTML** — client-side SVG (vector), rendered by the browser.
-- **PDF and ePub** — PNG raster, rendered by headless Chrome at build time.
+**`theme.yml` at the repo root is the single, user-editable source** for the
+[Rosely](https://rosely.hellotham.com) palette, colour roles (primary/link/…),
+type sizes, font families, and per-chapter accent assignments. Change a colour or
+a font size there and nowhere else. `gen_theme.py` (dependency-free; a minimal
+YAML reader) turns it into every format's token file — all git-ignored:
 
-SVG (vector) for the PDF/ePub is **not viable through this toolchain**: Quarto
-does not expose Mermaid's `htmlLabels:false`, so Mermaid emits SVG whose node
-labels are HTML (`foreignObject`/`<p>`). Typst's SVG parser rejects that, and
-e-readers render it inconsistently. A genuinely vector PDF needs the **LaTeX**
-PDF engine plus `rsvg-convert` (librsvg) or Inkscape to convert the SVGs — those
-install cleanly on the CI Ubuntu runner (`apt-get install librsvg2-bin`) but not
-on a stock macOS without Homebrew, so PNG is the reliable default.
+- **`_brand.yml`** — Quarto brand: palette + roles + typography. Quarto applies
+  it to **both HTML and the Typst PDF**. (The font *file* list is pipeline detail
+  inside `gen_theme.py`; the *families* come from `theme.yml`.)
+- **`_tokens.scss`** — `$r-*`, `$font-size-root`, … layered ahead of
+  `brand.scss` via `theme: [_tokens.scss, brand.scss]` in `_quarto.yml`.
+- **`_tokens.css`** — `:root { --r-*: … }`, bundled into the ePub via
+  `epub: css: [_tokens.css, epub.css]`.
+- **`_tokens.typ`** — Typst colour lets (`c-*`), `#import`-ed by the Typst
+  templates.
+- **`_tokens.json`** — palette + chapter accents, read by the Python scripts
+  (`build_site.py`, `gen_blurb.py`, `gen_chapter_art.py`), each with a fallback.
 
-### Diagram sizing (smart scaling)
-
-Quarto renders every Mermaid PNG at the same high effective density and tags it
-at a natural size whose on-page **text is much larger than the body text** (and
-often wider than the page). Because the density is uniform, one factor normalises
-diagram text to roughly body size across all diagrams.
-
-- **PDF** — a `#show image` rule in `quarto/typst-fonts.typ` multiplies each
-  diagram by `diagram-scale` (≈0.55, calibrated so diagram labels ≈ body text),
-  then caps the result at the text-column width — whichever comes first. The
-  full-page cover image is exempted (identified by height ≥ 8.5in). Without this,
-  narrow diagrams escape any width cap and render comically large.
-- **ePub / HTML** — need no scaling: e-readers treat the tagged `in` as 96px and
-  cap at the container (`epub.css` `img{max-width:100%}`), and the HTML site
-  renders Mermaid as vector SVG whose text already ≈ body. Both land near body
-  size on their own; only the Typst PDF needs the explicit factor.
-
-To recalibrate: render `--to typst`, screenshot a page with a narrow diagram, and
-adjust `diagram-scale` until the labels match body text.
-
-## Design & theme (Rosely)
-
-One design spans the website, PDF, and ePub, driven by Quarto's cross-format
-brand system:
-
-- **`quarto/_brand.yml`** — the [Rosely](https://rosely.hellotham.com) palette
-  (warm millennial-pink/purple: cream surfaces, velvet ink, purple primary, rose
-  links) plus the **Spectral** serif. Quarto applies it to **both HTML and the
-  Typst PDF**.
-- **Fonts** are self-hosted in `quarto/fonts/` (Spectral TTFs, OFL). HTML gets
-  them via `_brand.yml`; the Typst PDF finds them because `build.sh` (and CI)
-  export `TYPST_FONT_PATHS=fonts`.
-- **`quarto/brand.scss`** — HTML polish only (reading measure, warm section
-  rules, Rosely-tinted callouts, tables, blockquotes, code, and the download
-  buttons). Palette/fonts stay in `_brand.yml`.
-- **`quarto/epub.css`** — Rosely colours for the ePub (e-readers usually control
-  the font, so Spectral is set with a serif fallback).
-- **Separate download buttons**: two pill buttons (PDF + ePub) on the landing
-  page (`index.qmd`, styled in `brand.scss`), plus separate PDF/ePub tool icons
-  in the sidebar (`book: sidebar: tools:` in `_quarto.yml`).
-
-## Cache-busting the downloads
-
-The PDF and ePub live at stable URLs (`ai-do.pdf`, `ai-do.epub`), which
-browsers and the GitHub Pages CDN cache — so readers can get a stale file after
-a redeploy. A Quarto **`project: post-render`** step runs
-`scripts/cachebust.py`, which appends a short content-hash query
-(`ai-do.pdf?v=<md5>`) to every download link in the rendered HTML. The hash
-changes only when the file's bytes change, so each new build yields a fresh URL
-that no cache can match. It runs on every `quarto render` (local and CI) — no
-extra wiring.
+Fonts are self-hosted in `quarto/fonts/`: **Noto Serif** (body) + **Raleway**
+(headings), with **Noto Serif JP / Noto Sans JP** fallbacks so 愛 / 道 render.
+Typst finds them because `build.sh` and CI export `TYPST_FONT_PATHS=fonts`.
+`quarto/brand.scss` is HTML polish only (reading measure, section rules, tinted
+callouts, tables, code, download buttons); `quarto/epub.css` is the ePub rules,
+using `var(--r-*)`.
 
 ## Cover
 
-`quarto/cover.html` is a typographic cover; `quarto/cover.png` (1600×2400) is
-rasterised from it with headless Chrome and wired in via `book: cover-image`.
-Regenerate after edits:
-`"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless --screenshot=cover.png --window-size=800,1200 --force-device-scale-factor=2 file://$PWD/cover.html`
+Source of truth is **`images/cover.svg`** (self-contained: outlined glyph paths
++ a vector seigaiha pattern). Rasterise to `images/cover.png` (1600×2400) with
+headless Chrome; the build copies `cover.png` into `quarto/` and wires it via
+`book: cover-image` (+ `typst-show.typ` for the PDF full-bleed cover):
 
-## Back cover (blurb)
+```bash
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless \
+  --screenshot=images/cover.png --window-size=1600,2400 \
+  --force-device-scale-factor=1 --hide-scrollbars "file://$PWD/images/cover.svg"
+```
 
-The blurb is authored **once** in `quarto/blurb.json` (lead, convictions, close,
-and a short `description`). Edit that file only; the four places it appears are
-generated from it:
+## Chapter art
 
-- **Source → partials.** `scripts/gen_blurb.py` runs in `build.sh` and CI
-  *before* `quarto render` (Quarto resolves `{{< include >}}` before its own
-  pre-render hooks, so a Quarto `pre-render` step is too late). It writes
-  `quarto/_blurb.md` and `quarto/_blurb.typ` (both git-ignored).
-- **Web** — the landing (`index.qmd`) pulls it in with `{{< include _blurb.md >}}`.
-- **PDF** — `quarto/typst-back-cover.typ` (a designed final page via
-  `format: typst: include-after-body`, Rosely palette + faint 道 watermark)
-  pulls it in with `#include "_blurb.typ"`.
-- **ePub** — `scripts/epub_backcover.py` (a `post-render` step, after
-  `epub_fix.py`, before `cachebust.py`) reads `blurb.json` directly to build a
-  back-cover page at the end of the spine **and** set the ePub
-  `<dc:description>`, then repackages the `.epub`.
+Each chapter (and the preface/landing) opens with a thin "seigaiha tide" banner
+— a wave ribbon in the chapter's accent colour with the chapter kanji reversed on
+a cream moon. **`scripts/gen_chapter_art.py`** produces them into
+`images/chapter-art/<slug>.svg` + `.png` (source of truth); `build_site.py` copies
+the PNGs into `quarto/chapter-art/` and injects the banner under each title.
+
+- Colours come from `theme.yml` via `_tokens.json` (`chapter-accents` +
+  `front-matter-accent`); the slug→kanji map is content in the script.
+- Kanji glyphs are **outlined** into self-contained SVG paths (no font dependency
+  in the output) with **fontTools**, from the full **Noto Serif JP** variable
+  font (the bundled `quarto/fonts` subset only has 愛/道 — download the full font
+  once; see the script header).
+- Regenerate (run `gen_theme.py` first so `_tokens.json` exists):
+
+```bash
+python3 .claude/skills/book-build/scripts/gen_chapter_art.py \
+  --font NotoSerifJP.ttf --out images/chapter-art --png
+```
+
+## Back cover & epigraph
+
+Both are authored as Markdown in `book/` and fanned out by `gen_blurb.py`:
+
+- **`book/blurb.md`** — YAML frontmatter `description:` (→ the ePub
+  `<dc:description>`) + a body of a lead paragraph, conviction bullets
+  (`- **Label** — text.`), and a closing paragraph.
+- **`book/epigraph.md`** — the landing teaser (prose only; the `.epigraph`
+  styling wrapper stays in `index.qmd`).
+
+`gen_blurb.py` writes `_blurb.md` (web `{{< include >}}`), `_blurb.typ` (PDF back
+cover via `typst-back-cover.typ`), `_blurb.json` (read post-render by
+`epub_backcover.py` for the ePub back-cover page + description), and `_epigraph.md`
+(web landing include). All git-ignored.
+
+## Diagram fidelity (Mermaid)
+
+- **HTML** — client-side SVG (vector).
+- **PDF and ePub** — PNG raster (headless Chrome at build time). SVG isn't viable
+  here: Quarto doesn't expose Mermaid's `htmlLabels:false`, so its SVG carries
+  HTML labels Typst can't parse and e-readers render inconsistently.
+
+**Sizing:** a `#show image` rule in `quarto/typst-fonts.typ` scales each diagram
+by `diagram-scale` (≈0.55, so labels ≈ body text), capped at the text-column
+width; the full-page cover is exempt (height ≥ 8.5in). HTML/ePub need no scaling.
+To recalibrate: render `--to typst`, screenshot a page with a narrow diagram, and
+adjust `diagram-scale`.
+
+## Cache-busting the downloads
+
+`scripts/cachebust.py` (a `post-render` step) appends a content-hash query
+(`ai-do.pdf?v=<md5>`) to every download link in the rendered HTML, so a redeploy
+always yields a fresh URL the CDN can't serve stale.
 
 ## Requirements
 
-- **Quarto** (bundles Typst — no LaTeX needed for the PDF).
-- **Headless Chrome** for Mermaid rasterisation in the PDF: `quarto install chrome-headless-shell`.
-- **Python 3** for the generator.
-- Fonts: bundled in `quarto/fonts/` (no install). `build.sh` exports `TYPST_FONT_PATHS=fonts` so Typst finds them.
+- **Quarto** (bundles Typst — no LaTeX needed).
+- **Headless Chrome** for Mermaid rasterisation: `quarto install chrome-headless-shell`.
+- **Python 3** for the generators (no third-party packages; `gen_chapter_art.py`
+  additionally needs `fonttools` + the full Noto Serif JP font).
+- Fonts bundled in `quarto/fonts/`; `TYPST_FONT_PATHS=fonts` is exported by the build.
 
 ## Deploy to GitHub Pages
 
 `.github/workflows/deploy.yml` runs on push to `main`: set up Python + Quarto +
-Chrome, run the generator, `quarto render`, then `upload-pages-artifact` +
-`deploy-pages`. Publishes to `https://christinetham.github.io/aidou/`.
+Chrome, run `gen_theme.py` → `build_site.py` → `gen_blurb.py`, `quarto render`,
+then `upload-pages-artifact` + `deploy-pages`. Publishes to
+`https://christinetham.github.io/aidou/` (custom domain `christham.net/aidou`).
+The GitHub Pages "Deployment failed, try again later" flake is intermittent —
+re-run the failed job.
 
 **One-time manual step:** repo **Settings → Pages → Source: "GitHub Actions"**.
 
 ## Legacy
 
-`scripts/build_pdf.py` is the older standalone single-file PDF (Markdown →
-HTML → headless-browser print), kept for a quick one-off PDF. The Quarto
-pipeline supersedes it for the site, PDF, and ePub.
+`scripts/build_pdf.py` is the older standalone single-file PDF, kept for a quick
+one-off. The Quarto pipeline supersedes it for the site, PDF, and ePub.
 
 > [!TIP]
 > Mirror any change to both `.github/skills/book-build` (Copilot) and `.claude/skills/book-build` (Claude).

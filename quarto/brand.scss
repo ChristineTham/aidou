@@ -1,25 +1,8 @@
-/*-- scss:defaults --*/
-// _brand.yml supplies the Rosely palette + Spectral. This file is polish only.
-$font-size-root: 18px;
-$toc-font-size: 0.82rem;
-$blockquote-font-size: 1rem;
-
-// Rosely (for use in rules below)
-$r-velvet:  #27272a;
-$r-grey:    #615f5f;
-$r-mauve:   #85677b;
-$r-blossom: #f7caca;
-$r-petal:   #f4dede;
-$r-cream:   #f4eee8;
-$r-lilac:   #be9cc1;
-$r-purple:  #b565a7;
-$r-rose:    #d2386c;
-$r-pink:    #ec809e;
-$r-teal:    #64bfa4;
-$r-blue:    #93a9d1;
-$r-warm:    #faf7f4;  // near-white warm tint
-
 /*-- scss:rules --*/
+// Design tokens ($r-*, $font-size-root, …) come from _tokens.scss (layered
+// ahead of this file via `theme:` in _quarto.yml), generated from theme.yml.
+// _brand.yml (also generated from theme.yml) supplies the Quarto palette/fonts.
+// This file is polish only.
 
 // ---- Type families ---------------------------------------------------------
 // Sans headings (Raleway) over serif body (Noto Serif), each with a matching

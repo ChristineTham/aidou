@@ -1,0 +1,57 @@
+# AI-dō — theme tokens. THE single, user-editable source for the book's design:
+# colours, colour roles, type sizes, fonts, and per-chapter accents. The build
+# (gen_theme.py) turns this into the Quarto brand, SCSS, CSS, Typst, and Python
+# token files under quarto/ — so edit here, nowhere else. Values are simple
+# `key: value`; keep hex colours quoted.
+
+colors:
+  # Rosely palette — https://rosely.hellotham.com
+  velvet:   "#27272a"    # near-black ink
+  grey:     "#615f5f"
+  mauve:    "#85677b"    # muted secondary text
+  warmgrey: "#a49e9e"
+  blossom:  "#f7caca"    # pale pink (borders)
+  petal:    "#f4dede"    # pink surface
+  cream:    "#f4eee8"    # warm surface
+  lilac:    "#be9cc1"
+  mauvep:   "#b0879b"
+  purple:   "#b565a7"    # primary accent
+  rose:     "#d2386c"    # vivid accent / links
+  pink:     "#ec809e"
+  yellow:   "#eada4f"
+  teal:     "#64bfa4"
+  blue:     "#93a9d1"
+  warm:     "#faf7f4"    # near-white warm tint
+
+roles:                   # semantic roles -> palette name (or a literal hex)
+  background: "#ffffff"
+  foreground: velvet
+  primary:    purple
+  secondary:  mauve
+  tertiary:   cream
+  link:       rose
+  heading:    velvet
+  success:    teal
+  info:       blue
+  warning:    yellow
+  danger:     rose
+
+type:
+  root-size:       18px    # base web font size
+  line-height:     1.7
+  heading-weight:  600
+  toc-size:        0.82rem
+  blockquote-size: 1rem
+
+fonts:
+  body:     Noto Serif
+  headings: Raleway
+
+chapter-accents:         # per-chapter banner + PDF-title accent -> palette name
+  foundations:             mauve
+  productivity:            rose
+  software-development:    pink
+  engineering-disciplines: lilac
+  governance:              blue
+  mastery:                 purple
+front-matter-accent: purple    # preface / landing band

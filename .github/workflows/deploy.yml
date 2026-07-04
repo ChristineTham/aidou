@@ -34,11 +34,15 @@ jobs:
       - name: Install headless Chrome (for Mermaid diagram rendering)
         run: quarto install chrome-headless-shell
 
+      - name: Generate design tokens from theme.yml (single source)
+        working-directory: quarto
+        run: python3 ../.claude/skills/book-build/scripts/gen_theme.py .
+
       - name: Generate Quarto chapters from book/*.md (single source)
         working-directory: quarto
         run: python3 ../.claude/skills/book-build/scripts/build_site.py --book ../book --out .
 
-      - name: Generate blurb partials from blurb.json (single source)
+      - name: Generate landing partials from book/blurb.md + book/epigraph.md
         working-directory: quarto
         run: python3 ../.claude/skills/book-build/scripts/gen_blurb.py .
 

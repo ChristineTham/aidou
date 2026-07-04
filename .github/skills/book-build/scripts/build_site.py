@@ -22,7 +22,7 @@ Usage:
     build_site.py --book ../book --out .        # from the quarto/ project dir
     build_site.py --book book --out quarto       # from the repo root
 """
-import argparse, os, re
+import argparse, glob, json, os, re, shutil
 
 # source filename -> (output slug, numbered?)
 CHAPTERS = [
@@ -48,11 +48,24 @@ BANNER_KANJI = {
 
 
 # Per-chapter accent colour (matches the banner medallion) for the PDF title.
+# Overridden at build time from _tokens.json (generated from theme.yml); these
+# are the fallback if the token file is absent.
 PDF_ACCENT = {
     "foundations": "#85677B", "productivity": "#D2386C",
     "software-development": "#EC809E", "engineering-disciplines": "#BE9CC1",
     "governance": "#93A9D1", "mastery": "#B565A7",
 }
+
+
+def load_token_accents(out_dir):
+    """Chapter accents from _tokens.json (theme.yml), or {} if not generated yet."""
+    p = os.path.join(out_dir, "_tokens.json")
+    if os.path.isfile(p):
+        try:
+            return json.load(open(p, encoding="utf-8")).get("chapter_accents", {})
+        except (ValueError, OSError):
+            pass
+    return {}
 
 
 def pdf_title(title, number, slug):
@@ -128,8 +141,26 @@ def strip_section_number(l):
     return (m.group(1) + " " + m.group(2)) if m else l
 
 
+def copy_assets(out_dir, images_dir):
+    """Copy the rasters the renderer needs from the images/ source of truth into
+    the Quarto project dir (git-ignored there). Sources live in images/; Quarto
+    and Typst resolve them locally as `cover.png` / `chapter-art/*.png`."""
+    cover = os.path.join(images_dir, "cover.png")
+    if os.path.exists(cover):
+        shutil.copy2(cover, os.path.join(out_dir, "cover.png"))
+    art_src = os.path.join(images_dir, "chapter-art")
+    if os.path.isdir(art_src):
+        art_dst = os.path.join(out_dir, "chapter-art")
+        os.makedirs(art_dst, exist_ok=True)
+        for png in glob.glob(os.path.join(art_src, "*.png")):
+            shutil.copy2(png, os.path.join(art_dst, os.path.basename(png)))
+        print(f"copied cover + chapter-art PNGs from {images_dir}")
+
+
 def build(book_dir, out_dir):
     os.makedirs(out_dir, exist_ok=True)
+    copy_assets(out_dir, os.path.join(os.path.dirname(book_dir.rstrip("/")) or ".", "images"))
+    PDF_ACCENT.update(load_token_accents(out_dir))
     chapter_no = 0
     for src, slug, numbered in CHAPTERS:
         path = os.path.join(book_dir, src)

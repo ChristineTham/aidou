@@ -6,8 +6,9 @@ XHTML page carrying the blurb, registers it in the OPF manifest and at the end
 of the spine, sets the ePub `<dc:description>`, and repackages the .epub
 (mimetype stored first, per spec).
 
-Blurb text comes from the single source `blurb.json` (see gen_blurb.py) — edit
-there, not here. Idempotent: does nothing if the back cover is already present.
+Blurb text comes from `_blurb.json`, generated pre-render by gen_blurb.py from
+the editable source `book/blurb.md` — edit there, not here. Idempotent: does
+nothing if the back cover is already present.
 Runs as a Quarto post-render step (see _quarto.yml `project: post-render`),
 after epub_fix.py and before cachebust.py. Runnable directly:
 `python3 epub_backcover.py [output-dir]` (defaults to _book).
@@ -32,12 +33,12 @@ def emph_html(s):
 
 def load_blurb():
     base = os.environ.get("QUARTO_PROJECT_DIR", ".")
-    for cand in (os.path.join(base, "blurb.json"), "blurb.json",
-                 os.path.join(os.path.dirname(__file__), "..", "..", "..", "..", "quarto", "blurb.json")):
+    for cand in (os.path.join(base, "_blurb.json"), "_blurb.json",
+                 os.path.join(os.path.dirname(__file__), "..", "..", "..", "..", "quarto", "_blurb.json")):
         if os.path.isfile(cand):
             with open(cand, encoding="utf-8") as f:
                 return json.load(f)
-    raise FileNotFoundError("blurb.json not found")
+    raise FileNotFoundError("_blurb.json not found (run gen_blurb.py first)")
 
 
 def backcover_xhtml(b):

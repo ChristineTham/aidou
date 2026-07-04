@@ -1,5 +1,17 @@
 # AI-dō (AI 道)
 
+AI-dō is a practical, opinionated guide to using artificial intelligence effectively.
+
+It combines:
+
+- **AI** (Artificial Intelligence)
+- **愛 (ai)** — the Japanese word for *love*
+- **道 (dō)** — *the way, path, or disciplined practice*
+
+Together, **AI-dō** represents:
+
+> **A disciplined way of working with AI, guided by human-centred principles.**
+
 **The Way of AI, grounded in practice (道).**
 
 Anyone can open a chat window and get a fluent answer in seconds. Far fewer can turn that fluency into work worth standing behind. We all draw on the same frontier models, so the model was never the edge — **method is**. *AI-dō* is that method: a structured, human-centred way of working with AI, earned task by task and checked at every step.
@@ -28,7 +40,7 @@ Begin with the preface, then follow the six-chapter climb — personal productiv
 
 ## Why read it
 
-Most AI writing sells tools, prompts, and features. Those go stale in a release. *AI-dō* is about what lasts underneath — how you frame a problem, gather context, and verify a result:
+Some AI guides talk about tools, prompts, and features. Those go stale in the next model release. *AI-dō* is about what lasts underneath — how you frame a problem, gather context, and verify a result:
 
 - **Method over model** — the advantage is the scaffolding you build, not the model you pick.
 - **Discipline over hacks** — repeatable patterns, not one-off prompts.
