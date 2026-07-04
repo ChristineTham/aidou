@@ -990,26 +990,82 @@
   },
   {
     "urls": [
-      "https://en.wikipedia.org/wiki/History_of_artificial_intelligence"
+      "https://en.wikipedia.org/wiki/Large_language_model"
     ],
-    "intext": "\"History of artificial intelligence,\" n.d.",
-    "reference": "History of artificial intelligence. (n.d.). In *Wikipedia*. [https://en.wikipedia.org/wiki/History_of_artificial_intelligence](https://en.wikipedia.org/wiki/History_of_artificial_intelligence)",
+    "intext": "\"Large language model,\" n.d.",
+    "reference": "Large language model. (n.d.). In *Wikipedia*. [https://en.wikipedia.org/wiki/Large_language_model](https://en.wikipedia.org/wiki/Large_language_model)",
     "title_authored": true
   },
   {
     "urls": [
-      "https://en.wikipedia.org/wiki/Perceptron"
+      "https://arxiv.org/abs/2108.07258"
     ],
-    "intext": "\"Perceptron,\" n.d.",
-    "reference": "Perceptron. (n.d.). In *Wikipedia*. [https://en.wikipedia.org/wiki/Perceptron](https://en.wikipedia.org/wiki/Perceptron)",
-    "title_authored": true
+    "intext": "Bommasani et al., 2021",
+    "reference": "Bommasani, R., et al. (2021). *On the opportunities and risks of foundation models*. arXiv. [https://arxiv.org/abs/2108.07258](https://arxiv.org/abs/2108.07258)",
+    "title_authored": false
   },
   {
     "urls": [
-      "https://en.wikipedia.org/wiki/Deep_learning"
+      "https://arxiv.org/abs/2307.03718"
     ],
-    "intext": "\"Deep learning,\" n.d.",
-    "reference": "Deep learning. (n.d.). In *Wikipedia*. [https://en.wikipedia.org/wiki/Deep_learning](https://en.wikipedia.org/wiki/Deep_learning)",
-    "title_authored": true
+    "intext": "Anderljung et al., 2023",
+    "reference": "Anderljung, M., et al. (2023). *Frontier AI regulation: Managing emerging risks to public safety*. arXiv. [https://arxiv.org/abs/2307.03718](https://arxiv.org/abs/2307.03718)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2309.07864"
+    ],
+    "intext": "Xi et al., 2023",
+    "reference": "Xi, Z., et al. (2023). *The rise and potential of large language model based agents: A survey*. arXiv. [https://arxiv.org/abs/2309.07864](https://arxiv.org/abs/2309.07864)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2606.20683"
+    ],
+    "intext": "Guo et al., 2026",
+    "reference": "Guo, J., et al. (2026). *From question answering to task completion: A survey on agent system and harness design*. arXiv. [https://arxiv.org/abs/2606.20683](https://arxiv.org/abs/2606.20683)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2505.02279"
+    ],
+    "intext": "Ehtesham et al., 2025",
+    "reference": "Ehtesham, A., et al. (2025). *A survey of agent interoperability protocols: MCP, ACP, A2A, and ANP*. arXiv. [https://arxiv.org/abs/2505.02279](https://arxiv.org/abs/2505.02279)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://doi.org/10.1609/aimag.v27i4.1904"
+    ],
+    "intext": "McCarthy et al., 1955",
+    "reference": "McCarthy, J., Minsky, M. L., Rochester, N., & Shannon, C. E. (1955). *A proposal for the Dartmouth summer research project on artificial intelligence* (Reprinted in AI Magazine, 27(4), 12–14, 2006). [https://doi.org/10.1609/aimag.v27i4.1904](https://doi.org/10.1609/aimag.v27i4.1904)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://ai.stanford.edu/~nilsson/QAI/qai.pdf"
+    ],
+    "intext": "Nilsson, 2010",
+    "reference": "Nilsson, N. J. (2010). *The quest for artificial intelligence: A history of ideas and achievements*. Cambridge University Press. [https://ai.stanford.edu/~nilsson/QAI/qai.pdf](https://ai.stanford.edu/~nilsson/QAI/qai.pdf)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://doi.org/10.1037/h0042519"
+    ],
+    "intext": "Rosenblatt, 1958",
+    "reference": "Rosenblatt, F. (1958). *The perceptron: A probabilistic model for information storage and organization in the brain*. Psychological Review, 65(6), 386–408. [https://doi.org/10.1037/h0042519](https://doi.org/10.1037/h0042519)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://papers.nips.cc/paper_files/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html"
+    ],
+    "intext": "Krizhevsky et al., 2012",
+    "reference": "Krizhevsky, A., Sutskever, I., & Hinton, G. E. (2012). *ImageNet classification with deep convolutional neural networks*. Advances in Neural Information Processing Systems, 25. [https://papers.nips.cc/paper_files/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html](https://papers.nips.cc/paper_files/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html)",
+    "title_authored": false
   }
 ]

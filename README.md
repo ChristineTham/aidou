@@ -46,13 +46,13 @@ Read it as a **practice guide, not a reference manual**: once in order to see ho
 
 ## ✍️ Status
 
-A work in progress. The preface and Chapter 1 have had a full research-and-style pass; the later chapters are drafted and being revised. The whole book uses numbered sections and APA 7 citations with per-chapter reference lists.
+A work in progress. The preface is complete; Chapters 1–3 are drafted and being revised; Chapters 4–6 are earlier work in progress. The whole book uses numbered sections and APA 7 citations with per-chapter reference lists.
 
-| Phase | Chapters | State |
-| --- | --- | --- |
-| 1 | Preface, 1–2 | Preface + Ch 1 revised; Ch 2 in progress |
-| 2 | 3–4 | Drafted |
-| 3 | 5–6 | Drafted |
+| Section | State |
+| --- | --- |
+| Preface | Completed |
+| Chapters 1–3 | Draft |
+| Chapters 4–6 | Work in progress |
 
 <details>
 <summary>For contributors — conventions &amp; tooling</summary>

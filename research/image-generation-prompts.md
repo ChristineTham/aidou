@@ -58,26 +58,39 @@ No clutter — protect the negative space.
 
 This is a **decorative 3:2 panel** that sits in the middle/lower band of the existing
 portrait cover. The cover's title, kicker, author and helloTham logo remain **typeset in
-the layout around and over it** — do NOT put any of them in the image.
+the layout around and over it** — do NOT put any of them in the image. It duplicates the
+watermark arrangement of `quarto/cover.svg`.
 
 > Flat minimal editorial vector illustration, 3:2 landscape, **transparent background**
-> (PNG with alpha; or flat cream `#F4EEE8` if transparency isn't supported). A quiet,
-> layered typographic motif: large translucent Latin letters "AI" in
-> lilac `#BE9CC1` (~45% opacity) sitting lower-left, overlapping a smaller Japanese kanji
-> "道" (meaning "the way") in blossom pink `#F7CACA` (~58% opacity) upper-right — the two
-> offset diagonally and overlapping in the middle. Tucked inside the triangular counter of
-> the big "A", a very small kanji "愛" (meaning "love") in soft teal `#64BFA4`, wrapped in
-> a very faint rose `#D2386C` heart outline. A faint traditional Japanese seigaiha wave
-> pattern (thin concentric arcs) in warm grey `#85677B` at ~10% opacity fills the
-> background. Perfectly flat colour — no gradients, shadows, glow, photo or 3D. No text
-> except the kanji 道 and 愛 and the Latin letters "AI" described. Balanced so it reads
-> well as a horizontal band. 3:2.
+> (PNG with alpha; or flat cream `#F4EEE8` if transparency isn't supported). **Every glyph
+> is a translucent, see-through overlay — not solid — and every colour must match the exact
+> hex value given.** A quiet, layered typographic motif of two big glyphs anchored in opposite corners:
+> translucent Latin letters "AI" in lilac `#BE9CC1` (a soft, muted mauve-purple) at ~45%
+> opacity anchored to the **lower-left corner**, and a Japanese kanji "道" (meaning "the
+> way") in blossom pink `#F7CACA` (a pale, soft pink) at ~58% opacity anchored to the
+> **opposite, upper-right corner** — each kept just clear of its own edges by a small margin.
+> **Both are so large that each almost fills the whole frame, so, anchored from opposite
+> corners, they are forced to overlap heavily across the centre** (a large diagonal overlap).
+> The "A" keeps its open triangular counter. Nestled inside the
+> triangular counter of the big "A", a very small kanji "愛" (meaning "love") in soft teal
+> `#64BFA4` at ~60% opacity, resting on a very faint rose `#D2386C` heart at ~16% opacity. A
+> faint traditional Japanese seigaiha wave pattern (thin concentric arcs) in warm grey
+> `#85677B` at ~10% opacity fills the background. Perfectly flat colour — no gradients,
+> shadows, glow, photo or 3D. No text except the kanji 道 and 愛 and the Latin letters "AI"
+> described. Balanced so it reads well as a horizontal band. 3:2.
 
 *(Composition note for weaving in: the current cover already places this motif as vector
 art. Swapping in a generated panel means dropping the SVG watermark layer and inserting
 the image into the same mid/lower region of `quarto/cover.svg`, behind the typeset text.
 Keep the cream background matched so the panel blends seamlessly into the page. If you'd
 rather not, the existing all-vector cover stands on its own.)*
+
+*(Exact arrangement, from `quarto/cover.svg` (canvas 1600 × 2400): "AI" large and low with
+the "A" open — A `translate(5,2080) scale(1.18)`, I `translate(795.6,2080) scale(1.18)`;
+"道" large upper-right, offset up-and-right so it overlaps the "AI" — `translate(602,1760)
+scale(0.90)`; "愛" on a faint heart inside the "A" counter — 愛 `translate(330.3,1842.75)
+scale(0.14)`, heart `translate(250.3,1660.1) scale(3.0,3.07)`. Opacities: AI 45%, 道 58%,
+愛 60%, heart 16%. The seigaiha wave is an addition to this watermark art, not in the SVG.)*
 
 ---
 
