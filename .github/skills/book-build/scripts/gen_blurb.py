@@ -32,7 +32,7 @@ def token_purple(base):
     p = os.path.join(base, "_tokens.json")
     if os.path.isfile(p):
         try:
-            return json.load(open(p, encoding="utf-8"))["colors"]["purple"]
+            return json.load(open(p, encoding="utf-8"))["colors"]["radiant-orchid"]
         except (ValueError, OSError, KeyError):
             pass
     return PURPLE

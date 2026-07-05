@@ -5,41 +5,44 @@
 # `key: value`; keep hex colours quoted.
 
 colors:
-  # Rosely palette — https://rosely.hellotham.com
-  velvet:   "#27272a"    # near-black ink
-  grey:     "#615f5f"
-  mauve:    "#85677b"    # muted secondary text
-  warmgrey: "#a49e9e"
-  blossom:  "#f7caca"    # pale pink (borders)
-  petal:    "#f4dede"    # pink surface
-  cream:    "#f4eee8"    # warm surface
-  lilac:    "#be9cc1"
-  mauvep:   "#b0879b"
-  purple:   "#b565a7"    # primary accent
-  rose:     "#d2386c"    # vivid accent / links
-  pink:     "#ec809e"
-  yellow:   "#eada4f"
-  teal:     "#64bfa4"
-  blue:     "#93a9d1"
-  warm:     "#faf7f4"    # near-white warm tint
+  # Rosely palette — https://rosely.hellotham.com — keyed by Pantone name.
+  black-beauty:     "#27272a"    # Pantone 19-3911 near-black ink
+  granite-gray:     "#615f5f"    # Pantone 18-5204
+  grapeade:         "#85677b"    # Pantone 18-3211 muted secondary text
+  opal-gray:        "#a49e9e"    # Pantone 16-3801
+  rose-quartz:      "#f7caca"    # Pantone 13-1520 pale pink (borders)
+  heavenly-pink:    "#f4dede"    # Pantone 12-1305 pink surface
+  sugar-swizzle:    "#f4eee8"    # Pantone 11-0607 warm surface
+  lupine:           "#be9cc1"    # Pantone 16-3521
+  radiant-orchid:   "#b565a7"    # Pantone 18-3224 primary accent
+  raspberry-sorbet: "#d2386c"    # Pantone 18-2043 vivid accent / links
+  morning-glory:    "#ec809e"    # Pantone 15-1920
+  meadowlark:       "#eada4f"    # Pantone 13-0646
+  spearmint:        "#64bfa4"    # Pantone 15-5819
+  serenity:         "#93a9d1"    # Pantone 15-3919
+  warm:             "#faf7f4"    # near-white warm tint (no Pantone match)
 
 roles:                   # semantic roles -> palette name (or a literal hex)
   background: "#ffffff"
-  foreground: velvet
-  primary:    purple
-  secondary:  mauve
-  tertiary:   cream
-  link:       rose
-  heading:    velvet
-  success:    teal
-  info:       blue
-  warning:    yellow
-  danger:     rose
+  foreground: black-beauty
+  primary:    radiant-orchid
+  secondary:  grapeade
+  tertiary:   sugar-swizzle
+  link:       raspberry-sorbet
+  heading:    black-beauty
+  success:    spearmint
+  info:       serenity
+  warning:    meadowlark
+  danger:     raspberry-sorbet
 
 type:
-  root-size:       18px    # base web font size
-  line-height:     1.7
-  heading-weight:  600
+  root-size:       18px      # base web font size
+  line-height:     1.6       # body reading measure
+  heading-weight:  900       # all section headings (h2/h3/h4) — Raleway Black
+  title-weight:    900       # display titles (landing hero + chapter titles) — Raleway Black
+  h1-size:         2.5rem     # chapter / page title
+  h2-size:         1.5rem     # section
+  h3-size:         1.25rem    # subsection
   toc-size:        0.82rem
   blockquote-size: 1rem
 
@@ -48,10 +51,10 @@ fonts:
   headings: Raleway
 
 chapter-accents:         # per-chapter banner + PDF-title accent -> palette name
-  foundations:             mauve
-  productivity:            rose
-  software-development:    pink
-  engineering-disciplines: lilac
-  governance:              blue
-  mastery:                 purple
-front-matter-accent: purple    # preface / landing band
+  foundations:             grapeade
+  productivity:            raspberry-sorbet
+  software-development:    morning-glory
+  engineering-disciplines: lupine
+  governance:              serenity
+  mastery:                 radiant-orchid
+front-matter-accent: radiant-orchid    # preface / landing band

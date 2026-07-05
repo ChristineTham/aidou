@@ -57,6 +57,9 @@ FONT_FILES = """    - family: Noto Serif
         - path: fonts/Raleway-ExtraBold.ttf
           weight: 800
           style: normal
+        - path: fonts/Raleway-Black.ttf
+          weight: 900
+          style: normal
     - family: Noto Serif JP
       source: file
       files:
@@ -148,12 +151,24 @@ typography:
             "// GENERATED from theme.yml — do not edit.",
             f'$font-size-root: {typ["root-size"]};',
             f'$toc-font-size: {typ["toc-size"]};',
-            f'$blockquote-font-size: {typ["blockquote-size"]};']
+            f'$blockquote-font-size: {typ["blockquote-size"]};',
+            f'$line-height: {typ["line-height"]};',
+            f'$heading-weight: {typ["heading-weight"]};',
+            f'$title-weight: {typ["title-weight"]};',
+            f'$h1-font-size: {typ["h1-size"]};',
+            f'$h2-font-size: {typ["h2-size"]};',
+            f'$h3-font-size: {typ["h3-size"]};']
     scss += [f"$r-{n}: {h};" for n, h in colors.items()]
     open(os.path.join(base, "_tokens.scss"), "w", encoding="utf-8").write("\n".join(scss) + "\n")
 
     # ---- _tokens.css ----
-    css = ["/* GENERATED from theme.yml — do not edit. */", ":root {"]
+    css = ["/* GENERATED from theme.yml — do not edit. */", ":root {",
+           f'  --line-height: {typ["line-height"]};',
+           f'  --heading-weight: {typ["heading-weight"]};',
+           f'  --title-weight: {typ["title-weight"]};',
+           f'  --h1-size: {typ["h1-size"]};',
+           f'  --h2-size: {typ["h2-size"]};',
+           f'  --h3-size: {typ["h3-size"]};']
     css += [f"  --r-{n}: {h};" for n, h in colors.items()]
     css += ["}"]
     open(os.path.join(base, "_tokens.css"), "w", encoding="utf-8").write("\n".join(css) + "\n")

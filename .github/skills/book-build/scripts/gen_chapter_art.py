@@ -114,7 +114,7 @@ def main():
             tok = json.load(open(a.tokens, encoding="utf-8"))
         except (ValueError, OSError):
             pass
-    CREAM = tok.get("colors", {}).get("cream", CREAM)
+    CREAM = tok.get("colors", {}).get("sugar-swizzle", CREAM)
     accents = {**FALLBACK_ACCENTS, **tok.get("chapter_accents", {})}
     fm = tok.get("front_matter_accent", FALLBACK_FM)
     entries = [(s, k, accents[s]) for s, k in KANJI] + [("frontmatter", None, fm)]

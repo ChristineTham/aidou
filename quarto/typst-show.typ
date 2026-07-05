@@ -14,7 +14,7 @@
 #show outline: it => {
   if it.depth == 3 {
     pagebreak(to: "odd")
-    block(text(font: "Raleway", weight: 800, size: 24pt, fill: c-velvet)[Contents])
+    block(text(font: "Raleway", weight: 800, size: 24pt, fill: c-black-beauty)[Contents])
     v(0.5em)
   }
   it

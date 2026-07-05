@@ -76,7 +76,12 @@ YAML reader) turns it into every format's token file — all git-ignored:
   (`build_site.py`, `gen_blurb.py`, `gen_chapter_art.py`), each with a fallback.
 
 Fonts are self-hosted in `quarto/fonts/`: **Noto Serif** (body) + **Raleway**
-(headings), with **Noto Serif JP / Noto Sans JP** fallbacks so 愛 / 道 render.
+(headings, Medium→Black / 500–900), with **Noto Serif JP / Noto Sans JP**
+fallbacks so 愛 / 道 render. Display titles (landing hero + chapter titles) use
+Raleway **Black (900)**; section headings use ExtraBold (800) — set via the
+`type:` block in `theme.yml` (`title-weight`, `heading-weight`, and the
+`h1/h2/h3-size` heading sizes). `Raleway-Black.ttf` was instantiated at weight
+900 from the Raleway variable font with fontTools (Google Fonts, OFL).
 Typst finds them because `build.sh` and CI export `TYPST_FONT_PATHS=fonts`.
 `quarto/brand.scss` is HTML polish only (reading measure, section rules, tinted
 callouts, tables, code, download buttons); `quarto/epub.css` is the ePub rules,

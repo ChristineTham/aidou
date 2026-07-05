@@ -3,21 +3,24 @@
    family with graceful fallback and focus on the Rosely colour scheme. */
 
 body {
-  color: var(--r-velvet);               /* velvet ink */
+  color: var(--r-black-beauty);               /* black-beauty ink */
   font-family: "Noto Serif", "Noto Serif JP", Georgia, "Times New Roman", serif;
-  line-height: 1.6;
+  line-height: var(--line-height);
 }
 
 h1, h2, h3, h4 {
   /* Sans headings over the serif body (e-readers supply the sans face). */
   font-family: "Raleway", "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
-  color: var(--r-velvet);
+  color: var(--r-black-beauty);
   line-height: 1.2;
 }
-h1 { color: var(--r-purple); font-weight: 800; }   /* chapter titles: Rosely purple, extra bold */
-.header-section-number { color: var(--r-purple); }
+/* Heading sizes + weights from theme.yml. Chapter titles: radiant-orchid, Black. */
+h1 { color: var(--r-radiant-orchid); font-weight: var(--title-weight); font-size: var(--h1-size); }
+h2 { font-size: var(--h2-size); font-weight: var(--heading-weight); }
+h3 { font-size: var(--h3-size); font-weight: var(--heading-weight); }
+.header-section-number { color: var(--r-radiant-orchid); }
 
-a { color: var(--r-rose); }           /* rose links */
+a { color: var(--r-raspberry-sorbet); }           /* rose links */
 
 /* Diagrams / images stay within the viewport (Mermaid exported as PNG). */
 img, svg { max-width: 100%; height: auto; }
@@ -28,26 +31,26 @@ img.chapter-banner { display: block; width: 100%; height: auto; margin: 0.3em 0 
 
 /* Blockquotes */
 blockquote {
-  border-left: 3px solid var(--r-lilac);
-  color: var(--r-grey);
+  border-left: 3px solid var(--r-lupine);
+  color: var(--r-granite-gray);
   font-style: italic;
   margin: 1em 0; padding: 0.3em 1em;
 }
 
 /* Callouts — Rosely bordered blocks (survives e-reader CSS). */
 .callout {
-  border: 1px solid var(--r-petal);
-  border-left: 4px solid var(--r-purple);
+  border: 1px solid var(--r-heavenly-pink);
+  border-left: 4px solid var(--r-radiant-orchid);
   border-radius: 6px;
   padding: 0.5em 0.85em;
   margin: 1em 0;
   background: var(--r-warm);
 }
-.callout-title { font-weight: 700; color: var(--r-purple); }
-.callout-tip { border-left-color: var(--r-teal); }
+.callout-title { font-weight: 700; color: var(--r-radiant-orchid); }
+.callout-tip { border-left-color: var(--r-spearmint); }
 .callout-tip .callout-title { color: #3f9e83; }
-.callout-important { border-left-color: var(--r-rose); }
-.callout-important .callout-title { color: var(--r-rose); }
+.callout-important { border-left-color: var(--r-raspberry-sorbet); }
+.callout-important .callout-title { color: var(--r-raspberry-sorbet); }
 
 /* Tables — scroll wide tables inside their own box so they never stretch the
    page (which would clip the surrounding text on narrow phone screens). */
@@ -58,12 +61,12 @@ table {
   border-collapse: collapse;
   font-size: 0.92em;
 }
-thead th { background: var(--r-cream); border-bottom: 2px solid var(--r-purple); }
-th, td { border: 1px solid var(--r-petal); padding: 4px 8px; overflow-wrap: break-word; }
+thead th { background: var(--r-sugar-swizzle); border-bottom: 2px solid var(--r-radiant-orchid); }
+th, td { border: 1px solid var(--r-heavenly-pink); padding: 4px 8px; overflow-wrap: break-word; }
 
 /* Code — wrap or scroll long lines rather than widening the page. */
 pre {
-  background: var(--r-cream); border: 1px solid var(--r-petal); border-radius: 6px;
+  background: var(--r-sugar-swizzle); border: 1px solid var(--r-heavenly-pink); border-radius: 6px;
   padding: 0.6em; max-width: 100%; overflow-x: auto;
 }
-code { color: var(--r-purple); overflow-wrap: break-word; }
+code { color: var(--r-radiant-orchid); overflow-wrap: break-word; }

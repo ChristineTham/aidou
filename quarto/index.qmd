@@ -5,7 +5,7 @@
 ```
 
 ```{=typst}
-#block(below: 0.6em, text(font: "Raleway", weight: 800, size: 34pt, fill: rgb("#27272A"))[AI-dō])
+#block(below: 0.6em, text(font: "Raleway", weight: 900, size: 34pt, fill: rgb("#27272A"))[AI-dō])
 ```
 
 ::: {.epigraph}
@@ -28,10 +28,6 @@ It's a short, personal read — meant to be read online, and yours to download t
 [Download PDF](ai-do.pdf){.btn-dl .ghost}
 [Download ePub](ai-do.epub){.btn-dl .ghost}
 :::
-
-Start with the [Preface](preface.qmd), then follow the six-chapter climb from
-personal productivity to software, to the disciplines that keep the work sound,
-to responsibility, and finally to mastery.
 
 ::::
 :::::

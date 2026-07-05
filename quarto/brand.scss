@@ -17,78 +17,88 @@ h1, h2, h3, h4, h5, h6,
 body { background: #ffffff; }
 main.content {
   max-width: 46rem;
-  line-height: 1.72;
-  color: $r-velvet;
+  line-height: $line-height;
+  color: $r-black-beauty;
   background: #ffffff;
 }
 p { margin-bottom: 1.05rem; }
 
 // ---- Headings --------------------------------------------------------------
+// Weights and sizes come from theme.yml ($title-weight / $heading-weight,
+// $h1/$h2/$h3-font-size). Display titles use Raleway Black ($title-weight 900);
+// section headings use Raleway ExtraBold ($heading-weight 800).
 h1, h2, h3, h4, h5 { letter-spacing: -0.012em; line-height: 1.18; }
-// Book title (sidebar/nav brand) and chapter titles always in Raleway ExtraBold.
 h1.title, .sidebar-title, .sidebar-title a, .quarto-secondary-nav-title,
 #title-block-header .title, .quarto-title-block .title {
   font-family: "Raleway", "Noto Sans JP", system-ui, sans-serif;
-  font-weight: 800;
+  font-weight: $title-weight;
   letter-spacing: -0.02em;
 }
+#title-block-header .title, h1.title { font-size: $h1-font-size; }
 main.content h2 {
   margin-top: 1.9rem;
   padding-bottom: 0.3rem;
-  border-bottom: 1px solid $r-petal;
+  font-size: $h2-font-size;
+  font-weight: $heading-weight;
+  border-bottom: 1px solid $r-heavenly-pink;
 }
-.header-section-number { color: $r-purple; font-weight: 600; }
-.chapter-number, .quarto-title .chapter-number { color: $r-purple; }
+main.content h3 {
+  margin-top: 1.5rem;
+  font-size: $h3-font-size;
+  font-weight: $heading-weight;
+}
+.header-section-number { color: $r-radiant-orchid; font-weight: 600; }
+.chapter-number, .quarto-title .chapter-number { color: $r-radiant-orchid; }
 
 // ---- Links -----------------------------------------------------------------
 main.content a {
   text-decoration: underline;
-  text-decoration-color: $r-blossom;
+  text-decoration-color: $r-rose-quartz;
   text-underline-offset: 2px;
   transition: color .12s, text-decoration-color .12s;
 }
-main.content a:hover { color: $r-purple; text-decoration-color: $r-purple; }
+main.content a:hover { color: $r-radiant-orchid; text-decoration-color: $r-radiant-orchid; }
 
 // ---- Sidebar / chrome ------------------------------------------------------
 // Left nav: pale pink. Right TOC: pale lilac. Content stays white.
-.sidebar, #quarto-sidebar, .quarto-sidebar { background: mix($r-blossom, #ffffff, 58%); }
-#quarto-sidebar .sidebar-item-text { color: $r-velvet; }
+.sidebar, #quarto-sidebar, .quarto-sidebar { background: mix($r-rose-quartz, #ffffff, 58%); }
+#quarto-sidebar .sidebar-item-text { color: $r-black-beauty; }
 #quarto-sidebar .sidebar-item .active,
-#quarto-sidebar a.active { color: $r-purple !important; font-weight: 600; }
+#quarto-sidebar a.active { color: $r-radiant-orchid !important; font-weight: 600; }
 
 #quarto-margin-sidebar {
-  background: mix($r-lilac, #ffffff, 42%);
+  background: mix($r-lupine, #ffffff, 42%);
   border-radius: 10px;
   padding: 0.8rem 0.9rem;
 }
-#quarto-margin-sidebar .sidebar-item-text { color: $r-grey; }
+#quarto-margin-sidebar .sidebar-item-text { color: $r-granite-gray; }
 #quarto-margin-sidebar .sidebar-item-text:hover,
-#quarto-margin-sidebar a.active { color: $r-rose; }
+#quarto-margin-sidebar a.active { color: $r-raspberry-sorbet; }
 
 // Separate PDF / ePub tool buttons in the sidebar header
 .sidebar-tools-main .sidebar-tool, .sidebar-tools-collapse .sidebar-tool {
-  color: $r-purple;
+  color: $r-radiant-orchid;
 }
-.sidebar-tools-main .sidebar-tool:hover { color: $r-rose; }
+.sidebar-tools-main .sidebar-tool:hover { color: $r-raspberry-sorbet; }
 
 // ---- Callouts (recoloured to Rosely) --------------------------------------
 .callout { border-radius: 8px; border-width: 1px; }
 .callout.callout-style-default > .callout-header { font-weight: 600; }
-div.callout-note   { border-left-color: $r-purple; }
-div.callout-note   > .callout-header { background: rgba($r-purple, .10); }
-div.callout-tip    { border-left-color: $r-teal; }
-div.callout-tip    > .callout-header { background: rgba($r-teal, .12); }
-div.callout-important { border-left-color: $r-rose; }
-div.callout-important > .callout-header { background: rgba($r-rose, .10); }
-div.callout-warning { border-left-color: $r-pink; }
-div.callout-warning > .callout-header { background: rgba($r-pink, .12); }
-div.callout-caution { border-left-color: $r-blue; }
-div.callout-caution > .callout-header { background: rgba($r-blue, .12); }
+div.callout-note   { border-left-color: $r-radiant-orchid; }
+div.callout-note   > .callout-header { background: rgba($r-radiant-orchid, .10); }
+div.callout-tip    { border-left-color: $r-spearmint; }
+div.callout-tip    > .callout-header { background: rgba($r-spearmint, .12); }
+div.callout-important { border-left-color: $r-raspberry-sorbet; }
+div.callout-important > .callout-header { background: rgba($r-raspberry-sorbet, .10); }
+div.callout-warning { border-left-color: $r-morning-glory; }
+div.callout-warning > .callout-header { background: rgba($r-morning-glory, .12); }
+div.callout-caution { border-left-color: $r-serenity; }
+div.callout-caution > .callout-header { background: rgba($r-serenity, .12); }
 
 // ---- Blockquotes -----------------------------------------------------------
 blockquote {
-  border-left: 3px solid $r-lilac;
-  color: $r-grey;
+  border-left: 3px solid $r-lupine;
+  color: $r-granite-gray;
   font-style: italic;
   background: $r-warm;
   padding: 0.4rem 1rem;
@@ -96,13 +106,13 @@ blockquote {
 
 // ---- Tables ----------------------------------------------------------------
 table { font-size: 0.95em; }
-thead th { background: $r-cream; border-bottom: 2px solid $r-purple; }
-tbody tr:nth-child(even) { background: rgba($r-cream, .5); }
-th, td { border-color: $r-petal; }
+thead th { background: $r-sugar-swizzle; border-bottom: 2px solid $r-radiant-orchid; }
+tbody tr:nth-child(even) { background: rgba($r-sugar-swizzle, .5); }
+th, td { border-color: $r-heavenly-pink; }
 
 // ---- Code ------------------------------------------------------------------
-pre { background: #fbf8f4; border: 1px solid $r-petal; border-radius: 8px; }
-code:not(pre code) { color: $r-purple; background: rgba($r-blossom, .35); padding: .05em .3em; border-radius: 4px; }
+pre { background: #fbf8f4; border: 1px solid $r-heavenly-pink; border-radius: 8px; }
+code:not(pre code) { color: $r-radiant-orchid; background: rgba($r-rose-quartz, .35); padding: .05em .3em; border-radius: 4px; }
 
 // ---- Figures / diagrams ----------------------------------------------------
 figure, .quarto-figure { text-align: center; }
@@ -124,14 +134,14 @@ p:has(> img.chapter-banner) { margin: 0; text-align: initial; }
 // ---- Landing byline --------------------------------------------------------
 .byline {
   font-family: "Raleway", "Noto Sans JP", sans-serif;
-  color: $r-mauve; letter-spacing: 0.03em; font-size: 1.02rem;
+  color: $r-grapeade; letter-spacing: 0.03em; font-size: 1.02rem;
   margin: -0.3rem 0 1.5rem;
 }
 .byline a {
-  color: $r-rose; font-weight: 600; text-decoration: none;
-  border-bottom: 1.5px solid $r-blossom; transition: border-color .12s, color .12s;
+  color: $r-raspberry-sorbet; font-weight: 600; text-decoration: none;
+  border-bottom: 1.5px solid $r-rose-quartz; transition: border-color .12s, color .12s;
 }
-.byline a:hover { color: $r-purple; border-bottom-color: $r-purple; }
+.byline a:hover { color: $r-radiant-orchid; border-bottom-color: $r-radiant-orchid; }
 
 // ---- Landing epigraph (teaser) --------------------------------------------
 .epigraph {
@@ -141,8 +151,8 @@ p:has(> img.chapter-banner) { margin: 0; text-align: initial; }
   display: flow-root;
   margin: 0.6rem 0 2rem;
   padding: 1.3rem 1.6rem;
-  border-left: 3px solid $r-blossom;
-  background: rgba($r-blossom, .12);
+  border-left: 3px solid $r-rose-quartz;
+  background: rgba($r-rose-quartz, .12);
   border-radius: 0 10px 10px 0;
 }
 // A little more breathing room between the cover and the epigraph/text.
@@ -151,10 +161,10 @@ p:has(> img.chapter-banner) { margin: 0; text-align: initial; }
 .epigraph > p:last-child { margin-bottom: 0; }
 .epigraph > p:first-child {
   font-family: "Raleway", "Noto Sans JP", sans-serif;
-  font-size: 1.3rem; font-weight: 600; color: $r-purple;
+  font-size: 1.3rem; font-weight: 600; color: $r-radiant-orchid;
   margin-top: 0;
 }
-.epigraph strong { color: $r-rose; font-weight: 700; }
+.epigraph strong { color: $r-raspberry-sorbet; font-weight: 700; }
 
 // ---- Landing download buttons ---------------------------------------------
 .dl-buttons { display: flex; gap: 0.75rem; flex-wrap: wrap; margin: 1.6rem 0; }
@@ -162,9 +172,9 @@ p:has(> img.chapter-banner) { margin: 0; text-align: initial; }
   display: inline-flex; align-items: center; gap: 0.5rem;
   padding: 0.55rem 1.1rem; border-radius: 999px;
   font-weight: 600; text-decoration: none; font-size: 0.95rem;
-  border: 1.5px solid $r-purple;
+  border: 1.5px solid $r-radiant-orchid;
 }
-.dl-buttons a.btn-dl.primary { background: $r-purple; color: #fff; }
-.dl-buttons a.btn-dl.primary:hover { background: $r-rose; border-color: $r-rose; }
-.dl-buttons a.btn-dl.ghost { color: $r-purple; background: transparent; }
-.dl-buttons a.btn-dl.ghost:hover { background: rgba($r-purple, .08); color: $r-rose; border-color: $r-rose; }
+.dl-buttons a.btn-dl.primary { background: $r-radiant-orchid; color: #fff; }
+.dl-buttons a.btn-dl.primary:hover { background: $r-raspberry-sorbet; border-color: $r-raspberry-sorbet; }
+.dl-buttons a.btn-dl.ghost { color: $r-radiant-orchid; background: transparent; }
+.dl-buttons a.btn-dl.ghost:hover { background: rgba($r-radiant-orchid, .08); color: $r-raspberry-sorbet; border-color: $r-raspberry-sorbet; }
