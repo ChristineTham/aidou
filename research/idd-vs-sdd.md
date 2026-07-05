@@ -1,7 +1,7 @@
 # IDD vs SDD — Series Summary
 
 **Author:** Kapil Viren Ahuja (Activated Thinker / howtoarchitect.io), May–Jun 2026.
-**Sources:** five-part series (links in [research.md](../research.md)). Personas (Ira, Zia, Nyra, Anya) are composite/de-identified; conversations reported as they happened.
+**Sources:** five-part series (links in [research.md](research.md)). Personas (Ira, Zia, Nyra, Anya) are composite/de-identified; conversations reported as they happened.
 **Compiled:** 29 Jun 2026.
 
 > One connected argument: vibe coding already collapsed; spec-driven development (SDD) collapses next; what replaces it is **IDSD** — intent-driven software development — built on **ICE** (Intent, Context, Expectations). The method is the product, not the harness.

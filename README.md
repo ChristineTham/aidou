@@ -8,15 +8,16 @@ It combines:
 - **愛 (ai)** — the Japanese word for *love*
 - **道 (dō)** — *the way, path, or disciplined practice*
 
-Together, **AI-dō** represents:
+Together, **AI道** represents:
 
 > **A disciplined way of working with AI, guided by human-centred principles.**
 
-**The Way of AI, grounded in practice (道).**
+## The Way of AI, grounded in practice
 
-Anyone can open a chat window and get a fluent answer in seconds. Far fewer can turn that fluency into work worth standing behind. We all draw on the same frontier models, so the model was never the edge — **method is**. *AI-dō* is that method: a structured, human-centred way of working with AI, earned task by task and checked at every step.
+Anyone can open a chat window and get a fluent answer in seconds. Far fewer can turn that fluency into work worth standing behind. We all draw on the same frontier models, so the model was never the edge — **method is**. *AI道* is that method: a structured, human-centred way of working with AI, earned task by task and checked at every step.
 
-It's a short book, written first-person by a former sceptic, and grounded in primary sources throughout. If you have ten minutes, start reading.
+- AI is not just a tool
+- It is something to be used **thoughtfully, ethically, and deliberately**
 
 **Read it online:** <https://christinetham.github.io/aidou/> — or download the [PDF](https://christinetham.github.io/aidou/ai-do.pdf) or [ePub](https://christinetham.github.io/aidou/ai-do.epub). The website, PDF, and ePub are all built from the Markdown in `book/` by one Quarto pipeline.
 
@@ -40,19 +41,19 @@ Begin with the preface, then follow the six-chapter climb — personal productiv
 
 ## Why read it
 
-Some AI guides talk about tools, prompts, and features. Those go stale in the next model release. *AI-dō* is about what lasts underneath — how you frame a problem, gather context, and verify a result:
+Some AI guides and online articles focus on tools, prompts, and techniques. Those go stale in the next release.
 
-- **Method over model** — the advantage is the scaffolding you build, not the model you pick.
-- **Discipline over hacks** — repeatable patterns, not one-off prompts.
-- **Augmentation, not replacement** — AI to extend human judgement, never to outsource it.
+*AI道* is a practical, opinionated guide to using artificial intelligence effectively.
 
-Every claim is cited inline to a primary source, and each chapter reads like a good textbook: state the idea, show why it holds, then prove it with a real example.
+- **Method over model** — specify intent, gather context, and verify execution, not the model you pick.
+- **Discipline over vibe** — principles and methods that can be used iteratively over any tool, not random prompts.
+- **Augmentation, not replacement** — AI transforms and amplifies, not replace human judgement and creativity.
 
-**The name** says it in miniature. **愛 (ai)** — *love*: care for the people the work touches. **道 (dō)** — *the way*: a craft refined over time, the suffix in jūdō and kendō. **AI-dō** joins the two: human care and a practised craft.
+Each chapter states the concept, then shows how it works with real examples.
 
-**Who it's for** — thoughtful professionals (leaders, consultants, analysts, builders) and engineers who want a durable practice, not a bag of prompts. You can read a chart, a code snippet, or a paper when it helps; you don't live in a terminal.
+**Who it's for** — thoughtful professionals (leaders, consultants, analysts, designers and builders). You can read a chart, a code snippet, or a research paper, and you have critical thinking skills.
 
-Read it as a **practice guide, not a reference manual**: once in order to see how the ideas rest on one another, then back for the parts you need.
+Read it as a **practice guide, not a reference manual or a textbook**: once in order to see how the ideas rest on one another, then back for the parts you need.
 
 ---
 

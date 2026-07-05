@@ -61,4 +61,4 @@ The model to imitate is Kernighan & Pike's *The Unix Programming Environment* (a
 ## Sources so far
 
 - @research folder contains research downloaded so far
-- @research.md contains links to sources
+- @research/research.md contains links to sources
