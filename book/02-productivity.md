@@ -6,7 +6,7 @@ Today, AI summarisation can be very good and is commonly used for meeting transc
 
 Chapter 1 sets the scene; this is where it touches the desk. Productivity is the most personal use of AI, and the easiest to do superficially. The aim is a system that moves from chatting to producing, generating useful outputs, and improving rather than resetting every morning.
 
-This chapter is about a *single* agent working for you, and the three crafts that make it dependable: **prompt engineering** (§2.3) — asking well; **context engineering** (§2.5) — curating what the agent sees; and **loop engineering** (§2.6) — wrapping it in self-correcting cycles. Chapter 3 takes those same crafts into software development, where the discipline sharpens into **intent, context, and expectations (ICE)**: saying what the system must do rather than how to build it. Chapter 4 takes the step beyond one agent, to the disciplines of humans and agents working together.
+This chapter is about a *single* agent working for you, and the three crafts that make it dependable: **prompt engineering** (§2.3) — asking well; **context engineering** (§2.5) — curating what the agent sees; and **loop engineering** (§2.6) — wrapping it in self-correcting cycles. Chapter 3 takes those same crafts into software development, where the discipline sharpens into **intent, context, and expectations (ICE)**: saying what the system must do, and how you will verify it is right, rather than how to build it. Chapter 4 takes the step beyond one agent, to the disciplines of humans and agents working together.
 
 ## 2.1 From a Prompt to a Reusable Tool
 
@@ -16,7 +16,7 @@ How will I use AI to summarise a document today? I would probably do something l
 >
 >The summary should be in the style of a Cliff Notes or study guide. It uses tables, bullet points and diagrams where possible, makes use of GFM alerts to call out asides, definitions, or notes.
 
-The above may seem complex, but it is a single prompt: you send it with the text to be summarised and read the result — and it may produce a better summary than a simple prompt would. This is a good start, but you have to type it in every time. And you have to check the results every time as the response can still be wrong. Finally, you are the only person who knows that prompt, others will use different variations. Addressing those issues is the whole journey from prompting to agents, so let's explore ways of improving our method.
+The above may seem complex, but it is a single prompt: you send it with the text to be summarised and read the result — and it may produce a better summary than a simple prompt would. (The *GFM alerts* it asks for are GitHub-Flavoured Markdown call-out boxes — the Note boxes used throughout this book.) This is a good start, but you have to type it in every time. And you have to check the results every time as the response can still be wrong. Finally, you are the only person who knows that prompt, others will use different variations. Addressing those issues is the whole journey from prompting to agents, so let's explore ways of improving our method.
 
 ### 2.1.1 Step one: save the prompt as a skill
 
@@ -31,9 +31,9 @@ name: study-guide-summary
 description: Summarise a document as a Cliff Notes study guide, preserving its structure.
 ---
 
->Summarise a document for the user. It should capture the original structure of the document, preserving chapters, headings and subheadings. The summary should be detailed and concise, and cover all the major points and topics in the original document.
->
->The summary should be in the style of a Cliff Notes or study guide. It uses tables, bullet points and diagrams where possible, makes use of GFM alerts to call out asides, definitions, or notes.
+Summarise a document for the user. It should capture the original structure of the document, preserving chapters, headings and subheadings. The summary should be detailed and concise, and cover all the major points and topics in the original document.
+
+The summary should be in the style of a Cliff Notes or study guide. It uses tables, bullet points and diagrams where possible, makes use of GFM alerts to call out asides, definitions, or notes.
 ```
 
 Now the expertise lives in a file, not in your head, and anyone — or any agent — can apply it the same way every time.
@@ -50,7 +50,7 @@ flowchart TB
     E -- none, or round limit --> Out[Final summary]
 ```
 
-Depending on the agent platform you are using, the specific way you will construct a loop may be slightly different. Here is a naive approach (that will actually work with some agent platforms):
+Depending on the agent platform you are using, the specific way you will construct a loop may be slightly different. Here is a naive approach that will actually work with some agent platforms — a *subagent* being simply a fresh agent spawned to handle one part of the job:
 
 ```markdown
 ---
@@ -58,11 +58,11 @@ name: loop-summary
 description: Summarise a document and loop until the summary is correct.
 ---
 
->Create a subagent that summarises a document for the user. It should capture the original structure of the document, preserving chapters, headings and subheadings. The summary should be detailed and concise, and cover all the major points and topics in the original document. The summary should be in the style of a Cliff Notes or study guide. It uses tables, bullet points and diagrams where possible, makes use of GFM alerts to call out asides, definitions, or notes.
->
->When the subagent has finished create another subagent to compare the summary against the original document. Identify gaps, issues and inconsistencies. The subagent must fix all problems and return an updated summary.
->
->Keep running the second subagent until there are no more problems. Output the final summary.
+Create a subagent that summarises a document for the user. It should capture the original structure of the document, preserving chapters, headings and subheadings. The summary should be detailed and concise, and cover all the major points and topics in the original document. The summary should be in the style of a Cliff Notes or study guide. It uses tables, bullet points and diagrams where possible, makes use of GFM alerts to call out asides, definitions, or notes.
+
+When the subagent has finished create another subagent to compare the summary against the original document. Identify gaps, issues and inconsistencies. The subagent must fix all problems and return an updated summary.
+
+Keep running the second subagent until there are no more problems. Output the final summary.
 ```
 
 This is the loop you wanted — keep reviewing the summary against the document, find the gaps, and iterate until there are none. Whether it counts as a *workflow* or a true *agent* is a useful distinction: if the steps are fixed in code it is a workflow; if the model itself decides what to re-check, whether to re-read a section, and when it is done, it is an agent — an LLM using tools in a loop until a stopping condition is met ([Anthropic, 2024a](https://www.anthropic.com/research/building-effective-agents)). Either way the stopping condition matters: without a cap on rounds, a perfectionist evaluator can loop forever and run up the bill.
@@ -82,9 +82,9 @@ The arc is the whole book in miniature: a prompt becomes a skill, the skill beco
 
 ## 2.2 The Unix Philosophy, Reborn
 
-It is worth naming where this approach comes from, because it is not new. In the early 1970s, Ken Thompson and Dennis Ritchie, the builders of Unix, settled on a philosophy of building software that is still relevant today. Doug McIlroy, who invented the Unix pipe, put it in three lines: "Write programs that do one thing and do it well. Write programs to work together. Write programs to handle text streams, because that is a universal interface" (["Unix philosophy," n.d.](https://en.wikipedia.org/wiki/Unix_philosophy)). Eric Raymond later drew the philosophy out into a set of rules — among them the Rule of Composition, "design programs to be connected to other programs," and the Rule of Separation, "separate policy from mechanism" ([Raymond, 2003](http://www.catb.org/esr/writings/taoup/)).
+It is worth naming where this approach comes from, because it is not new. In the early 1970s, Ken Thompson and Dennis Ritchie, the builders of Unix — the operating system whose descendants still run most of the internet — settled on a philosophy of building software that is still relevant today. Doug McIlroy, who invented the Unix pipe, put it in three lines: "Write programs that do one thing and do it well. Write programs to work together. Write programs to handle text streams, because that is a universal interface" (["Unix philosophy," n.d.](https://en.wikipedia.org/wiki/Unix_philosophy)). Eric Raymond later drew the philosophy out into a set of rules — among them the Rule of Composition, "design programs to be connected to other programs," and the Rule of Separation, "separate policy from mechanism" ([Raymond, 2003](http://www.catb.org/esr/writings/taoup/)).
 
-Read those with an agent in mind and they stop being about writing programs. Working well with AI turns out to be the Unix philosophy reworded: not small programs piped together but small, clear intents composed into larger work. And where Unix made plain text the universal interface between tools, Markdown (which is text) has become the universal *format* a model reads and writes — its native input and output, the thread this chapter picks up. The parallels are close enough to lay out, because each Unix rule has an AI-dō form that the rest of this book develops.
+Read those with an agent in mind and they stop being about writing programs. Working well with AI turns out to be the Unix philosophy reworded: not small programs piped together but small, clear intents composed into larger work. And where Unix made plain text the universal interface between tools, Markdown — plain text with light punctuation marking the structure: `#` for a heading, `-` for a bullet, `**bold**` for emphasis — has become the universal *format* a model reads and writes: its native input and output, the thread this chapter picks up. The parallels are close enough to lay out, because each Unix rule has an AI-dō form that the rest of this book develops.
 
 | Unix philosophy | AI-dō, re-run on a model |
 | --- | --- |
@@ -174,7 +174,7 @@ None of this is a one-shot incantation. Prompting is iterative by nature: start 
 
 ## 2.4 Everything Becomes Markdown
 
-Chapter 1 called text the universal interface, borrowing the Unix line. For language models that text has a format, and the format is Markdown. Models were trained on billions of Markdown files — every README, forum post, and documentation page — so they read it fluently and, left to themselves, tend to *write* it: ask for structure and headings, lists, and tables come back in Markdown unbidden. It sits close to plain text, so it costs few tokens — a heading is `## Title`, not `<h2 class="mw-headline" id="title">Title</h2>` — yet still carries the structure a model needs ([Microsoft, *MarkItDown*, n.d.](https://github.com/microsoft/markitdown)).
+Section 2.2 borrowed the Unix line that text is the universal interface. For language models that text has a format, and the format is Markdown. Models were trained on billions of Markdown files — every README, forum post, and documentation page — so they read it fluently and, left to themselves, tend to *write* it: ask for structure and headings, lists, and tables come back in Markdown unbidden. It sits close to plain text, so it costs few tokens — a heading is `## Title`, not `<h2 class="mw-headline" id="title">Title</h2>` — yet still carries the structure a model needs ([Microsoft, *MarkItDown*, n.d.](https://github.com/microsoft/markitdown)).
 
 That makes one simple strategy pay off across everything in this chapter: turn what you work with into Markdown. A report, a slide deck, a PDF, a web page, a spreadsheet — convert it once and it becomes something the model reads cheaply, you can read directly, and version control can diff line by line. The wiki you are about to build is Markdown; the notes an agent keeps are Markdown; the model's own output arrives as Markdown, so the loop closes with no translation layer at the seams.
 
@@ -215,7 +215,9 @@ The loop is ingest, query, lint: drop in a source and it touches a dozen pages; 
 
 The wiki is one good answer to a problem every long-running agent faces, and it helps to see the whole family it belongs to.
 
-Since a model keeps nothing between requests, the obvious fix — pour everything into an ever-larger context window — works less well than it looks. Context is a finite resource with diminishing returns; every extra token spends part of the model's "attention budget," and recall sags as the window fills, the *lost in the middle* effect from Chapter 1 ([Anthropic, *Effective context engineering for AI agents*, 2025b](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)); a study of 18 models finds the same *context rot* — accuracy drops further as the window grows, and the reassuring needle-in-a-haystack test flatters the model because it only measures lexical lookup, not the harder case where a fact must be inferred ([Chroma, *Context rot: How increasing input tokens impacts LLM performance*, 2025](https://research.trychroma.com/context-rot)). In practice the *effective* context — the span a model actually uses well — often falls to around half its advertised maximum ([An et al., *Why does the effective context length of LLMs fall short?*, 2024](https://arxiv.org/abs/2410.18745)). So memory must be engineered rather than merely supplied, and the gap between an agent with good memory and one without can exceed the gap between model versions ([Du et al., *Memory for autonomous LLM agents: Mechanisms, evaluation, and emerging frontiers*, 2026](https://arxiv.org/abs/2603.07670)).
+Since a model keeps nothing between requests, the obvious fix — pour everything into an ever-larger *context window*, the span of text a model can consider at once — works less well than it looks. Context is a finite resource with diminishing returns; every extra token spends part of the model's "attention budget," and recall sags as the window fills, the *lost in the middle* effect from Chapter 1 ([Anthropic, *Effective context engineering for AI agents*, 2025b](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)); a study of 18 models finds the same *context rot* — accuracy drops further as the window grows, and the reassuring needle-in-a-haystack test flatters the model because it only measures lexical lookup, not the harder case where a fact must be inferred ([Chroma, *Context rot: How increasing input tokens impacts LLM performance*, 2025](https://research.trychroma.com/context-rot)). In practice the *effective* context — the span a model actually uses well — often falls to around half its advertised maximum ([An et al., *Why does the effective context length of LLMs fall short?*, 2024](https://arxiv.org/abs/2410.18745)).
+
+So memory must be engineered rather than merely supplied, and the gap between an agent with good memory and one without can exceed the gap between model versions ([Du et al., *Memory for autonomous LLM agents: Mechanisms, evaluation, and emerging frontiers*, 2026](https://arxiv.org/abs/2603.07670)).
 
 The patterns form a rough ladder, from "stuff it into the prompt" to "manage it outside the prompt":
 

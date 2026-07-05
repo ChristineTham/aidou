@@ -214,6 +214,13 @@ def copy_assets(out_dir, images_dir):
         for png in glob.glob(os.path.join(art_src, "*.png")):
             shutil.copy2(png, os.path.join(art_dst, os.path.basename(png)))
         print(f"copied cover + chapter-art PNGs from {images_dir}")
+    proj_src = os.path.join(images_dir, "projects")   # in-chapter figures (screenshots)
+    if os.path.isdir(proj_src):
+        proj_dst = os.path.join(out_dir, "projects")
+        os.makedirs(proj_dst, exist_ok=True)
+        for img in glob.glob(os.path.join(proj_src, "*")):
+            if os.path.isfile(img):
+                shutil.copy2(img, os.path.join(proj_dst, os.path.basename(img)))
 
 
 def wrap_references(body):

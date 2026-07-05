@@ -45,9 +45,9 @@ Some AI guides and online articles focus on tools, prompts, and techniques. Thos
 
 *AI道* is a practical, opinionated guide to using artificial intelligence effectively.
 
-- **Method over model** — specify intent, gather context, and verify execution, not the model you pick.
-- **Discipline over vibe** — principles and methods that can be used iteratively over any tool, not random prompts.
-- **Augmentation, not replacement** — AI transforms and amplifies, not replace human judgement and creativity.
+- **Method over model** — results come from how you specify intent, gather context, and verify the outcome, not from which model you pick.
+- **Discipline over vibe** — principles that transfer across tools and survive model releases, not one-off prompts.
+- **Augmentation, not replacement** — AI transforms and amplifies human judgement and creativity rather than replacing them.
 
 Each chapter states the concept, then shows how it works with real examples.
 
@@ -59,13 +59,12 @@ Read it as a **practice guide, not a reference manual or a textbook**: once in o
 
 ## ✍️ Status
 
-A work in progress. The preface and Chapters 1–2 are complete; Chapter 3 is drafted and being revised; Chapters 4–6 are earlier work in progress. The whole book uses numbered sections and APA 7 citations with per-chapter reference lists.
+A work in progress. The preface and Chapters 1–3 are complete; Chapters 4–6 are earlier work in progress. The whole book uses numbered sections and APA 7 citations with per-chapter reference lists.
 
 | Section | State |
 | --- | --- |
 | Preface | Completed |
-| Chapters 1–2 | Completed |
-| Chapter 3 | Draft |
+| Chapters 1–3 | Completed |
 | Chapters 4–6 | Work in progress |
 
 <details>

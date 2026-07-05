@@ -4,7 +4,7 @@
 
 Working with artificial intelligence has become strangely easy to do and strangely hard to do well. Anyone can open a chat window and get an answer in seconds; far fewer can rely on output that is accurate, consistent, and worth using.
 
-We all tend to use the same handful of frontier models, so it is not the model that separates good quality from slop. The *method* matters — the practised habits by which an experienced person turns a capable tool toward a dependable result, in the same way that a chef and a novice handed the same kitchen produce very different dinners. This book is about that method: a structured way of working with AI, grounded in human intent and refined through iteration.
+We all tend to use the same handful of frontier models, so it is not the model that separates good quality from slop. The *method* matters — the practised habits by which an experienced person turns a capable tool toward a dependable result, in the same way that a chef and a novice handed the same kitchen produce very different dinners. This book is about that method: a structured way of working with AI — grounded in human intent, refined through iteration, and verified at every step.
 
 A quick word on the terms, since they move quickly. When I say *artificial intelligence*, I mean the present generation of large language models — systems trained on enormous quantities of text, and increasingly images and sound, that respond to plain-language requests with fluent prose, working code, and structured analysis (["Large language model," n.d.](https://en.wikipedia.org/wiki/Large_language_model)). The most capable are called *frontier models*: the handful of largest, most general systems from a few well-resourced labs, the ones that set the pace and that everyone else measures against ([Anderljung et al., *Frontier AI regulation: Managing emerging risks to public safety*, 2023](https://arxiv.org/abs/2307.03718)). ChatGPT, Claude, and Gemini are the familiar names; behind them sits a *foundation model*, a single large network trained once at great expense and then adapted to countless tasks ([Bommasani et al., *On the opportunities and risks of foundation models*, 2021](https://arxiv.org/abs/2108.07258)).
 
@@ -29,11 +29,11 @@ That is also why the book should outlast its examples. The field moves in weeks,
 
 ## Who it is for
 
-This book is for the thoughtful professional — a leader, a consultant, an analyst, a builder — who wants structured, effective use of AI rather than a bag of prompts. I assume
+This book is for the thoughtful professional — a leader, a consultant, an analyst, a designer, a builder — who wants structured, effective use of AI rather than a bag of prompts. I assume
 
 - you are numerate and can read a chart, a code snippet, or a research paper when it helps;
-- that you have already used these tools and felt both edges, the power and the unreliability;
-- and that you want to *use* AI well, not to build models.
+- you have already used these tools and felt both edges, the power and the unreliability;
+- and you want to *use* AI well, not to build models.
 
 Using AI well is its own discipline, and the one we pursue here. My promise is modest and practical: an approach you can apply tomorrow and keep sharpening for years.
 
