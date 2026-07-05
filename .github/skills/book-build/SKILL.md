@@ -87,8 +87,9 @@ using `var(--r-*)`.
 Source of truth is **`images/cover.svg`** (self-contained: outlined glyph paths
 + a vector seigaiha pattern). The 道 / 愛 kanji are outlined from **KokuryuSou**
 (Adobe brush face — see *Chapter art* for the licence/activation note); the
-"AI" letters are outlined Raleway. To re-swap the kanji font, re-outline them
-into the same on-canvas boxes and rewrite `cover.svg`. Rasterise to
+"AI" letters are outlined from **Rubik Glitch Pop** (Google Fonts, OFL —
+freely downloadable/redistributable). To re-swap a glyph's font, re-outline it
+into the same on-canvas box and rewrite `cover.svg`. Rasterise to
 `images/cover.png` (1600×2400) with
 headless Chrome; the build copies `cover.png` into `quarto/` and wires it via
 `book: cover-image` (+ `typst-show.typ` for the PDF full-bleed cover):
