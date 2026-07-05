@@ -15,16 +15,30 @@ Outputs (generated, git-ignored) written into the Quarto project dir:
   - _blurb.json  — structured blurb (lead/convictions/close/description), read by
                    epub_backcover.py (post-render) for the ePub page + description.
   - _epigraph.md — copy of book/epigraph.md, {{< include >}}-d by index.qmd.
+  - _seo.html    — SEO/social <head> tags (Open Graph, Twitter Card, schema.org
+                   JSON-LD) built from the blurb description; include-in-header'd
+                   by the HTML format. Points social previews at ogimage.jpg.
 
 Runs pre-render (build.sh + CI) because Quarto resolves {{< include >}} before
 its pre-render hooks. Usage: gen_blurb.py [project-dir]  (default '.').
 """
+import html
 import json
 import os
 import re
 import sys
 
 PURPLE = '#b565a7'  # fallback if _tokens.json (from theme.yml) isn't present
+
+# --- SEO / social constants (the book's canonical identity) ---
+SITE_URL = "https://christham.net/aidou/"        # custom domain (canonical)
+SITE_NAME = "AI-dō"
+FULL_TITLE = "AI-dō — The Way of AI, grounded in practice"
+OG_IMAGE = SITE_URL + "ogimage.jpg"
+OG_IMAGE_ALT = "AI-dō — The Way of AI, grounded in practice, by Chris Tham"
+AUTHOR = "Chris Tham"
+AUTHOR_URL = "https://christham.net"
+PUBLISHER = "Hello Tham"
 FRONTMATTER = re.compile(r"^---\s*\n(.*?)\n---\s*\n", re.S)
 
 
@@ -98,7 +112,47 @@ def main():
     epi = open(os.path.join(book, "epigraph.md"), encoding="utf-8").read()
     open(os.path.join(base, "_epigraph.md"), "w", encoding="utf-8").write(epi)
 
-    print("gen-blurb: wrote _blurb.md, _blurb.typ, _blurb.json, _epigraph.md")
+    # ---- _seo.html — Open Graph + Twitter Card + JSON-LD (into <head>) ----
+    desc = b["description"]
+    a = lambda s: html.escape(s, quote=True)   # attribute-safe
+    jsonld = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {"@type": "WebSite", "@id": SITE_URL + "#website", "url": SITE_URL,
+             "name": SITE_NAME, "description": desc, "inLanguage": "en"},
+            {"@type": "Book", "@id": SITE_URL + "#book", "name": FULL_TITLE,
+             "author": {"@type": "Person", "name": AUTHOR, "url": AUTHOR_URL},
+             "description": desc, "url": SITE_URL, "image": OG_IMAGE,
+             "inLanguage": "en", "bookFormat": "https://schema.org/EBook",
+             "genre": "Artificial Intelligence", "isFamilyFriendly": True,
+             "publisher": {"@type": "Organization", "name": PUBLISHER, "url": AUTHOR_URL}},
+        ],
+    }
+    seo = "\n".join([
+        f'<meta name="description" content="{a(desc)}">',
+        f'<meta name="author" content="{a(AUTHOR)}">',
+        '<meta property="og:type" content="book">',
+        f'<meta property="og:site_name" content="{a(SITE_NAME)}">',
+        f'<meta property="og:title" content="{a(FULL_TITLE)}">',
+        f'<meta property="og:description" content="{a(desc)}">',
+        f'<meta property="og:url" content="{SITE_URL}">',
+        f'<meta property="og:image" content="{OG_IMAGE}">',
+        '<meta property="og:image:width" content="1200">',
+        '<meta property="og:image:height" content="630">',
+        '<meta property="og:image:type" content="image/jpeg">',
+        f'<meta property="og:image:alt" content="{a(OG_IMAGE_ALT)}">',
+        '<meta name="twitter:card" content="summary_large_image">',
+        f'<meta name="twitter:title" content="{a(FULL_TITLE)}">',
+        f'<meta name="twitter:description" content="{a(desc)}">',
+        f'<meta name="twitter:image" content="{OG_IMAGE}">',
+        f'<meta name="twitter:image:alt" content="{a(OG_IMAGE_ALT)}">',
+        '<script type="application/ld+json">'
+        + json.dumps(jsonld, ensure_ascii=False) + '</script>',
+        '',
+    ])
+    open(os.path.join(base, "_seo.html"), "w", encoding="utf-8").write(seo)
+
+    print("gen-blurb: wrote _blurb.md, _blurb.typ, _blurb.json, _epigraph.md, _seo.html")
 
 
 if __name__ == "__main__":

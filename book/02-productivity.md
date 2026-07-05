@@ -1,18 +1,18 @@
 # Chapter 2 — Personal Productivity (愛 in practice)
 
-My first prompt to ChatGPT, in early 2024, did not turn out the way I expected. I asked it to summarise an academic paper, and almost nothing went smoothly. The model could not read a PDF, so I had to convert the file to text and paste it in by hand. The paper then proved too long for the model to hold at once, so I chopped it into sections and fed them in one at a time. When I finally had a summary, it underwhelmed me: the summary missed the paper's central argument and skipped several points that mattered.
+My first prompt to ChatGPT did not turn out the way I expected. I asked it to summarise an academic paper, and almost nothing went smoothly. The model could not read a PDF, so I had to convert the file to text and paste it in by hand. The paper then proved too long for the model to hold at once, so I chopped it into sections and fed them in one at a time. When I finally had a summary, it underwhelmed me: the summary missed the paper's central argument and skipped several points that mattered.
 
-Today AI summarisation can be very good and is commonly used for meeting transcripts, long email threads, YouTube videos, etc. However, on dense, tightly argued material like an academic paper, an AI summary can still get it hilariously wrong. Holding on to that doubt is useful, because closing it is a thread that runs through this whole chapter.
+Today, AI summarisation can be very good and is commonly used for meeting transcripts, long email threads, YouTube videos, etc. However, on dense, tightly argued material like an academic paper, an AI summary can still get it hilariously wrong. Holding on to that doubt is useful, because closing it is a thread that runs through this whole chapter.
 
 Chapter 1 sets the scene; this is where it touches the desk. Productivity is the most personal use of AI, and the easiest to do superficially. The aim is a system that moves from chatting to producing, generating useful outputs, and improving rather than resetting every morning.
 
-This chapter is about a *single* agent working for you, and the three crafts that make one dependable: **prompt engineering** (§2.3) — asking well; **context engineering** (§2.5) — curating what the agent sees; and **loop engineering** (§2.6) — wrapping it in self-correcting cycles. Chapter 4 takes the step beyond one agent, to the disciplines of humans and agents working together.
+This chapter is about a *single* agent working for you, and the three crafts that make it dependable: **prompt engineering** (§2.3) — asking well; **context engineering** (§2.5) — curating what the agent sees; and **loop engineering** (§2.6) — wrapping it in self-correcting cycles. Chapter 3 takes those same crafts into software development, where the discipline sharpens into **intent, context, and expectations (ICE)**: saying what the system must do rather than how to build it. Chapter 4 takes the step beyond one agent, to the disciplines of humans and agents working together.
 
-## 2.1 From a Prompt to a Teammate
+## 2.1 From a Prompt to a Reusable Tool
 
 How will I use AI to summarise a document today? I would probably do something like this:
 
->Summarise this document for me. It should capture the original structure of the document, preserving chapters, headings and subheadings. The summary should be detailed, concise and covers all the major points and topics in the original document.
+>Summarise this document for me. It should capture the original structure of the document, preserving chapters, headings and subheadings. The summary should be detailed and concise, and cover all the major points and topics in the original document.
 >
 >The summary should be in the style of a Cliff Notes or study guide. It uses tables, bullet points and diagrams where possible, makes use of GFM alerts to call out asides, definitions, or notes.
 
@@ -31,7 +31,7 @@ name: study-guide-summary
 description: Summarise a document as a Cliff Notes study guide, preserving its structure.
 ---
 
->Summarise a document for the user. It should capture the original structure of the document, preserving chapters, headings and subheadings. The summary should be detailed, concise and covers all the major points and topics in the original document.
+>Summarise a document for the user. It should capture the original structure of the document, preserving chapters, headings and subheadings. The summary should be detailed and concise, and cover all the major points and topics in the original document.
 >
 >The summary should be in the style of a Cliff Notes or study guide. It uses tables, bullet points and diagrams where possible, makes use of GFM alerts to call out asides, definitions, or notes.
 ```
@@ -58,7 +58,7 @@ name: loop-summary
 description: Summarise a document and loop until the summary is correct.
 ---
 
->Create a subagent that summarises a document for the user. It should capture the original structure of the document, preserving chapters, headings and subheadings. The summary should be detailed, concise and covers all the major points and topics in the original document. The summary should be in the style of a Cliff Notes or study guide. It uses tables, bullet points and diagrams where possible, makes use of GFM alerts to call out asides, definitions, or notes.
+>Create a subagent that summarises a document for the user. It should capture the original structure of the document, preserving chapters, headings and subheadings. The summary should be detailed and concise, and cover all the major points and topics in the original document. The summary should be in the style of a Cliff Notes or study guide. It uses tables, bullet points and diagrams where possible, makes use of GFM alerts to call out asides, definitions, or notes.
 >
 >When the subagent has finished create another subagent to compare the summary against the original document. Identify gaps, issues and inconsistencies. The subagent must fix all problems and return an updated summary.
 >
@@ -78,22 +78,22 @@ In some agent platforms, creating an MCP server can be as simple as a single pro
 
 > Create an MCP server for the loop-summary skill.
 
-The arc is the whole book in miniature: a prompt becomes a skill, the skill becomes a self-correcting loop, and the loop becomes a shared capability other agents can stand on. This is the Unix Rule of Composition — programs built to connect to other programs — on a new substrate ([Raymond, *The art of Unix programming*, 2003](http://www.catb.org/esr/writings/taoup/)). Each step trades a little setup for leverage that compounds — and at every step the human still owns the one thing the loop cannot supply: the judgement of whether the summary was worth making. Do this often enough and it stops being a trick you pull for one document; it becomes the way you work.
+The arc is the whole book in miniature: a prompt becomes a skill, the skill becomes a self-correcting loop, and the loop becomes a shared capability other agents can stand on. This is the Unix Rule of Composition — programs built to connect to other programs — applied to an agent ([Raymond, *The art of Unix programming*, 2003](http://www.catb.org/esr/writings/taoup/)). Each step trades a little setup for leverage that compounds — and at every step the human still owns the one thing the loop cannot supply: the judgement of whether the summary was worth making. Do this often enough and it stops being a trick you pull for one document; it becomes the way you work.
 
-## 2.2 The Unix Philosophy, Re-run
+## 2.2 The Unix Philosophy, Reborn
 
-It is worth naming where this stance comes from, because it is not new. In the early 1970s the builders of Unix — the operating system whose textbooks this book takes as its prose model — settled on a philosophy of building software that has outlived almost everything built on top of it. Doug McIlroy, who invented the Unix pipe, put it in three lines: "Write programs that do one thing and do it well. Write programs to work together. Write programs to handle text streams, because that is a universal interface" (["Unix philosophy," n.d.](https://en.wikipedia.org/wiki/Unix_philosophy)). Eric Raymond later drew the philosophy out into a set of rules — among them the Rule of Composition, "design programs to be connected to other programs," and the Rule of Separation, "separate policy from mechanism" ([Raymond, 2003](http://www.catb.org/esr/writings/taoup/)).
+It is worth naming where this approach comes from, because it is not new. In the early 1970s, Ken Thompson and Dennis Ritchie, the builders of Unix, settled on a philosophy of building software that is still relevant today. Doug McIlroy, who invented the Unix pipe, put it in three lines: "Write programs that do one thing and do it well. Write programs to work together. Write programs to handle text streams, because that is a universal interface" (["Unix philosophy," n.d.](https://en.wikipedia.org/wiki/Unix_philosophy)). Eric Raymond later drew the philosophy out into a set of rules — among them the Rule of Composition, "design programs to be connected to other programs," and the Rule of Separation, "separate policy from mechanism" ([Raymond, 2003](http://www.catb.org/esr/writings/taoup/)).
 
-Read those with an agent in mind and they stop being about C. Working well with AI turns out to be the Unix philosophy on a new substrate: not small programs piped together but small, clear intents composed into larger work. And where Unix made plain text the universal interface between tools, Markdown has become the universal *format* a model reads and writes — its native input and output, the thread this chapter picks up. The parallels are close enough to lay out, because each Unix rule has an AI-dō form that the rest of this book develops.
+Read those with an agent in mind and they stop being about writing programs. Working well with AI turns out to be the Unix philosophy reworded: not small programs piped together but small, clear intents composed into larger work. And where Unix made plain text the universal interface between tools, Markdown (which is text) has become the universal *format* a model reads and writes — its native input and output, the thread this chapter picks up. The parallels are close enough to lay out, because each Unix rule has an AI-dō form that the rest of this book develops.
 
 | Unix philosophy | AI-dō, re-run on a model |
 | --- | --- |
 | Do one thing well | Give one clear ask at a time; build up in steps |
 | Programs work together (composition) | A prompt becomes a skill, a skill a loop, a loop a shared tool |
 | Text is the universal interface | Markdown is the universal format — the model's native input and output |
-| Separate policy from mechanism | Separate intent (the *what*) from implementation (the *how*) — ICE |
+| Separate policy from mechanism | Separate intent (the *what*) from implementation (the *how*) |
 | Prototype before you polish | Run it, then refine; do not over-specify up front |
-| Store data in flat text files | Keep memory in durable, human-readable notes — the LLM wiki |
+| Store data in flat text files | Keep memory in durable, human-readable documents |
 | Fail noisily and early; be robust | Verify at the boundaries; stop a drifting run and re-steer |
 | Value people's time over machine time | Spend judgement, not tokens; measure value, not output |
 
@@ -101,7 +101,7 @@ Two differences matter, and they are the reason this is a book and not a footnot
 
 ## 2.3 Prompt Engineering
 
-Return to that first summary prompt. It works because it is engineered, not vague — and that craft has a name. **Prompt engineering** is writing the input so the model returns what you actually want, and it rewards a little structure ([DAIR.ai, *Prompt engineering guide*, n.d.](https://www.promptingguide.ai/)). The DAIR.ai guide breaks any prompt into four elements, and my summary request quietly uses three of them.
+Return to that first summary prompt. It works because it is engineered, not vague — and that craft has a name. **Prompt engineering** is writing the input so the model returns what you actually want, and it rewards a little structure ([DAIR.ai, *Prompt engineering guide*, n.d.](https://www.promptingguide.ai/)). The DAIR.ai guide breaks any prompt into four elements, and my summary request quietly uses all four of them.
 
 > [!NOTE]
 > The four elements of a prompt ([DAIR.ai, *Prompt engineering guide*, n.d.](https://www.promptingguide.ai/introduction/elements)):
@@ -180,9 +180,16 @@ That makes one simple strategy pay off across everything in this chapter: turn w
 
 The conversion is a solved problem, with a tool for every source. Pandoc converts between dozens of document formats ([MacFarlane, *Pandoc: A universal document converter*, n.d.](https://pandoc.org)); Microsoft's MarkItDown turns Office files, PDFs, images, and audio into LLM-ready Markdown ([Microsoft, n.d.](https://github.com/microsoft/markitdown)); IBM's Docling parses PDFs and Office documents into structured Markdown and JSON for generative-AI pipelines ([Livathinos et al., *Docling: An efficient open-source toolkit for AI-driven document conversion*, 2025](https://arxiv.org/abs/2501.17887)); and a web page becomes Markdown with a reader service or a few lines of script. To hold and edit the result, plain-text tools are enough and better: Obsidian treats a folder of Markdown as a linked knowledge base ([Obsidian, *Obsidian*, n.d.](https://obsidian.md)), and an editor like VS Code previews, searches, and version-controls it without ceremony.
 
+| Source | Tool | Produces |
+| --- | --- | --- |
+| Almost any format | Pandoc | Any other format |
+| Office files, PDFs, images, audio | MarkItDown | LLM-ready Markdown |
+| PDFs, Office documents | Docling | Structured Markdown + JSON |
+| Web pages | A reader service or script | Markdown |
+
 The deeper point is the Unix one. Markdown is the *text stream* of the AI era — the common format that lets tools, models, and people pass work between them without a custom adapter at every seam. Standardise on it, and the pieces compose.
 
-## 2.5 Context & Memory
+## 2.5 Context and Memory
 
 Skills and Markdown compound only if the model can keep what it learns from one session to the next — and by default it cannot. Everything a model knows about your task lives in the context you place in front of it, and that context is both finite and forgotten the moment the window closes. Managing it well is a discipline of its own — *context engineering*, the craft this section is about. The clearest example is Karpathy's LLM Wiki, and it is worth a careful look because it inverts the usual pattern. Most document workflows are retrieval: you upload files, the model fetches chunks at query time, answers, and forgets. It rediscovers knowledge on every question, and nothing is built up.
 
@@ -248,7 +255,14 @@ The self-checking loop you built in §2.1 is a small taste of a larger shift in 
 > [!NOTE]
 > An **ambient teammate** is an agent that runs asynchronously in the background — given a scoped task and the tools to finish it — rather than waiting on each instruction. You delegate the task, not the keystrokes.
 
-The shift sounds small and is not, because it changes who the bottleneck is. As Karpathy puts it, the goal is to remove yourself from the keystroke loop and maximise throughput rather than steer every step ([Latent Space, *Loopcraft: The art of stacking*, 2026b](https://www.latent.space/p/ainews-loopcraft-the-art-of-stacking)). OpenAI's internal figures make the leverage tangible: agent output grew many-fold across functions once people delegated whole tasks instead of supervising each one. The throughput is real — but it counts as work done only once someone has checked the result, a distinction the rest of this book keeps insisting on.
+| | Chat assistant | Ambient teammate |
+| --- | --- | --- |
+| Pace | Synchronous — ask, wait, steer, repeat | Asynchronous — runs while you are elsewhere |
+| You supply | Each instruction, one at a time | A scoped task, once |
+| You get back | A transcript to continue | A result to review |
+| Bottleneck | Your attention and typing speed | Your review of the outcome |
+
+The shift sounds small and is not, because it changes who the bottleneck is. As Karpathy puts it, the goal is to remove yourself from the keystroke loop and maximise throughput rather than steer every step ([Latent Space, *Loopcraft: The art of stacking*, 2026b](https://www.latent.space/p/ainews-loopcraft-the-art-of-stacking)). The leverage is tangible: hand off whole tasks rather than supervise each step, and one person's throughput can multiply. But it counts as work done only once someone has checked the result, a distinction the rest of this book keeps insisting on.
 
 The craft here is *loop engineering*: the loop, not the prompt. Practitioners are blunt that they now write loops, not prompts, and design the loops that prompt their agents rather than chasing one perfect instruction ([Latent Space, 2026b](https://www.latent.space/p/ainews-loopcraft-the-art-of-stacking)); the real skill is knowing when to drop a loop for reliability and when to climb one for leverage.
 
@@ -258,13 +272,20 @@ The practice is simple to state: scope work tightly, fire it off, review the out
 
 The tutorial that opened this chapter was one idea applied three times: make each piece something another piece can build on. A prompt you keep becomes a skill; a skill wrapped in a check becomes a loop; a loop exposed through MCP becomes a capability any agent can call. That is the Unix Rule of Composition — design programs to connect to other programs — on a new substrate ([Raymond, 2003](http://www.catb.org/esr/writings/taoup/)).
 
+```mermaid
+flowchart LR
+    P[Prompt<br/>helps once] --> S[Skill<br/>reused every time]
+    S --> L[Loop<br/>checks its own work]
+    L --> M[MCP server<br/>any agent can call it]
+```
+
 Two habits make it pay. The first is to keep each piece small and single-purpose. A skill that does one thing well can be reused in situations you never foresaw, while a sprawling one fits only the case it was written for — the "do one thing well" rule, now applied to intents rather than programs. The second is to standardise the seams. Because skills are Markdown and MCP is one shared interface, a capability built once travels — to a coding agent in your editor, to a chat assistant, to a teammate's setup — with no adapter at each joint.
 
 The compounding is the whole point. A one-off prompt helps once; a composed skill helps every time it is reached for, by you and by every agent you let stand on it. Combining skills, and making them available to other agents, is how personal productivity stops being a run of clever sessions and becomes a system that grows.
 
 ## 2.8 Knowledge Work, Not Just Code
 
-The surprising lesson of 2026 is that the biggest agent gains are in knowledge work — research, writing, synthesis, decision support — not in code. These are bounded, high-feedback tasks where a model can draft, compare, and summarise faster than any human, and where production was never the slow part.
+The biggest agent gains recently are in knowledge work — research, writing, synthesis, decision support — not in code. These are bounded, high-feedback tasks where a model can draft, compare, and summarise faster than any human, and where production was never the slow part.
 
 The effect is uneven. A study of 5,179 customer-support agents found AI raised resolved-issues-per-hour by 14% on average but 34% for novices, with little gain for experts — the tool spreads the best workers' know-how to everyone else ([Brynjolfsson et al., *Generative AI at work*, 2023](https://www.nber.org/papers/w31161)). What stays expensive is judgement: deciding whether the work was worth doing at all.
 
@@ -292,7 +313,15 @@ The practical defence is to sort tasks by how much judgement they need. Where th
 
 ## 2.10 Personal Operating Models
 
-Leverage compounds only if you stop re-deciding everything. A personal operating model is a small, reusable kit: plays you can rerun, preferences encoded once so you never re-explain them, and a daily workflow that feeds itself. The point is to turn scattered prompting into a system, the same instinct the book applies everywhere — repeatable patterns over one-off prompts. The waste it removes is re-solving the same problem from scratch each session, which feels productive and is not.
+Leverage compounds only if you stop re-deciding everything. A *personal operating model* is a small, reusable kit that turns scattered prompting into a system: plays you can rerun, preferences encoded once so you never re-explain them, and a daily workflow that feeds itself. It is the instinct the book applies everywhere — repeatable patterns over one-off prompts — pointed at your own working life. The waste it removes is re-solving the same problem from scratch each session, which feels productive and is not.
+
+Three parts make it up, and this chapter has already built each one:
+
+- **Plays** — the skills, loops, and shared tools from §2.1 and §2.7, named and kept where any agent can reach them. A play settles a decision once — how you summarise a paper, triage an inbox, draft a proposal — so you never make it from scratch again.
+- **Preferences** — your standing context, written down once: your role, your house style, the tools you favour, what you always want and never want. Keep it in the schema file the agent reads on every task — CLAUDE.md or AGENTS.md, the same files that governed the wiki in §2.5 — and you stop re-explaining yourself at the top of every session.
+- **A daily loop** — a standing routine an ambient teammate can run on its own: triage what arrived overnight, file it into memory, and surface the few things that need you. The workflow feeds the memory, and the memory sharpens the workflow.
+
+Assembled, these stop being a run of clever sessions and become something closer to infrastructure: the plays carry your methods, the preferences carry your taste, and the loop carries the day. What stays yours is the part no kit can encode — deciding what is worth doing, and judging whether the result was any good. The model removes the friction so your attention lands where only it can.
 
 ## References
 

@@ -104,6 +104,11 @@ blockquote {
   padding: 0.4rem 1rem;
 }
 
+// ---- References (APA 7) ----------------------------------------------------
+// Hanging indent on each entry. (No page break on the web — it's a continuous
+// scroll; the new-page rule applies only to the PDF and ePub.)
+.references p { padding-left: 1.6em; text-indent: -1.6em; }
+
 // ---- Tables ----------------------------------------------------------------
 table { font-size: 0.95em; }
 thead th { background: $r-sugar-swizzle; border-bottom: 2px solid $r-radiant-orchid; }

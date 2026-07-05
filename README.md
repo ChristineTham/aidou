@@ -19,7 +19,7 @@ Anyone can open a chat window and get a fluent answer in seconds. Far fewer can 
 - AI is not just a tool
 - It is something to be used **thoughtfully, ethically, and deliberately**
 
-**Read it online:** <https://christinetham.github.io/aidou/> — or download the [PDF](https://christinetham.github.io/aidou/ai-do.pdf) or [ePub](https://christinetham.github.io/aidou/ai-do.epub). The website, PDF, and ePub are all built from the Markdown in `book/` by one Quarto pipeline.
+**Read it online:** <https://christham.net/aidou/> — or download the [PDF](https://christham.net/aidou/ai-do.pdf) or [ePub](https://christham.net/aidou/ai-do.epub). The website, PDF, and ePub are all built from the Markdown in `book/` by one Quarto pipeline.
 
 ---
 
@@ -35,7 +35,7 @@ Begin with the preface, then follow the six-chapter climb — personal productiv
 - **[5 · Responsibility & Governance](book/05-governance.md)** — securing agents, owning what they say, and the bills that come due later — care expressed as guardrails.
 - **[6 · Mastery & Forward Practice](book/06-mastery.md)** — what stays human when the tools are this good, and the one question worth asking again and again.
 
-> Prefer one file? Download the **[PDF](https://christinetham.github.io/aidou/ai-do.pdf)** or **[ePub](https://christinetham.github.io/aidou/ai-do.epub)**.
+> Prefer one file? Download the **[PDF](https://christham.net/aidou/ai-do.pdf)** or **[ePub](https://christham.net/aidou/ai-do.epub)**.
 
 ---
 
@@ -59,12 +59,13 @@ Read it as a **practice guide, not a reference manual or a textbook**: once in o
 
 ## ✍️ Status
 
-A work in progress. The preface is complete; Chapters 1–3 are drafted and being revised; Chapters 4–6 are earlier work in progress. The whole book uses numbered sections and APA 7 citations with per-chapter reference lists.
+A work in progress. The preface and Chapters 1–2 are complete; Chapter 3 is drafted and being revised; Chapters 4–6 are earlier work in progress. The whole book uses numbered sections and APA 7 citations with per-chapter reference lists.
 
 | Section | State |
 | --- | --- |
 | Preface | Completed |
-| Chapters 1–3 | Draft |
+| Chapters 1–2 | Completed |
+| Chapter 3 | Draft |
 | Chapters 4–6 | Work in progress |
 
 <details>
@@ -88,11 +89,19 @@ generates the rest into it — all git-ignored.
 - **Change copy** → edit `book/*.md`, `book/blurb.md`, or `book/epigraph.md`.
 - **Restyle (colours, fonts, sizes)** → edit `theme.yml`. Change a value there and
   it flows to the website, PDF, and ePub — nowhere else to touch.
-- **Change the cover** → edit `images/cover.svg`, then re-rasterise:
+- **Change the cover** → edit `images/cover.svg` (the "AI-dō" title is **Raleway
+  Black**, the decorative "AI" is **Rubik Glitch Pop**, the 道/愛 are KokuryuSou),
+  then re-rasterise:
   ```bash
   "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless \
     --screenshot=images/cover.png --window-size=1600,2400 \
     --force-device-scale-factor=1 --hide-scrollbars "file://$PWD/images/cover.svg"
+  ```
+  The social-share image (`images/ogimage.{svg,png,jpg}`, 1200×630, wired into the
+  site as `og:image`) is derived from the cover — regenerate it after any cover
+  change:
+  ```bash
+  python3 .claude/skills/book-build/scripts/gen_ogimage.py --render
   ```
 - **Regenerate chapter art / cover kanji** → the 道/愛/… kanji use **KokuryuSou**,
   an Adobe Fonts brush face. It's licensed (not in the repo): **activate it in
@@ -110,7 +119,8 @@ generates the rest into it — all git-ignored.
 **Build & deploy** — one Quarto pipeline → website + PDF + ePub. Locally:
 `cd quarto && ./build.sh` (or `./build.sh preview`). It runs, in order,
 `gen_theme.py` (tokens from `theme.yml`) → `build_site.py` (chapters from
-`book/`, and copies art in from `images/`) → `gen_blurb.py` (blurb + epigraph) →
+`book/`, copies art in from `images/`, injects the Rosely Mermaid theme) →
+`gen_blurb.py` (blurb, epigraph, and the SEO/Open-Graph `<head>` tags) →
 `quarto render`. On push to `main`, `.github/workflows/deploy.yml` does the same
 and deploys to GitHub Pages. Full detail is in the `book-build` skill.
 

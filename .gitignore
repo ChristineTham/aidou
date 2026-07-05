@@ -11,8 +11,10 @@ quarto/_blurb.md
 quarto/_blurb.typ
 quarto/_blurb.json
 quarto/_epigraph.md
+quarto/_seo.html
 # art copied in from images/ at build time (source of truth: images/)
 quarto/cover.png
+quarto/ogimage.jpg
 quarto/chapter-art/
 # generated design tokens (source: theme.yml)
 quarto/_brand.yml

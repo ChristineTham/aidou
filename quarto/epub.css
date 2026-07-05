@@ -29,6 +29,12 @@ figure, .quarto-figure { text-align: center; margin: 1em 0; }
 /* Full-width decorative chapter-opener banner (kanji + seigaiha sea). */
 img.chapter-banner { display: block; width: 100%; height: auto; margin: 0.3em 0 1.4em; }
 
+/* References (APA 7): start on a new page, hanging indent per entry.
+   margin-left + negative text-indent is the most widely-supported e-reader
+   hanging-indent idiom. */
+.references { page-break-before: always; break-before: page; }
+.references p { margin-left: 1.6em; text-indent: -1.6em; }
+
 /* Blockquotes */
 blockquote {
   border-left: 3px solid var(--r-lupine);

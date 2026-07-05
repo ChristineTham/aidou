@@ -37,9 +37,10 @@ landing *template* (thin glue that `{{< include >}}`s the epigraph and blurb).
    injects each chapter's banner (and the preface/front-matter band) under the
    title, with the PDF title accent read from `_tokens.json`.
 3. **`scripts/gen_blurb.py`** — `book/blurb.md` + `book/epigraph.md` → the
-   landing/back-cover partials (see *Back cover & epigraph*). Runs *before*
-   render because Quarto resolves `{{< include >}}` before its own pre-render
-   hooks.
+   landing/back-cover partials (see *Back cover & epigraph*) **and `_seo.html`**
+   (Open Graph / Twitter Card / JSON-LD `<head>` tags — see *Open Graph & SEO*).
+   Runs *before* render because Quarto resolves `{{< include >}}` before its own
+   pre-render hooks.
 
 Then post-render (`project: post-render` in `_quarto.yml`): `epub_fix.py` →
 `epub_backcover.py` → `cachebust.py`.
@@ -92,10 +93,10 @@ using `var(--r-*)`.
 Source of truth is **`images/cover.svg`** (self-contained: outlined glyph paths
 + a vector seigaiha pattern). The 道 / 愛 kanji are outlined from **KokuryuSou**
 (Adobe brush face — see *Chapter art* for the licence/activation note); the
-"AI" letters are outlined from **Rubik Glitch Pop** (Google Fonts, OFL —
-freely downloadable/redistributable). To re-swap a glyph's font, re-outline it
-into the same on-canvas box and rewrite `cover.svg`. Rasterise to
-`images/cover.png` (1600×2400) with
+decorative "AI" watermark is outlined from **Rubik Glitch Pop** (Google Fonts,
+OFL); the **"AI-dō" title wordmark is Raleway Black**. To re-swap a glyph's
+font, re-outline it into the same on-canvas box and rewrite `cover.svg`.
+Rasterise to `images/cover.png` (1600×2400) with
 headless Chrome; the build copies `cover.png` into `quarto/` and wires it via
 `book: cover-image` (+ `typst-show.typ` for the PDF full-bleed cover):
 
@@ -104,6 +105,29 @@ headless Chrome; the build copies `cover.png` into `quarto/` and wires it via
   --screenshot=images/cover.png --window-size=1600,2400 \
   --force-device-scale-factor=1 --hide-scrollbars "file://$PWD/images/cover.svg"
 ```
+
+## Open Graph image & SEO
+
+The social-share (`og:image`) art is **`images/ogimage.svg`** (+ `.png`, and
+`.jpg` — the file the tags point at), a 1200×630 landscape re-layout of the
+cover: text left, graphic bled off the top-right, same seigaiha background.
+**`scripts/gen_ogimage.py`** builds all three by reusing `cover.svg`'s outlined
+paths verbatim — so **re-run it whenever the cover changes**:
+
+```bash
+python3 .claude/skills/book-build/scripts/gen_ogimage.py --render   # svg + png + jpg
+```
+
+The `<head>` SEO tags — meta description, Open Graph, Twitter Card, and
+schema.org **JSON-LD** (WebSite + Book) — are generated into **`_seo.html`** by
+`gen_blurb.py` (description sourced from `book/blurb.md`; canonical identity from
+constants at the top of that script) and injected via `format: html:
+include-in-header`. `build_site.py` copies `images/ogimage.jpg` into the project
+and `project: resources` publishes it, so `og:image` resolves at
+`<site-url>/ogimage.jpg`. `site-url` is the **custom domain**
+(`https://christham.net/aidou/`) so canonical/OG URLs are correct. (Quarto emits
+no per-page `<link rel=canonical>` for books; that's fine — don't add a global
+one, it would point every page at the root.)
 
 ## Chapter art
 
@@ -152,6 +176,14 @@ cover via `typst-back-cover.typ`), `_blurb.json` (read post-render by
 - **PDF and ePub** — PNG raster (headless Chrome at build time). SVG isn't viable
   here: Quarto doesn't expose Mermaid's `htmlLabels:false`, so its SVG carries
   HTML labels Typst can't parse and e-readers render inconsistently.
+
+**Theming:** every diagram is themed to the Rosely palette by a `%%{init}%%`
+directive (`mermaid_init` in `build_site.py`, built from `_tokens.json`) injected
+as each diagram's first line. Because the directive lives *in the diagram source*,
+all three render paths honour it identically — a per-format `mermaid: theme:` in
+`_quarto.yml` would only reach HTML, leaving the pre-rendered PDF/ePub on
+Mermaid's default (this is why timelines once came out grayscale on the web but
+colour in the PDF). Edit the palette in `theme.yml`, not here.
 
 **Sizing:** a `#show image` rule in `quarto/typst-fonts.typ` scales each diagram
 by `diagram-scale` (≈0.55, so labels ≈ body text), capped at the text-column

@@ -1,6 +1,6 @@
 # Chapter 1 — Foundations (The Way)
 
-This chapter lays the foundations: what AI is and how it got here, how a language model actually works, how the tools climbed from chatbot to agent, what they still cannot do, how I came to trust them, the mental model worth holding, and the principles that follow. Everything later rests on them.
+This chapter lays the foundations: what AI is and how it got here, where the field stands today, how a language model actually works, how the tools climbed from chatbot to agent ecosystem, what they still cannot do, how I came to trust them, the mental model worth holding, and the principles that follow. The rest of the book builds on these principles.
 
 ## 1.1 What AI Is, and How It Got Here
 
@@ -10,7 +10,22 @@ A different idea ran quietly alongside the rules: let a machine learn from data 
 
 The architecture that made language work arrived in 2017, when researchers at Google introduced the *transformer*. Its *attention* mechanism lets the model weigh every word against every other, so it could learn the long-range structure of text far better than anything before it ([Vaswani et al., *Attention is all you need*, 2017](https://arxiv.org/abs/1706.03762)). Scale did the rest. Train a transformer to predict the next word across enough text and it becomes a *large language model*; make it large enough and it turns fluent. That is the line that runs to ChatGPT in late 2022, and to everything in this book. Those terms — *large language model*, *frontier model*, *foundation model* — are the ones the preface set out; this chapter looks under them.
 
-Two facts about 2026 frame everything that follows. The first is that these tools are everywhere: roughly 88% of organisations report using AI, even as most are still experimenting rather than depending on it ([Stanford HAI, *The AI index 2026 annual report*, 2026](https://hai.stanford.edu/ai-index/2026-ai-index-report); [McKinsey & Company, *The state of AI*, 2025](https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai)). The second is that the field has quietly conceded the model alone is no longer the product; the leading labs now compete on the scaffolding around it — the workflows, the memory, the economics of running it well.
+```mermaid
+timeline
+    title From Dartmouth to ChatGPT
+    1955 : The Dartmouth proposal coins the term artificial intelligence
+    1958 : Rosenblatt's perceptron — learn from data, not rules
+    1970s–90s : Rule-based expert systems, and two AI winters
+    2012 : Deep learning wins the ImageNet contest
+    2017 : The transformer and its attention mechanism
+    2022 : ChatGPT makes large language models mainstream
+```
+
+I actually used a language model in 2018 whilst consulting for a government client. Lesson 10 in fast.ai's [Practical Deep Learning for Coders](https://course18.fast.ai/) course described a groundbreaking approach to NLP transfer learning using ULMFiT. The lesson demonstrated how to take a language model pre-trained on Wikipedia to predict the next word, strip away its final decoder layer, and repurpose it into a highly accurate classifier using techniques like gradual unfreezing. I adapted the lesson's codebase to solve a real-world enterprise problem: automated support call classification. I implemented the entire pipeline within AWS SageMaker, fine-tuning the base model on call logs and was able to classify support calls into categories (Procurement, HR, IT, etc.).
+
+## 1.2 The AI Landscape in 2026
+
+Two facts frame everything that follows. The first is that these tools are everywhere: roughly 88% of organisations report using AI, even as most are still experimenting rather than depending on it ([Stanford HAI, *The AI index 2026 annual report*, 2026](https://hai.stanford.edu/ai-index/2026-ai-index-report); [McKinsey & Company, *The state of AI*, 2025](https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai)). The second is that the field has quietly conceded the model alone is no longer the product; the leading labs now compete on the scaffolding around it — the workflows, the memory, the economics of running it well.
 
 | Signal (2026) | Figure | What it means |
 | --- | --- | --- |
@@ -20,7 +35,7 @@ Two facts about 2026 frame everything that follows. The first is that these tool
 
 Sources: [Stanford HAI, 2026](https://hai.stanford.edu/ai-index/2026-ai-index-report); [Benaich, *State of AI report 2025*, 2025](https://www.stateof.ai/). Capability has rocketed, yet so has its unevenness, and the hard part has shifted from getting an answer to trusting one. That shift is what this book is for.
 
-## 1.2 How a Language Model Works
+## 1.3 How a Language Model Works
 
 Underneath the surface, a large language model does one thing: it predicts the next token. Given all the text so far, it guesses the next word, then the next, then the next. It was trained on vast amounts of text, so it has learned the probability of each possible next token, and it writes by sampling from those probabilities one token at a time. Stephen Wolfram puts it plainly: the system is always just "adding one word at a time," picking a reasonable next token and, with a little randomness in the sampling, favouring variety over the single likeliest word ([Wolfram, *What is ChatGPT doing … and why does it work?*, 2023](https://writings.stephenwolfram.com/2023/02/what-is-chatgpt-doing-and-why-does-it-work/)). Nothing in the mechanism consults a fact store or checks whether the result is true. It produces the most plausible continuation, no more.
 
@@ -45,7 +60,7 @@ flowchart TB
     R -.->|competence, not comprehension| V[Verify the output]
 ```
 
-## 1.3 From Chatbot to Agent
+## 1.4 From Chatbot to Agent Ecosystem
 
 The tools changed fast, and at each step the kind of work you could trust to them changed with it. The arc runs from a closed box that could only talk, to an open ecosystem of agents that act.
 
@@ -68,7 +83,7 @@ Tools are what turn a predictor of text into an *agent*: a model placed in a loo
 > An **agent** is an LLM running tools in a loop to reach a goal ([Willison, *I think “agent” may finally have a widely enough agreed upon definition to be useful jargon now*, 2025](https://simonwillison.net/2025/Sep/18/agents/)). A **tool** is an action it may take — web search, code execution, file edits — and the **loop** runs until a stopping condition is met. An agent has no agency in the moral sense: a computer cannot be held accountable, so you stay responsible for what it ships.
 
 ```mermaid
-flowchart LR
+flowchart TB
     G[Goal] --> P[Plan]
     P --> A[Act — call a tool]
     A --> O[Observe result]
@@ -77,7 +92,7 @@ flowchart LR
     C -->|yes| D[Done]
 ```
 
-By 2026 that single loop had fanned out into a whole ecosystem. The same pattern scales from an assistant anyone can open in a browser to a governed platform running fleets of agents across an organisation; what changes along the way is how much you hand off, and how much scaffolding it takes to do so safely.
+Today, that single loop has fanned out into a whole ecosystem. The same pattern scales from an assistant anyone can open in a browser to a governed platform running fleets of agents across an organisation; what changes along the way is how much you hand off, and how much scaffolding it takes to do so safely.
 
 | Tier | What it is | Autonomy | Your role |
 | --- | --- | --- | --- |
@@ -88,11 +103,11 @@ By 2026 that single loop had fanned out into a whole ecosystem. The same pattern
 | Multi-agent system | Agents coordinate; one delegates to another | Runs many tasks at once | Supervise a fleet |
 | Enterprise agentic platform | Fleets wired into an organisation's systems — async, governed, audited, with shared memory and evaluation | Runs continuously, at org scale | Set policy, audit outcomes |
 
-The two always-on kinds sit at opposite ends and should not be confused: a *personal agent* works for one individual and answers to them, whereas an *enterprise agentic platform* runs fleets under central governance and audit. They share the round-the-clock habit but differ in scale, ownership, and control.
+A *personal agent* works for one individual and answers to them, whereas an *enterprise agentic platform* runs fleets under central governance and audit. They share the round-the-clock habit but differ in scale, ownership, and control.
 
-The tiers differ in reach, but the lesson is constant: the model is the easy part. Once capable models became a commodity, the value moved into the system built around one — the harness that runs it, the memory that lets work persist, the checks that decide whether a result is good enough. A 2026 survey frames the whole progression from question-answering to task completion through exactly this *model–harness lens*, locating agent quality in the coupling of model and harness rather than the model alone ([Guo et al., *From question answering to task completion: A survey on agent system and harness design*, 2026](https://arxiv.org/abs/2606.20683)). That system is a set of engineering disciplines, and the next chapters divide them. Chapter 2 is about a *single* agent — the three crafts that make one dependable: prompt engineering, context engineering, and loop engineering. Chapter 4 turns to the disciplines of humans and agents working *together* — what the human brings (intent, judgment, accountability), what the agent system provides (harness, orchestration, memory), and what the two require of each other (division of labour, delegation, presence).
+The tiers differ in reach, but the lesson is constant: the model is the easy part. Once capable models became a commodity, the value moved into the system built around one — the harness that runs it, the memory that lets work persist, the checks that decide whether a result is good enough. A 2026 survey frames the whole progression from question-answering to task completion through exactly this *model–harness lens*, locating agent quality in the coupling of model and harness rather than the model alone ([Guo et al., *From question answering to task completion: A survey on agent system and harness design*, 2026](https://arxiv.org/abs/2606.20683)). That system is a set of engineering disciplines, and the next chapters divide them. Chapter 2 is about a *single* agent — the three crafts that make one dependable: prompt engineering, context engineering, and loop engineering. Chapter 3 takes those crafts into software — where the key discipline is *intent, context and expectations*: saying what the system must do rather than how to build it, and leaving the implementation to the agent. Chapter 4 turns to the disciplines of humans and agents working *together* — what the human brings (intent, judgment, accountability), what the agent system provides (harness, orchestration, memory), and what the two require of each other (division of labour, delegation, presence).
 
-## 1.4 The Limits That Remain
+## 1.5 The Limits That Remain
 
 The same next-token mechanism that makes a model fluent also sets hard limits on what it can be trusted to do, and the first is strange: the model is not even reproducible. You might expect that turning the randomness off — sampling at *temperature zero*, always taking the single likeliest token — would make the same prompt return the same answer every time. Usually it does not. A busy server batches many users' requests together, and the size of that batch changes from moment to moment. So the low-level arithmetic runs in a slightly different order each time, and with finite-precision numbers a different order gives a slightly different result: one run continues "Queens, New York" where the next gives "New York City" ([He, *Defeating nondeterminism in LLM inference*, 2025](https://thinkingmachines.ai/blog/defeating-nondeterminism-in-llm-inference/)). The gap is tiny, but it compounds. In a reasoning model, a rounding difference in an early token can cascade into a different chain of thought and a different final answer ([Yuan et al., *Understanding and mitigating numerical sources of nondeterminism in LLM inference*, 2025](https://arxiv.org/abs/2506.09501)). So you cannot treat a model like ordinary software that returns the same output for the same input; a test or a check has to allow for variation rather than assume it away.
 
@@ -141,23 +156,27 @@ A final limitation is subtler than any wrong fact: the model is built to *sound*
 
 These limits are a map, not a verdict. Spend effort where the model is strong, verify at the boundaries — fresh facts, exact counts, mid-context recall — keep a human in the loop for judgement, and stay most alert when the output sounds most certain.
 
-## 1.5 From Sceptic to Practitioner
+## 1.6 From Sceptic to Practitioner
 
 When I first started cooking, my early attempts did not fare well. I had the recipe and the ingredients, yet the results were grim — onions scorched while I chopped the next thing, pasta turned to glue, the flavours never balanced. The problem was not the recipe. I had skipped the fundamentals: heat control, timing, tasting as you go, getting everything prepped before the pan ever warmed. Once those became second nature, almost any recipe came out well.
 
 Working with AI is the same. How you use the tool matters as much as the tool itself.
 
-I started 2026 as an AI sceptic. I read Ed Zitron — the tech critic whose newsletter [Where's Your Ed At](https://www.wheresyoured.at/) dismantles industry hype — and Gary Marcus, the cognitive scientist whose [Marcus on AI](https://garymarcus.substack.com/) has argued for years that large language models are shallow pattern-matchers rather than reasoners, and I cheered them both on. Cory Doctorow's [Pluralistic](https://pluralistic.net/) sharpened the same suspicion from the political side, naming the slow rot by which platforms turn on their own users. I laughed at the vibe coders for their naivety, and assumed anyone who installed OpenClaw was an idiot.
+I was initially an AI sceptic. I was aware of the limitations of large language models and was doubtful they could be useful in complex tasks.
+
+I read Ed Zitron — the tech critic whose newsletter [Where's Your Ed At](https://www.wheresyoured.at/) dismantles industry hype — and Gary Marcus, the cognitive scientist whose [Marcus on AI](https://garymarcus.substack.com/) has argued for years that large language models are shallow pattern-matchers rather than reasoners, and I cheered them both on. Cory Doctorow's [Pluralistic](https://pluralistic.net/) sharpened the same suspicion from the political side, naming the slow rot by which platforms turn on their own users. I laughed at the vibe coders for their naivety, and assumed anyone who installed OpenClaw was an idiot.
 
 So when a global client hired me to write their AI strategy, I expected the deliverable to be a cautionary tale: be realistic, resist the hype, install guardrails, avoid the traps. Over the last several months, I realised I was the one who was naive. The AI landscape had been transformed. Claude Desktop with Cowork, Microsoft 365 Copilot with WorkIQ, and Google's Gemini Spark turned the ordinary instruments of knowledge work — documents, spreadsheets, inboxes, slide decks — into things an agent could draft, revise, and act on; Claude Code and GitHub Copilot did the same for software, crossing from clever autocomplete to systems that plan, edit across a whole codebase, and run their own work. Personal agents like OpenClaw and Hermes Agent pushed that capability out of the labs and into anyone's hands. Using them in earnest changed my mind: the productivity gains are now genuinely real.
 
-Vibe coding is real. I managed to refactor and clean every line of code I have ever written (not a lot, since my career has never been in software development) and all my projects now feature gleaming, shiny, clean code. I have successfully finished dozens of vibe coded projects without reviewing a single line of code. I now firmly believe I will never read or write code ever again in my life.
+Creating software using AI has genuinely arrived. I managed to refactor and clean every line of code I have ever written (not a lot, since my career has never been in software development) and all my projects now feature gleaming, shiny, clean code. I have successfully finished dozens of AI-assisted projects without reviewing a single line of code, but still verifying that the software met expectations. I now firmly believe I will never write code ever again in my life.
 
-I also believe using AI to do research, analytics, planning and a bunch of other white collar activities are also real.
+I also believe using AI to do research, analytics, planning and a bunch of other white-collar activities is real too.
 
-And yet Ed and Gary are still right: AI does not think or create, it transforms and multiplies. It vibe-codes well only if you already understand large systems; it makes good art only if you are a good artist. Used carelessly it produces slop. Using it well is itself a skill, and most people do not yet have it. That gap — between a tool anyone can touch and a craft few have learned — is why I wrote this book.
+And yet Ed and Gary are still right: AI does not think or create, it transforms and multiplies. It vibe codes well only if you already understand large systems; it makes good art only if you are a good artist. Used carelessly it produces slop. Using it well is itself a skill, and most people do not yet have it. That gap — between a tool anyone can touch and a craft few have learned — is why I wrote this book.
 
 Let me be plain about where I have landed, because it is narrower than my enthusiasm might suggest. I remain a sceptic. The conversion I describe is confined to my work — the productivity of knowledge work and the building of software — and even there it is conditional, earned task by task and checked at every step. In my personal life I keep AI at arm's length: I do not hand it my relationships, my judgement, or my inner weather, and the chapter on the cost of getting it wrong explains why. So read this as a work book with a deliberate boundary. Much of my motivation for writing it is defensive — to spare you the common mistakes and quiet pitfalls that come from trusting these tools where they have not earned it.
+
+AI does not replace human creativity. You can ask an AI to be a graphic designer, but that does not guarantee you will get results that will be pleasing. Take the graphic in the book cover. Although I used AI to help me generate the book cover in SVG, I had to end up specifying the design, creating a stylised graphic of a crumbling, glitchy "AI" (Rubik Glitch Pop) being overshadowed by the word 道 in KokuryuSou (黒龍爽) - raw, dynamic, high-energy brush strokes evoking a raging dragon, with a heart shaped 愛 almost hidden as an Easter egg in the middle of "A".
 
 Used badly, these tools do not just waste time — they distort judgement. Clinicians have begun describing "AI psychosis," where heavy users spiral into delusion after a chatbot mirrors and amplifies their worst ideas instead of pushing back. Others form genuine attachments to a companion app, mistaking fluent warmth for understanding, and grieve when a model is retired. A confident voice that never tires is easy to trust and hard to doubt; one writer likens it to a court jester — fluent, flattering, and so easy to follow that its answers *feel* right whether or not they are, leaving you confident and wrong ([Johnson Spink, *The AI jester: How AI makes you confident and wrong*, 2026](https://www.linkedin.com/pulse/ai-jester-how-makes-you-confident-wrong-johnson-spink-gg3df/)).
 
@@ -167,7 +186,7 @@ This is not a private failing; it scales with authority. Futurism has documented
 
 So the public mood has soured. Trust in AI is falling even as use rises, and every fabricated citation, biased decision, or polished falsehood deepens the suspicion. That distrust is rational — and it is also a gap to be closed. The cure is not blind faith or blanket refusal, but skill: knowing when to lean in, when to verify, and when to walk away. Teaching that skill is the rest of this book.
 
-## 1.6 Mental Models for AI
+## 1.7 Mental Models for AI
 
 The most useful shift I made early on was to stop treating the model as an oracle. An oracle gives one answer and you take it or leave it. A good model is more like a clever junior colleague: ask, glance at the draft, say "closer, but tighten the intro," and go again. So treat it as a loop — intent enters, context is assembled, a response comes back, you refine — iterating until the output is good enough.
 
@@ -186,7 +205,7 @@ Quality lives in that loop, not in any single message. The model rarely converge
 
 So frame each task as a goal, the context it needs, and a check; then iterate. Because an agent runs many steps on its own, it can fix on a wrong approach and pursue it fluently and fast — so keep half an eye on the run and stop it to re-steer the moment it heads the wrong way, rather than waiting for a result you will only discard. The failure mode is reading fluency as truth. A confident answer and a correct one look identical until you check — the model will cite a court case or a statistic in the same calm voice whether or not it exists — which is why verification is the habit that holds.
 
-## 1.7 Principles to Carry Forward
+## 1.8 Principles to Carry Forward
 
 The practice that fills the rest of this book rests on a stance worth stating plainly.
 
@@ -195,7 +214,7 @@ My reason is pragmatic: tools commoditise, and so, in time, do methods. A prompt
 The chapter rests on a handful of claims worth carrying into everything that follows.
 
 - **Treat it as a loop, not an oracle.** Frame each task as a goal, the context it needs, and a check, then iterate — change one thing at a time, read what comes back, and let the approach evolve rather than demanding the finished answer in a single leap. Quality lives in that loop, not in any one message, so start simple and add only what the last round showed was missing; the same instinct scales up, growing a throwaway prompt into a reusable skill and then a shared tool (Chapter 2). An agent is just a model running tools in that same loop, so you stay responsible for what it ships.
-- **Say what, not how.** Give the model your *intent* — the goal and the checks that define success — and leave the implementation to it; choosing pattern-rich detail you would never have thought to name is the thing it is genuinely good at, and over-specifying the *how* fights that strength. Separating what you want from how it is built is the discipline the software chapters sharpen into a method they call ICE (Chapter 3).
+- **Say what, not how.** Give the model your *intent* — the goal and the checks that define success — and leave the implementation to it; choosing pattern-rich detail you would never have thought to name is the thing it is genuinely good at, and over-specifying the *how* fights that strength. Separating what you want from how it is built is the discipline the software chapters sharpen into a method called Intent, Context, Expectations (Chapter 3).
 - **It predicts; it does not know.** A model samples the most plausible next token, so fluent, confident, and wrong are perfectly compatible — a hallucination is the mechanism working as designed, not breaking. It is not even reproducible: the same prompt can return different answers, even with the randomness turned off, so never treat it as deterministic software.
 - **It reasons by chaining learned structure.** Predicting text well forces internal models of the world, and a chain of thought turns one shallow pass into genuine multi-step computation — real competence, but not comprehension.
 - **Competence is jagged.** Strength tracks the density of training data, not the difficulty you perceive: Olympiad proofs yes, an analog clock no. Find that line before you trust the output.

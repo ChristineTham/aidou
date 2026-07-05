@@ -123,14 +123,65 @@ def convert_alerts(lines):
     return out
 
 
-def mermaid_cells(lines):
+FALLBACK_COLORS = {
+    "black-beauty": "#27272a", "granite-gray": "#615f5f", "grapeade": "#85677b",
+    "rose-quartz": "#f7caca", "heavenly-pink": "#f4dede", "sugar-swizzle": "#f4eee8",
+    "lupine": "#be9cc1", "radiant-orchid": "#b565a7", "raspberry-sorbet": "#d2386c",
+    "morning-glory": "#ec809e", "spearmint": "#64bfa4", "serenity": "#93a9d1",
+}
+
+
+def load_token_colors(out_dir):
+    """Palette (name -> hex) from _tokens.json (theme.yml), or the fallback."""
+    p = os.path.join(out_dir, "_tokens.json")
+    if os.path.isfile(p):
+        try:
+            return json.load(open(p, encoding="utf-8")).get("colors", FALLBACK_COLORS)
+        except (ValueError, OSError):
+            pass
+    return FALLBACK_COLORS
+
+
+def mermaid_init(colors):
+    """A Mermaid `%%{init}%%` directive theming every diagram to the Rosely
+    palette. Injected as the first line of each diagram so ALL render paths honour
+    it identically — mermaid.js (HTML, client-side) and the PNG pre-renderer
+    (PDF/ePub). This is the only place a theme reaches the pre-rendered formats."""
+    c = colors
+    ink, white = c.get("black-beauty", "#27272a"), "#ffffff"
+    tv = {
+        "fontFamily": "Raleway, system-ui, sans-serif",
+        "primaryColor": c.get("heavenly-pink", "#f4dede"),
+        "primaryBorderColor": c.get("radiant-orchid", "#b565a7"),
+        "primaryTextColor": ink, "textColor": ink,
+        "secondaryColor": c.get("rose-quartz", "#f7caca"),
+        "tertiaryColor": c.get("sugar-swizzle", "#f4eee8"),
+        "lineColor": c.get("grapeade", "#85677b"),
+        # section palette for timelines (also pie/journey): Rosely accents, cycled
+        "cScale0": c.get("radiant-orchid", "#b565a7"),
+        "cScale1": c.get("morning-glory", "#ec809e"),
+        "cScale2": c.get("spearmint", "#64bfa4"),
+        "cScale3": c.get("serenity", "#93a9d1"),
+        "cScale4": c.get("lupine", "#be9cc1"),
+        "cScale5": c.get("raspberry-sorbet", "#d2386c"),
+        "cScaleLabel0": white, "cScaleLabel1": white, "cScaleLabel2": ink,
+        "cScaleLabel3": ink, "cScaleLabel4": ink, "cScaleLabel5": white,
+    }
+    return "%%{init: " + json.dumps({"theme": "base", "themeVariables": tv},
+                                    separators=(",", ":")) + "}%%"
+
+
+def mermaid_cells(lines, init=""):
     """Turn ```mermaid fences into executable ```{mermaid} cells so Quarto
-    renders them to images for the PDF/ePub (and client-side SVG for HTML).
+    renders them to images for the PDF/ePub (and client-side SVG for HTML), and
+    inject the palette `init` directive as each diagram's first line.
     Diagrams keep their `<br/>` labels, which Mermaid renders as line breaks."""
     out = []
     for l in lines:
         if re.match(r"^```mermaid\s*$", l):
             out.append("```{mermaid}")
+            if init:
+                out.append(init)
         else:
             out.append(l)
     return out
@@ -148,6 +199,9 @@ def copy_assets(out_dir, images_dir):
     cover = os.path.join(images_dir, "cover.png")
     if os.path.exists(cover):
         shutil.copy2(cover, os.path.join(out_dir, "cover.png"))
+    og = os.path.join(images_dir, "ogimage.jpg")   # social-share image (og:image)
+    if os.path.exists(og):
+        shutil.copy2(og, os.path.join(out_dir, "ogimage.jpg"))
     art_src = os.path.join(images_dir, "chapter-art")
     if os.path.isdir(art_src):
         art_dst = os.path.join(out_dir, "chapter-art")
@@ -157,10 +211,37 @@ def copy_assets(out_dir, images_dir):
         print(f"copied cover + chapter-art PNGs from {images_dir}")
 
 
+def wrap_references(body):
+    """APA 7 reference list: start on a new page and hang-indent each entry.
+
+    The per-chapter `## References` section (always last) is wrapped in a
+    `.references` div and preceded by a page break. Styling per format:
+      * PDF (Typst) — a raw `#pagebreak` before the div, and a `#set par(
+        hanging-indent)` scoped *inside* the div's `#block[…]` (so it can't
+        leak into the next chapter).
+      * HTML / ePub — the `.references` class is styled in brand.scss / epub.css
+        (hanging indent; ePub also gets `page-break-before`). Raw typst blocks
+        are inert in these formats. On the web there are no pages, so only the
+        hanging indent applies.
+    """
+    idx = next((i for i, l in enumerate(body) if re.match(r"^## References\s*$", l)), None)
+    if idx is None:
+        return body
+    # first-line-indent:0 overrides orange-book's book-style paragraph indent (so
+    # each entry's first line is flush); spacing restores a gap between entries.
+    before = ["```{=typst}", "#pagebreak(weak: true)", "```", "",
+              "::: {.references}", "```{=typst}",
+              "#set par(hanging-indent: 1.5em, first-line-indent: 0em, spacing: 0.7em)",
+              "```", ""]
+    return (body[:idx] + before + ["## References {.unnumbered}"]
+            + body[idx + 1:] + ["", ":::"])
+
+
 def build(book_dir, out_dir):
     os.makedirs(out_dir, exist_ok=True)
     copy_assets(out_dir, os.path.join(os.path.dirname(book_dir.rstrip("/")) or ".", "images"))
     PDF_ACCENT.update(load_token_accents(out_dir))
+    mermaid_directive = mermaid_init(load_token_colors(out_dir))
     chapter_no = 0
     for src, slug, numbered in CHAPTERS:
         path = os.path.join(book_dir, src)
@@ -172,9 +253,9 @@ def build(book_dir, out_dir):
         title = lines[h1][2:].strip()
         body = lines[:h1] + lines[h1 + 1:]
         body = convert_alerts(body)
-        body = mermaid_cells(body)
+        body = mermaid_cells(body, mermaid_directive)
         body = [strip_section_number(l) for l in body]
-        body = [re.sub(r"^## References\s*$", "## References {.unnumbered}", l) for l in body]
+        body = wrap_references(body)
         text = "\n".join(body).lstrip("\n")
         if numbered:
             chapter_no += 1

@@ -1,6 +1,10 @@
 project:
   type: book
   output-dir: _book
+  # Copy the social-share image (from images/, via build_site.py) into the site
+  # so og:image / twitter:image (in _seo.html) resolve.
+  resources:
+    - ogimage.jpg
   # After render, append a content-hash query to the PDF/ePub download links
   # so a redeploy always yields a fresh URL (defeats browser/CDN caching of a
   # stale file). See .claude/skills/book-build/scripts/cachebust.py.
@@ -15,7 +19,7 @@ book:
   title: "AI-dō"
   subtitle: "The Way of AI, grounded in practice (道)"
   author: "Chris Tham"
-  site-url: "https://christinetham.github.io/aidou/"
+  site-url: "https://christham.net/aidou/"   # custom domain — canonical + sitemap
   repo-url: "https://github.com/ChristineTham/aidou"
   cover-image: cover.png
   cover-image-alt: "AI-dō — The Way of AI, grounded in practice (道), by Chris Tham"
@@ -48,14 +52,15 @@ book:
 format:
   html:
     theme: [_tokens.scss, brand.scss]   # tokens (from theme.yml) + polish rules
+    include-in-header: _seo.html        # SEO/OG/Twitter/JSON-LD (from gen_blurb.py)
     toc: true
     toc-depth: 3
     number-sections: true
     number-depth: 3
     code-copy: true
     link-external-newwindow: true
-    mermaid:
-      theme: neutral
+    # Mermaid theming is injected per-diagram (a Rosely-palette %%{init}%%
+    # directive from build_site.py) so HTML, PDF, and ePub all match.
   typst:
     toc: true
     number-sections: true
