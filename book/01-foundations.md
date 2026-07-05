@@ -52,7 +52,7 @@ Stack enough of this and whole abilities appear to switch on with scale — mult
 flowchart TB
     P[Next-token prediction] --> W[Internal world model]
     W --> S
-    subgraph S [Chain of thought: a scratchpad]
+    subgraph S [Chain of thought]
       direction LR
       S1[Step 1] --> S2[Step 2] --> S3[Step 3]
     end

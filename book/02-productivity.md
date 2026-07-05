@@ -273,7 +273,7 @@ The practice is simple to state: scope work tightly, fire it off, review the out
 The tutorial that opened this chapter was one idea applied three times: make each piece something another piece can build on. A prompt you keep becomes a skill; a skill wrapped in a check becomes a loop; a loop exposed through MCP becomes a capability any agent can call. That is the Unix Rule of Composition — design programs to connect to other programs — on a new substrate ([Raymond, 2003](http://www.catb.org/esr/writings/taoup/)).
 
 ```mermaid
-flowchart LR
+flowchart TB
     P[Prompt<br/>helps once] --> S[Skill<br/>reused every time]
     S --> L[Loop<br/>checks its own work]
     L --> M[MCP server<br/>any agent can call it]

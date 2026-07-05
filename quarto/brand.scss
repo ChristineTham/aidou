@@ -122,6 +122,11 @@ code:not(pre code) { color: $r-radiant-orchid; background: rgba($r-rose-quartz, 
 // ---- Figures / diagrams ----------------------------------------------------
 figure, .quarto-figure { text-align: center; }
 figure img, .mermaid svg, .mermaid-js svg { max-width: 100%; height: auto; }
+// Mermaid subgraph (cluster) background. Quarto's own HTML rule fills it from
+// `--mermaid-fg-color--lightest` (a lightened *dark* foreground → too dark) and
+// overrides the diagram's own theme. Force the light warm tint the pre-rendered
+// PDF/ePub already use (via clusterBkg in build_site.py), so all formats match.
+.cluster rect { fill: $r-warm !important; stroke: $r-lupine !important; }
 
 // ---- Chapter opener banner -------------------------------------------------
 // Full-width decorative banner (kanji + seigaiha sea) under each chapter title.

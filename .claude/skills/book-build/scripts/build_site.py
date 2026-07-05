@@ -150,13 +150,18 @@ def mermaid_init(colors):
     c = colors
     ink, white = c.get("black-beauty", "#27272a"), "#ffffff"
     tv = {
-        "fontFamily": "Raleway, system-ui, sans-serif",
+        # No fontFamily override: the PDF/ePub PNG pre-renderer lacks the web
+        # fonts, so a custom family falls back to a wider face and overflows the
+        # layout-sized node boxes. Mermaid's default keeps node sizing correct.
         "primaryColor": c.get("heavenly-pink", "#f4dede"),
         "primaryBorderColor": c.get("radiant-orchid", "#b565a7"),
         "primaryTextColor": ink, "textColor": ink,
         "secondaryColor": c.get("rose-quartz", "#f7caca"),
         "tertiaryColor": c.get("sugar-swizzle", "#f4eee8"),
         "lineColor": c.get("grapeade", "#85677b"),
+        # subgraph (cluster) background — light warm tint so it doesn't go dark
+        "clusterBkg": c.get("warm", "#faf7f4"),
+        "clusterBorder": c.get("lupine", "#be9cc1"),
         # section palette for timelines (also pie/journey): Rosely accents, cycled
         "cScale0": c.get("radiant-orchid", "#b565a7"),
         "cScale1": c.get("morning-glory", "#ec809e"),
