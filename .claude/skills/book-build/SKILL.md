@@ -85,7 +85,11 @@ using `var(--r-*)`.
 ## Cover
 
 Source of truth is **`images/cover.svg`** (self-contained: outlined glyph paths
-+ a vector seigaiha pattern). Rasterise to `images/cover.png` (1600×2400) with
++ a vector seigaiha pattern). The 道 / 愛 kanji are outlined from **KokuryuSou**
+(Adobe brush face — see *Chapter art* for the licence/activation note); the
+"AI" letters are outlined Raleway. To re-swap the kanji font, re-outline them
+into the same on-canvas boxes and rewrite `cover.svg`. Rasterise to
+`images/cover.png` (1600×2400) with
 headless Chrome; the build copies `cover.png` into `quarto/` and wires it via
 `book: cover-image` (+ `typst-show.typ` for the PDF full-bleed cover):
 
@@ -106,14 +110,19 @@ the PNGs into `quarto/chapter-art/` and injects the banner under each title.
 - Colours come from `theme.yml` via `_tokens.json` (`chapter-accents` +
   `front-matter-accent`); the slug→kanji map is content in the script.
 - Kanji glyphs are **outlined** into self-contained SVG paths (no font dependency
-  in the output) with **fontTools**, from the full **Noto Serif JP** variable
-  font (the bundled `quarto/fonts` subset only has 愛/道 — download the full font
-  once; see the script header).
-- Regenerate (run `gen_theme.py` first so `_tokens.json` exists):
+  in the *output*) with **fontTools**, from **KokuryuSou** — a Japanese brush
+  display face from **Adobe Fonts** (`KsoKokuryuSou`, Adobe-Japan1-4). It's
+  licensed, so it isn't in the repo: **activate it in Creative Cloud** (see the
+  README), which installs it under `~/Library/Application Support/Adobe/CoreSync/
+  plugins/livetype/.r/` with a hashed filename. Outlined artwork and the
+  rasterised PNGs are distributable under the Adobe desktop licence; the font
+  file is not. (Body/heading text still uses Noto Serif / Raleway.)
+- Regenerate (run `gen_theme.py` first so `_tokens.json` exists; find the font
+  path via `system_profiler SPFontsDataType | grep -B2 -i kokuryu`):
 
 ```bash
 python3 .claude/skills/book-build/scripts/gen_chapter_art.py \
-  --font NotoSerifJP.ttf --out images/chapter-art --png
+  --font "$KOKURYU_OTF" --out images/chapter-art --png
 ```
 
 ## Back cover & epigraph

@@ -67,14 +67,57 @@ A work in progress. The preface is complete; Chapters 1–3 are drafted and bein
 | Chapters 4–6 | Work in progress |
 
 <details>
-<summary>For contributors — conventions &amp; tooling</summary>
+<summary>For contributors — layout, editing, &amp; build</summary>
 
-Authoring conventions live in `AGENTS.md`; the highlights:
+**Everything you edit lives outside `quarto/`.** `quarto/` is the publishing
+pipeline only (Quarto config, Typst/SCSS/CSS templates, fonts). The build
+generates the rest into it — all git-ignored.
+
+| Edit this | For |
+| --- | --- |
+| `book/*.md` | chapter text (`00-preface` … `06-mastery`) |
+| `book/blurb.md` | the back-cover / "why read it" blurb (frontmatter `description:` + lead, `- **Label** — text.` bullets, close) |
+| `book/epigraph.md` | the landing-page teaser |
+| `theme.yml` (repo root) | **all design tokens** — palette, colour roles, type sizes, fonts, per-chapter accents |
+| `images/cover.svg` | the cover art |
+| `images/chapter-art/` | the chapter banners (generated; see below) |
+
+**Common edits**
+
+- **Change copy** → edit `book/*.md`, `book/blurb.md`, or `book/epigraph.md`.
+- **Restyle (colours, fonts, sizes)** → edit `theme.yml`. Change a value there and
+  it flows to the website, PDF, and ePub — nowhere else to touch.
+- **Change the cover** → edit `images/cover.svg`, then re-rasterise:
+  ```bash
+  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless \
+    --screenshot=images/cover.png --window-size=1600,2400 \
+    --force-device-scale-factor=1 --hide-scrollbars "file://$PWD/images/cover.svg"
+  ```
+- **Regenerate chapter art / cover kanji** → the 道/愛/… kanji use **KokuryuSou**,
+  an Adobe Fonts brush face. It's licensed (not in the repo): **activate it in
+  Creative Cloud** (Creative Cloud app → Fonts → search *Kokuryu* → Activate; or
+  toggle it on at <https://fonts.adobe.com/fonts/kokuryu>). Find its file with
+  `system_profiler SPFontsDataType | grep -B2 -i kokuryu`, then (needs
+  `fonttools`; run `gen_theme.py` first so accents are current):
+  ```bash
+  python3 .claude/skills/book-build/scripts/gen_chapter_art.py \
+    --font "$KOKURYU_OTF" --out images/chapter-art --png
+  ```
+  The committed SVG/PNG art is distributable; the font file is not. Body and
+  heading text use the open-licensed Noto Serif / Raleway (in `quarto/fonts/`).
+
+**Build & deploy** — one Quarto pipeline → website + PDF + ePub. Locally:
+`cd quarto && ./build.sh` (or `./build.sh preview`). It runs, in order,
+`gen_theme.py` (tokens from `theme.yml`) → `build_site.py` (chapters from
+`book/`, and copies art in from `images/`) → `gen_blurb.py` (blurb + epigraph) →
+`quarto render`. On push to `main`, `.github/workflows/deploy.yml` does the same
+and deploys to GitHub Pages. Full detail is in the `book-build` skill.
+
+**Authoring conventions** (also in `AGENTS.md`):
 
 - **Prose style** — modelled on Kernighan & Pike's *The Unix Programming Environment*: plain short sentences, mechanism over metaphor, understatement, worked examples (a copy is at `research/the-unix-programming-environment-kernighan-pike.md`).
 - **Numbered headings** — H2 sections `N.M`, H3 subsections `N.M.K`; chapter titles and References stay unnumbered.
-- **Citations (APA 7)** — hyperlinked to the original source (URL, DOI, arXiv); first mention in a chapter names author and *title*, later mentions are plain `(Author, Year)`. Source metadata lives in `research/papers/`.
+- **Citations (APA 7)** — hyperlinked to the original source (URL, DOI, arXiv); first mention in a chapter names author and *title*, later mentions are plain `(Author, Year)`. Source metadata lives in `research/papers/`; the reference lists regenerate via the `apa-citations` skill.
 - **Skills & agents** — kept in both Copilot (`.github/`) and Claude (`.claude/`) formats and maintained in sync.
-- **Build & publish** — one Quarto pipeline turns `book/*.md` into the website + PDF + ePub. Locally: `cd quarto && ./build.sh` (or `./build.sh preview`); it regenerates the chapters via `.claude/skills/book-build/scripts/build_site.py`, then `quarto render`. On push to `main`, `.github/workflows/deploy.yml` builds and deploys to GitHub Pages. See the `book-build` skill for details.
 
 </details>
