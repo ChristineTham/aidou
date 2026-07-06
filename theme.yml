@@ -53,8 +53,8 @@ fonts:
 chapter-accents:         # per-chapter banner + PDF-title accent -> palette name
   foundations:             grapeade
   productivity:            raspberry-sorbet
-  software-development:    morning-glory
-  engineering-disciplines: lupine
+  software:                morning-glory
+  disciplines:             lupine
   governance:              serenity
   mastery:                 radiant-orchid
 front-matter-accent: radiant-orchid    # preface / landing band

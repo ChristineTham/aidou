@@ -302,10 +302,10 @@
   },
   {
     "urls": [
-      "https://developers.googleblog.com/build-with-google-antigravity-our-new-agentic-development-platform/"
+      "https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-developer-highlights/"
     ],
-    "intext": "Google, 2025",
-    "reference": "Google. (2025). *Build with Google Antigravity, our new agentic development platform*. Google Developers Blog. [https://developers.googleblog.com/build-with-google-antigravity-our-new-agentic-development-platform/](https://developers.googleblog.com/build-with-google-antigravity-our-new-agentic-development-platform/)",
+    "intext": "Google, 2026",
+    "reference": "Google. (2026). *Building the agentic future: Developer highlights from I/O 2026*. The Keyword. [https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-developer-highlights/](https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-developer-highlights/)",
     "title_authored": false
   },
   {
@@ -1563,6 +1563,38 @@
     ],
     "intext": "Z. Li et al., 2023",
     "reference": "Li, Z., Peng, B., He, P., Galley, M., Gao, J., & Yan, X. (2023). *Guiding large language models via directional stimulus prompting*. Advances in Neural Information Processing Systems 36. [https://arxiv.org/abs/2302.11520](https://arxiv.org/abs/2302.11520)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://pmworldlibrary.net/wp-content/uploads/2018/11/pmwl-barnes-how-it-all-began-pmwt-july-2006.pdf"
+    ],
+    "intext": "Barnes, 2006",
+    "reference": "Barnes, M. (2006). *How it all began*. PM World Today. [https://pmworldlibrary.net/wp-content/uploads/2018/11/pmwl-barnes-how-it-all-began-pmwt-july-2006.pdf](https://pmworldlibrary.net/wp-content/uploads/2018/11/pmwl-barnes-how-it-all-began-pmwt-july-2006.pdf)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://www.anthropic.com/news/introducing-claude-tag"
+    ],
+    "intext": "Anthropic, 2026",
+    "reference": "Anthropic. (2026). *Introducing Claude Tag*. [https://www.anthropic.com/news/introducing-claude-tag](https://www.anthropic.com/news/introducing-claude-tag)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2501.09674"
+    ],
+    "intext": "South et al., 2025",
+    "reference": "South, T., Marro, S., Hardjono, T., Mahari, R., Whitney, C. D., Greenwood, D., Chan, A., & Pentland, A. (2025). *Authenticated delegation and authorized AI agents*. arXiv. [https://arxiv.org/abs/2501.09674](https://arxiv.org/abs/2501.09674)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://kilthub.cmu.edu/articles/journal_contribution/Rog-O-Matic_a_belligerent_expert_system/6609137/1"
+    ],
+    "intext": "Mauldin et al., 1983",
+    "reference": "Mauldin, M. L., Jacobson, G., Appel, A. W., & Hamey, L. G. C. (1983). *Rog-O-Matic: A belligerent expert system* (CMU-CS-83-144). Carnegie Mellon University, Department of Computer Science. [https://kilthub.cmu.edu/articles/journal_contribution/Rog-O-Matic_a_belligerent_expert_system/6609137/1](https://kilthub.cmu.edu/articles/journal_contribution/Rog-O-Matic_a_belligerent_expert_system/6609137/1)",
     "title_authored": false
   }
 ]

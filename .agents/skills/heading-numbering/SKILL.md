@@ -14,7 +14,7 @@ Adds and maintains section numbers on a Markdown book.
 - `## ` sections are numbered `N.M` (chapter.section): `## 1.2 Mental Models for AI`.
 - `### ` subsections are numbered `N.M.K`: `### 2.2.1 Save the prompt as a skill`.
 - The chapter `# ` title and the `## References` section stay **unnumbered**.
-- Chapter number `N` is read from the first digits in the filename (`03-software-development.md` → 3). One file = one chapter.
+- Chapter number `N` is read from the first digits in the filename (`03-software.md` → 3). One file = one chapter.
 - Headings inside ``` / ~~~ fences are ignored.
 - The preface is front matter — leave it unnumbered (don't pass it).
 

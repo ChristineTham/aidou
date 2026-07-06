@@ -44,8 +44,8 @@ book:
     - preface.qmd
     - foundations.qmd
     - productivity.qmd
-    - software-development.qmd
-    - engineering-disciplines.qmd
+    - software.qmd
+    - disciplines.qmd
     - governance.qmd
     - mastery.qmd
 

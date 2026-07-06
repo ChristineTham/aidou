@@ -30,8 +30,8 @@ Begin with the preface, then follow the six-chapter climb — personal productiv
 - **[Preface — Why This Book Exists](book/00-preface.md)** — how a committed AI sceptic changed his mind, and where he still keeps AI at arm's length.
 - **[1 · Foundations](book/01-foundations.md)** — what a language model actually is beneath the fluent surface: why it is brilliant and brittle at once, and how to tell which you're getting.
 - **[2 · Personal Productivity](book/02-productivity.md)** — turn a chat assistant into an ambient teammate: from a single prompt, to a self-checking loop, to a memory that compounds.
-- **[3 · Software Development](book/03-software-development.md)** — how a non-programmer shipped three real projects by describing *what* he wanted, and why over-specifying backfires.
-- **[4 · Human and Agent Disciplines](book/04-engineering-disciplines.md)** — the disciplines of humans and agents working together: what the human brings, how agents are engineered, and how you direct a fleet without losing the thread.
+- **[3 · Software Development](book/03-software.md)** — how a non-programmer shipped three real projects by describing *what* he wanted, and why over-specifying backfires.
+- **[4 · Human and Agent Disciplines](book/04-disciplines.md)** — the disciplines of humans and agents working together: what the human brings, how agents are engineered, and how you direct a fleet without losing the thread.
 - **[5 · Responsibility & Governance](book/05-governance.md)** — securing agents, owning what they say, and the bills that come due later — care expressed as guardrails.
 - **[6 · Mastery & Forward Practice](book/06-mastery.md)** — what stays human when the tools are this good, and the one question worth asking again and again.
 

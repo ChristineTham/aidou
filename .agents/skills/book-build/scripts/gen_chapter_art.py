@@ -31,10 +31,10 @@ import argparse, json, os, shutil, subprocess
 # The slug -> kanji map is content; the accent colours come from theme.yml (via
 # _tokens.json) at generation time. Fallbacks below apply if no tokens are passed.
 CREAM = "#F4EEE8"
-KANJI = [("foundations", "基"), ("productivity", "愛"), ("software-development", "創"),
-         ("engineering-disciplines", "匠"), ("governance", "責"), ("mastery", "道")]
+KANJI = [("foundations", "基"), ("productivity", "愛"), ("software", "創"),
+         ("disciplines", "匠"), ("governance", "責"), ("mastery", "道")]
 FALLBACK_ACCENTS = {"foundations": "#85677B", "productivity": "#D2386C",
-                    "software-development": "#EC809E", "engineering-disciplines": "#BE9CC1",
+                    "software": "#EC809E", "disciplines": "#BE9CC1",
                     "governance": "#93A9D1", "mastery": "#B565A7"}
 FALLBACK_FM = "#B565A7"
 W, H = 1600, 200

@@ -29,8 +29,8 @@ CHAPTERS = [
     ("00-preface.md", "preface", False),
     ("01-foundations.md", "foundations", True),
     ("02-productivity.md", "productivity", True),
-    ("03-software-development.md", "software-development", True),
-    ("04-engineering-disciplines.md", "engineering-disciplines", True),
+    ("03-software.md", "software", True),
+    ("04-disciplines.md", "disciplines", True),
     ("05-governance.md", "governance", True),
     ("06-mastery.md", "mastery", True),
 ]
@@ -38,12 +38,18 @@ ALERT = {"NOTE": "note", "TIP": "tip", "IMPORTANT": "important",
          "WARNING": "warning", "CAUTION": "caution"}
 CHAPTER_PREFIX = re.compile(r"^Chapter\s+\d+\s*[—–-]\s*")
 
+# Old page URLs kept alive as redirects after a slug rename (Quarto `aliases`).
+ALIASES = {
+    "software": ["/software-development.html"],
+    "disciplines": ["/engineering-disciplines.html"],
+}
+
 # Thin decorative chapter banner (a seigaiha wave ribbon with the chapter's
 # kanji medallion), placed under the chapter title. PNG (not SVG) so it renders
 # reliably across HTML + Typst PDF + ePub. The kanji is used for the alt text.
 BANNER_KANJI = {
-    "foundations": "基", "productivity": "愛", "software-development": "創",
-    "engineering-disciplines": "匠", "governance": "責", "mastery": "道",
+    "foundations": "基", "productivity": "愛", "software": "創",
+    "disciplines": "匠", "governance": "責", "mastery": "道",
 }
 
 
@@ -52,7 +58,7 @@ BANNER_KANJI = {
 # are the fallback if the token file is absent.
 PDF_ACCENT = {
     "foundations": "#85677B", "productivity": "#D2386C",
-    "software-development": "#EC809E", "engineering-disciplines": "#BE9CC1",
+    "software": "#EC809E", "disciplines": "#BE9CC1",
     "governance": "#93A9D1", "mastery": "#B565A7",
 }
 
@@ -272,7 +278,10 @@ def build(book_dir, out_dir):
         if numbered:
             chapter_no += 1
             disp = CHAPTER_PREFIX.sub("", title)
-            head = '---\ntitle: "' + disp + '"\n---\n\n'
+            alias = ""
+            if slug in ALIASES:
+                alias = "aliases:\n" + "".join(f"  - {a}\n" for a in ALIASES[slug])
+            head = '---\ntitle: "' + disp + '"\n' + alias + '---\n\n'
             pdf = pdf_title(disp, chapter_no, slug)
         else:
             head = "# " + title + " {.unnumbered}\n\n"
