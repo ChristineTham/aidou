@@ -273,6 +273,8 @@ The shift sounds small and is not, because it changes who the bottleneck is. As 
 
 The craft here is *loop engineering*: the loop, not the prompt. Practitioners are blunt that they now write loops, not prompts, and design the loops that prompt their agents rather than chasing one perfect instruction ([Latent Space, 2026b](https://www.latent.space/p/ainews-loopcraft-the-art-of-stacking)); the real skill is knowing when to drop a loop for reliability and when to climb one for leverage.
 
+This is more than practitioner lore; the research backs the loop. Made to critique and revise its own draft, a single frozen model improves by around twenty per cent on average across seven tasks, with no extra training ([Madaan et al., *Self-Refine: Iterative refinement with self-feedback*, 2023](https://arxiv.org/abs/2303.17651)); an agent that writes a short reflection after each failed attempt and carries it forward in memory climbs from 80% to 91% on a coding benchmark over repeated tries ([Shinn et al., *Reflexion: Language agents with verbal reinforcement learning*, 2023](https://arxiv.org/abs/2303.11366)). But a loop only pays when it closes on something real. Left to judge its own reasoning with no outside signal, a model will often revise a right answer into a wrong one — *intrinsic* self-correction leaves accuracy flat or worse, and the gains once claimed for it mostly leaned on a hidden answer key ([Huang et al., *Large language models cannot self-correct reasoning yet*, 2023](https://arxiv.org/abs/2310.01798)). Self-Refine shows the same edge: it barely moves maths scores, where the model cannot spot its own error, and recovers only once given an external check. So the loop that works is wired to a check it cannot fool — a test suite, a tool result, a human reading the outcome — which is why review, not iteration for its own sake, is what turns motion into work.
+
 The practice is simple to state: scope work tightly, fire it off, review the outcome. The temptation worth resisting is hovering over each keystroke, which pins your leverage to your own typing speed. But delegating the keystrokes is not the same as looking away. A model can fix on the wrong approach early and then pursue it well, and fast — building the wrong thing with conviction. So watch the *trajectory* rather than the typing: glance at where a run is heading, and if it has taken a wrong turn, stop it and re-steer instead of letting it finish. A wrong run caught in its first minute costs a fraction of one you discover at the end, in your time and in tokens both. Interrupting is not a failure of delegation; it is delegation done well.
 
 ## 2.7 Composability
@@ -360,6 +362,8 @@ Guo, J., et al. (2026). *From question answering to task completion: A survey on
 
 He, J., Rungta, M., Koleczek, D., Sekhon, A., Wang, F. X., & Hasan, S. (2024). *Does prompt formatting have any impact on LLM performance?* arXiv. [https://arxiv.org/abs/2411.10541](https://arxiv.org/abs/2411.10541)
 
+Huang, J., Chen, X., Mishra, S., Zheng, H. S., Yu, A. W., Song, X., & Zhou, D. (2023). *Large language models cannot self-correct reasoning yet*. arXiv. [https://arxiv.org/abs/2310.01798](https://arxiv.org/abs/2310.01798)
+
 Huschens, M., Briesch, M., Sobania, D., & Rothlauf, F. (2023). *Do you trust ChatGPT? Perceived credibility of human and AI-generated content*. arXiv. [https://arxiv.org/abs/2309.02524](https://arxiv.org/abs/2309.02524)
 
 Jakesch, M., Bhat, A., Buschek, D., Zalmanson, L., & Naaman, M. (2023). *Co-writing with opinionated language models affects users’ views*. Proceedings of the 2023 CHI Conference on Human Factors in Computing Systems. [https://arxiv.org/abs/2302.00560](https://arxiv.org/abs/2302.00560)
@@ -380,6 +384,8 @@ Livathinos, N., et al. (2025). *Docling: An efficient open-source toolkit for AI
 
 MacFarlane, J. (n.d.). *Pandoc: A universal document converter* [Computer software]. [https://pandoc.org](https://pandoc.org)
 
+Madaan, A., et al. (2023). *Self-Refine: Iterative refinement with self-feedback*. Advances in Neural Information Processing Systems 36. [https://arxiv.org/abs/2303.17651](https://arxiv.org/abs/2303.17651)
+
 McGlone, M. S., & Tofighbakhsh, J. (2000). *Birds of a feather flock conjointly? Rhyme as reason in aphorisms*. Psychological Science, 11(5), 424–428. [https://doi.org/10.1111/1467-9280.00282](https://doi.org/10.1111/1467-9280.00282)
 
 McIlroy, M. D., Pinson, E. N., & Tague, B. A. (1978). *UNIX time-sharing system: Foreword*. The Bell System Technical Journal, 57(6), 1899–1904. [https://doi.org/10.1002/j.1538-7305.1978.tb02135.x](https://doi.org/10.1002/j.1538-7305.1978.tb02135.x)
@@ -397,6 +403,8 @@ Park, J. S., O’Brien, J. C., Cai, C. J., Morris, M. R., Liang, P., & Bernstein
 Parra-Moyano, J., Reinmoeller, P., & Schmedders, K. (2025). *Research: Executives who used gen AI made worse predictions*. Harvard Business Review. [https://hbr.org/2025/07/research-executives-who-used-gen-ai-made-worse-predictions](https://hbr.org/2025/07/research-executives-who-used-gen-ai-made-worse-predictions)
 
 Raymond, E. S. (2003). *The art of Unix programming*. Addison-Wesley. [http://www.catb.org/esr/writings/taoup/](http://www.catb.org/esr/writings/taoup/)
+
+Shinn, N., Cassano, F., Berman, E., Gopinath, A., Narasimhan, K., & Yao, S. (2023). *Reflexion: Language agents with verbal reinforcement learning*. Advances in Neural Information Processing Systems 36. [https://arxiv.org/abs/2303.11366](https://arxiv.org/abs/2303.11366)
 
 Sivakumar, Lochner, Nejati, & Sabetzadeh. (2026). *LLM-based discovery of latent requirements from stakeholder conversations*. arXiv. [https://arxiv.org/abs/2606.25867](https://arxiv.org/abs/2606.25867)
 

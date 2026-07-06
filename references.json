@@ -1355,5 +1355,37 @@
     "intext": "Wu et al., 2025",
     "reference": "Wu, X., Ritter, A., & Xu, W. (2025). *Tabular data understanding with LLMs: A survey of recent advances and challenges*. arXiv. [https://arxiv.org/abs/2508.00217](https://arxiv.org/abs/2508.00217)",
     "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2303.17651"
+    ],
+    "intext": "Madaan et al., 2023",
+    "reference": "Madaan, A., et al. (2023). *Self-Refine: Iterative refinement with self-feedback*. Advances in Neural Information Processing Systems 36. [https://arxiv.org/abs/2303.17651](https://arxiv.org/abs/2303.17651)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2303.11366"
+    ],
+    "intext": "Shinn et al., 2023",
+    "reference": "Shinn, N., Cassano, F., Berman, E., Gopinath, A., Narasimhan, K., & Yao, S. (2023). *Reflexion: Language agents with verbal reinforcement learning*. Advances in Neural Information Processing Systems 36. [https://arxiv.org/abs/2303.11366](https://arxiv.org/abs/2303.11366)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2310.01798"
+    ],
+    "intext": "Huang et al., 2023",
+    "reference": "Huang, J., Chen, X., Mishra, S., Zheng, H. S., Yu, A. W., Song, X., & Zhou, D. (2023). *Large language models cannot self-correct reasoning yet*. arXiv. [https://arxiv.org/abs/2310.01798](https://arxiv.org/abs/2310.01798)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2606.01416"
+    ],
+    "intext": "Suresh Babu & Agrawal, 2026",
+    "reference": "Suresh Babu, R., & Agrawal, A. (2026). *Self-healing agentic orchestrators for reliable tool-augmented large language model systems*. arXiv. [https://arxiv.org/abs/2606.01416](https://arxiv.org/abs/2606.01416)",
+    "title_authored": false
   }
 ]

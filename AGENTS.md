@@ -56,7 +56,7 @@ The model to imitate is Kernighan & Pike's *The Unix Programming Environment* (a
   - **Subsequent mentions of the same source in that chapter use plain author–year**: `([Wolfram, 2023](url))`.
   - Title-authored works (e.g. Wikipedia pages) keep their short quoted form on every mention, since the author already is the title.
   - Every chapter (and the preface) ends with a `## References` section: full APA 7 entries, alphabetised, with the URL/DOI shown and clickable. Prefer the published venue where known; fall back to arXiv/preprint otherwise.
-  - Source metadata (authors, titles, venues, DOIs) comes from the `summaries/**/*.md` dossier headers; verify web/news titles and bylines against the live page before citing. Never invent an author list or title.
+  - Source metadata (authors, titles, venues, DOIs) comes from the `summaries/**/*.md` summary headers; verify web/news titles and bylines against the live page before citing. Never invent an author list or title.
 - **Research before writing.** Read official/primary sources first; assume internal knowledge is stale.
 - Mark anything uncertain as a draft assumption; do not present it as fact.
 
@@ -70,7 +70,7 @@ The model to imitate is Kernighan & Pike's *The Unix Programming Environment* (a
 Downloaded research is organised into three repo-root folders:
 
 - **`sources/`** — original downloaded sources (PDF or converted Markdown), by **topic** (not by chapter, since a source may serve several). All arXiv PDFs live in `sources/arXiv/`; other sources sit in topic folders (`llm-foundations/`, `agent-architecture/`, `spec-vs-vibe/`, …).
-- **`summaries/`** — one Markdown summary/dossier per source, mirroring the `sources/` topic folders (arXiv summaries in `summaries/arXiv/`). Each links to its source with a relative link.
+- **`summaries/`** — one Markdown study-guide summary per source, produced by the [[summarise-source]] skill (an up-front **Abstract** of key points and takeaways, over a structure-mirroring body), mirroring the `sources/` topic folders (arXiv summaries in `summaries/arXiv/`). Each links to its source with a relative link. This replaces the old short "dossier" format.
 - **`misc/`** — meta and working files that are not sources (walkthroughs, plans, images, author notes). `misc/research.md` has the original link list.
 
 The citation↔source mapping is `references.json` at the repo root (used by [[apa-citations]]).

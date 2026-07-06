@@ -23,6 +23,7 @@ flowchart LR
       A1[Harness engineering]
       A2[Orchestration]
       A3[Substrate & memory]
+      A4[Loop engineering]
     end
     HUM --- BOTH
     BOTH --- AG
@@ -111,6 +112,14 @@ It helps to locate yourself on a ladder of maturity, where each rung is a genuin
 
 Memory is the prerequisite for the upper rungs, because continuity needs an empirical record to reason over, and most teams are honestly nearer the middle than they admit. Name your level before committing to the next; claiming a rung whose substrate you have not built is how certainty gets sold that no one has earned.
 
+### 4.2.4 Loop Engineering
+
+An agent *is* a loop — plan, act, observe, retry — and Chapter 2 treated that loop as a personal craft: scope a task, run it, watch the trajectory, re-steer. At the scale of a fleet the loop becomes an engineering discipline of its own, because you cannot stand over every run. The watching has to move into the system: the loops that wrap the agents, catch their failures, and steer them back on course become as much a design object as the harness or the memory.
+
+The mature form is a *control loop* laid over the agents — monitor → detect → diagnose → recover → verify — run as a reliability layer kept separate from the work itself. In a controlled study, wrapping tool-using agents in such a self-healing loop lifted task success from the mid-nineties under a plain retry policy to 98.8%, and the gap widened under heavier fault load (97.3% against about 86%); tellingly, at a *matched* recovery budget it still won (94.0% against 85%), so the gain came from *targeting* the right fix — a timeout gets a retry, a schema error a repair, stale context a refresh — not from simply trying more ([Suresh Babu & Agrawal, *Self-healing agentic orchestrators for reliable tool-augmented LLM systems*, 2026](https://arxiv.org/abs/2606.01416)). The craft is to keep detection, diagnosis, and recovery as separate steps rather than fuse them, and to bound recovery with a budget so a flailing agent cannot burn the fleet's tokens chasing its own tail.
+
+The one part that cannot be skipped is *verify*, and for the reason the last chapters keep returning to: a model cannot reliably judge its own work. Leave the check to the agent's own say-so and silent failures — confident, plausible, wrong — slip through 13–17% of the time; put a real verifier inside the loop and that rate falls to zero on the same test ([Suresh Babu & Agrawal, 2026](https://arxiv.org/abs/2606.01416)). It is the ecosystem echo of §2.6's lesson: self-critique alone does not converge, so the loop must close on an external signal, not the model's confidence ([Huang et al., *Large language models cannot self-correct reasoning yet*, 2023](https://arxiv.org/abs/2310.01798)). Loop engineering, at any scale, is the craft of building that check into the cycle.
+
 ## 4.3 Human + Agent Disciplines
 
 The third set is where the two meet: a person and a fleet of agents working as one system. This is the hardest to get right, because it is a relationship, not a component.
@@ -158,6 +167,8 @@ Chen, M., Wang, J., Liu, Z., Wang, Y., Zheng, H., & Wang, Q. (2026). *From faile
 
 Dohnány, S., Kurth-Nelson, Z., Spens, E., Luettgau, L., Reid, A., Gabriel, I., Summerfield, C., Shanahan, M., & Nour, M. M. (2025). *Technological folie à deux: Feedback loops between AI chatbots and mental health*. arXiv. [https://arxiv.org/abs/2507.19218](https://arxiv.org/abs/2507.19218)
 
+Huang, J., Chen, X., Mishra, S., Zheng, H. S., Yu, A. W., Song, X., & Zhou, D. (2023). *Large language models cannot self-correct reasoning yet*. arXiv. [https://arxiv.org/abs/2310.01798](https://arxiv.org/abs/2310.01798)
+
 Li, J., Yang, Y., Zhang, R., Liao, Q. V., Song, T., Xu, Z., & Lee, Y.-C. (2024). *Understanding the effects of miscalibrated AI confidence on user trust, reliance, and decision efficacy*. arXiv. [https://arxiv.org/abs/2402.07632](https://arxiv.org/abs/2402.07632)
 
 Li, J., et al. (2025). *As confidence aligns: Effect of AI confidence on human self-confidence in human–AI decision making*. Proceedings of the 2025 CHI Conference on Human Factors in Computing Systems. [https://arxiv.org/abs/2501.12868](https://arxiv.org/abs/2501.12868)
@@ -167,6 +178,8 @@ Moore, J., Mehta, A., Agnew, W., Anthis, J. R., Louie, R., Mai, Y., Yin, P., Che
 Nicholls, L., Hutto, R., Soto, Z., Morrin, H., Pollak, T., Korpan, R., & Carmichael, C. (2026). *"AI psychosis" in context: How conversation history shapes LLM responses to delusional beliefs*. arXiv. [https://arxiv.org/abs/2604.13860](https://arxiv.org/abs/2604.13860)
 
 Qi et al. (2026). *LLM-as-code: Agentic programming for agent harness*. arXiv. [https://arxiv.org/abs/2606.15874](https://arxiv.org/abs/2606.15874)
+
+Suresh Babu, R., & Agrawal, A. (2026). *Self-healing agentic orchestrators for reliable tool-augmented large language model systems*. arXiv. [https://arxiv.org/abs/2606.01416](https://arxiv.org/abs/2606.01416)
 
 Vaccaro, M., Almaatouq, A., & Malone, T. (2024). *When combinations of humans and AI are useful: A systematic review and meta-analysis*. Nature Human Behaviour, 8(12), 2293–2303. [https://doi.org/10.1038/s41562-024-02024-1](https://doi.org/10.1038/s41562-024-02024-1)
 

@@ -54,7 +54,7 @@ To add a source: append an entry, then re-run the engine.
 
 ## Workflow
 
-1. Confirm each source's metadata (see [[arxiv-research]] for papers; fetch the live page for web/news titles and bylines).
+1. Confirm each source's metadata from the source itself (the arXiv `abs` page for papers; the live page for web/news titles and bylines). See [[download-source]] for fetching and [[summarise-source]] for the summary header that records this metadata.
 2. Add or update its entry in `references.json`.
 3. Write the citation inline as `([Author, Year](url))` with the exact source URL.
 4. Run `apply_citations.py` to normalise first-mention titles and rebuild References.
