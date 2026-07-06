@@ -56,7 +56,7 @@ Scaffold with the Starlight template (`npm create astro@latest site -- --templat
 - **`site/src/content/docs/index.mdx`** — hand-authored splash landing page (`template: splash`, hero with tagline + "Start reading" action → `preface`), adapted from `README.md`'s "Start here" / "Why read it". Committed; not overwritten by the sync.
 - **`site/src/content/docs/*.md`** — the 7 chapter pages, **generated** by `build_site.py` (see below): `preface.md`, `foundations.md`, `productivity.md`, `software-development.md`, `engineering-disciplines.md`, `governance.md`, `mastery.md`.
 
-### 2. `.claude/skills/book-build/scripts/build_site.py` (+ mirror to `.github/skills/...`)
+### 2. `.agents/skills/book-build/scripts/build_site.py` (+ mirror to `.agents/skills/...`)
 Portable Python sync, consistent with the other book-build scripts. For each source chapter it:
 - reads the file, lifts the first `# ` line as the page **title** (Starlight renders the frontmatter title as the H1), and **removes that H1 line** to avoid a duplicate heading;
 - writes `site/src/content/docs/<slug>.md` with frontmatter `--- title: "<H1 text>" ---` followed by the unchanged body (alerts, ```mermaid, tables, and the `## References` section pass through untouched);
@@ -96,7 +96,7 @@ Ignore Node build artefacts: `site/node_modules/`, `site/dist/`, `site/.astro/`.
 ## Files to modify
 
 - **`README.md`** — add a one-line "Read it online" link to `https://christinetham.github.io/aidou/` near the top; note in the contributors `<details>` that `build_site.py` regenerates the site content and is part of the edit ritual.
-- **`.claude/skills/book-build/SKILL.md`** (+ `.github` mirror) — document `build_site.py` and the Starlight/Pages setup alongside the existing PDF build.
+- **`.agents/skills/book-build/SKILL.md`** (+ `.github` mirror) — document `build_site.py` and the Starlight/Pages setup alongside the existing PDF build.
 
 ## Manual step (author, one-time; the agent cannot do this)
 Repo **Settings → Pages → Source: "GitHub Actions"**. First push to `main` then triggers the build and publishes to `https://christinetham.github.io/aidou/`.
@@ -105,7 +105,7 @@ Repo **Settings → Pages → Source: "GitHub Actions"**. First push to `main` t
 This targets a **project page** at `/aidou` (hence `base: '/aidou'`). If a custom domain or a `christinetham.github.io` user repo is used later, set `base: '/'` and add a `CNAME`. Flag before deploying if either is intended.
 
 ## Verification
-1. **Local dev:** `cd site && npm install && python3 ../.claude/skills/book-build/scripts/build_site.py --book ../book --out src/content/docs && npm run dev` → open `http://localhost:4321/aidou/`.
+1. **Local dev:** `cd site && npm install && python3 ../.agents/skills/book-build/scripts/build_site.py --book ../book --out src/content/docs && npm run dev` → open `http://localhost:4321/aidou/`.
    - Landing (splash) renders; sidebar lists Preface + 6 chapters in order; a chapter opens with its title as H1 and no duplicate heading.
    - **Mermaid:** all 15 diagrams render (spot-check the flowcharts in Foundations and the ICE diagram in Software Development); toggling dark/light re-themes them.
    - **Alerts:** `> [!NOTE]/[TIP]/[IMPORTANT]` render as styled asides (18 total).

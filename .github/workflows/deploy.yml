@@ -36,15 +36,15 @@ jobs:
 
       - name: Generate design tokens from theme.yml (single source)
         working-directory: quarto
-        run: python3 ../.claude/skills/book-build/scripts/gen_theme.py .
+        run: python3 ../.agents/skills/book-build/scripts/gen_theme.py .
 
       - name: Generate Quarto chapters from book/*.md (single source)
         working-directory: quarto
-        run: python3 ../.claude/skills/book-build/scripts/build_site.py --book ../book --out .
+        run: python3 ../.agents/skills/book-build/scripts/build_site.py --book ../book --out .
 
       - name: Generate landing partials from book/blurb.md + book/epigraph.md
         working-directory: quarto
-        run: python3 ../.claude/skills/book-build/scripts/gen_blurb.py .
+        run: python3 ../.agents/skills/book-build/scripts/gen_blurb.py .
 
       - name: Render HTML + PDF + ePub
         working-directory: quarto

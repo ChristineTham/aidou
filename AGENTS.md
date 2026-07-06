@@ -2,6 +2,13 @@
 
 Guidelines for any AI agent (or human) drafting this book.
 
+## Skills
+
+- Reusable skills live **once**, under **`.agents/skills/`** (the vendor-neutral [Agent Skills](https://agentskills.io) `SKILL.md` standard). This is the single source of truth — do not create a second copy.
+- Discovery: **Copilot** and **Antigravity** read `.agents/skills/` natively; **Claude Code** only scans `.claude/skills/`, so `.claude/skills` is a symlink to `../.agents/skills`. Editing a skill in `.agents/skills/` updates it for every tool at once.
+- The book build calls skill scripts by their real path, e.g. `.agents/skills/book-build/scripts/build_site.py` (see `quarto/build.sh` and `.github/workflows/deploy.yml`).
+- Subagent definitions are *not* skills and stay tool-specific: `.claude/agents/*.md` (Claude Code) and `.github/agents/*.agent.md` (Copilot).
+
 ## Structure
 
 - 6 chapters; former chapters are now sections. Keep it that way.

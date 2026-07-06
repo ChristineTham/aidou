@@ -8,9 +8,9 @@ cd "$(dirname "$0")"
 export TYPST_FONT_PATHS="$(pwd)/fonts"
 # Generate design-token files (_brand.yml, _tokens.*) from theme.yml first, so
 # build_site (chapter accents) and the render (SCSS/CSS/Typst) can consume them.
-python3 ../.claude/skills/book-build/scripts/gen_theme.py .
-python3 ../.claude/skills/book-build/scripts/build_site.py --book ../book --out .
+python3 ../.agents/skills/book-build/scripts/gen_theme.py .
+python3 ../.agents/skills/book-build/scripts/build_site.py --book ../book --out .
 # Generate the landing partials (_blurb.*, _epigraph.md) from book/blurb.md and
 # book/epigraph.md before render — Quarto resolves {{< include >}} before pre-render hooks.
-python3 ../.claude/skills/book-build/scripts/gen_blurb.py .
+python3 ../.agents/skills/book-build/scripts/gen_blurb.py .
 quarto "${1:-render}"

@@ -7,13 +7,13 @@ project:
     - ogimage.jpg
   # After render, append a content-hash query to the PDF/ePub download links
   # so a redeploy always yields a fresh URL (defeats browser/CDN caching of a
-  # stale file). See .claude/skills/book-build/scripts/cachebust.py.
+  # stale file). See .agents/skills/book-build/scripts/cachebust.py.
   post-render:
     # Repair Quarto's malformed Mermaid <figure> markup so the ePub is valid XHTML.
-    - python3 ../.claude/skills/book-build/scripts/epub_fix.py
+    - python3 ../.agents/skills/book-build/scripts/epub_fix.py
     # Inject a back-cover page at the end of the ePub spine.
-    - python3 ../.claude/skills/book-build/scripts/epub_backcover.py
-    - python3 ../.claude/skills/book-build/scripts/cachebust.py
+    - python3 ../.agents/skills/book-build/scripts/epub_backcover.py
+    - python3 ../.agents/skills/book-build/scripts/cachebust.py
 
 book:
   title: "AI-dō"

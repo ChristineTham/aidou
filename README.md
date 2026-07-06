@@ -100,7 +100,7 @@ generates the rest into it — all git-ignored.
   site as `og:image`) is derived from the cover — regenerate it after any cover
   change:
   ```bash
-  python3 .claude/skills/book-build/scripts/gen_ogimage.py --render
+  python3 .agents/skills/book-build/scripts/gen_ogimage.py --render
   ```
 - **Regenerate chapter art / cover kanji** → the 道/愛/… kanji use **KokuryuSou**,
   an Adobe Fonts brush face. It's licensed (not in the repo): **activate it in
@@ -109,7 +109,7 @@ generates the rest into it — all git-ignored.
   `system_profiler SPFontsDataType | grep -B2 -i kokuryu`, then (needs
   `fonttools`; run `gen_theme.py` first so accents are current):
   ```bash
-  python3 .claude/skills/book-build/scripts/gen_chapter_art.py \
+  python3 .agents/skills/book-build/scripts/gen_chapter_art.py \
     --font "$KOKURYU_OTF" --out images/chapter-art --png
   ```
   The committed SVG/PNG art is distributable; the font file is not. Body and
@@ -128,6 +128,6 @@ and deploys to GitHub Pages. Full detail is in the `book-build` skill.
 - **Prose style** — modelled on Kernighan & Pike's *The Unix Programming Environment*: plain short sentences, mechanism over metaphor, understatement, worked examples (a copy is at `research/the-unix-programming-environment-kernighan-pike.md`).
 - **Numbered headings** — H2 sections `N.M`, H3 subsections `N.M.K`; chapter titles and References stay unnumbered.
 - **Citations (APA 7)** — hyperlinked to the original source (URL, DOI, arXiv); first mention in a chapter names author and *title*, later mentions are plain `(Author, Year)`. Source metadata lives in `research/papers/`; the reference lists regenerate via the `apa-citations` skill.
-- **Skills & agents** — kept in both Copilot (`.github/`) and Claude (`.claude/`) formats and maintained in sync.
+- **Skills** — one canonical set under **`.agents/skills/`** (the vendor-neutral [Agent Skills](https://agentskills.io) `SKILL.md` standard). GitHub Copilot and Google Antigravity read `.agents/skills/` directly; Claude Code only scans `.claude/skills/`, so that path is a **symlink** to `../.agents/skills`. Edit skills in `.agents/skills/` only — there is no second copy to keep in sync. Subagent definitions stay tool-specific (`.claude/agents/*.md`, `.github/agents/*.agent.md`), as their formats differ per tool.
 
 </details>
