@@ -473,14 +473,14 @@
       "https://arxiv.org/abs/2606.26979"
     ],
     "intext": "Lin et al., 2026",
-    "reference": "Lin, Zhou, Yang, & Li. (2026). *How much static structure do code agents need? Deterministic anchoring*. arXiv. [https://arxiv.org/abs/2606.26979](https://arxiv.org/abs/2606.26979)",
+    "reference": "Lin, Z., Zhou, M., Yang, Y., & Li, L. (2026). *How much static structure do code agents need? Deterministic anchoring*. arXiv. [https://arxiv.org/abs/2606.26979](https://arxiv.org/abs/2606.26979)",
     "title_authored": false
   },
   {
     "urls": [
       "https://arxiv.org/abs/2307.03172"
     ],
-    "intext": "Liu et al., 2023",
+    "intext": "N. F. Liu et al., 2023",
     "reference": "Liu, N. F., Lin, K., Hewitt, J., Paranjape, A., Bevilacqua, M., Petroni, F., & Liang, P. (2023). *Lost in the middle: How language models use long contexts*. Transactions of the Association for Computational Linguistics. [https://arxiv.org/abs/2307.03172](https://arxiv.org/abs/2307.03172)",
     "title_authored": false
   },
@@ -657,7 +657,7 @@
       "https://arxiv.org/abs/2606.25867"
     ],
     "intext": "Sivakumar et al., 2026",
-    "reference": "Sivakumar, Lochner, Nejati, & Sabetzadeh. (2026). *LLM-based discovery of latent requirements from stakeholder conversations*. arXiv. [https://arxiv.org/abs/2606.25867](https://arxiv.org/abs/2606.25867)",
+    "reference": "Sivakumar, M., Lochner, M., Nejati, S., & Sabetzadeh, M. (2026). *LLM-based discovery of latent requirements from stakeholder conversations*. arXiv. [https://arxiv.org/abs/2606.25867](https://arxiv.org/abs/2606.25867)",
     "title_authored": false
   },
   {
@@ -1499,6 +1499,70 @@
     ],
     "intext": "Gollwitzer, 1999",
     "reference": "Gollwitzer, P. M. (1999). *Implementation intentions: Strong effects of simple plans*. American Psychologist, 54(7), 493–503. [https://doi.org/10.1037/0003-066X.54.7.493](https://doi.org/10.1037/0003-066X.54.7.493)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2211.10435"
+    ],
+    "intext": "Gao et al., 2022",
+    "reference": "Gao, L., Madaan, A., Zhou, S., Alon, U., Liu, P., Yang, Y., Callan, J., & Neubig, G. (2022). *PAL: Program-aided language models*. arXiv. [https://arxiv.org/abs/2211.10435](https://arxiv.org/abs/2211.10435)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2303.09014"
+    ],
+    "intext": "Paranjape et al., 2023",
+    "reference": "Paranjape, B., Lundberg, S., Singh, S., Hajishirzi, H., Zettlemoyer, L., & Ribeiro, M. T. (2023). *ART: Automatic multi-step reasoning and tool-use for large language models*. arXiv. [https://arxiv.org/abs/2303.09014](https://arxiv.org/abs/2303.09014)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2302.12246"
+    ],
+    "intext": "Diao et al., 2023",
+    "reference": "Diao, S., Wang, P., Lin, Y., Pan, R., Liu, X., & Zhang, T. (2023). *Active prompting with chain-of-thought for large language models*. arXiv. [https://arxiv.org/abs/2302.12246](https://arxiv.org/abs/2302.12246)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2110.08387"
+    ],
+    "intext": "J. Liu et al., 2022",
+    "reference": "Liu, J., Liu, A., Lu, X., Welleck, S., West, P., Le Bras, R., Choi, Y., & Hajishirzi, H. (2022). *Generated knowledge prompting for commonsense reasoning*. Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics. [https://arxiv.org/abs/2110.08387](https://arxiv.org/abs/2110.08387)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2302.08043"
+    ],
+    "intext": "Z. Liu et al., 2023",
+    "reference": "Liu, Z., Yu, X., Fang, Y., & Zhang, X. (2023). *GraphPrompt: Unifying pre-training and downstream tasks for graph neural networks*. Proceedings of the ACM Web Conference 2023 (WWW '23). [https://arxiv.org/abs/2302.08043](https://arxiv.org/abs/2302.08043)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2311.11482"
+    ],
+    "intext": "Y. Zhang et al., 2023",
+    "reference": "Zhang, Y., Yuan, Y., & Yao, A. C.-C. (2023). *Meta prompting for AI systems*. arXiv. [https://arxiv.org/abs/2311.11482](https://arxiv.org/abs/2311.11482)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2302.00923"
+    ],
+    "intext": "Z. Zhang et al., 2024",
+    "reference": "Zhang, Z., Zhang, A., Li, M., Zhao, H., Karypis, G., & Smola, A. (2024). *Multimodal chain-of-thought reasoning in language models*. Transactions on Machine Learning Research. [https://arxiv.org/abs/2302.00923](https://arxiv.org/abs/2302.00923)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2302.11520"
+    ],
+    "intext": "Z. Li et al., 2023",
+    "reference": "Li, Z., Peng, B., He, P., Galley, M., Gao, J., & Yan, X. (2023). *Guiding large language models via directional stimulus prompting*. Advances in Neural Information Processing Systems 36. [https://arxiv.org/abs/2302.11520](https://arxiv.org/abs/2302.11520)",
     "title_authored": false
   }
 ]

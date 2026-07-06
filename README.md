@@ -139,7 +139,7 @@ and deploys to GitHub Pages. Full detail is in the `book-build` skill.
 | `download-source` | Fetch a source into `sources/` (arXiv → PDF, web page → Markdown) |
 | `summarise-source` | Write a study-guide summary (Abstract + body) into `summaries/` |
 | `enhance-book` | Cite a summarised source into the book, in the house style |
-| `book-style` | Draft/revise in the house prose style (+ prose linter) |
+| `book-style` | Rewrite prose into the house style, self-checking until it stops sounding like AI |
 | `apa-citations` | Apply/audit APA-7 citations; regenerate per-chapter reference lists |
 | `heading-numbering` | Number section headings `N.M` / `N.M.K` (idempotent) |
 | `book-build` | Build the website + PDF + ePub from `book/` via Quarto |
