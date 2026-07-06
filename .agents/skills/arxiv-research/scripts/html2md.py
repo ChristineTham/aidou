@@ -11,7 +11,7 @@ PowerShell version deleted by default).
 
 Usage:
     html2md.py sources
-    html2md.py research/raw --delete
+    html2md.py sources/<topic> --delete
 """
 import argparse, html as htmllib, os, re
 

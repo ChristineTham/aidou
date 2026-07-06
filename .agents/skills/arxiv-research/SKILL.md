@@ -11,9 +11,9 @@ Turn a claim you want to support into a verified, filed, citeable source.
 
 ## Where things live
 
-- `research/papers/pdf/<id>.pdf` — the downloaded PDF.
-- `research/papers/<id>-<slug>.md` — a dossier note: title, source line (authors, date, venue/DOI), a short thesis, and why it matters to the book.
-- Metadata from these dossiers feeds [[apa-citations]] (`references.json`).
+- `sources/arXiv/<id>-<slug>.pdf` — the downloaded PDF (all arXiv PDFs live here; other sources go in `sources/<topic>/`).
+- `summaries/arXiv/<id>-<slug>.md` — a summary/dossier: title, source line (authors, date, venue/DOI), a short thesis, and why it matters to the book. It links to its PDF with a relative link (`../../sources/arXiv/<id>-<slug>.pdf`).
+- Metadata from these summaries feeds [[apa-citations]] (`references.json`, at the repo root).
 
 ## Dossier format
 

@@ -125,9 +125,9 @@ and deploys to GitHub Pages. Full detail is in the `book-build` skill.
 
 **Authoring conventions** (also in `AGENTS.md`):
 
-- **Prose style** — modelled on Kernighan & Pike's *The Unix Programming Environment*: plain short sentences, mechanism over metaphor, understatement, worked examples (a copy is at `research/the-unix-programming-environment-kernighan-pike.md`).
+- **Prose style** — modelled on Kernighan & Pike's *The Unix Programming Environment*: plain short sentences, mechanism over metaphor, understatement, worked examples (a copy is at `sources/software-engineering/unix-programming-environment.md`).
 - **Numbered headings** — H2 sections `N.M`, H3 subsections `N.M.K`; chapter titles and References stay unnumbered.
-- **Citations (APA 7)** — hyperlinked to the original source (URL, DOI, arXiv); first mention in a chapter names author and *title*, later mentions are plain `(Author, Year)`. Source metadata lives in `research/papers/`; the reference lists regenerate via the `apa-citations` skill.
+- **Citations (APA 7)** — hyperlinked to the original source (URL, DOI, arXiv); first mention in a chapter names author and *title*, later mentions are plain `(Author, Year)`. Source metadata lives in `summaries/`, downloaded sources in `sources/`, and the citation↔source map in `references.json` (repo root); the reference lists regenerate via the `apa-citations` skill.
 - **Skills** — one canonical set under **`.agents/skills/`** (the vendor-neutral [Agent Skills](https://agentskills.io) `SKILL.md` standard). GitHub Copilot and Google Antigravity read `.agents/skills/` directly; Claude Code only scans `.claude/skills/`, so that path is a **symlink** to `../.agents/skills`. Edit skills in `.agents/skills/` only — there is no second copy to keep in sync. Subagent definitions stay tool-specific (`.claude/agents/*.md`, `.github/agents/*.agent.md`), as their formats differ per tool.
 
 </details>

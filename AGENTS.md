@@ -24,7 +24,7 @@ Guidelines for any AI agent (or human) drafting this book.
 
 ## Style
 
-The model to imitate is Kernighan & Pike's *The Unix Programming Environment* (a full copy is at `research/the-unix-programming-environment-kernighan-pike.md` — read a few pages when in doubt). Its hallmarks are plainness, mechanism over metaphor, understatement, and worked examples that carry the argument. Also in the tradition: Kernighan & Ritchie's *C* and Knuth's *TAOCP*. Teach, don't summarise; be a professor who is warm and exact but never chatty. No pep, no hype, no hand-holding. Natural contractions are welcome.
+The model to imitate is Kernighan & Pike's *The Unix Programming Environment* (a full copy is at `sources/software-engineering/unix-programming-environment.md` — read a few pages when in doubt). Its hallmarks are plainness, mechanism over metaphor, understatement, and worked examples that carry the argument. Also in the tradition: Kernighan & Ritchie's *C* and Knuth's *TAOCP*. Teach, don't summarise; be a professor who is warm and exact but never chatty. No pep, no hype, no hand-holding. Natural contractions are welcome.
 
 - **One idea per sentence; keep sentences short.** Two clauses is usually the limit. When a sentence stacks three or more clauses joined by dashes and semicolons, break it into two or three plain sentences. Kernighan & Pike almost never run a sentence past two clauses, and neither should we. This is the single biggest lever for sounding like the model.
 - **Explain the mechanism, plainly.** State how the thing actually works before the evidence: the idea, the intuition for why it holds, then the example or number that proves it. The reader should finish understanding *why*, not just *that*. Prefer a direct description of the mechanism ("the kernel moves the data through the pipe") to an image that stands in for it.
@@ -56,7 +56,7 @@ The model to imitate is Kernighan & Pike's *The Unix Programming Environment* (a
   - **Subsequent mentions of the same source in that chapter use plain author–year**: `([Wolfram, 2023](url))`.
   - Title-authored works (e.g. Wikipedia pages) keep their short quoted form on every mention, since the author already is the title.
   - Every chapter (and the preface) ends with a `## References` section: full APA 7 entries, alphabetised, with the URL/DOI shown and clickable. Prefer the published venue where known; fall back to arXiv/preprint otherwise.
-  - Source metadata (authors, titles, venues, DOIs) comes from the `research/papers/*.md` dossier headers; verify web/news titles and bylines against the live page before citing. Never invent an author list or title.
+  - Source metadata (authors, titles, venues, DOIs) comes from the `summaries/**/*.md` dossier headers; verify web/news titles and bylines against the live page before citing. Never invent an author list or title.
 - **Research before writing.** Read official/primary sources first; assume internal knowledge is stale.
 - Mark anything uncertain as a draft assumption; do not present it as fact.
 
@@ -67,5 +67,10 @@ The model to imitate is Kernighan & Pike's *The Unix Programming Environment* (a
 
 ## Sources so far
 
-- @research folder contains research downloaded so far
-- @research/research.md contains links to sources
+Downloaded research is organised into three repo-root folders:
+
+- **`sources/`** — original downloaded sources (PDF or converted Markdown), by **topic** (not by chapter, since a source may serve several). All arXiv PDFs live in `sources/arXiv/`; other sources sit in topic folders (`llm-foundations/`, `agent-architecture/`, `spec-vs-vibe/`, …).
+- **`summaries/`** — one Markdown summary/dossier per source, mirroring the `sources/` topic folders (arXiv summaries in `summaries/arXiv/`). Each links to its source with a relative link.
+- **`misc/`** — meta and working files that are not sources (walkthroughs, plans, images, author notes). `misc/research.md` has the original link list.
+
+The citation↔source mapping is `references.json` at the repo root (used by [[apa-citations]]).

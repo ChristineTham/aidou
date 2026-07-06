@@ -20,7 +20,7 @@ Turns loosely-labelled Markdown links into consistent APA 7 citations and per-ch
 
 ## Source list — `references.json`
 
-The project keeps one JSON file (e.g. `research/references.json`). Each entry:
+The project keeps one JSON file at the repo root (`references.json`). Each entry:
 
 ```json
 {
@@ -43,7 +43,7 @@ To add a source: append an entry, then re-run the engine.
 - **`scripts/apply_citations.py`** — rewrite in-text citations and regenerate References. Idempotent; only link text changes.
 
   ```bash
-  python scripts/apply_citations.py --refs research/references.json book/00-preface.md book/0[1-6]*.md
+  python scripts/apply_citations.py --refs references.json book/00-preface.md book/0[1-6]*.md
   ```
 
 - **`scripts/audit_citations.py`** — advisory checks: internal-download links, in-text↔References mismatches, brackets in link text.

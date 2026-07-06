@@ -8,8 +8,8 @@ paper's abstract page (https://arxiv.org/abs/<id>) — do not guess them.
 
 Usage:
     fetch_arxiv.py 2201.11903 chain-of-thought
-    fetch_arxiv.py 2201.11903 chain-of-thought --pdf-dir research/papers/pdf \\
-                   --dossier-dir research/papers
+    fetch_arxiv.py 2201.11903 chain-of-thought --pdf-dir sources/arXiv \\
+                   --dossier-dir summaries/arXiv
 """
 import os, argparse, urllib.request
 
@@ -18,14 +18,14 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("id", help="arXiv id, e.g. 2201.11903")
     ap.add_argument("slug", help="short kebab-case slug for the filename")
-    ap.add_argument("--pdf-dir", default="research/papers/pdf")
-    ap.add_argument("--dossier-dir", default="research/papers")
+    ap.add_argument("--pdf-dir", default="sources/arXiv")
+    ap.add_argument("--dossier-dir", default="summaries/arXiv")
     a = ap.parse_args()
 
     os.makedirs(a.pdf_dir, exist_ok=True)
     os.makedirs(a.dossier_dir, exist_ok=True)
 
-    pdf = os.path.join(a.pdf_dir, f"{a.id}.pdf")
+    pdf = os.path.join(a.pdf_dir, f"{a.id}-{a.slug}.pdf")
     req = urllib.request.Request(
         f"https://arxiv.org/pdf/{a.id}", headers={"User-Agent": "Mozilla/5.0"}
     )
@@ -44,7 +44,7 @@ def main():
         f.write(
             f"""# TITLE
 
-> Source: arXiv:{a.id} (DATE). AUTHORS. PDF in `pdf/{a.id}.pdf`.
+> Source: arXiv:{a.id} (DATE). AUTHORS. PDF in `../../sources/arXiv/{a.id}-{a.slug}.pdf`.
 
 ## Thesis
 
