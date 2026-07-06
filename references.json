@@ -1387,5 +1387,118 @@
     "intext": "Suresh Babu & Agrawal, 2026",
     "reference": "Suresh Babu, R., & Agrawal, A. (2026). *Self-healing agentic orchestrators for reliable tool-augmented large language model systems*. arXiv. [https://arxiv.org/abs/2606.01416](https://arxiv.org/abs/2606.01416)",
     "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2203.11171"
+    ],
+    "intext": "Wang et al., 2022",
+    "reference": "Wang, X., Wei, J., Schuurmans, D., Le, Q., Chi, E., Narang, S., Chowdhery, A., & Zhou, D. (2022). *Self-consistency improves chain-of-thought reasoning in language models*. arXiv. [https://arxiv.org/abs/2203.11171](https://arxiv.org/abs/2203.11171)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2305.10601"
+    ],
+    "intext": "Yao et al., 2023",
+    "reference": "Yao, S., Yu, D., Zhao, J., Shafran, I., Griffiths, T. L., Cao, Y., & Narasimhan, K. (2023). *Tree of Thoughts: Deliberate problem solving with large language models*. Advances in Neural Information Processing Systems 36. [https://arxiv.org/abs/2305.10601](https://arxiv.org/abs/2305.10601)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2210.03629"
+    ],
+    "intext": "Yao et al., 2022",
+    "reference": "Yao, S., Zhao, J., Yu, D., Du, N., Shafran, I., Narasimhan, K., & Cao, Y. (2022). *ReAct: Synergizing reasoning and acting in language models*. arXiv. [https://arxiv.org/abs/2210.03629](https://arxiv.org/abs/2210.03629)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2005.11401"
+    ],
+    "intext": "Lewis et al., 2020",
+    "reference": "Lewis, P., et al. (2020). *Retrieval-augmented generation for knowledge-intensive NLP tasks*. Advances in Neural Information Processing Systems 33. [https://arxiv.org/abs/2005.11401](https://arxiv.org/abs/2005.11401)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2211.01910"
+    ],
+    "intext": "Zhou et al., 2022",
+    "reference": "Zhou, Y., Muresanu, A. I., Han, Z., Paster, K., Pitis, S., Chan, H., & Ba, J. (2022). *Large language models are human-level prompt engineers*. arXiv. [https://arxiv.org/abs/2211.01910](https://arxiv.org/abs/2211.01910)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2310.03714"
+    ],
+    "intext": "Khattab et al., 2023",
+    "reference": "Khattab, O., et al. (2023). *DSPy: Compiling declarative language model calls into self-improving pipelines*. arXiv. [https://arxiv.org/abs/2310.03714](https://arxiv.org/abs/2310.03714)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2311.18751"
+    ],
+    "intext": "Furuta et al., 2024",
+    "reference": "Furuta, H., Matsuo, Y., Faust, A., & Gur, I. (2024). *Exposing limitations of language model agents in sequential-task compositions on the web*. Transactions on Machine Learning Research. [https://arxiv.org/abs/2311.18751](https://arxiv.org/abs/2311.18751)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2503.13657"
+    ],
+    "intext": "Cemri et al., 2025",
+    "reference": "Cemri, M., et al. (2025). *Why do multi-agent LLM systems fail?* arXiv. [https://arxiv.org/abs/2503.13657](https://arxiv.org/abs/2503.13657)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://www.hbs.edu/faculty/Pages/item.aspx?num=64700",
+      "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4573321"
+    ],
+    "intext": "Dell'Acqua et al., 2023",
+    "reference": "Dell'Acqua, F., McFowland III, E., Mollick, E. R., Lifshitz-Assaf, H., Kellogg, K., Rajendran, S., Krayer, L., Candelon, F., & Lakhani, K. R. (2023). *Navigating the jagged technological frontier: Field experimental evidence of the effects of artificial intelligence on knowledge worker productivity and quality* (Harvard Business School Working Paper No. 24-013). Harvard Business School. [https://www.hbs.edu/faculty/Pages/item.aspx?num=64700](https://www.hbs.edu/faculty/Pages/item.aspx?num=64700)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2507.09089"
+    ],
+    "intext": "METR, 2025",
+    "reference": "METR. (2025). *Measuring the impact of early-2025 AI on experienced open-source developer productivity*. arXiv. [https://arxiv.org/abs/2507.09089](https://arxiv.org/abs/2507.09089)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://doi.org/10.1126/science.adh2586"
+    ],
+    "intext": "Noy & Zhang, 2023",
+    "reference": "Noy, S., & Zhang, W. (2023). *Experimental evidence on the productivity effects of generative artificial intelligence*. Science, 381(6654), 187–192. [https://doi.org/10.1126/science.adh2586](https://doi.org/10.1126/science.adh2586)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2605.12344"
+    ],
+    "intext": "Chi et al., 2026",
+    "reference": "Chi, V. B., Rietsche, R., Göldi, A., Ungar, L., & Guntuku, S. C. (2026). *Optimized but unowned: How AI-authored goals undermine the motivation they are meant to drive*. arXiv. [https://arxiv.org/abs/2605.12344](https://arxiv.org/abs/2605.12344)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://doi.org/10.1093/analys/58.1.7"
+    ],
+    "intext": "Clark & Chalmers, 1998",
+    "reference": "Clark, A., & Chalmers, D. (1998). *The extended mind*. Analysis, 58(1), 7–19. [https://doi.org/10.1093/analys/58.1.7](https://doi.org/10.1093/analys/58.1.7)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://doi.org/10.1037/0003-066X.54.7.493"
+    ],
+    "intext": "Gollwitzer, 1999",
+    "reference": "Gollwitzer, P. M. (1999). *Implementation intentions: Strong effects of simple plans*. American Psychologist, 54(7), 493–503. [https://doi.org/10.1037/0003-066X.54.7.493](https://doi.org/10.1037/0003-066X.54.7.493)",
+    "title_authored": false
   }
 ]

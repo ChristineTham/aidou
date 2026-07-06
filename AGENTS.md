@@ -9,6 +9,43 @@ Guidelines for any AI agent (or human) drafting this book.
 - The book build calls skill scripts by their real path, e.g. `.agents/skills/book-build/scripts/build_site.py` (see `quarto/build.sh` and `.github/workflows/deploy.yml`).
 - Subagent definitions are *not* skills and stay tool-specific: `.claude/agents/*.md` (Claude Code) and `.github/agents/*.agent.md` (Copilot).
 
+### Skill catalogue
+
+All skills live in `.agents/skills/<name>/SKILL.md`, grouped by what they do:
+
+**Research pipeline** — compose in this order; each also runs on its own:
+
+- **research-topic** — orchestrator: take a topic through the whole chain (search → download → summarise → enhance).
+- **search-topic** — deep-research a topic; return a ranked shortlist of candidate sources (no download).
+- **download-source** — fetch a source into `sources/` (arXiv → PDF in `sources/arXiv/`; web pages → Markdown in `sources/<topic>/`).
+- **summarise-source** — write a study-guide summary (an up-front Abstract over a structure-mirroring body) into `summaries/`.
+- **enhance-book** — cite a summarised source into the book where it fits, or report that it isn't needed.
+
+**Writing & citations:**
+
+- **book-style** — draft/revise in the house prose style; includes an advisory prose linter.
+- **apa-citations** — apply and audit APA-7 citations; regenerate per-chapter reference lists from `references.json`.
+- **heading-numbering** — number section headings `N.M` / `N.M.K` (idempotent).
+
+**Build & scripting:**
+
+- **book-build** — build the website + PDF + ePub from `book/` via Quarto; cover/chapter art; deploy. *(agent-triggered)*
+- **python-scripts** — write and run Python for analysis, scraping, validation, or one-off automation.
+
+**Diagrams:**
+
+- **mermaid-diagrams** — general Mermaid diagrams (flowchart, sequence, class, ER, state, …).
+- **c4-architecture** — C4 architecture views (context / container / component) in Mermaid.
+- **draw-io** — create/edit `.drawio` diagrams; export to PNG/SVG.
+- **draw-io-diagram-generator** — low-level mxGraph XML authoring for draw.io. *(agent-triggered)*
+- **mermaid-to-drawio** — convert Mermaid source into editable draw.io XML.
+
+### Invoking a skill
+
+- **By description (any tool).** State the task in plain language — "summarise the Harness-Bench paper", "research loop engineering and add it to §2.6". Each skill's description makes it trigger automatically in Claude Code, Copilot, and Antigravity.
+- **Explicitly (Claude Code / Copilot).** Type `/<skill-name>` to run a user-invocable skill directly — e.g. `/summarise-source`, `/research-topic`, `/apa-citations`. The two agent-triggered skills above (**book-build**, **draw-io-diagram-generator**) fire when relevant rather than as slash-commands.
+- **Pipeline.** `research-topic` runs the full research chain; `search-topic`, `download-source`, `summarise-source`, and `enhance-book` each run a single stage on their own.
+
 ## Structure
 
 - 6 chapters; former chapters are now sections. Keep it that way.

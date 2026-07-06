@@ -1,0 +1,19 @@
+{
+  "skill_name": "review-chapter",
+  "evals": [
+    {
+      "id": 0,
+      "name": "preface",
+      "prompt": "Review the preface (book/00-preface.md) and get it publication-ready.",
+      "expected_output": "A prioritised audit report covering the six checks (grounded citations, definitions, thin sections, table opportunities, diagram opportunities, readability/consistency/Australian-spelling/flow), stopping at the checkpoint for a go-ahead rather than editing the manuscript.",
+      "files": ["book/00-preface.md"]
+    },
+    {
+      "id": 1,
+      "name": "chapter1",
+      "prompt": "Do a publication-readiness pass on Chapter 1 (book/01-foundations.md).",
+      "expected_output": "A prioritised audit report covering the six checks, stopping at the checkpoint for a go-ahead rather than editing the manuscript.",
+      "files": ["book/01-foundations.md"]
+    }
+  ]
+}

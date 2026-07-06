@@ -8,6 +8,8 @@ description: >-
   wants to (re)generate, backfill, or refresh a file in summaries/. Trigger even if
   the user only names a file, a paper, or a topic under sources/ and asks to
   "summarise it", "write it up", "make a summary", or "create a dossier".
+argument-hint: 'The source file (in sources/) to summarise.'
+user-invocable: true
 ---
 
 # summarise-source

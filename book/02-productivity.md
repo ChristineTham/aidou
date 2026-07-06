@@ -149,28 +149,30 @@ The guide goes well beyond these three. The rest are mostly refinements for hard
 
 Getting steadier reasoning:
 
-- **Self-consistency** — sample several chains of thought and keep the majority answer, trading compute for reliability.
-- **Tree of thoughts** — let the model branch, look ahead, and backtrack through alternative paths, for problems that need search rather than a single line.
+- **Self-consistency** — sample several chains of thought and keep the majority answer; the *diversity* of reasoning paths, not just more samples, is what lifts accuracy (about +18% on GSM8K), and the gain saturates after a dozen or two, so 5–10 captures most of it ([Wang et al., *Self-consistency improves chain-of-thought reasoning in language models*, 2022](https://arxiv.org/abs/2203.11171)).
+- **Tree of thoughts** — let the model branch, look ahead, and backtrack through alternative paths, for problems that need search rather than a single line; on the Game of 24 this took GPT-4 from 4% with chain of thought to 74%, beating even a hundred-chain ensemble ([Yao et al., *Tree of Thoughts: Deliberate problem solving with large language models*, 2023](https://arxiv.org/abs/2305.10601)).
 - **Generated knowledge** — have the model first write down the facts a question depends on, then answer using them.
 - **Meta prompting** — point the model at the *structure* of a problem and its solution rather than the specific content.
 - **Active-prompt** — choose which examples are worth hand-annotating by finding where the model is least certain.
 
 Bringing in tools and knowledge:
 
-- **Retrieval-augmented generation (RAG)** — fetch relevant documents and place them in the prompt so the answer is grounded in your data, not just training; later chapters return to it.
-- **ReAct** — interleave reasoning with actions like web search or running code, so the model looks things up mid-thought instead of guessing.
+- **Retrieval-augmented generation (RAG)** — fetch relevant documents and place them in the prompt so the answer is grounded in your data, not just training; conditioning on a retrieved, swappable knowledge store measurably cuts fabrication ([Lewis et al., *Retrieval-augmented generation for knowledge-intensive NLP tasks*, 2020](https://arxiv.org/abs/2005.11401)). Later chapters return to it.
+- **ReAct** — interleave reasoning with actions like web search or running code, so the model looks things up mid-thought instead of guessing; grounding each step in a real observation is what curbs hallucination, and it is the reason-and-act pattern the agent chapters build on ([Yao et al., *ReAct: Synergizing reasoning and acting in language models*, 2022](https://arxiv.org/abs/2210.03629)).
 - **Program-aided language models (PAL)** — offload exact calculation to code the model writes and runs, rather than doing arithmetic in prose.
 - **Automatic reasoning and tool-use (ART)** — let the model pick reasoning steps and tools from a library on its own.
 - **Reflexion** — have the model critique its own result and try again, learning from the feedback within a session.
 
 Automating the prompt itself:
 
-- **Automatic prompt engineer (APE)** — use a model to generate and score candidate prompts for you.
+- **Automatic prompt engineer (APE)** — use a model to generate and score candidate prompts for you; the results can match or beat hand-written prompts — APE even improved on the famous "let's think step by step" ([Zhou et al., *Large language models are human-level prompt engineers*, 2022](https://arxiv.org/abs/2211.01910)).
 - **Directional stimulus** — add small tuned hints or keywords that nudge the model toward the answer you want.
 
 And two for other modalities: **multimodal chain-of-thought**, which reasons over images as well as text, and **graph prompting**, for graph-structured data. You do not need most of these to get real value; they are a map of where the craft goes when a plain prompt is not enough.
 
 None of this is a one-shot incantation. Prompting is iterative by nature: start simple, read what comes back, and add the one constraint that was missing ([DAIR.ai, *Prompt engineering guide*, n.d.](https://www.promptingguide.ai/introduction/tips)). The loop from Chapter 1 applies unchanged — intent, context, response, refine — and the prompt worth keeping is the one you arrive at, not the one you began with. These techniques are the floor; the chapters ahead build on them toward context, harnesses, and agents that carry the structure for you.
+
+There is a further turn worth flagging: the hand-crafting itself is being automated. If a model can write and score prompts (APE), it can also *optimise a whole pipeline*. DSPy treats prompts not as strings to hand-tune but as parameters a compiler adjusts against a metric, arguing that hard-coded templates are brittle trial-and-error — "akin to hand-tuning the weights of a classifier" — and reporting large gains over hand-written prompts once compiled ([Khattab et al., *DSPy: Compiling declarative language model calls into self-improving pipelines*, 2023](https://arxiv.org/abs/2310.03714)). The lesson is not to polish one prompt forever, but to understand the moves and then let tooling carry them.
 
 > [!NOTE]
 > **The harness now carries much of this.** Recently, many of the techniques above have been absorbed into the *agent harness* — the runtime wrapped around the model — rather than typed into each prompt. Reasoning models run a chain of thought on their own; agents perform ReAct-style tool use, retrieval (RAG), and self-critique (reflexion) as steps in their loop; the scaffolding supplies the structure a prompt once had to spell out. So the craft is shifting from wording a single prompt to designing the loop and context around the model — the *harness engineering* Chapter 4 takes up ([Guo et al., *From question answering to task completion: A survey on agent system and harness design*, 2026](https://arxiv.org/abs/2606.20683)).
@@ -288,15 +290,21 @@ flowchart TB
     L --> M[MCP server<br/>any agent can call it]
 ```
 
-Two habits make it pay. The first is to keep each piece small and single-purpose. A skill that does one thing well can be reused in situations you never foresaw, while a sprawling one fits only the case it was written for — the "do one thing well" rule, now applied to intents rather than programs. The second is to standardise the seams. Because skills are Markdown and MCP is one shared interface, a capability built once travels — to a coding agent in your editor, to a chat assistant, to a teammate's setup — with no adapter at each joint.
+Two habits make it pay. The first is to keep each piece small and single-purpose. A skill that does one thing well can be reused in situations you never foresaw, while a sprawling one fits only the case it was written for — the "do one thing well" rule, now applied to intents rather than programs. The second is to standardise the seams. Because skills are Markdown and MCP is one shared interface, a capability built once travels — to a coding agent in your editor, to a chat assistant, to a teammate's setup — with no adapter at each joint; a recent survey lays out that interoperability layer as a progression from tool access, to structured messaging, to one agent delegating to another ([Ehtesham et al., *A survey of agent interoperability protocols: MCP, ACP, A2A, and ANP*, 2025](https://arxiv.org/abs/2505.02279)).
 
 The compounding is the whole point. A one-off prompt helps once; a composed skill helps every time it is reached for, by you and by every agent you let stand on it. Combining skills, and making them available to other agents, is how personal productivity stops being a run of clever sessions and becomes a system that grows.
 
-## 2.8 Knowledge Work, Not Just Code
+That compounding cuts both ways, so it is worth naming the risk. Composition is itself a distinct skill, not a free by-product of the parts: web agents that clear 94% of individual tasks manage only about 25% once the same tasks are chained, because a piece solved in isolation never had to learn how to hand off to the next ([Furuta et al., *Exposing limitations of language model agents in sequential-task compositions on the web*, 2024](https://arxiv.org/abs/2311.18751)). Stitch whole agents together and the trouble turns organisational rather than arithmetic: across seven multi-agent systems, failure rates ran from 41% to 87%, traced to design and coordination faults — misread roles, dropped hand-offs, no final check — that a stronger model does not repair ([Cemri et al., *Why do multi-agent LLM systems fail?*, 2025](https://arxiv.org/abs/2503.13657)). This is exactly why the two habits earn their keep, and why a check belongs at every join: small, single-purpose pieces, standard seams, and verification between them are what let composition compound in your favour rather than against you.
 
-The biggest agent gains recently are in knowledge work — research, writing, synthesis, decision support — not in code. These are bounded, high-feedback tasks where a model can draft, compare, and summarise faster than any human, and where production was never the slow part.
+## 2.8 Knowledge Work
 
-The effect is uneven. A study of 5,179 customer-support agents found AI raised resolved-issues-per-hour by 14% on average but 34% for novices, with little gain for experts — the tool spreads the best workers' know-how to everyone else ([Brynjolfsson et al., *Generative AI at work*, 2023](https://www.nber.org/papers/w31161)). What stays expensive is judgement: deciding whether the work was worth doing at all.
+The biggest agent gains recently are in knowledge work — research, writing, synthesis, decision support. These are bounded, high-feedback tasks where a model can draft, compare, and summarise faster than any human, and where production was never the slow part.
+
+The effect is real, and it is uneven — and the cleanest evidence is experimental. Give 453 professionals real writing tasks — memos, short reports, analysis plans — and let half of them use ChatGPT: their time falls by about 40% and graded quality rises around 18%, and the weakest writers gain the most, so the gap between them and the best narrows ([Noy & Zhang, *Experimental evidence on the productivity effects of generative AI*, 2023](https://doi.org/10.1126/science.adh2586)). The same levelling shows up in the field. A study of 5,179 customer-support agents found AI raised resolved-issues-per-hour by 14% on average but 34% for novices, with little gain for experts — the tool spreads the best workers' know-how to everyone else ([Brynjolfsson et al., *Generative AI at work*, 2023](https://www.nber.org/papers/w31161)). What stays expensive is judgement: deciding whether the work was worth doing at all.
+
+But the gains are jagged, and the boundary is easy to miss. In a field experiment with 758 management consultants, those given GPT-4 completed more tasks, 25% faster, at quality rated over 40% higher — again with the biggest lift for the weakest performers, 43% against 17%. Yet on a task chosen to sit just outside what the model does well, the same consultants were 19 percentage points *less* likely to reach the right answer, because they took plausible-but-wrong output at face value ([Dell'Acqua et al., *Navigating the jagged technological frontier*, 2023](https://www.hbs.edu/faculty/Pages/item.aspx?num=64700)). This is the jagged competence from Chapter 1 — strength spread unevenly across tasks that look alike — surfacing now in the work itself.
+
+The misjudgement runs deep. When experienced developers were given early-2025 AI tools on codebases they knew well, they took 19% *longer* to finish, yet came away convinced they had been 20% faster ([METR, *Measuring the impact of early-2025 AI on experienced open-source developer productivity*, 2025](https://arxiv.org/abs/2507.09089)). The productivity is genuine, but it is task-dependent and easily mistaken for more than it is — which is the subject of §2.9.
 
 So delegate the drafting and the bookkeeping freely; keep the "why" for yourself. McKinsey's high performers do exactly this, treating AI as a catalyst for redesigned work rather than faster typing ([McKinsey & Company, *The state of AI*, 2025](https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai)). It reaches into elicitation too: an LLM reading stakeholder interviews extracted explicit needs at 84.4% F1 and inferred *latent* ones experts judged useful 75% of the time ([Sivakumar et al., *LLM-based discovery of latent requirements from stakeholder conversations*, 2026](https://arxiv.org/abs/2606.25867)). The failure that shadows the gain is producing more while validating less — confident output at volume that nobody has checked.
 
@@ -322,15 +330,19 @@ The practical defence is to sort tasks by how much judgement they need. Where th
 
 ## 2.10 Personal Operating Models
 
-Leverage compounds only if you stop re-deciding everything. A *personal operating model* is a small, reusable kit that turns scattered prompting into a system: plays you can rerun, preferences encoded once so you never re-explain them, and a daily workflow that feeds itself. It is the instinct the book applies everywhere — repeatable patterns over one-off prompts — pointed at your own working life. The waste it removes is re-solving the same problem from scratch each session, which feels productive and is not.
+Leverage compounds only if you stop re-deciding everything. Used casually, AI is a run of fresh starts — a clever prompt, a good answer, and nothing kept. A *personal operating model* is the opposite: a small, reusable kit that turns scattered prompting into a system, so the method outlasts the session. There is a well-tested reason this works. A plan that fixes *when* and *how* you will act — an implementation intention, of the form "when X happens, I do Y" — is carried out far more reliably than the same goal left in the abstract; pre-deciding the cue and the response has lifted follow-through sharply in study after study, in one case from 53% to 100% ([Gollwitzer, *Implementation intentions: Strong effects of simple plans*, 1999](https://doi.org/10.1037/0003-066X.54.7.493)). Settle a decision once and the situation triggers it. Leave it open and you pay to make it again every session.
 
-Three parts make it up, and this chapter has already built each one:
+This book is the worked example. Much of it was built with the method it describes, and its operating model has the three parts any does.
 
-- **Plays** — the skills, loops, and shared tools from §2.1 and §2.7, named and kept where any agent can reach them. A play settles a decision once — how you summarise a paper, triage an inbox, draft a proposal — so you never make it from scratch again.
-- **Preferences** — your standing context, written down once: your role, your house style, the tools you favour, what you always want and never want. Keep it in the schema file the agent reads on every task — CLAUDE.md or AGENTS.md, the same files that governed the wiki in §2.5 — and you stop re-explaining yourself at the top of every session.
-- **A daily loop** — a standing routine an ambient teammate can run on its own: triage what arrived overnight, file it into memory, and surface the few things that need you. The workflow feeds the memory, and the memory sharpens the workflow.
+- **Plays** — the decisions you have already settled, saved where an agent can rerun them. Here they are skills: `research-topic` takes a subject from search to a cited paragraph, `summarise-source` turns a PDF into a study guide, `review-chapter` runs a chapter through seven checks. Each began as something I did by hand and tired of re-deciding. A play is an implementation intention for knowledge work — the task is the cue, the skill the response — and it also settles how you divide the labour with the model: whether you hand it a whole sub-task or interleave with it turn by turn, the Centaur and Cyborg styles from that consulting study ([Dell'Acqua et al., 2023](https://www.hbs.edu/faculty/Pages/item.aspx?num=64700)).
+- **Preferences** — your standing context, written once and read on every task. For this book they live in `AGENTS.md`: the house voice, Australian spelling, cite the primary source rather than the download. It is the memory file of §2.5 in another guise — say it once, and stop re-explaining yourself at the top of every session.
+- **A daily loop** — the standing routine the plays run inside. The chapter you are reading was researched by one: search, download, summarise, cite — each new source filed into `sources/` and digested into `summaries/`. The loop feeds the memory, and the memory sharpens the loop.
 
-Assembled, these stop being a run of clever sessions and become something closer to infrastructure: the plays carry your methods, the preferences carry your taste, and the loop carries the day. What stays yours is the part no kit can encode — deciding what is worth doing, and judging whether the result was any good. The model removes the friction so your attention lands where only it can.
+Assembled, these stop being a run of clever sessions and become something closer to infrastructure. Philosophy makes the case for that word literally: when an external store is reliable, always to hand, and trusted enough that you act on it without re-checking, it is doing the work of mind and may be counted as part of it — Otto's notebook holds the memories his own brain no longer keeps ([Clark & Chalmers, *The extended mind*, 1998](https://doi.org/10.1093/analys/58.1.7)). A well-made operating model earns that standing. The same tests are the warning label: a kit you cannot reach, or do not trust, is only clutter.
+
+One part you must not delegate is authorship of the model itself. When researchers had an LLM write people's goals, the goals came out markedly better formed — and markedly less owned; two weeks on, fewer than half acted on them, 47% against 73% for the people who had written their own ([Chi et al., *Optimized but unowned: How AI-authored goals undermine the motivation they are meant to drive*, 2026](https://arxiv.org/abs/2605.12344)). A model the AI hands you is not yours, and you will not run it. Draft your own plays, set your own preferences, choose your own loop — then let the tools carry them out. It is the confidence trap of §2.9 in another coat: the fluent option feels right, and here it quietly costs you the ownership that makes the system work.
+
+So the kit carries the friction and you keep the judgement. The plays carry your methods, the preferences your taste, the loop the day. What no kit can encode is the part that was always yours — deciding what is worth doing, and telling whether the result was any good. Build the model so your attention lands there, and nowhere it is wasted.
 
 ## References
 
@@ -348,15 +360,29 @@ Brown, T. B., et al. (2020). *Language models are few-shot learners*. Advances i
 
 Brynjolfsson, E., Li, D., & Raymond, L. R. (2023). *Generative AI at work* (NBER Working Paper No. 31161). National Bureau of Economic Research. [https://www.nber.org/papers/w31161](https://www.nber.org/papers/w31161)
 
+Cemri, M., et al. (2025). *Why do multi-agent LLM systems fail?* arXiv. [https://arxiv.org/abs/2503.13657](https://arxiv.org/abs/2503.13657)
+
+Chi, V. B., Rietsche, R., Göldi, A., Ungar, L., & Guntuku, S. C. (2026). *Optimized but unowned: How AI-authored goals undermine the motivation they are meant to drive*. arXiv. [https://arxiv.org/abs/2605.12344](https://arxiv.org/abs/2605.12344)
+
 Chroma. (2025). *Context rot: How increasing input tokens impacts LLM performance*. [https://research.trychroma.com/context-rot](https://research.trychroma.com/context-rot)
+
+Clark, A., & Chalmers, D. (1998). *The extended mind*. Analysis, 58(1), 7–19. [https://doi.org/10.1093/analys/58.1.7](https://doi.org/10.1093/analys/58.1.7)
 
 DAIR.ai. (n.d.). *Prompt engineering guide*. [https://www.promptingguide.ai/](https://www.promptingguide.ai/)
 
+Dell'Acqua, F., McFowland III, E., Mollick, E. R., Lifshitz-Assaf, H., Kellogg, K., Rajendran, S., Krayer, L., Candelon, F., & Lakhani, K. R. (2023). *Navigating the jagged technological frontier: Field experimental evidence of the effects of artificial intelligence on knowledge worker productivity and quality* (Harvard Business School Working Paper No. 24-013). Harvard Business School. [https://www.hbs.edu/faculty/Pages/item.aspx?num=64700](https://www.hbs.edu/faculty/Pages/item.aspx?num=64700)
+
 Du, P., et al. (2026). *Memory for autonomous LLM agents: Mechanisms, evaluation, and emerging frontiers*. arXiv. [https://arxiv.org/abs/2603.07670](https://arxiv.org/abs/2603.07670)
+
+Ehtesham, A., et al. (2025). *A survey of agent interoperability protocols: MCP, ACP, A2A, and ANP*. arXiv. [https://arxiv.org/abs/2505.02279](https://arxiv.org/abs/2505.02279)
 
 Fazio, L. K., Brashier, N. M., Payne, B. K., & Marsh, E. J. (2015). *Knowledge does not protect against illusory truth*. Journal of Experimental Psychology: General, 144(5), 993–1002. [https://doi.org/10.1037/xge0000098](https://doi.org/10.1037/xge0000098)
 
 Fernandes, D., et al. (2026). *AI makes you smarter but none the wiser: The disconnect between performance and metacognition*. Computers in Human Behavior, 168, 108779. [https://doi.org/10.1016/j.chb.2025.108779](https://doi.org/10.1016/j.chb.2025.108779)
+
+Furuta, H., Matsuo, Y., Faust, A., & Gur, I. (2024). *Exposing limitations of language model agents in sequential-task compositions on the web*. Transactions on Machine Learning Research. [https://arxiv.org/abs/2311.18751](https://arxiv.org/abs/2311.18751)
+
+Gollwitzer, P. M. (1999). *Implementation intentions: Strong effects of simple plans*. American Psychologist, 54(7), 493–503. [https://doi.org/10.1037/0003-066X.54.7.493](https://doi.org/10.1037/0003-066X.54.7.493)
 
 Guo, J., et al. (2026). *From question answering to task completion: A survey on agent system and harness design*. arXiv. [https://arxiv.org/abs/2606.20683](https://arxiv.org/abs/2606.20683)
 
@@ -370,11 +396,15 @@ Jakesch, M., Bhat, A., Buschek, D., Zalmanson, L., & Naaman, M. (2023). *Co-writ
 
 Karpathy, A. (2026a). *LLM wiki*. GitHub. [https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f)
 
+Khattab, O., et al. (2023). *DSPy: Compiling declarative language model calls into self-improving pipelines*. arXiv. [https://arxiv.org/abs/2310.03714](https://arxiv.org/abs/2310.03714)
+
 Kojima, T., Gu, S. S., Reid, M., Matsuo, Y., & Iwasawa, Y. (2022). *Large language models are zero-shot reasoners*. Advances in Neural Information Processing Systems. [https://arxiv.org/abs/2205.11916](https://arxiv.org/abs/2205.11916)
 
 Lam, C. (2026). *Governing evolving memory in LLM agents*. arXiv. [https://arxiv.org/abs/2603.11768](https://arxiv.org/abs/2603.11768)
 
 Latent Space. (2026b). *Loopcraft: The art of stacking*. [https://www.latent.space/p/ainews-loopcraft-the-art-of-stacking](https://www.latent.space/p/ainews-loopcraft-the-art-of-stacking)
+
+Lewis, P., et al. (2020). *Retrieval-augmented generation for knowledge-intensive NLP tasks*. Advances in Neural Information Processing Systems 33. [https://arxiv.org/abs/2005.11401](https://arxiv.org/abs/2005.11401)
 
 Li, J., et al. (2025). *As confidence aligns: Effect of AI confidence on human self-confidence in human–AI decision making*. Proceedings of the 2025 CHI Conference on Human Factors in Computing Systems. [https://arxiv.org/abs/2501.12868](https://arxiv.org/abs/2501.12868)
 
@@ -392,9 +422,13 @@ McIlroy, M. D., Pinson, E. N., & Tague, B. A. (1978). *UNIX time-sharing system:
 
 McKinsey & Company. (2025). *The state of AI*. [https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai](https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai)
 
+METR. (2025). *Measuring the impact of early-2025 AI on experienced open-source developer productivity*. arXiv. [https://arxiv.org/abs/2507.09089](https://arxiv.org/abs/2507.09089)
+
 Microsoft. (n.d.). *MarkItDown* [Computer software]. GitHub. [https://github.com/microsoft/markitdown](https://github.com/microsoft/markitdown)
 
 Model Context Protocol. (n.d.). *Introduction*. [https://modelcontextprotocol.io/introduction](https://modelcontextprotocol.io/introduction)
+
+Noy, S., & Zhang, W. (2023). *Experimental evidence on the productivity effects of generative artificial intelligence*. Science, 381(6654), 187–192. [https://doi.org/10.1126/science.adh2586](https://doi.org/10.1126/science.adh2586)
 
 Obsidian. (n.d.). *Obsidian* [Computer software]. [https://obsidian.md](https://obsidian.md)
 
@@ -410,6 +444,14 @@ Sivakumar, Lochner, Nejati, & Sabetzadeh. (2026). *LLM-based discovery of latent
 
 Sui, Y., Zhou, M., Zhou, M., Han, S., & Zhang, D. (2024). *Table meets LLM: Can large language models understand structured table data? A benchmark and empirical study*. Proceedings of the 17th ACM International Conference on Web Search and Data Mining (WSDM '24). [https://arxiv.org/abs/2305.13062](https://arxiv.org/abs/2305.13062)
 
+Wang, X., Wei, J., Schuurmans, D., Le, Q., Chi, E., Narang, S., Chowdhery, A., & Zhou, D. (2022). *Self-consistency improves chain-of-thought reasoning in language models*. arXiv. [https://arxiv.org/abs/2203.11171](https://arxiv.org/abs/2203.11171)
+
 Wei, J., Wang, X., Schuurmans, D., Bosma, M., Ichter, B., Xia, F., Chi, E., Le, Q., & Zhou, D. (2022a). *Chain-of-thought prompting elicits reasoning in large language models*. Advances in Neural Information Processing Systems. [https://arxiv.org/abs/2201.11903](https://arxiv.org/abs/2201.11903)
 
 Wu, X., Ritter, A., & Xu, W. (2025). *Tabular data understanding with LLMs: A survey of recent advances and challenges*. arXiv. [https://arxiv.org/abs/2508.00217](https://arxiv.org/abs/2508.00217)
+
+Yao, S., Zhao, J., Yu, D., Du, N., Shafran, I., Narasimhan, K., & Cao, Y. (2022). *ReAct: Synergizing reasoning and acting in language models*. arXiv. [https://arxiv.org/abs/2210.03629](https://arxiv.org/abs/2210.03629)
+
+Yao, S., Yu, D., Zhao, J., Shafran, I., Griffiths, T. L., Cao, Y., & Narasimhan, K. (2023). *Tree of Thoughts: Deliberate problem solving with large language models*. Advances in Neural Information Processing Systems 36. [https://arxiv.org/abs/2305.10601](https://arxiv.org/abs/2305.10601)
+
+Zhou, Y., Muresanu, A. I., Han, Z., Paster, K., Pitis, S., Chan, H., & Ba, J. (2022). *Large language models are human-level prompt engineers*. arXiv. [https://arxiv.org/abs/2211.01910](https://arxiv.org/abs/2211.01910)

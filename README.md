@@ -130,4 +130,24 @@ and deploys to GitHub Pages. Full detail is in the `book-build` skill.
 - **Citations (APA 7)** — hyperlinked to the original source (URL, DOI, arXiv); first mention in a chapter names author and *title*, later mentions are plain `(Author, Year)`. Source metadata lives in `summaries/`, downloaded sources in `sources/`, and the citation↔source map in `references.json` (repo root); the reference lists regenerate via the `apa-citations` skill.
 - **Skills** — one canonical set under **`.agents/skills/`** (the vendor-neutral [Agent Skills](https://agentskills.io) `SKILL.md` standard). GitHub Copilot and Google Antigravity read `.agents/skills/` directly; Claude Code only scans `.claude/skills/`, so that path is a **symlink** to `../.agents/skills`. Edit skills in `.agents/skills/` only — there is no second copy to keep in sync. Subagent definitions stay tool-specific (`.claude/agents/*.md`, `.github/agents/*.agent.md`), as their formats differ per tool.
 
+**Skill catalogue** — reusable capabilities that help write, research, and build the book. Invoke one by **describing the task** (it triggers from its description in Claude Code, Copilot, or Antigravity) or, in Claude Code / Copilot, with **`/<name>`**. Two skills (`book-build`, `draw-io-diagram-generator`) are agent-triggered only — they fire when relevant rather than as slash-commands.
+
+| Skill | What it does |
+| --- | --- |
+| `research-topic` | Orchestrator: topic → find → download → summarise → cite into the book |
+| `search-topic` | Deep-research a topic; return a ranked shortlist of sources |
+| `download-source` | Fetch a source into `sources/` (arXiv → PDF, web page → Markdown) |
+| `summarise-source` | Write a study-guide summary (Abstract + body) into `summaries/` |
+| `enhance-book` | Cite a summarised source into the book, in the house style |
+| `book-style` | Draft/revise in the house prose style (+ prose linter) |
+| `apa-citations` | Apply/audit APA-7 citations; regenerate per-chapter reference lists |
+| `heading-numbering` | Number section headings `N.M` / `N.M.K` (idempotent) |
+| `book-build` | Build the website + PDF + ePub from `book/` via Quarto |
+| `python-scripts` | Write and run Python for analysis, scraping, or automation |
+| `mermaid-diagrams` | General Mermaid diagrams (flowchart, sequence, class, ER, …) |
+| `c4-architecture` | C4 architecture views in Mermaid |
+| `draw-io` | Create/edit `.drawio` diagrams; export PNG/SVG |
+| `draw-io-diagram-generator` | Low-level mxGraph XML authoring for draw.io |
+| `mermaid-to-drawio` | Convert Mermaid source into editable draw.io XML |
+
 </details>

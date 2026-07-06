@@ -6,7 +6,10 @@ description: >-
   Given a summarised source (a file in summaries/, or a source the user names), it finds where the source
   belongs in book/*.md, adds an inline APA citation plus a References entry, and updates references.json.
   If the user names a section it focuses there; otherwise it finds the right place(s), which may be several.
-  If the source isn't relevant, or the point is already well covered, it says so instead of forcing a cite.
+  If the source is *already* cited, it finds every place the book uses it and reviews each citation against the
+  (possibly newly regenerated) summary, tightening claims, numbers, placement, or citation form where the source
+  now supports something better. If the source isn't relevant, or the point is already well covered by another
+  source, it says so instead of forcing a cite.
 argument-hint: 'A summary/source to integrate, and optionally the target section(s).'
 user-invocable: true
 ---
@@ -28,34 +31,61 @@ source that isn't needed should be reported, not shoehorned in.
 ## Process
 
 1. **Understand what the source establishes** — the specific, citable claims/figures from its Abstract and
-   key points. A source is only worth citing for a *particular* point.
-2. **Find the home(s).**
+   key points (read the summary's Abstract first). A source is only worth citing for a *particular* point.
+2. **Find every place the source already appears.** Before adding anything, grep `references.json` and
+   `book/*.md` for the source's **URL** (the most reliable key) and its **author–year**. This decides whether
+   you are *adding* a citation or *reviewing* existing ones — and catches the common case where the book
+   already leans on this exact source.
+3. **If the source is already cited — review, don't duplicate.** Treat a fresh or enhanced summary as a chance
+   to improve the *existing* citations, following *Reviewing an already-cited source* below. Add a new mention
+   elsewhere only if the source genuinely supports a distinct claim the book has not already made.
+4. **If the source is new — find the home(s).**
    - If the user named a section, work there.
-   - Otherwise search `book/*.md` for the claim(s) this source supports — grep for the relevant terms and
-     read the surrounding prose. There may be **several** good homes (corroborating one place, adding a
-     counterweight in another). List them before editing.
-3. **Relevance gate — be willing to say no.** If the source is off-argument for the book, or the point is
-   already made and cited, **stop and tell the user** which existing citation already covers it. Over-citing
-   dilutes the evidence and bloats the prose. It is a good outcome to report "not needed, already covered by
-   [X]".
-4. **Weave it in, evidence-first.** Add the source where it earns its place, in the house voice
+   - Otherwise search `book/*.md` for the claim(s) this source supports and read the surrounding prose. There
+     may be **several** good homes (corroborate one place, add a counterweight in another). List them first.
+5. **Relevance gate — be willing to say no.** If the source is off-argument, or its point is already made and
+   cited *by another source*, **stop and tell the user** which existing citation covers it. Over-citing dilutes
+   the evidence and bloats the prose. "Not needed, already covered by [X]" is a good outcome.
+6. **Weave it in, evidence-first.** Add the source where it earns its place, in the house voice
    ([[book-style]]): state the finding and let the citation support it, rather than name-dropping the paper.
    Keep the specific number/result that makes the source worth citing.
-5. **Cite in the book's exact format** (see [[apa-citations]]):
+7. **Cite in the book's exact format** (see [[apa-citations]]):
    - **First mention in a chapter**: `[Author, *Exact Title*, Year](url)`.
    - **Later mentions in that chapter**: `[Author, Year](url)`.
    - Escape stray `$` as `\$` so Pandoc doesn't read math.
-6. **Update the reference list and the map.**
+8. **Update the reference list and the map.**
    - Add the full APA entry to that chapter's `## References`, in alphabetical position.
    - Add/confirm the entry in `references.json` (repo root) so the citation↔source map stays complete.
-7. **Verify.** The in-text citation resolves to a References entry; no orphan/dangling ref; the first-mention
+9. **Verify.** The in-text citation resolves to a References entry; no orphan/dangling ref; the first-mention
    vs later-mention forms are right for that chapter. A build (`cd quarto && ./build.sh`) is the strongest
    check but optional for a small change.
 
+## Reviewing an already-cited source
+
+When the book already cites the source, a new or regenerated summary is a chance to make the *existing*
+citations better — not to pile on more. Find **every** citation of the source (grep its URL across
+`book/*.md`; the same source can appear in several chapters, each with its own first-mention). For each one,
+read the sentence that cites it and compare it against the summary, looking for:
+
+- **A sharper or corrected number/finding** — the summary surfaces a more precise or more decisive figure than
+  the prose uses, or the prose misstates what the source actually found. Tighten it to match the source.
+- **An overstated or understated claim** — the sentence leans harder than the source supports, or softer than
+  it could. Bring the claim in line with what the summary establishes.
+- **A better or additional home** — the source now looks like stronger support for a nearby claim, or supports
+  a distinct point elsewhere that is unsupported or only weakly sourced. Move or add a mention *only* if it
+  genuinely helps.
+- **Citation-form errors** — first- vs later-mention is wrong (a first mention that lost its title, or a later
+  one that repeats it), or the title/year in the link is stale against the summary header.
+
+Apply the improvements you find. If a citation is already accurate, well-placed, and using the source's best
+evidence, **say so and leave it** — the goal is a better book, not more edits.
+
 ## Output
 
-Report, per source: where it was added (chapter + section, first vs later mention), the reference entry, and
-the `references.json` update — or, if you declined, *why* (off-topic, or already covered by which citation).
+Report, per source, which of three happened: **added** (where — chapter + section, first vs later mention —
+plus the reference entry and `references.json` update); **reviewed** an already-cited source (what improved
+across which citations — a number, a claim, placement, citation form — or that they were already sound); or
+**declined** (why — off-topic, or already covered by which other citation).
 
 ## Rules
 

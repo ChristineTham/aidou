@@ -29,5 +29,8 @@ quarto/_tokens.json
 quarto/*.qmd
 !quarto/index.qmd
 
+# Skill-development eval scratch (skill-creator workspaces)
+.agents/skills/*-workspace/
+
 # OS / editor cruft
 .DS_Store
