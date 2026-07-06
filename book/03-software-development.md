@@ -82,9 +82,9 @@ This did not arrive as theory. The coding tools themselves climbed rung by rung,
 | Chat in the editor | Copilot Chat (2023) | Explained code, proposed refactors, diagnosed failures on request | Drove; asked and judged |
 | Agentic editor | Cursor (2023), aider | Searched the whole codebase, edited many files, ran commands from a plain-language ask | Reviewed the diff |
 | Terminal & async agent | Claude Code, Codex CLI, Gemini CLI (2025); Copilot coding agent | Planned, edited, ran tests, iterated; some opened a pull request from a cloud workspace | Set goals; reviewed results |
-| Agent fleets | Cursor 2.0, Google Antigravity (2025) | Ran several agents in parallel across a codebase | Supervised from above |
+| Agent fleets | Cursor 2.0, Google Antigravity 2.0 | Ran several agents in parallel across a codebase | Supervised from above |
 
-Sources: ["Tabnine," n.d.](https://en.wikipedia.org/wiki/Tabnine); [GitHub, *Introducing GitHub Copilot: AI pair programmer*, 2021](https://github.blog/2021-06-29-introducing-github-copilot-ai-pair-programmer/); [GitHub, *GitHub Copilot November 30th update*, 2023](https://github.blog/changelog/2023-11-30-github-copilot-november-30th-update/); ["Cursor," n.d.](https://en.wikipedia.org/wiki/Cursor_(company)); [aider, *aider*, n.d.](https://aider.chat/); [Anthropic, *Claude Code*, 2025a](https://claude.com/product/claude-code); [GitHub, *GitHub Copilot: The agent awakens*, 2025b](https://github.blog/news-insights/product-news/github-copilot-the-agent-awakens/); [GitHub, *GitHub Copilot: Meet the new coding agent*, 2025a](https://github.blog/news-insights/product-news/github-copilot-meet-the-new-coding-agent/); ["Google Antigravity," n.d.](https://en.wikipedia.org/wiki/Google_Antigravity).
+Sources: [Tabnine, *Tabnine*, n.d.](https://www.tabnine.com); [GitHub, *Introducing GitHub Copilot: AI pair programmer*, 2021](https://github.blog/2021-06-29-introducing-github-copilot-ai-pair-programmer/); [GitHub, *GitHub Copilot November 30th update*, 2023](https://github.blog/changelog/2023-11-30-github-copilot-november-30th-update/); [Cursor, *Cursor*, n.d.](https://cursor.com); [aider, *aider*, n.d.](https://aider.chat/); [Anthropic, *Claude Code*, 2025a](https://claude.com/product/claude-code); [GitHub, *GitHub Copilot: The agent awakens*, 2025b](https://github.blog/news-insights/product-news/github-copilot-the-agent-awakens/); [GitHub, *GitHub Copilot: Meet the new coding agent*, 2025a](https://github.blog/news-insights/product-news/github-copilot-meet-the-new-coding-agent/); [Google, *Build with Google Antigravity, our new agentic development platform*, 2025](https://developers.googleblog.com/build-with-google-antigravity-our-new-agentic-development-platform/).
 
 By 2026 the editor itself is no longer the centre of gravity: with capable models available from every lab, the value has moved into the system wrapped around the model — what practitioners now call the *dev stack* ([Latent Space, *AINews*, 2026a](https://www.latent.space/s/ainews)).
 
@@ -308,7 +308,7 @@ Cao, Z. (2026). *Agentic software: How AI agents are restructuring the software 
 
 Cognition. (2026). *Introducing FrontierCode*. Cognition. [https://cognition.com/blog/frontier-code](https://cognition.com/blog/frontier-code)
 
-Cursor (company). (n.d.). In *Wikipedia*. [https://en.wikipedia.org/wiki/Cursor_(company)](https://en.wikipedia.org/wiki/Cursor_(company))
+Cursor. (n.d.). *Cursor: AI code editor* [Computer software]. [https://cursor.com](https://cursor.com)
 
 Deng, J., Fan, Z., & Meng, R. (2026). *Understanding the (in)security of vibe-coded applications*. arXiv. [https://arxiv.org/abs/2606.23130](https://arxiv.org/abs/2606.23130)
 
@@ -332,7 +332,7 @@ GitHub. (2025b). *GitHub Copilot: The agent awakens*. GitHub Blog. [https://gith
 
 GitHub. (2025c). *Spec-driven development with AI: Get started with a new open-source toolkit*. GitHub Blog. [https://github.blog/ai-and-ml/generative-ai/spec-driven-development-with-ai-get-started-with-a-new-open-source-toolkit/](https://github.blog/ai-and-ml/generative-ai/spec-driven-development-with-ai-get-started-with-a-new-open-source-toolkit/)
 
-Google Antigravity. (n.d.). In *Wikipedia*. [https://en.wikipedia.org/wiki/Google_Antigravity](https://en.wikipedia.org/wiki/Google_Antigravity)
+Google. (2025). *Build with Google Antigravity, our new agentic development platform*. Google Developers Blog. [https://developers.googleblog.com/build-with-google-antigravity-our-new-agentic-development-platform/](https://developers.googleblog.com/build-with-google-antigravity-our-new-agentic-development-platform/)
 
 Gorinova, M. I., Baker, M., Heineike, A., Shaposhnikov, M., Willoughby, R., & Knox, D. (2026). *Position: Coding benchmarks are misaligned with agentic software engineering*. arXiv. [https://arxiv.org/abs/2606.17799](https://arxiv.org/abs/2606.17799)
 
@@ -370,7 +370,7 @@ Santos, R., Costa, H., Montandon, J. E., & Valente, M. T. (2025). *Decoding the 
 
 Sun, Z., Wen, X., Wang, F., Liu, C., Lai, Y., Hurter, C., & Wang, Y. (2026). *Vibe coding for visualization implementation: An empirical study of practices and challenges*. arXiv. [https://arxiv.org/abs/2606.19703](https://arxiv.org/abs/2606.19703)
 
-Tabnine. (n.d.). In *Wikipedia*. [https://en.wikipedia.org/wiki/Tabnine](https://en.wikipedia.org/wiki/Tabnine)
+Tabnine. (n.d.). *Tabnine* [Computer software]. [https://www.tabnine.com](https://www.tabnine.com)
 
 Temkin, M. (2026). *Cursor has reportedly surpassed \$2B in annualized revenue*. TechCrunch. [https://techcrunch.com/2026/03/02/cursor-has-reportedly-surpassed-2b-in-annualized-revenue/](https://techcrunch.com/2026/03/02/cursor-has-reportedly-surpassed-2b-in-annualized-revenue/)
 

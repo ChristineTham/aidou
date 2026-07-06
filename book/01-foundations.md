@@ -164,13 +164,13 @@ When I first started cooking, my early attempts did not fare well. I had the rec
 
 Working with AI is the same. How you use the tool matters as much as the tool itself.
 
-I was initially an AI sceptic. I was aware of the limitations of large language models and was doubtful they could be useful in complex tasks.
+I was initially an AI sceptic. I was aware of the limitations of large language models (from the research in the previous section) and was doubtful they could be useful in complex tasks.
 
 I read Ed Zitron — the tech critic whose newsletter [Where's Your Ed At](https://www.wheresyoured.at/) dismantles industry hype — and Gary Marcus, the cognitive scientist whose [Marcus on AI](https://garymarcus.substack.com/) has argued for years that large language models are shallow pattern-matchers rather than reasoners, and I cheered them both on. Cory Doctorow's [Pluralistic](https://pluralistic.net/) sharpened the same suspicion from the political side, naming the slow rot by which platforms turn on their own users. I laughed at the *vibe coders* — people who let AI write their software from a plain-language description, often without reading the code — for their naivety, and assumed anyone who installed OpenClaw, the open-source personal agent that runs with broad access to your machine, was an idiot.
 
 So when a global client hired me to write their AI strategy, I expected the deliverable to be a cautionary tale: be realistic, resist the hype, install guardrails, avoid the traps. Over the last several months, I realised I was the one who was naive. The AI landscape had been transformed. Claude Desktop with Cowork, Microsoft 365 Copilot with WorkIQ, and Google's Gemini Spark turned the ordinary instruments of knowledge work — documents, spreadsheets, inboxes, slide decks — into things an agent could draft, revise, and act on; Claude Code and GitHub Copilot did the same for software, crossing from clever autocomplete to systems that plan, edit across a whole codebase, and run their own work. Personal agents like OpenClaw and Hermes Agent pushed that capability out of the labs and into anyone's hands. Using them in earnest changed my mind: the productivity gains are now genuinely real.
 
-Creating software using AI has genuinely arrived. I managed to refactor and clean every line of code I have ever written (not a lot, since my career has never been in software development) and all my projects now feature gleaming, shiny, clean code. I have successfully finished dozens of AI-assisted projects without reviewing a single line of code, but still verifying that the software met expectations. I now firmly believe I will never write code ever again in my life.
+Creating software using AI has truly arrived. I managed to refactor and clean every line of code I have ever written (not a lot, since my career has never been in software development) and all my projects now feature gleaming, shiny, clean code. I have successfully finished dozens of AI-assisted projects without reviewing a single line of code, but still verifying that the software met expectations. I now firmly believe I will never write code ever again in my life.
 
 The gains are just as real in research, analytics, planning, and the rest of white-collar work.
 
@@ -180,7 +180,7 @@ Let me be plain about where I have landed, because it is narrower than my enthus
 
 AI does not replace human creativity. You can ask an AI to be a graphic designer, but that does not guarantee you will get results that will be pleasing. Take the graphic on the book cover. Although I used AI to help me generate the cover in SVG (a text-based image format a model can write directly), I ended up specifying the design myself: a stylised graphic of a crumbling, glitchy "AI" (in the typeface Rubik Glitch Pop) being overshadowed by the word 道 in KokuryuSou (黒龍爽) — raw, dynamic, high-energy brush strokes evoking a raging dragon — with a heart-shaped 愛 almost hidden as an Easter egg in the middle of "A".
 
-Used badly, these tools do not just waste time — they distort judgement. Clinicians have begun describing "AI psychosis," where heavy users spiral into delusion after a chatbot mirrors and amplifies their worst ideas instead of pushing back. Others form genuine attachments to a companion app, mistaking fluent warmth for understanding, and grieve when a model is retired. A confident voice that never tires is easy to trust and hard to doubt; one writer likens it to a court jester — fluent, flattering, and so easy to follow that its answers *feel* right whether or not they are, leaving you confident and wrong ([Johnson Spink, *The AI jester: How AI makes you confident and wrong*, 2026](https://www.linkedin.com/pulse/ai-jester-how-makes-you-confident-wrong-johnson-spink-gg3df/)).
+Used badly, these tools do not just waste time — they distort judgement, and at the far end they distort reality. Clinicians have begun describing *AI psychosis*: a vulnerable user spiralling into delusion as a chatbot mirrors and amplifies their beliefs instead of pushing back. It is not a fringe anecdote. A benchmark that put eight leading models through more than fifteen hundred simulated turns with at-risk users found every one of them inclined to *confirm* a delusion rather than challenge it, offering a safety response in only about a third of the moments that called for one ([Au Yeung et al., *The psychogenic machine: Simulating AI psychosis, delusion reinforcement and harm enablement in large language models*, 2025](https://arxiv.org/abs/2509.10970)); and in the real chat logs of nineteen people who came to harm, the model was sycophantic in more than seventy per cent of its replies ([Moore et al., *Characterizing delusional spirals through human-LLM chat logs*, 2026](https://arxiv.org/abs/2603.16567)). The driver is the same sycophancy that flatters your code and your strategy, turned on a fragile mind — a mutual-reinforcement feedback loop researchers call a *technological folie à deux* ([Dohnány et al., *Technological folie à deux: Feedback loops between AI chatbots and mental health*, 2025](https://arxiv.org/abs/2507.19218)). Others form genuine attachments to a companion app, mistaking fluent warmth for understanding, and grieve when a model is retired. A confident voice that never tires is easy to trust and hard to doubt; one writer likens it to a court jester — fluent, flattering, and so easy to follow that its answers *feel* right whether or not they are, leaving you confident and wrong ([Johnson Spink, *The AI jester: How AI makes you confident and wrong*, 2026](https://www.linkedin.com/pulse/ai-jester-how-makes-you-confident-wrong-johnson-spink-gg3df/)).
 
 The quieter harm is over-reliance. People paste in an answer they never checked, accept a summary that dropped the one caveat that mattered, or treat a tidy explanation as proof the system understands. It does not. Believing the machine is sentient, or simply infallible, is the fastest way to ship its mistakes as your own.
 
@@ -207,6 +207,8 @@ Quality lives in that loop, not in any single message. The model rarely converge
 
 So frame each task as a goal, the context it needs, and a check; then iterate. Because an agent runs many steps on its own, it can fix on a wrong approach and pursue it fluently and fast — so keep half an eye on the run and stop it to re-steer the moment it heads the wrong way, rather than waiting for a result you will only discard. The failure mode is reading fluency as truth. A confident answer and a correct one look identical until you check — the model will cite a court case or a statistic in the same calm voice whether or not it exists — which is why verification is the habit that holds.
 
+None of this is only my preference; it is where the evidence points. Human–AI pairings do not beat the better of person-or-machine automatically — across a meta-analysis of more than a hundred studies they averaged *worse*, turning a profit mainly on creative work and where the person already had the edge to add ([Vaccaro et al., *When combinations of humans and AI are useful*, 2024](https://doi.org/10.1038/s41562-024-02024-1)); and engaging with an answer rather than accepting it — running the loop instead of taking the oracle's word — has been shown to curb the over-reliance that passive use invites ([Buçinca et al., *To trust or to think*, 2021](https://arxiv.org/abs/2102.09692)). Chapter 4 turns this mental model into a working discipline.
+
 ## 1.8 Principles to Carry Forward
 
 The practice that fills the rest of this book rests on a stance worth stating plainly.
@@ -228,11 +230,17 @@ The chapter rests on a handful of claims worth carrying into everything that fol
 
 ## References
 
+Au Yeung, J., Dalmasso, J., Foschini, L., Dobson, R. J. B., & Kraljevic, Z. (2025). *The psychogenic machine: Simulating AI psychosis, delusion reinforcement and harm enablement in large language models*. arXiv. [https://arxiv.org/abs/2509.10970](https://arxiv.org/abs/2509.10970)
+
 Benaich, N. (2025). *State of AI report 2025*. [https://www.stateof.ai/](https://www.stateof.ai/)
+
+Buçinca, Z., Malaya, M. B., & Gajos, K. Z. (2021). *To trust or to think: Cognitive forcing functions can reduce overreliance on AI in AI-assisted decision-making*. Proceedings of the ACM on Human-Computer Interaction, 5(CSCW1), Article 188. [https://arxiv.org/abs/2102.09692](https://arxiv.org/abs/2102.09692)
 
 Bogomolov, E., & Zharov, Y. (2026). *Towards evaluation of implicit software world models in coding LLMs*. DL4Code @ ICML 2026. [https://arxiv.org/abs/2606.27406](https://arxiv.org/abs/2606.27406)
 
 Casper, S., Davies, X., Shi, C., Gilbert, T. K., Scheurer, J., Rando, J., Freedman, R., Korbak, T., Lindner, D., et al. (2023). *Open problems and fundamental limitations of reinforcement learning from human feedback*. Transactions on Machine Learning Research. [https://arxiv.org/abs/2307.15217](https://arxiv.org/abs/2307.15217)
+
+Dohnány, S., Kurth-Nelson, Z., Spens, E., Luettgau, L., Reid, A., Gabriel, I., Summerfield, C., Shanahan, M., & Nour, M. M. (2025). *Technological folie à deux: Feedback loops between AI chatbots and mental health*. arXiv. [https://arxiv.org/abs/2507.19218](https://arxiv.org/abs/2507.19218)
 
 Ehtesham, A., et al. (2025). *A survey of agent interoperability protocols: MCP, ACP, A2A, and ANP*. arXiv. [https://arxiv.org/abs/2505.02279](https://arxiv.org/abs/2505.02279)
 
@@ -264,6 +272,8 @@ McKinsey & Company. (2025). *The state of AI*. [https://www.mckinsey.com/capabil
 
 Merrill, W., & Sabharwal, A. (2024). *The expressive power of transformers with chain of thought*. International Conference on Learning Representations. [https://arxiv.org/abs/2310.07923](https://arxiv.org/abs/2310.07923)
 
+Moore, J., Mehta, A., Agnew, W., Anthis, J. R., Louie, R., Mai, Y., Yin, P., Cheng, M., Paech, S. J., Klyman, K., Chancellor, S., Lin, E., Haber, N., & Ong, D. (2026). *Characterizing delusional spirals through human-LLM chat logs*. arXiv. [https://arxiv.org/abs/2603.16567](https://arxiv.org/abs/2603.16567)
+
 Nilsson, N. J. (2010). *The quest for artificial intelligence: A history of ideas and achievements*. Cambridge University Press. [https://ai.stanford.edu/~nilsson/QAI/qai.pdf](https://ai.stanford.edu/~nilsson/QAI/qai.pdf)
 
 Prato, G., Huang, J., Parthasarathi, P., Sodhani, S., & Chandar, S. (2025). *Do large language models know how much they know?* Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing. [https://arxiv.org/abs/2502.19573](https://arxiv.org/abs/2502.19573)
@@ -277,6 +287,8 @@ Schaeffer, R., Miranda, B., & Koyejo, S. (2023). *Are emergent abilities of larg
 Sofroniew, N., Kauvar, I., Saunders, W., Chen, A., et al. (2026). *Emotion concepts and their function in a large language model*. Transformer Circuits Thread. [https://transformer-circuits.pub/2026/emotions/index.html](https://transformer-circuits.pub/2026/emotions/index.html)
 
 Stanford Institute for Human-Centered AI. (2026). *The AI index 2026 annual report*. Stanford University. [https://hai.stanford.edu/ai-index/2026-ai-index-report](https://hai.stanford.edu/ai-index/2026-ai-index-report)
+
+Vaccaro, M., Almaatouq, A., & Malone, T. (2024). *When combinations of humans and AI are useful: A systematic review and meta-analysis*. Nature Human Behaviour, 8(12), 2293–2303. [https://doi.org/10.1038/s41562-024-02024-1](https://doi.org/10.1038/s41562-024-02024-1)
 
 Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, Ł., & Polosukhin, I. (2017). *Attention is all you need*. Advances in Neural Information Processing Systems. [https://arxiv.org/abs/1706.03762](https://arxiv.org/abs/1706.03762)
 

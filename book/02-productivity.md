@@ -82,11 +82,11 @@ The arc is the whole book in miniature: a prompt becomes a skill, the skill beco
 
 ## 2.2 The Unix Philosophy, Reborn
 
-It is worth naming where this approach comes from, because it is not new. In the early 1970s, Ken Thompson and Dennis Ritchie, the builders of Unix — the operating system whose descendants still run most of the internet — settled on a philosophy of building software that is still relevant today. Doug McIlroy, who invented the Unix pipe, put it in three lines: "Write programs that do one thing and do it well. Write programs to work together. Write programs to handle text streams, because that is a universal interface" (["Unix philosophy," n.d.](https://en.wikipedia.org/wiki/Unix_philosophy)). Eric Raymond later drew the philosophy out into a set of rules — among them the Rule of Composition, "design programs to be connected to other programs," and the Rule of Separation, "separate policy from mechanism" ([Raymond, 2003](http://www.catb.org/esr/writings/taoup/)).
+It is worth naming where this approach comes from, because it is not new. In the early 1970s, Ken Thompson and Dennis Ritchie, the builders of Unix — the operating system whose descendants still run most of the internet and indeed power almost all our personal devices such as phones — settled on a philosophy of building software that is still relevant today. Doug McIlroy, who invented the Unix pipe, distilled the philosophy in the 1978 Bell Labs journal foreword: "Write programs that do one thing and do it well. Write programs to work together. Write programs to handle text streams, because that is a universal interface" ([McIlroy et al., *UNIX time-sharing system: Foreword*, 1978](https://doi.org/10.1002/j.1538-7305.1978.tb02135.x)). Eric Raymond later drew the philosophy out into a set of rules — among them the Rule of Composition, "design programs to be connected to other programs," and the Rule of Separation, "separate policy from mechanism" ([Raymond, 2003](http://www.catb.org/esr/writings/taoup/)).
 
 Read those with an agent in mind and they stop being about writing programs. Working well with AI turns out to be the Unix philosophy reworded: not small programs piped together but small, clear intents composed into larger work. And where Unix made plain text the universal interface between tools, Markdown — plain text with light punctuation marking the structure: `#` for a heading, `-` for a bullet, `**bold**` for emphasis — has become the universal *format* a model reads and writes: its native input and output, the thread this chapter picks up. The parallels are close enough to lay out, because each Unix rule has an AI-dō form that the rest of this book develops.
 
-| Unix philosophy | AI-dō, re-run on a model |
+| Unix philosophy | AI-dō, the philosophy reloaded |
 | --- | --- |
 | Do one thing well | Give one clear ask at a time; build up in steps |
 | Programs work together (composition) | A prompt becomes a skill, a skill a loop, a loop a shared tool |
@@ -172,9 +172,14 @@ And two for other modalities: **multimodal chain-of-thought**, which reasons ove
 
 None of this is a one-shot incantation. Prompting is iterative by nature: start simple, read what comes back, and add the one constraint that was missing ([DAIR.ai, *Prompt engineering guide*, n.d.](https://www.promptingguide.ai/introduction/tips)). The loop from Chapter 1 applies unchanged — intent, context, response, refine — and the prompt worth keeping is the one you arrive at, not the one you began with. These techniques are the floor; the chapters ahead build on them toward context, harnesses, and agents that carry the structure for you.
 
+> [!NOTE]
+> **The harness now carries much of this.** Recently, many of the techniques above have been absorbed into the *agent harness* — the runtime wrapped around the model — rather than typed into each prompt. Reasoning models run a chain of thought on their own; agents perform ReAct-style tool use, retrieval (RAG), and self-critique (reflexion) as steps in their loop; the scaffolding supplies the structure a prompt once had to spell out. So the craft is shifting from wording a single prompt to designing the loop and context around the model — the *harness engineering* Chapter 4 takes up ([Guo et al., *From question answering to task completion: A survey on agent system and harness design*, 2026](https://arxiv.org/abs/2606.20683)).
+
 ## 2.4 Everything Becomes Markdown
 
 Section 2.2 borrowed the Unix line that text is the universal interface. For language models that text has a format, and the format is Markdown. Models were trained on billions of Markdown files — every README, forum post, and documentation page — so they read it fluently and, left to themselves, tend to *write* it: ask for structure and headings, lists, and tables come back in Markdown unbidden. It sits close to plain text, so it costs few tokens — a heading is `## Title`, not `<h2 class="mw-headline" id="title">Title</h2>` — yet still carries the structure a model needs ([Microsoft, *MarkItDown*, n.d.](https://github.com/microsoft/markitdown)).
+
+That preference is not merely aesthetic; format measurably moves results. Holding the content fixed and changing only how it is formatted — plain text, Markdown, JSON, YAML — shifted a model's score by as much as forty per cent on some tasks, an effect that shrinks but does not vanish as models grow more capable ([He et al., *Does prompt formatting have any impact on LLM performance?*, 2024](https://arxiv.org/abs/2411.10541)). No single format always wins: the best choice depends on the model and the task, and for dense tabular data a verbose markup like HTML is sometimes understood *better* than Markdown — at the price of far more tokens, so less data fits the window ([Sui et al., *Table meets LLM: Can large language models understand structured table data?*, 2024](https://arxiv.org/abs/2305.13062); [Wu et al., *Tabular data understanding with LLMs: A survey of recent advances and challenges*, 2025](https://arxiv.org/abs/2508.00217)). But for the prose, notes, and everyday interchange this chapter is about, Markdown is the pragmatic default — capable models like GPT-4 tend to favour it, it stays readable to you, and it carries structure at close to plain-text token cost. Match the format to the job, and reach for Markdown unless the job argues otherwise.
 
 That makes one simple strategy pay off across everything in this chapter: turn what you work with into Markdown. A report, a slide deck, a PDF, a web page, a spreadsheet — convert it once and it becomes something the model reads cheaply, you can read directly, and version control can diff line by line. The wiki you are about to build is Markdown; the notes an agent keeps are Markdown; the model's own output arrives as Markdown, so the loop closes with no translation layer at the seams.
 
@@ -351,6 +356,10 @@ Fazio, L. K., Brashier, N. M., Payne, B. K., & Marsh, E. J. (2015). *Knowledge d
 
 Fernandes, D., et al. (2026). *AI makes you smarter but none the wiser: The disconnect between performance and metacognition*. Computers in Human Behavior, 168, 108779. [https://doi.org/10.1016/j.chb.2025.108779](https://doi.org/10.1016/j.chb.2025.108779)
 
+Guo, J., et al. (2026). *From question answering to task completion: A survey on agent system and harness design*. arXiv. [https://arxiv.org/abs/2606.20683](https://arxiv.org/abs/2606.20683)
+
+He, J., Rungta, M., Koleczek, D., Sekhon, A., Wang, F. X., & Hasan, S. (2024). *Does prompt formatting have any impact on LLM performance?* arXiv. [https://arxiv.org/abs/2411.10541](https://arxiv.org/abs/2411.10541)
+
 Huschens, M., Briesch, M., Sobania, D., & Rothlauf, F. (2023). *Do you trust ChatGPT? Perceived credibility of human and AI-generated content*. arXiv. [https://arxiv.org/abs/2309.02524](https://arxiv.org/abs/2309.02524)
 
 Jakesch, M., Bhat, A., Buschek, D., Zalmanson, L., & Naaman, M. (2023). *Co-writing with opinionated language models affects users’ views*. Proceedings of the 2023 CHI Conference on Human Factors in Computing Systems. [https://arxiv.org/abs/2302.00560](https://arxiv.org/abs/2302.00560)
@@ -373,6 +382,8 @@ MacFarlane, J. (n.d.). *Pandoc: A universal document converter* [Computer softwa
 
 McGlone, M. S., & Tofighbakhsh, J. (2000). *Birds of a feather flock conjointly? Rhyme as reason in aphorisms*. Psychological Science, 11(5), 424–428. [https://doi.org/10.1111/1467-9280.00282](https://doi.org/10.1111/1467-9280.00282)
 
+McIlroy, M. D., Pinson, E. N., & Tague, B. A. (1978). *UNIX time-sharing system: Foreword*. The Bell System Technical Journal, 57(6), 1899–1904. [https://doi.org/10.1002/j.1538-7305.1978.tb02135.x](https://doi.org/10.1002/j.1538-7305.1978.tb02135.x)
+
 McKinsey & Company. (2025). *The state of AI*. [https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai](https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai)
 
 Microsoft. (n.d.). *MarkItDown* [Computer software]. GitHub. [https://github.com/microsoft/markitdown](https://github.com/microsoft/markitdown)
@@ -389,6 +400,8 @@ Raymond, E. S. (2003). *The art of Unix programming*. Addison-Wesley. [http://ww
 
 Sivakumar, Lochner, Nejati, & Sabetzadeh. (2026). *LLM-based discovery of latent requirements from stakeholder conversations*. arXiv. [https://arxiv.org/abs/2606.25867](https://arxiv.org/abs/2606.25867)
 
-Unix philosophy. (n.d.). In *Wikipedia*. [https://en.wikipedia.org/wiki/Unix_philosophy](https://en.wikipedia.org/wiki/Unix_philosophy)
+Sui, Y., Zhou, M., Zhou, M., Han, S., & Zhang, D. (2024). *Table meets LLM: Can large language models understand structured table data? A benchmark and empirical study*. Proceedings of the 17th ACM International Conference on Web Search and Data Mining (WSDM '24). [https://arxiv.org/abs/2305.13062](https://arxiv.org/abs/2305.13062)
 
 Wei, J., Wang, X., Schuurmans, D., Bosma, M., Ichter, B., Xia, F., Chi, E., Le, Q., & Zhou, D. (2022a). *Chain-of-thought prompting elicits reasoning in large language models*. Advances in Neural Information Processing Systems. [https://arxiv.org/abs/2201.11903](https://arxiv.org/abs/2201.11903)
+
+Wu, X., Ritter, A., & Xu, W. (2025). *Tabular data understanding with LLMs: A survey of recent advances and challenges*. arXiv. [https://arxiv.org/abs/2508.00217](https://arxiv.org/abs/2508.00217)

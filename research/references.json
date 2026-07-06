@@ -193,11 +193,11 @@
   },
   {
     "urls": [
-      "https://en.wikipedia.org/wiki/Cursor_(company)"
+      "https://cursor.com"
     ],
-    "intext": "\"Cursor,\" n.d.",
-    "reference": "Cursor (company). (n.d.). In *Wikipedia*. [https://en.wikipedia.org/wiki/Cursor_(company)](https://en.wikipedia.org/wiki/Cursor_(company))",
-    "title_authored": true
+    "intext": "Cursor, n.d.",
+    "reference": "Cursor. (n.d.). *Cursor: AI code editor* [Computer software]. [https://cursor.com](https://cursor.com)",
+    "title_authored": false
   },
   {
     "urls": [
@@ -302,11 +302,11 @@
   },
   {
     "urls": [
-      "https://en.wikipedia.org/wiki/Google_Antigravity"
+      "https://developers.googleblog.com/build-with-google-antigravity-our-new-agentic-development-platform/"
     ],
-    "intext": "\"Google Antigravity,\" n.d.",
-    "reference": "Google Antigravity. (n.d.). In *Wikipedia*. [https://en.wikipedia.org/wiki/Google_Antigravity](https://en.wikipedia.org/wiki/Google_Antigravity)",
-    "title_authored": true
+    "intext": "Google, 2025",
+    "reference": "Google. (2025). *Build with Google Antigravity, our new agentic development platform*. Google Developers Blog. [https://developers.googleblog.com/build-with-google-antigravity-our-new-agentic-development-platform/](https://developers.googleblog.com/build-with-google-antigravity-our-new-agentic-development-platform/)",
+    "title_authored": false
   },
   {
     "urls": [
@@ -678,11 +678,11 @@
   },
   {
     "urls": [
-      "https://en.wikipedia.org/wiki/Tabnine"
+      "https://www.tabnine.com"
     ],
-    "intext": "\"Tabnine,\" n.d.",
-    "reference": "Tabnine. (n.d.). In *Wikipedia*. [https://en.wikipedia.org/wiki/Tabnine](https://en.wikipedia.org/wiki/Tabnine)",
-    "title_authored": true
+    "intext": "Tabnine, n.d.",
+    "reference": "Tabnine. (n.d.). *Tabnine* [Computer software]. [https://www.tabnine.com](https://www.tabnine.com)",
+    "title_authored": false
   },
   {
     "urls": [
@@ -763,14 +763,6 @@
     "intext": "Zhang et al., 2026",
     "reference": "Zhang, Jiang, & Koziolek. (2026). *Augmentation with dilution: Human contributor ecosystems after AI coding agent adoption*. arXiv. [https://arxiv.org/abs/2606.26289](https://arxiv.org/abs/2606.26289)",
     "title_authored": false
-  },
-  {
-    "urls": [
-      "https://en.wikipedia.org/wiki/Unix_philosophy"
-    ],
-    "intext": "\"Unix philosophy,\" n.d.",
-    "reference": "Unix philosophy. (n.d.). In *Wikipedia*. [https://en.wikipedia.org/wiki/Unix_philosophy](https://en.wikipedia.org/wiki/Unix_philosophy)",
-    "title_authored": true
   },
   {
     "urls": [
@@ -966,11 +958,11 @@
   },
   {
     "urls": [
-      "https://en.wikipedia.org/wiki/Shuhari"
+      "https://da2el.wordpress.com/2018/06/20/shu-ha-ri-endo-seishiro-aikido-saku-dojocho/"
     ],
-    "intext": "\"Shuhari,\" n.d.",
-    "reference": "Shuhari. (n.d.). In *Wikipedia*. [https://en.wikipedia.org/wiki/Shuhari](https://en.wikipedia.org/wiki/Shuhari)",
-    "title_authored": true
+    "intext": "Endō, 1998",
+    "reference": "Endō, S. (1998). *Shu-ha-ri* [Essay]. Aikidō Saku Dōjō. [https://da2el.wordpress.com/2018/06/20/shu-ha-ri-endo-seishiro-aikido-saku-dojocho/](https://da2el.wordpress.com/2018/06/20/shu-ha-ri-endo-seishiro-aikido-saku-dojocho/)",
+    "title_authored": false
   },
   {
     "urls": [
@@ -995,14 +987,6 @@
     "intext": "Vaswani et al., 2017",
     "reference": "Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, Ł., & Polosukhin, I. (2017). *Attention is all you need*. Advances in Neural Information Processing Systems. [https://arxiv.org/abs/1706.03762](https://arxiv.org/abs/1706.03762)",
     "title_authored": false
-  },
-  {
-    "urls": [
-      "https://en.wikipedia.org/wiki/Large_language_model"
-    ],
-    "intext": "\"Large language model,\" n.d.",
-    "reference": "Large language model. (n.d.). In *Wikipedia*. [https://en.wikipedia.org/wiki/Large_language_model](https://en.wikipedia.org/wiki/Large_language_model)",
-    "title_authored": true
   },
   {
     "urls": [
@@ -1266,6 +1250,110 @@
     ],
     "intext": "Wei et al., 2026",
     "reference": "Wei, R., Zhu, L., Wang, H., Woodcock, J., Yan, F., Foster, S., & Ji, X. (2026). *Formal-method-guided vibe coding: Closing the verification loop on AI-generated safety-critical software through model-driven engineering*. arXiv. [https://arxiv.org/abs/2606.22413](https://arxiv.org/abs/2606.22413)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2509.10970"
+    ],
+    "intext": "Au Yeung et al., 2025",
+    "reference": "Au Yeung, J., Dalmasso, J., Foschini, L., Dobson, R. J. B., & Kraljevic, Z. (2025). *The psychogenic machine: Simulating AI psychosis, delusion reinforcement and harm enablement in large language models*. arXiv. [https://arxiv.org/abs/2509.10970](https://arxiv.org/abs/2509.10970)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2603.16567"
+    ],
+    "intext": "Moore et al., 2026",
+    "reference": "Moore, J., Mehta, A., Agnew, W., Anthis, J. R., Louie, R., Mai, Y., Yin, P., Cheng, M., Paech, S. J., Klyman, K., Chancellor, S., Lin, E., Haber, N., & Ong, D. (2026). *Characterizing delusional spirals through human-LLM chat logs*. arXiv. [https://arxiv.org/abs/2603.16567](https://arxiv.org/abs/2603.16567)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2604.13860"
+    ],
+    "intext": "Nicholls et al., 2026",
+    "reference": "Nicholls, L., Hutto, R., Soto, Z., Morrin, H., Pollak, T., Korpan, R., & Carmichael, C. (2026). *\"AI psychosis\" in context: How conversation history shapes LLM responses to delusional beliefs*. arXiv. [https://arxiv.org/abs/2604.13860](https://arxiv.org/abs/2604.13860)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2507.19218"
+    ],
+    "intext": "Dohnány et al., 2025",
+    "reference": "Dohnány, S., Kurth-Nelson, Z., Spens, E., Luettgau, L., Reid, A., Gabriel, I., Summerfield, C., Shanahan, M., & Nour, M. M. (2025). *Technological folie à deux: Feedback loops between AI chatbots and mental health*. arXiv. [https://arxiv.org/abs/2507.19218](https://arxiv.org/abs/2507.19218)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2102.09692"
+    ],
+    "intext": "Buçinca et al., 2021",
+    "reference": "Buçinca, Z., Malaya, M. B., & Gajos, K. Z. (2021). *To trust or to think: Cognitive forcing functions can reduce overreliance on AI in AI-assisted decision-making*. Proceedings of the ACM on Human-Computer Interaction, 5(CSCW1), Article 188. [https://arxiv.org/abs/2102.09692](https://arxiv.org/abs/2102.09692)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://doi.org/10.1002/j.1538-7305.1978.tb02135.x"
+    ],
+    "intext": "McIlroy et al., 1978",
+    "reference": "McIlroy, M. D., Pinson, E. N., & Tague, B. A. (1978). *UNIX time-sharing system: Foreword*. The Bell System Technical Journal, 57(6), 1899–1904. [https://doi.org/10.1002/j.1538-7305.1978.tb02135.x](https://doi.org/10.1002/j.1538-7305.1978.tb02135.x)",
+    "title_authored": true
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2303.18223"
+    ],
+    "intext": "Zhao et al., 2023",
+    "reference": "Zhao, W. X., Zhou, K., Li, J., Tang, T., Wang, X., Hou, Y., Min, Y., Zhang, B., Zhang, J., Dong, Z., et al. (2023). *A survey of large language models*. arXiv. [https://arxiv.org/abs/2303.18223](https://arxiv.org/abs/2303.18223)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2605.27922"
+    ],
+    "intext": "Yao et al., 2026",
+    "reference": "Yao et al. (2026). *Harness-Bench: Measuring harness effects across models in realistic agent workflows*. arXiv. [https://arxiv.org/abs/2605.27922](https://arxiv.org/abs/2605.27922)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2606.06324"
+    ],
+    "intext": "Chen et al., 2026",
+    "reference": "Chen, M., Wang, J., Liu, Z., Wang, Y., Zheng, H., & Wang, Q. (2026). *From failed trajectories to reliable LLM agents: Diagnosing and repairing harness flaws*. arXiv. [https://arxiv.org/abs/2606.06324](https://arxiv.org/abs/2606.06324)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2603.05344"
+    ],
+    "intext": "Bui, 2026",
+    "reference": "Bui, N. D. Q. (2026). *Building effective AI coding agents for the terminal: Scaffolding, harness, context engineering, and lessons learned*. arXiv. [https://arxiv.org/abs/2603.05344](https://arxiv.org/abs/2603.05344)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2411.10541"
+    ],
+    "intext": "He et al., 2024",
+    "reference": "He, J., Rungta, M., Koleczek, D., Sekhon, A., Wang, F. X., & Hasan, S. (2024). *Does prompt formatting have any impact on LLM performance?* arXiv. [https://arxiv.org/abs/2411.10541](https://arxiv.org/abs/2411.10541)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2305.13062"
+    ],
+    "intext": "Sui et al., 2024",
+    "reference": "Sui, Y., Zhou, M., Zhou, M., Han, S., & Zhang, D. (2024). *Table meets LLM: Can large language models understand structured table data? A benchmark and empirical study*. Proceedings of the 17th ACM International Conference on Web Search and Data Mining (WSDM '24). [https://arxiv.org/abs/2305.13062](https://arxiv.org/abs/2305.13062)",
+    "title_authored": false
+  },
+  {
+    "urls": [
+      "https://arxiv.org/abs/2508.00217"
+    ],
+    "intext": "Wu et al., 2025",
+    "reference": "Wu, X., Ritter, A., & Xu, W. (2025). *Tabular data understanding with LLMs: A survey of recent advances and challenges*. arXiv. [https://arxiv.org/abs/2508.00217](https://arxiv.org/abs/2508.00217)",
     "title_authored": false
   }
 ]

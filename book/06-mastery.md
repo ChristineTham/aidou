@@ -51,7 +51,7 @@ Measure value, not output. Features shipped is a flattering number while whether
 
 ## 6.5 Shuhari — The Way From Here
 
-A 道 has a shape to its learning, and the arts that end in 道 named it long before software did: *shuhari* — 守 *shu*, keep to the form; 破 *ha*, break from it; 離 *ri*, leave it behind and move freely (["Shuhari," n.d.](https://en.wikipedia.org/wiki/Shuhari)). Read this book as its *shu*. Follow the forms closely at first — one clear ask at a time, intent kept apart from implementation, Markdown as the medium, verification at the boundaries, a human answerable for what ships. As your judgement grows and the tools shift beneath you, enter *ha*: bend the forms, drop the ones that stop fitting, keep what holds. In time comes *ri*, where the forms are instinct and you invent your own — which is only the promise of Chapter 1 come round again: learn the philosophy, and the methods become yours to invent.
+A 道 has a shape to its learning, and the arts that end in 道 named it long before software did: *shuhari* — 守 *shu*, keep to the form; 破 *ha*, break from it; 離 *ri*, leave it behind and move freely ([Endō, *Shu-ha-ri*, 1998](https://da2el.wordpress.com/2018/06/20/shu-ha-ri-endo-seishiro-aikido-saku-dojocho/)). Read this book as its *shu*. Follow the forms closely at first — one clear ask at a time, intent kept apart from implementation, Markdown as the medium, verification at the boundaries, a human answerable for what ships. As your judgement grows and the tools shift beneath you, enter *ha*: bend the forms, drop the ones that stop fitting, keep what holds. In time comes *ri*, where the forms are instinct and you invent your own — which is only the promise of Chapter 1 come round again: learn the philosophy, and the methods become yours to invent.
 
 The argument has run in six moves. AI-dō is the Unix philosophy re-run on a model and given a human centre (Chapter 1). In daily work that means turning what you know into Markdown, keeping it where a model can read it, and building up one clear ask at a time (Chapter 2). In software it means separating the *what* from the *how*, and refusing both the over-specified spec and the unowned vibe (Chapter 3). What turns one agent into many is the discipline of humans and agents working together — the judgment the human keeps, the harnesses and orchestration that run the agents, and a clear division of labour between them (Chapter 4). What keeps it safe is the duty: security, fairness, privacy, provenance, protected divergence, honest ledgers, and someone who stays answerable (Chapter 5). And what keeps it improving is the human edge you protect and the loop you never stop running (this one).
 
@@ -69,6 +69,8 @@ Brynjolfsson, E., Li, D., & Raymond, L. R. (2023). *Generative AI at work* (NBER
 
 Doshi, A. R., & Hauser, O. P. (2024). *Generative AI enhances individual creativity but reduces the collective diversity of novel content*. Science Advances, 10(28), eadn5290. [https://doi.org/10.1126/sciadv.adn5290](https://doi.org/10.1126/sciadv.adn5290)
 
+Endō, S. (1998). *Shu-ha-ri* [Essay]. Aikidō Saku Dōjō. [https://da2el.wordpress.com/2018/06/20/shu-ha-ri-endo-seishiro-aikido-saku-dojocho/](https://da2el.wordpress.com/2018/06/20/shu-ha-ri-endo-seishiro-aikido-saku-dojocho/)
+
 Ericsson, K. A., Krampe, R. T., & Tesch-Römer, C. (1993). *The role of deliberate practice in the acquisition of expert performance*. Psychological Review, 100(3), 363–406. [https://doi.org/10.1037/0033-295X.100.3.363](https://doi.org/10.1037/0033-295X.100.3.363)
 
 Fernandes, D., et al. (2026). *AI makes you smarter but none the wiser: The disconnect between performance and metacognition*. Computers in Human Behavior, 168, 108779. [https://doi.org/10.1016/j.chb.2025.108779](https://doi.org/10.1016/j.chb.2025.108779)
@@ -84,8 +86,6 @@ Li, J., Yang, Y., Zhang, R., Liao, Q. V., Song, T., Xu, Z., & Lee, Y.-C. (2024).
 Marguerit, D. (2025). *Augmenting or automating labor? The effect of AI development on new work, employment, and wages*. arXiv. [https://arxiv.org/abs/2503.19159](https://arxiv.org/abs/2503.19159)
 
 McKinsey & Company. (2025). *The state of AI*. [https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai](https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai)
-
-Shuhari. (n.d.). In *Wikipedia*. [https://en.wikipedia.org/wiki/Shuhari](https://en.wikipedia.org/wiki/Shuhari)
 
 Stanford Institute for Human-Centered AI. (2026). *The AI index 2026 annual report*. Stanford University. [https://hai.stanford.edu/ai-index/2026-ai-index-report](https://hai.stanford.edu/ai-index/2026-ai-index-report)
 
