@@ -1751,6 +1751,30 @@
  },
  {
   "urls": [
+   "https://www.anthropic.com/news/fable-mythos-access"
+  ],
+  "intext": "Anthropic, 2026c",
+  "reference": "Anthropic. (2026c). *Statement on the US government directive to suspend access to Fable 5 and Mythos 5*. [https://www.anthropic.com/news/fable-mythos-access](https://www.anthropic.com/news/fable-mythos-access)",
+  "title_authored": false
+ },
+ {
+  "urls": [
+   "https://www.anthropic.com/news/redeploying-fable-5"
+  ],
+  "intext": "Anthropic, 2026d",
+  "reference": "Anthropic. (2026d). *Redeploying Claude Fable 5*. [https://www.anthropic.com/news/redeploying-fable-5](https://www.anthropic.com/news/redeploying-fable-5)",
+  "title_authored": false
+ },
+ {
+  "urls": [
+   "https://www.whitehouse.gov/presidential-actions/2025/12/eliminating-state-law-obstruction-of-national-artificial-intelligence-policy/"
+  ],
+  "intext": "White House, 2025",
+  "reference": "White House. (2025). *Ensuring a national policy framework for artificial intelligence* (Executive Order 14365). [https://www.whitehouse.gov/presidential-actions/2025/12/eliminating-state-law-obstruction-of-national-artificial-intelligence-policy/](https://www.whitehouse.gov/presidential-actions/2025/12/eliminating-state-law-obstruction-of-national-artificial-intelligence-policy/)",
+  "title_authored": false
+ },
+ {
+  "urls": [
    "https://ai.jmir.org/2025/1/e75527"
   ],
   "intext": "Bignami et al., 2025",
