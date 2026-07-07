@@ -2,35 +2,34 @@
 
 Something odd happened partway through writing this book. I stopped being the person who does the work, and became the person who runs the people who do the work — except the people were agents. On a good day I had half a dozen of them going at once: one summarising a paper, one checking a chapter for citations, one hunting for the primary source behind a claim, several reviewing each other's output. My job was no longer typing. It was deciding what to ask for, judging what came back, and noticing — quickly — when one of them had gone confidently wrong.
 
-That is a management job. Researchers who studied how people actually use generative AI reached the same conclusion: delegating work to an AI is like a manager delegating to a team, and it succeeds or fails on the same things — a clear brief, sound judgement of the work that comes back, and an honest sense of what you should not delegate at all ([Tankelevitch et al., *The metacognitive demands and opportunities of generative AI*, 2024](https://arxiv.org/abs/2312.10893)). Chapter 2 built a single dependable agent, and Chapter 3 used agents to build software. This chapter is about the management layer: what the **human** must bring, what the **agent** system must provide, and what the **two together** require. The theme runs against the usual worry, which is that better agents will leave the human with less to do. In practice the opposite happens: the better the agents, the more of them you run, and the more the whole arrangement depends on judgement that has to come from you.
+That is how this book itself got written. Writing a book turns out to be loops inside loops. The overarching loop: decide on the structure, sketch an outline, draft a chapter, read it back, review, and looping back to revise the structure. Inside it runs a chapter loop — decide the overall theme of the chapter, choose which topics earn a place and which to leave out, order them, and write. And inside that sits a research loop, run once for almost every claim: work out what I need to know, search for a source, read it, decide whether it really says what I hoped, and then either cite it or go looking again.
+
+When a chapter is drafted, one more loop closes it. This is the review: check that every citation resolves to a real source and is quoted fairly, rewrite the prose into the house voice, run the spelling and the style checks, and read the whole thing once more for sense. Then back around — a fix in one place often reopens another. Almost every one of these loops has a turn an agent can take: drafting a section, summarising a paper, chasing the primary source behind a quote, flagging a sentence that reads like a machine wrote it. What it cannot take is the deciding at each turn — which topic belongs, whether the source really supports the claim, whether the sentence is any good. That part stays with me.
+
+All of that — deciding what to ask for, judging what comes back, noticing when it drifts — is management. Researchers who studied how people actually use generative AI reached the same conclusion: delegating work to an AI is like a manager delegating to a team, and it succeeds or fails on the same things — a clear brief, sound judgement of the work that comes back, and an honest sense of what you should not delegate at all ([Tankelevitch et al., *The metacognitive demands and opportunities of generative AI*, 2024](https://arxiv.org/abs/2312.10893)). So using AI well is, more than anything, a delegation skill. And running these loops well feels like the better parts of managing people: you set the goal and the boundaries, give the agent enough context to do the job, keep half an eye on how it is going without hovering, step in to unblock or redirect, and slowly learn what each one can be trusted to carry on its own. It is guiding, empowering, and mentoring a member of staff — one who never tires and takes every word literally, and who is, now and then, quite sure of something that turns out to be wrong.
+
+Chapter 2 built a single dependable agent, and Chapter 3 used agents to build software. This chapter is about the management layer: what the **human** must bring, what the **agent** system must provide, and what the **two together** require. The theme runs against the usual worry, which is that better agents will leave the human with less to do. In practice the opposite happens: the better the agents, the more of them you run, and the more the whole arrangement depends on judgement that has to come from you.
 
 ```mermaid
-flowchart LR
+flowchart TB
+  subgraph ALL [ ]
+    direction TB
     subgraph HUM [Human disciplines]
-      direction TB
-      H1[Intent & spec]
-      H2[Judgement & taste]
-      H3[Mental models & metacognition]
-      H4[Accountability]
-      H5[Independence of mind]
+      direction LR
+      H1[Intent & spec] ~~~ H2[Judgement & taste] ~~~ H3[Mental models & metacognition] ~~~ H4[Accountability] ~~~ H5[Independence of mind]
     end
     subgraph BOTH [Human + agent disciplines]
-      direction TB
-      T1[Division of labour]
-      T2[Delegation & review]
-      T3[Presence]
-      T4[Calibrated trust]
+      direction LR
+      T1[Division of labour] ~~~ T2[Delegation & review] ~~~ T3[Presence] ~~~ T4[Calibrated trust]
     end
     subgraph AG [Agent disciplines]
-      direction TB
-      A1[Harness engineering]
-      A2[Context & memory]
-      A3[Orchestration]
-      A4[Loop engineering]
-      A5[Evaluation]
+      direction LR
+      A1[Harness engineering] ~~~ A2[Context & memory] ~~~ A3[Orchestration] ~~~ A4[Loop engineering] ~~~ A5[Evaluation]
     end
     HUM --- BOTH
     BOTH --- AG
+  end
+  style ALL fill:none,stroke:none
 ```
 
 : The three families of discipline: human, agent, and the two together. {#dia-disciplines-map}
@@ -69,7 +68,7 @@ The practical model, then, is narrow and useful: a tireless, fluent junior colle
 
 ### 4.1.4 Accountability
 
-An agent has no agency in the moral sense. A computer cannot be blamed, sued, or fired, so when you hand it a task, the responsibility for that task stays behind with you — and if the agent then ships something broken under your name, the breakage is yours to explain. In practice this means three things: stay close enough to the work to answer for the result, keep a record of what was decided and why, and refuse to delegate the part you cannot afford to get wrong. Nobody has ever been excused by saying the AI did it, so the sensible working assumption is that everything an agent does, you did — with help. Chapter 5 makes this a duty with teeth.
+An agent has no agency in the moral sense. A computer cannot be blamed, sued, or fired, so when you hand it a task, the responsibility for that task stays behind with you — and if the agent then ships something broken under your name, the breakage is yours to explain. In practice this means three things: stay close enough to the work to answer for the result, keep a record of what was decided and why, and refuse to delegate the part you cannot afford to get wrong. Nobody has ever been excused by saying the AI did it, so the sensible working assumption is that everything an agent does, you did — with help. Chapter 5 reinforces this duty.
 
 ### 4.1.5 Independence of Mind
 
@@ -79,15 +78,15 @@ The mechanism has a name: a *technological folie à deux*, a two-body feedback l
 
 The danger hides exactly where delegation sends you: into long, unsupervised conversations. Feeding the same escalating exchange to models at greater and greater context lengths showed the harm growing turn by turn in the weaker systems, even as the well-aligned ones held their ground or improved — which means the brief, single-prompt safety tests that most evaluations run *understate* the risk of the sustained dialogue real use produces ([Nicholls et al., *"AI psychosis" in context: How conversation history shapes LLM responses to delusional beliefs*, 2026](https://arxiv.org/abs/2604.13860)). The risk grows with the length of the conversation and the trust you place in it.
 
-So independence of mind is a discipline — something you practise, not a trait you either have or lack — and everything else this book teaches quietly depends on it, because every craft here hands more of the thinking to a machine that will agree with you. Most of us are far from the acute harm those studies describe, but the same pull toward agreement works on all of us, quietly; the guard against it is modest. Keep some disagreement in your life that the model cannot smooth away: a colleague who will say *are you sure?*, a habit of arguing the other side, a rule that beliefs which matter get tested against something outside the chat. And notice when a tool only ever agrees with you; however pleasant that feels, it is a warning sign. And keep some parts of your life — your relationships, your hardest decisions, your sense of what is real — off limits to a system that is trained to please you. As the agents grow stronger and more fluent, this discipline only becomes more important. Chapter 5 turns the same concern outward, into a duty owed to the people your work touches.
+So independence of mind is a discipline — something you practise, not a trait you either have or lack — and everything else this book teaches quietly depends on it, because every craft here hands more of the thinking to a machine that will agree with you. Most of us are far from the acute harm those studies describe, but the same pull towards agreement works on all of us, quietly; the guard against it is modest. Keep some disagreement in your life that the model cannot smooth away: a colleague who will say *are you sure?*, a habit of arguing the other side, a rule that beliefs which matter get tested against something outside the chat. And notice when a tool only ever agrees with you; however pleasant that feels, it is a warning sign. And keep some parts of your life — your relationships, your hardest decisions, your sense of what is real — off limits to a system that is trained to please you. It is the boundary I set for myself in §1.6, where I said I keep AI at arm's length in my personal life. As the agents grow stronger and more fluent, this discipline only becomes more important. Chapter 5 turns the same concern outward, into a duty owed to the people your work touches.
 
 ## 4.2 Agent Disciplines
 
 The second set is the engineering of the agents themselves — the system around the model that turns a text predictor into something that acts reliably, and lets one agent become many. If §4.1 was about being a good manager, this section is about building an employee worth managing: a body that acts (the harness), senses and remembers (context and memory), works with others (orchestration), corrects itself (loops), and can be honestly appraised (evaluation).
 
-It helps to know where you stand before building. One useful ladder runs from *vibe* (a model and an editor), through *spec* (structured tooling), to *intent* (plays, memory, and crafts working together), and on to rungs — shared guardrails, self-running pipelines — that are still mostly theory ([Ahuja, 2026d](https://howtoarchitect.io/c00609f72496?sk=2da01d7d2abfb5bc0acaed7050a0e797)). Each rung is a genuine technological bet, and most teams are nearer the bottom than they care to admit. Name your level truthfully before committing to the next: it is easy to claim a rung you have not actually built, and the claim sounds fine right up until real work has to stand on it.
+It helps to know where you stand before building. One useful ladder runs from *vibe* (a model and an editor), through *spec* (structured tooling), to *intent* (plays, memory, and crafts working together), and on to rungs — shared guardrails, self-running pipelines — that are still mostly theory ([Ahuja, 2026d](https://howtoarchitect.io/c00609f72496?sk=2da01d7d2abfb5bc0acaed7050a0e797)). Each rung is a genuine technological bet, and most people are nearer the bottom than they care to admit. Name your level truthfully before committing to the next: it is easy to claim a rung you have not actually built, and the claim sounds fine right up until real work has to stand on it.
 
-The top rung of that ladder now has a name and a sales force. In the first half of 2026 the trade press filled with talk of the *software factory*: agents building, testing, and shipping software around the clock while humans define the intent and review the outcomes. The most ambitious telling borrows a manufacturing term — the *dark factory*, a plant so fully automated it runs with the lights off. Factory.ai, a vendor that sells one, defines the software factory as "an interconnected, agent-native, end-to-end system" whose incremental units are AI agents, and claims factories already in production at NVIDIA, Adobe, and EY, among others ([Grinberg & Reyes, *Factory 2.0: From coding agents to software factories*, 2026](https://factory.ai/news/software-factory)). Addy Osmani, an engineering director at Google, gives the working version of the same idea: your job stops being writing the code and becomes "building the factory that builds your software" — fleets of agents, each with a task, a toolbelt, context, and a feedback loop, while you review outputs and refine the specs ([Osmani, *The factory model: How coding agents changed software engineering*, 2026](https://addyosmani.com/blog/factory-model/)). And BCG Platinion, pitching the transformation to enterprises under the heading "They turned the lights off", relays the headline reports: Spotify merging 650 AI-generated pull requests a month, OpenAI building a million-line product with three engineers and no hand-written code ([Engesser et al., *The agentic software factory: A new era of autonomous software delivery and what it takes to get there*, 2026](https://www.bcgplatinion.com/insights/the-dark-software-factory)).
+The top rung of that ladder now has a name and a cheer squad. In the first half of 2026 the trade press filled with talk of the *software factory*: agents building, testing, and shipping software around the clock while humans define the intent and review the outcomes. The most ambitious telling borrows a manufacturing term — the *dark factory*, a plant so fully automated it runs with the lights off. Factory.ai, a vendor that sells one, defines the software factory as "an interconnected, agent-native, end-to-end system" whose incremental units are AI agents, and claims factories already in production at NVIDIA, Adobe, and EY, among others ([Grinberg & Reyes, *Factory 2.0: From coding agents to software factories*, 2026](https://factory.ai/news/software-factory)). Addy Osmani, an engineering director at Google, gives the working version of the same idea: your job stops being writing the code and becomes "building the factory that builds your software" — fleets of agents, each with a task, a toolbelt, context, and a feedback loop, while you review outputs and refine the specs ([Osmani, *The factory model: How coding agents changed software engineering*, 2026](https://addyosmani.com/blog/factory-model/)). And BCG Platinion, pitching the transformation to enterprises under the heading "They turned the lights off", relays the headline reports: Spotify merging 650 AI-generated pull requests a month, OpenAI building a million-line product with three engineers and no hand-written code ([Engesser et al., *The agentic software factory: A new era of autonomous software delivery and what it takes to get there*, 2026](https://www.bcgplatinion.com/insights/the-dark-software-factory)).
 
 Read the three pieces closely, though, and the lights are still on. All of them say the humans have moved rather than left. Factory.ai is explicit that "No organization starts with a fully autonomous software factory", and that engineers keep governance, safety, and ownership of business outcomes. BCG says the same in its own words: "The defining shift is not the absence of humans; it is the relocation of human effort" — and it requires a named human accountable at every stage gate. Osmani names the reason the lights stay on: "Generation is not the bottleneck anymore. Verification is." Agents make confident mistakes, polished enough to pass a casual review, and a flaky test one developer would shrug at becomes a systemic blocker when forty agents hit it at once — his phrase is "the factory stalls". Until verification catches up, he writes, "human review is not optional overhead. It is the safety system." Keep in mind, too, that the customer lists and productivity multiples in these pieces are the sellers' own numbers, self-reported and unaudited. So take the factory as the direction the ladder points, not a place to move this quarter. And notice what it is built from: the harnesses, context, orchestration, and loops of the subsections that follow, with the evaluation discipline of §4.2.5 deciding whether anyone can trust what comes off the line.
 
@@ -96,7 +95,8 @@ Read the three pieces closely, though, and the lights are still on. All of them 
 A harness — the runtime wrapped around the model, defined in §3.2 — supplies tool use, planning, retries, and sandboxes (isolated environments where generated code can run without touching the real system). The reliable design is to let the program own control flow — the order in which steps run and branch — and call the model only for judgement, so that runaway token use and erratic stopping become ordinary engineering problems you can measure and fix ([Qi et al., *LLM-as-code: Agentic programming for agent harness*, 2026](https://arxiv.org/abs/2606.15874)). Decomposing tasks at runtime, so only the failed step reruns rather than the whole pipeline, cuts retry cost by half or more in measured workloads ([Asthana et al., *Runtime-structured task decomposition for agentic coding systems*, 2026](https://arxiv.org/abs/2605.15425)). The fragile alternative is handing all the looping and branching to a probabilistic system and hoping a better prompt rescues it.
 
 ```mermaid
-flowchart TB
+flowchart
+  direction TB
     subgraph Reliable [Program owns control flow]
       direction LR
       PR["Program: order, retries, sandbox"] -->|asks for judgement| MR[Model]
@@ -106,6 +106,7 @@ flowchart TB
       direction LR
       MF["Model plans, loops, and branches"] --> X["Token blow-up ·<br/>erratic stopping"]
     end
+    Reliable ~~~ Fragile
 ```
 
 : Reliable and fragile harness designs, side by side. {#dia-harness-control}
