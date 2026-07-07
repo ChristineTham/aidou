@@ -133,7 +133,7 @@ A 道 has a shape to its learning, and the arts that end in 道 named it long be
 
 The rest is yours to begin, and the first steps are small and specific. First, take one real task you already do and run it as a loop — draft, check, refine — instead of waiting on a perfect prompt. Second, start an LLM wiki: put the context you keep re-explaining into a few Markdown notes the model can draw on. Third, add one verification step at the boundary that matters most, and name the person answerable for what leaves it. Fourth, before you open a chat window on anything that counts, write your own view down first, so you can tell the model's confidence from your own. Fifth, keep a second model on the bench, and ask of everything you make: who is this for, and is it worth building?
 
-Method over model; the question over the answer; care over cleverness. The tools will keep changing — that is the one safe prediction — and the way does not. Begin.
+None of that rests on the tools. It rests on the method you build around them, on your judgement about which question is worth asking, and on the care you bring to the people your work touches. The tools will keep changing — that is the one safe prediction — and the way does not. Begin.
 
 ## References
 
