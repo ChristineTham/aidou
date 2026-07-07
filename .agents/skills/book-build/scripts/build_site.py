@@ -227,6 +227,13 @@ def copy_assets(out_dir, images_dir):
         for img in glob.glob(os.path.join(proj_src, "*")):
             if os.path.isfile(img):
                 shutil.copy2(img, os.path.join(proj_dst, os.path.basename(img)))
+    illus_src = os.path.join(images_dir, "illustrations")   # recoloured undraw SVGs (find-image)
+    if os.path.isdir(illus_src):
+        illus_dst = os.path.join(out_dir, "illustrations")
+        os.makedirs(illus_dst, exist_ok=True)
+        for img in glob.glob(os.path.join(illus_src, "*")):
+            if os.path.isfile(img):
+                shutil.copy2(img, os.path.join(illus_dst, os.path.basename(img)))
 
 
 def wrap_references(body):
