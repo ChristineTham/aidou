@@ -300,7 +300,7 @@ Joining pieces together also adds new ways to fail, so it is worth being clear a
 
 The biggest gains I have seen from agents recently — in my own work and in the research — are in knowledge work: research, writing, synthesis, decision support. These tasks suit a model well. They are bounded, the feedback is quick, and a model can draft, compare, and summarise faster than any human can.
 
-![AI earns its keep first in knowledge work — the research, drafting, and synthesis a person still shapes and checks.](illustrations/data-at-work.svg)
+![AI earns its keep first in knowledge work — the research, drafting, and synthesis a person still shapes and checks.](illustrations/analyze.svg)
 
 The gains show up clearly in experiments, but they do not fall evenly. The cleanest evidence comes from a randomised experiment in which 453 professionals were given real writing tasks — memos, short reports, analysis plans — and half were allowed to use ChatGPT. Their time fell by about 40%, the graded quality of their work rose by around 18%, and the weakest writers gained the most, narrowing the gap between them and the best ([Noy & Zhang, *Experimental evidence on the productivity effects of generative AI*, 2023](https://doi.org/10.1126/science.adh2586)). The same levelling shows up in the field. A study of 5,179 customer-support agents found AI raised resolved-issues-per-hour by 14% on average but 34% for novices, with little gain for experts — the tool spreads the best workers' know-how to everyone else ([Brynjolfsson et al., *Generative AI at work*, 2023](https://www.nber.org/papers/w31161)). None of this makes judgement any cheaper: someone still has to decide whether the memo needed writing at all.
 
