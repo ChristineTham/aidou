@@ -113,6 +113,14 @@
  },
  {
   "urls": [
+   "https://www.anthropic.com/engineering/a-postmortem-of-three-recent-issues"
+  ],
+  "intext": "Anthropic, 2025e",
+  "reference": "Anthropic. (2025e). *A postmortem of three recent issues*. [https://www.anthropic.com/engineering/a-postmortem-of-three-recent-issues](https://www.anthropic.com/engineering/a-postmortem-of-three-recent-issues)",
+  "title_authored": false
+ },
+ {
+  "urls": [
    "https://arxiv.org/abs/2605.05287"
   ],
   "intext": "Arceo & Narsing, 2026",
@@ -1577,8 +1585,8 @@
   "urls": [
    "https://www.anthropic.com/news/introducing-claude-tag"
   ],
-  "intext": "Anthropic, 2026",
-  "reference": "Anthropic. (2026). *Introducing Claude Tag*. [https://www.anthropic.com/news/introducing-claude-tag](https://www.anthropic.com/news/introducing-claude-tag)",
+  "intext": "Anthropic, 2026a",
+  "reference": "Anthropic. (2026a). *Introducing Claude Tag*. [https://www.anthropic.com/news/introducing-claude-tag](https://www.anthropic.com/news/introducing-claude-tag)",
   "title_authored": false
  },
  {
@@ -1737,8 +1745,8 @@
   "urls": [
    "https://www.anthropic.com/news/responsible-scaling-policy-v3"
   ],
-  "intext": "Anthropic, 2026",
-  "reference": "Anthropic. (2026). *Responsible scaling policy, version 3.0*. [https://www.anthropic.com/news/responsible-scaling-policy-v3](https://www.anthropic.com/news/responsible-scaling-policy-v3)",
+  "intext": "Anthropic, 2026b",
+  "reference": "Anthropic. (2026b). *Responsible scaling policy, version 3.0*. [https://www.anthropic.com/news/responsible-scaling-policy-v3](https://www.anthropic.com/news/responsible-scaling-policy-v3)",
   "title_authored": false
  },
  {
@@ -1953,8 +1961,8 @@
   "urls": [
    "https://www.anthropic.com/news/the-anthropic-economic-index"
   ],
-  "intext": "Anthropic, 2025",
-  "reference": "Anthropic. (2025). *The Anthropic economic index*. [https://www.anthropic.com/news/the-anthropic-economic-index](https://www.anthropic.com/news/the-anthropic-economic-index)",
+  "intext": "Anthropic, 2025f",
+  "reference": "Anthropic. (2025f). *The Anthropic economic index*. [https://www.anthropic.com/news/the-anthropic-economic-index](https://www.anthropic.com/news/the-anthropic-economic-index)",
   "title_authored": false
  },
  {
