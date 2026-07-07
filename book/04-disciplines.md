@@ -37,6 +37,8 @@ flowchart LR
 
 However capable the agents become, some of the work stays with the human — and if that part is done badly, nothing else in the system can make up for it. Five disciplines follow. Each names something the model cannot do for you.
 
+![What stays with the human is judgement — weighing the options and owning the call.](../images/illustrations/decide.svg)
+
 ### 4.1.1 Intent and Specification
 
 The first is knowing what you actually want, and making it checkable. *Intent* is the goal, its constraints, and the conditions under which a result would count as a failure; a *specification* turns that into a definition of done that something can be judged against ([Ahuja, *Spec-driven development isn’t broken. It will collapse*, 2026d](https://howtoarchitect.io/c00609f72496?sk=2da01d7d2abfb5bc0acaed7050a0e797)). Agents are literal and fast. A human colleague quietly patches a vague brief with common sense; an agent builds exactly what you asked for, quickly and confidently, so a vague brief turns into a large pile of polished, wrong work.

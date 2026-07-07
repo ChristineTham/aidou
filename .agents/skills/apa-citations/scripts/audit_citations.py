@@ -31,7 +31,9 @@ def main():
         body_urls = set(re.findall(r"\]\((https?://[^)]+)\)", body))
         ref_urls = set(re.findall(r"\]\((https?://[^)]+)\)", refs))
 
-        for m in re.finditer(r"\[[^\]]*\]\((?!https?://)([^)]*\.(?:md|pdf)|\.\.?/[^)]+)\)", body):
+        # `(?<!!)` skips Markdown image embeds — `![alt](../images/x.svg)` is a
+        # figure, not a citation, so a relative image path must not be flagged.
+        for m in re.finditer(r"(?<!!)\[[^\]]*\]\((?!https?://)([^)]*\.(?:md|pdf)|\.\.?/[^)]+)\)", body):
             print(f"{path}: internal link (cite an original source): {m.group(1)}")
             problems += 1
         for m in re.finditer(r"\[[^\]]*\[[^\]]*\]\((https?://[^)]+)\)", body):
