@@ -17,6 +17,7 @@ quarto/cover.png
 quarto/ogimage.jpg
 quarto/chapter-art/
 quarto/projects/
+quarto/illustrations/
 # generated design tokens (source: theme.yml)
 quarto/_brand.yml
 quarto/_tokens.scss

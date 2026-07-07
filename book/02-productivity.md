@@ -50,6 +50,8 @@ flowchart TB
     E -- none, or round limit --> Out[Final summary]
 ```
 
+: The generator–evaluator loop that checks a summary against its source. {#dia-summary-loop}
+
 Depending on the agent platform you are using, the specific way you will construct a loop may be slightly different. Here is a naive approach that will actually work with some agent platforms — a *subagent* being simply a fresh agent spawned to handle one part of the job:
 
 ```markdown
@@ -97,6 +99,8 @@ Read those rules again with an agent in mind, and they describe working with AI 
 | Fail noisily and early; be robust | Verify at the boundaries; stop a drifting run and re-steer |
 | Value people's time over machine time | Spend judgement, not tokens; measure value, not output |
 
+: Each Unix rule and its counterpart for working with AI. {#tbl-unix-aido}
+
 Two differences matter, though. First, a Unix program is deterministic: run it twice on the same input and it does the same thing. A model is not, as Chapter 1 showed. Unix programmers could trust a tool once it worked; we have to keep checking ours. That is why verification comes up in every chapter that follows. Second, the Unix philosophy was written by programmers to save programmers' time. AI-dō adds the 愛: care for the people the work touches, and a human who stays answerable for what the machine produces. The philosophy is fifty years old. The new part is the tool: it writes fluent prose at great speed, and it is sometimes wrong while sounding certain.
 
 ## 2.3 Prompt Engineering
@@ -122,6 +126,8 @@ Line these up against my prompt and you can see each element at work:
 | Output indicator | "preserve chapters and headings… use tables, bullet points, GFM alerts" |
 | Input data | the document I paste in |
 
+: The four parts of a prompt, seen in the summary example. {#tbl-prompt-elements}
+
 Three habits make most of the difference, and the guide keeps returning to them. The first is **specificity**: vague prompts get vague answers, so name the audience, the length, the tone, and the format rather than hoping the model guesses. "Explain this" invites a wall of text; "explain this in three sentences for a non-technical manager" gets you something usable. The second is **say what to do, not what to avoid** — "do not mention price" often produces exactly what you told it to avoid, whereas describing the behaviour you want steers more reliably. The third is **show, don't just tell**: a single worked example of the output you want often does more than a paragraph describing it, because the model is, at heart, a pattern-matcher.
 
 The formatting instructions deserve their own mention, because they are where much of the quality comes from:
@@ -142,6 +148,8 @@ Examples alone, though, stall on anything that needs several reasoning steps. Th
 | Zero-shot | Just the instruction | Tasks the model already knows: classify, summarise, rewrite |
 | Few-shot | The instruction plus a few examples | Enforcing a specific format or an unusual pattern |
 | Chain-of-thought | A request to show its reasoning | Arithmetic, logic, planning — anything multi-step |
+
+: Three prompting techniques, and when to reach for each. {#tbl-prompt-techniques}
 
 A workable rule of thumb: start with zero-shot. If the output keeps coming back in the wrong shape, add examples. If the answer has to be worked out rather than remembered, ask for the reasoning.
 
@@ -194,6 +202,8 @@ The conversion is a solved problem, with a tool for every source. Pandoc convert
 | PDFs, Office documents | Docling | Structured Markdown + JSON |
 | Web pages | A reader service or script | Markdown |
 
+: Tools for turning any source into Markdown. {#tbl-markdown-tools}
+
 Markdown plays the role in AI work that plain text played in Unix: a common format that tools, models, and people can pass work through without a custom adapter at every join. Standardise on it, and everything else in this chapter becomes easier to connect.
 
 ## 2.5 Context and Memory
@@ -217,6 +227,8 @@ flowchart TB
     L[Lint: drift + contradictions] -.->|health-check| W
     Sc["Schema<br/>AGENTS.md"] -.->|governs| W
 ```
+
+: The LLM wiki: sources read once, cross-linked, then answered from. {#dia-wiki}
 
 The working loop has three parts: ingest, query, lint. Drop in a source and it updates a dozen pages. Ask a question and the good answers get filed back as new pages. Every so often, a lint pass checks the whole wiki for contradictions and stale claims. The reason this holds up where human wikis rot is that the tedious part is bookkeeping, and the model does not get bored. The pitfall, which practitioners running it for months confirm, is old pages that read confidently but are out of date, and end up being treated as truth. That is why the lint pass matters so much.
 
@@ -246,6 +258,8 @@ flowchart TB
     G -.-> PM
 ```
 
+: Layered memory, separated by how long each layer should last. {#dia-memory-layers}
+
 | Pattern | The idea | Strength | Main risk |
 | --- | --- | --- | --- |
 | Retrieval (RAG) | Fetch chunks, inject verbatim | Grounded, auditable | Context bloat; re-discovers each time |
@@ -254,6 +268,8 @@ flowchart TB
 | External store + just-in-time | Pointers now, fetch on demand | Huge capacity, tight context | Fails if the agent forgets to look |
 | Layered memory | Split by time horizon | Right tool per layer | Orchestration complexity |
 | Governed memory | Policies write, keep, forget | Safety and consistency | Hard to specify; still maturing |
+
+: The memory patterns, with the strength and the main risk of each. {#tbl-memory-patterns}
 
 No single pattern wins, and real systems combine them — a wiki for stable knowledge, compaction for the live thread, an external store fetched just in time, all under a governance layer that decides what gets kept and what gets thrown out. The wiki you just built is one rung on that ladder. This is the point the chapter keeps coming back to: good memory has to be engineered. You decide what gets written down, you manage it, and you make sure the agent reads it. And the moment memory persists and the agent edits it, it becomes a governance question, which is where Chapter 5 picks up.
 
@@ -270,6 +286,8 @@ The self-checking loop you built in §2.1 points at a bigger change in how you c
 | You supply | Each instruction, one at a time | A scoped task, once |
 | You get back | A transcript to continue | A result to review |
 | Bottleneck | Your attention and typing speed | Your review of the outcome |
+
+: A chat assistant set against an ambient teammate. {#tbl-chat-vs-ambient}
 
 The change sounds small, but it moves the bottleneck. As Karpathy puts it, the goal is to remove yourself from the keystroke loop and maximise throughput rather than steer every step ([Latent Space, *Loopcraft: The art of stacking*, 2026b](https://www.latent.space/p/ainews-loopcraft-the-art-of-stacking)). Hand off whole tasks instead of supervising each step and you can get much more done in a day. But a task only counts as done once someone has checked the result, a point the rest of this book keeps insisting on.
 
@@ -290,6 +308,8 @@ flowchart TB
     L --> M[MCP server<br/>any agent can call it]
 ```
 
+: The climb from a prompt to a shared tool. {#dia-composability}
+
 Two habits make composition pay off. The first is to keep each piece small and single-purpose. A skill that does one thing well can be reused in situations you never foresaw, while a sprawling one fits only the case it was written for — the "do one thing well" rule, now applied to intents rather than programs. The second is to standardise the seams. Because skills are Markdown and MCP is one shared interface, a capability built once travels to your editor, a chat assistant, or a teammate's setup with no adapter at each joint. A recent survey lays out that interoperability layer as a progression from tool access, to structured messaging, to one agent delegating to another ([Ehtesham et al., *A survey of agent interoperability protocols: MCP, ACP, A2A, and ANP*, 2025](https://arxiv.org/abs/2505.02279)).
 
 Why bother? Because the pieces add up. A one-off prompt helps you once. A saved skill helps every time it is used — by you, and by every agent you let build on it. Combine skills, and share them with other agents, and the gains start carrying over from one session to the next.
@@ -300,7 +320,7 @@ Joining pieces together also adds new ways to fail, so it is worth being clear a
 
 The biggest gains I have seen from agents recently — in my own work and in the research — are in knowledge work: research, writing, synthesis, decision support. These tasks suit a model well. They are bounded, the feedback is quick, and a model can draft, compare, and summarise faster than any human can.
 
-![AI earns its keep first in knowledge work — the research, drafting, and synthesis a person still shapes and checks.](../images/illustrations/analyze.svg)
+![AI earns its keep first in knowledge work — the research, drafting, and synthesis a person still shapes and checks.](../images/illustrations/analyze.svg){#fig-knowledge-work}
 
 The gains show up clearly in experiments, but they do not fall evenly. The cleanest evidence comes from a randomised experiment in which 453 professionals were given real writing tasks — memos, short reports, analysis plans — and half were allowed to use ChatGPT. Their time fell by about 40%, the graded quality of their work rose by around 18%, and the weakest writers gained the most, narrowing the gap between them and the best ([Noy & Zhang, *Experimental evidence on the productivity effects of generative AI*, 2023](https://doi.org/10.1126/science.adh2586)). The same levelling shows up in the field. A study of 5,179 customer-support agents found AI raised resolved-issues-per-hour by 14% on average but 34% for novices, with little gain for experts — the tool spreads the best workers' know-how to everyone else ([Brynjolfsson et al., *Generative AI at work*, 2023](https://www.nber.org/papers/w31161)). None of this makes judgement any cheaper: someone still has to decide whether the memo needed writing at all.
 
@@ -314,7 +334,7 @@ So delegate the drafting and the bookkeeping freely, and keep the judgement abou
 
 Leaning on a model has a cost, and the research is now starting to measure it. The surprising finding is that the damage shows up in your own judgement rather than in the model's answers.
 
-![A fluent answer and a correct one look identical — the guard is to keep questioning it.](../images/illustrations/questions.svg)
+![A fluent answer and a correct one look identical — the guard is to keep questioning it.](../images/illustrations/questions.svg){#fig-confidence-trap}
 
 Start with a clean experiment. Parra-Moyano and colleagues showed executives Nvidia's stock chart and asked them to forecast next month's price; half then consulted ChatGPT, half talked it over with peers. The AI group came away more optimistic, more confident, and measurably *less* accurate than the people who simply argued with each other ([Parra-Moyano et al., *Research: Executives who used gen AI made worse predictions*, 2025](https://hbr.org/2025/07/research-executives-who-used-gen-ai-made-worse-predictions)). A colleague says "are you insane?"; the model says your framing is astute.
 
@@ -331,6 +351,8 @@ The practical defence is to sort tasks by how much judgement they need. Where th
 | Find what's there | Pull these quotes; extract these figures; refactor a function | Yes — the answer is checkable | Lean in |
 | Summarise or transform | Condense a report; translate a passage | Mostly | Trust, then spot-check |
 | Decide what matters | Which themes to act on; which strategy to pick | No single right answer | Form your own view first |
+
+: Sorting tasks by how far you can trust the model with them. {#tbl-task-trust}
 
 ## 2.10 Personal Operating Models
 

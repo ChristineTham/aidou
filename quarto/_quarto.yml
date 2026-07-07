@@ -13,6 +13,8 @@ project:
     - python3 ../.agents/skills/book-build/scripts/epub_fix.py
     # Inject a back-cover page at the end of the ePub spine.
     - python3 ../.agents/skills/book-build/scripts/epub_backcover.py
+    # Add List of Figures / Diagrams / Tables pages after the Contents.
+    - python3 ../.agents/skills/book-build/scripts/epub_lists.py
     - python3 ../.agents/skills/book-build/scripts/cachebust.py
 
 book:
@@ -49,6 +51,17 @@ book:
     - governance.qmd
     - mastery.qmd
 
+crossref:
+  # Figures (images) and tables use Quarto's native numbering; Mermaid diagrams
+  # are a separate custom float type so they number independently as "Diagram N"
+  # and get their own list. build_site.py labels each element (fig-/tbl-/dia-).
+  fig-title: "Figure"
+  tbl-title: "Table"
+  custom:
+    - kind: float
+      key: dia
+      reference-prefix: "Diagram"
+
 format:
   html:
     theme: [_tokens.scss, brand.scss]   # tokens (from theme.yml) + polish rules
@@ -69,6 +82,7 @@ format:
     template-partials:
       - typst-show.typ
     include-in-header: typst-fonts.typ     # body serif + fit diagrams to the page
+    include-before-body: typst-lists.typ   # lists of Figures / Diagrams / Tables (after Contents)
     include-after-body: typst-back-cover.typ   # designed back-cover page (blurb)
     # Colours + Spectral come from _brand.yml. Mermaid -> PNG: Quarto doesn't
     # expose Mermaid's htmlLabels:false, so its SVG carries HTML (foreignObject)

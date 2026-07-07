@@ -6,7 +6,7 @@ Working with artificial intelligence has become strangely easy to do and strange
 
 We all tend to use the same handful of frontier models, so it is not the model that separates good quality from slop. The *method* matters — the practised habits by which an experienced person turns a capable tool towards a dependable result, the way a practised hand and a beginner, given the same tools, turn out very different work. This book is about that method: a structured way of working with AI, where you start from what you actually want, improve the result over several rounds, and check it before you use it.
 
-![Using AI well is a practice you learn, not a tool you buy — which is what this book is for.](../images/illustrations/book-lover.svg)
+![Using AI well is a practice you learn, not a tool you buy — which is what this book is for.](../images/illustrations/book-lover.svg){#fig-learning}
 
 A quick word on the terms, since they move quickly. When I say *artificial intelligence*, I mean the present generation of large language models — systems trained on enormous quantities of text, and increasingly images and sound, that respond to plain-language requests with fluent prose, working code, and structured analysis ([Zhao et al., *A survey of large language models*, 2023](https://arxiv.org/abs/2303.18223)). The most capable are called *frontier models*: the handful of largest, most general systems from a few well-resourced labs, the ones that set the pace and that everyone else measures against ([Anderljung et al., *Frontier AI regulation: Managing emerging risks to public safety*, 2023](https://arxiv.org/abs/2307.03718)). ChatGPT, Claude, and Gemini are the familiar names; behind them sits a *foundation model*, a single large network trained once at great expense and then adapted to countless tasks ([Bommasani et al., *On the opportunities and risks of foundation models*, 2021](https://arxiv.org/abs/2108.07258)).
 
@@ -33,9 +33,11 @@ That is also why the book should outlast its examples. The field moves in weeks,
 
 This book is for the thoughtful professional — a leader, a consultant, an analyst, a designer, a builder — who wants structured, effective use of AI rather than a bag of prompts. I assume
 
-- you are numerate and can read a chart, a code snippet, or a research paper when it helps;
+- you are numerate and can read a diagram, a code snippet, or a research paper when it helps;
 - you have already used these tools, and seen both what they can do and how often they get things wrong;
 - and you want to *use* AI well, not to build models.
+
+None of this is essential, but a little more helps: some feel for how software and information systems are built and used, and enough Python or JavaScript to read along when the book shows code. You don't have to work in IT to get a lot from it.
 
 Using AI well is a discipline, and it is the one this book teaches. My promise is practical: an approach you can start using tomorrow, and that keeps improving with practice.
 
@@ -51,6 +53,8 @@ The book is six chapters, and they build. The first lays the foundations — wha
 | 4 | Disciplines | What keeps that work sound at scale? |
 | 5 | Responsibility | How do we govern it safely and fairly? |
 | 6 | Mastery | What stays distinctly human? |
+
+: The six chapters, and the question each one answers. {#tbl-chapters}
 
 Read it once in order, to see how the ideas rest on one another, then come back for the parts you need. Every claim is cited inline to a primary source, so you can follow the trail yourself; where the evidence is thin, I say so.
 

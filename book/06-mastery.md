@@ -1,6 +1,6 @@
 # Chapter 6 — Mastery & Forward Practice
 
-My skills are more in demand now than ever, and I am turning work away — not despite AI, but because of it. That is not the ending I expected when I began this book as a sceptic, and it is worth being precise about what changed. The tools became cheap and universal. What clients now pay for is knowing what work to do — framing the ask, judging the result, checking before shipping — which is exactly what the last five chapters have been teaching.
+Surprisingly, my consulting skills are more in demand now than ever — not despite AI, but because of it. AI has democratised the production and dissemination of knowledge.. What clients now pay for is knowing what work to do — framing the ask, judging the result, verifying final outputs — which is exactly what the last five chapters have been teaching.
 
 A book ends where a 道 should: not at a destination but at a practice you keep. So this closing chapter does four things. It looks back along the way travelled, chapter by chapter. It asks what stays human as the models keep improving. It reads the trend lines on where AI is heading — for the technology, for work, and for the societies both sit inside. And it ends with the loop you never stop running, and the first steps to take when you put the book down.
 
@@ -26,13 +26,15 @@ Chapter 5 was the duty that follows. Responsibility runs in a chain from the lab
 | 4 · Disciplines | Manage the fleet; keep the judgement | The better the agents, the more the human matters |
 | 5 · Responsibility | The duty behind the capability | Capability can be delegated; responsibility cannot |
 
+: The book in one line per chapter — each discipline and the sentence to carry from it. {#tbl-recap}
+
 That is the recap, and it is the easy part of a retrospective. The harder part is deciding which of these disciplines will still matter in a few years — and that depends on what the models can and cannot take over.
 
 ## 6.2 What Stays Human
 
 Chapter 1 observed that we all draw on the same handful of frontier models, and every release narrows the gaps between them. When everyone holds the same tool, the difference between professionals has to live somewhere the tool is not. Three bodies of evidence, gathered over the course of writing this book, say where: in your expertise, in your judgement about when to trust the machine, and in the thinking you keep doing for yourself.
 
-![When everyone holds the same tool, the edge is the taste and expertise the tool cannot supply.](../images/illustrations/creative-woman.svg)
+![When everyone holds the same tool, the edge is the taste and expertise the tool cannot supply.](../images/illustrations/creative-woman.svg){#fig-human-edge}
 
 ### 6.2.1 The Human Edge
 
@@ -78,7 +80,7 @@ The honest bookends are worth seeing side by side, because they are the two futu
 
 The human edge of §6.2 was one person's answer. This section asks the same question for the labour market as a whole — which jobs are touched, what people actually do with the tools, what the early employment data shows, and how big the whole thing really is.
 
-![The wave lands hardest on white-collar work — the jobs this book is written for.](../images/illustrations/business-call.svg)
+![The wave lands hardest on white-collar work — the jobs this book is written for.](../images/illustrations/business-call.svg){#fig-future-work}
 
 Which jobs does this touch? The most-cited attempt to answer put human raters and GPT-4 side by side, scoring, for each occupation, what share of its tasks an LLM could do at least twice as fast without losing quality. The headline: around 80% of US workers have at least 10% of their tasks exposed, and about 19% have more than half exposed ([Eloundou et al., *GPTs are GPTs: An early look at the labor market impact potential of large language models*, 2024](https://arxiv.org/abs/2303.10130)). The twist that makes this wave different from the last is *who* is exposed. Past automation came for routine manual and clerical work; this time exposure rises with wage and education. The knowledge workers who felt safest are the most exposed — which is precisely why this book is aimed at them.
 
@@ -94,6 +96,8 @@ So is this a catastrophe or a rounding error? Start at the sober end of the rang
 | Real usage | Anthropic, 2025f | ~57% of activity is augmentation, not wholesale automation |
 | Actual employment | Brynjolfsson, Chandar & Chen, 2025 | early-career workers in exposed jobs down ~16% since 2022 |
 | Dollar output | Acemoglu, 2024 | total factor productivity up *at most* ~0.66% over a decade |
+
+: The four questions the "future of work" forecasts each answer, and what each found. {#tbl-futures}
 
 There is an optimistic reading worth taking seriously, precisely because its author refuses to call it a forecast. David Autor argues that AI could — if steered well — help *rebuild* the middle class that earlier automation hollowed out, by extending expert judgement to workers without elite credentials: the nurse practitioner safely doing more of what once required a doctor is his anchor example ([Autor, *Applying AI to rebuild middle class jobs*, 2024](https://www.nber.org/papers/w32140)). He is explicit that this is a possibility contingent on choices, not a property of the technology. Which returns the question to where §6.2 left it: whether AI augments you or replaces you depends partly on how the tool is set up, and partly on whether you keep the judgement this chapter has been describing. If the labour market keeps shifting, the augmented side of that line is the safer place to stand.
 
@@ -132,6 +136,8 @@ flowchart TB
     class Q,V ask
 ```
 
+: The refinement loop — experiment, feedback, refine — with the two questions that keep it honest. {#dia-refine}
+
 No method will be the last word, and that is the point of treating practice as a path rather than a destination. Vibe coding was the style of one year and looked spent within six months; spec-driven development began to buckle inside a year. The pattern is older and wider than software: business process re-engineering, Six Sigma, and a long line of agile relabellings were each sold as the last word, and each was quietly folded into whatever came next. What survives every relabelling is the discipline underneath — staying close to the work, holding the intent, asking what is worth building. That discipline is older than any of the frameworks. It is the Unix philosophy — do one thing well, compose small pieces, separate the *what* from the *how* — re-run on a tool that can now write the implementation itself, with a human kept at the centre (Chapter 1). So put your effort into the discipline underneath rather than into whichever framework is current this year. Build the skills that let you direct the machine, instead of racing it to produce more, and refuse to keep score by tokens burned — a number that says how busy the machines were, not whether anything useful got made. One developer's single month ran to 603 billion tokens ([Ahuja, *Spec-driven development is also breaking the fifty-year-old iron triangle*, 2026c](https://howtoarchitect.io/78431acba162?sk=cd2a36f452af96ccbfbcfcdeaa92ec06); [Ahuja, *Spec-driven development isn’t broken. It will collapse*, 2026d](https://howtoarchitect.io/c00609f72496?sk=2da01d7d2abfb5bc0acaed7050a0e797)).
 
 Refinement has a collective hazard worth naming, because it echoes Chapter 5's convergence problem and §6.5's lever. Anil Doshi and Oliver Hauser had writers work with and without AI story ideas, and found a two-sided result ([Doshi & Hauser, *Generative AI enhances individual creativity but reduces the collective diversity of novel content*, 2024](https://doi.org/10.1126/sciadv.adn5290)). AI raised the novelty of an individual writer's story by 5 to 8%, and helped the least creative writers most. But the AI-assisted stories were measurably more like one another, drifting towards the same suggestions. Each writer was better off; the pool of stories was narrower. The defence is the one this book keeps returning to. Keep your own voice in the loop, and use the machine to sharpen a view you brought rather than to supply one. A tool that makes everyone sound alike carries a cost, however convenient it feels.
@@ -142,7 +148,7 @@ Measure value, not output. Counting features shipped feels good, and it quietly 
 
 A 道 has a shape to its learning, and the arts that end in 道 named it long before software did: *shuhari* — 守 *shu*, keep to the form; 破 *ha*, break from it; 離 *ri*, leave it behind and move freely ([Endō, *Shu-ha-ri*, 1998](https://da2el.wordpress.com/2018/06/20/shu-ha-ri-endo-seishiro-aikido-saku-dojocho/)). Read this book as its *shu*. Follow the forms closely at first — one clear ask at a time, intent kept apart from implementation, Markdown as the medium, verification at the boundaries, a human answerable for what ships. As your judgement grows and the tools shift beneath you, enter *ha*: bend the forms, drop the ones that stop fitting, keep what holds. In time comes *ri*, where the forms are instinct and you invent your own — which is only the promise of Chapter 1 come round again: learn the philosophy, and the methods become yours to invent.
 
-![A 道 is a path you keep walking: shuhari is its shape — keep the form, break it, then move freely.](../images/illustrations/adventure-map.svg)
+![A 道 is a path you keep walking: shuhari is its shape — keep the form, break it, then move freely.](../images/illustrations/adventure-map.svg){#fig-shuhari}
 
 The rest is yours to begin, and the first steps are small and specific. First, take one real task you already do and run it as a loop — draft, check, refine — instead of waiting on a perfect prompt. Second, start an LLM wiki: put the context you keep re-explaining into a few Markdown notes the model can draw on. Third, add one verification step at the boundary that matters most, and name the person answerable for what leaves it. Fourth, before you open a chat window on anything that counts, write your own view down first, so you can tell the model's confidence from your own. Fifth, keep a second model on the bench, and ask of everything you make: who is this for, and is it worth building?
 

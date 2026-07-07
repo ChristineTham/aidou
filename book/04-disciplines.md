@@ -33,11 +33,13 @@ flowchart LR
     BOTH --- AG
 ```
 
+: The three families of discipline: human, agent, and the two together. {#dia-disciplines-map}
+
 ## 4.1 Human Disciplines
 
 However capable the agents become, some of the work stays with the human — and if that part is done badly, nothing else in the system can make up for it. Five disciplines follow. Each names something the model cannot do for you.
 
-![What stays with the human is judgement — weighing the options and owning the call.](../images/illustrations/decide.svg)
+![What stays with the human is judgement — weighing the options and owning the call.](../images/illustrations/decide.svg){#fig-judgement}
 
 ### 4.1.1 Intent and Specification
 
@@ -106,6 +108,8 @@ flowchart TB
     end
 ```
 
+: Reliable and fragile harness designs, side by side. {#dia-harness-control}
+
 It is tempting to treat the harness as plumbing. The measurements say it matters about as much as the model does. Hold the model fixed and swap only the harness, and task success can move by more than twenty points. One systematic benchmark ran 106 tasks across six harnesses and eight model backends, and watched aggregate success swing from 76% under the best harness to 52% under the worst — a gap that rivals a whole model generation, and one that bites hardest when the underlying model is weaker ([Yao et al., *Harness-Bench: Measuring harness effects across models in realistic agent workflows*, 2026](https://arxiv.org/abs/2605.27922)). The same lesson appears as *scaffolding* — the code and prompts wrapped around a model to structure how it works: on a standard software-engineering benchmark, better scaffolding around a fixed model lifted the resolved-task rate from under two per cent to the high seventies ([Bhati, *Agentic AI in the software development lifecycle*, 2026](https://arxiv.org/abs/2604.26275)). A good part of what gets reported as a model's capability is actually the work of the harness around it.
 
 It helps to name the parts. A recent taxonomy splits a harness into seven layers — the execution sandbox, the tooling, context and memory, lifecycle and orchestration, observability, verification, and governance — and uses them to pinpoint where a run went wrong ([Chen et al., *From failed trajectories to reliable LLM agents: Diagnosing and repairing harness flaws*, 2026](https://arxiv.org/abs/2606.06324)). Two findings from that study are worth carrying. First, the harness is where the work is: across thirty open-source agents, harness code was roughly 45% of all development. Second — and more useful when something breaks — many agent failures are harness bugs, not model failures: repairing the harness alone recovered about 11% of task completion on average (up to 18), and a fix built for one model transferred unchanged to others. When an agent misbehaves, suspect the harness before the model.
@@ -136,6 +140,8 @@ The shape of the team matters as much as its size, and the research now offers a
 | Decentralised (peer-to-peer) | Agents talk directly | Fault-tolerant; scales out | Communication overhead grows fast |
 | Hierarchical (layered) | Teams of teams | Offloads work in layers | Complexity and latency |
 
+: Three ways to wire a team of agents, with the trade-offs. {#tbl-orchestration}
+
 The survey's warning is one this book has met before: a team of agents with poorly designed channels loses to a single agent with a strong harness. Whether the team is worth having comes down to the quality of those channels rather than the number of agents — the same lesson §2.7 drew from multi-agent failure studies, where most breakdowns traced to misread roles and dropped hand-offs rather than to any model being too weak.
 
 Some practitioners push that lesson to its limit. Geoffrey Huntley, the engineer behind a technique he calls the *ralph loop*, argues that most multi-agent machinery is not worth building at all: a single agent working in one repository, doing one task per loop against a goal you keep repeating, beats a tangle of agents talking to agents — which he likens to microservices whose services are non-deterministic, "a red hot mess" ([Huntley, *everything is a ralph loop*, 2026](https://ghuntley.com/loop/)). Read it as a deliberately provocative manifesto rather than measured advice; the same post declares "software development is dead" and promotes the author's own tooling. But its practical core points the same way the survey does: reach for one well-run agent before a committee of them, and add coordination only when a single loop genuinely cannot carry the work.
@@ -160,7 +166,7 @@ Repetition is the sharpest of those gaps, and one measure makes it concrete. The
 
 The third set is where the two meet: a person and a fleet of agents working as one system. This is the hardest part to get right, because what you are engineering here is a working relationship. A survey of the first sixty-one deployed human–agent systems found they are built from the same five parts every time: an environment the agent acts in, a profile of who it works for, a channel for human feedback, an orchestration layer, and a way to communicate. That is a useful checklist to hold onto, because the failures in this section are almost always a weak version of one of those five parts ([Zou et al., *LLM-based human-agent collaboration and interaction systems: A survey*, 2025](https://arxiv.org/abs/2505.00753)).
 
-![Directing a fleet is a control problem: the human sets the work and reviews what each agent sends back.](../images/illustrations/control-panel.svg)
+![Directing a fleet is a control problem: the human sets the work and reviews what each agent sends back.](../images/illustrations/control-panel.svg){#fig-delegation}
 
 ### 4.3.1 Division of Labour
 
@@ -172,6 +178,8 @@ Start by drawing the line clearly — the human owns the judgement, the harness 
 | Spec / expectations | Human | The evaluable definition of done |
 | Context | Harness | The tokens the model sees at each step |
 | Prompt | Harness | The reusable interaction patterns (plays) |
+
+: The division of labour: what the human owns, what the harness owns. {#tbl-division-labour}
 
 Clear ownership stops drift, and it has a sharp security edge. Keep the evaluations in a separate compartment, where the builder cannot see the tests it will be judged on; otherwise it optimises for the checks instead of the outcome. That is the reward-hacking failure a systematic survey of RLHF traces to one root cause — optimise any imperfect proxy hard enough and it stops measuring what you meant ([Casper et al., *Open problems and fundamental limitations of reinforcement learning from human feedback*, 2023](https://arxiv.org/abs/2307.15217)). Chapter 3 met the same rule in software: the builder never marks its own homework.
 

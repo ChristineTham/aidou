@@ -32,7 +32,7 @@ Let's start with the evidence, before any theory. Each project below began as a 
 
 *rogoweb* fuses two pieces of computing history. *Rogue 5.4* is the 1980 dungeon crawler by Michael Toy, Glenn Wichman, and Ken Arnold that gave the *roguelike* genre its name; *Rog-O-Matic XIV* is the expert system built at Carnegie Mellon in 1981 by Michael Mauldin and colleagues to play Rogue on its own — and beat it: over 106 games it achieved the highest median score of any player on the university's system, humans included ([Mauldin et al., *Rog-O-Matic: A belligerent expert system*, 1983](https://kilthub.cmu.edu/articles/journal_contribution/Rog-O-Matic_a_belligerent_expert_system/6609137/1); [rogoweb](https://github.com/ChristineTham/rogoweb)). On Unix the bot ran as a separate process, launching the game as a child and talking to it through the standard input and output *pipes* — the channels one program uses to feed another. A browser has none of that machinery: no processes, no `fork`, no pipes.
 
-![*rogoweb* in the browser: the VT100 terminal running Rog-O-Matic on dungeon level 7, beside the live telemetry panel — HP, gold, the evolving gene pool, and the observer log's descent milestones.](../images/projects/rogoweb.png)
+![*rogoweb* in the browser: the VT100 terminal running Rog-O-Matic on dungeon level 7, beside the live telemetry panel — HP, gold, the evolving gene pool, and the observer log's descent milestones.](../images/projects/rogoweb.png){#fig-rogoweb}
 
 My intent was almost that short — *port Rogue and Rogomatic to run in the browser* — with a constraint that the original C code should keep working unchanged in spirit, and a check that the bot could still finish a game. The agent's answer was an architecture I would never have thought to name. It compiled both C codebases to *WebAssembly* (a portable binary format browsers run at near-native speed) with the Emscripten toolchain, used the `emcurses` library (a port of `pdcurses`, itself an emulator of `curses`, the classic terminal-UI library), and replaced the pipe with a `SharedArrayBuffer` ring buffer — a fixed block of memory that two browser *workers* (background threads) read and write in turn — so the game and the bot run side by side and talk exactly as they once did. For the dashboard I coached it towards a VT100-style terminal with DEC aesthetics — the one place I shaped the look rather than leaving it to the agent.
 
@@ -44,13 +44,15 @@ flowchart TB
     UI["VT100 terminal<br/>(main thread)"] -.->|polls stats| SAB
 ```
 
+: How rogoweb runs two WebAssembly programs side by side in the browser. {#dia-rogoweb-arch}
+
 Spurred by the port success, I then encouraged the agent to make the bot better. Rog-O-Matic *learns* — a genetic pool of strategy weights and a long-term monster-danger memory that it evolves across games and saves in the browser — so a fresh install plays badly and improves the more it plays. To hand new players a trained bot from the very first game, the agent built an offline pretrainer and, unprompted, parallelised it across every CPU core: isolated populations that evolve separately and then merge under a no-regression rule, a roughly ten-fold speed-up. It also went back into the 1981 C to repair a raft of latent bugs and mis-tuned heuristics — chiefly a per-monster danger table so the bot stops under-rating a dragon, along with healing, escape, and food-timing fixes. Because Rogue is a game of chance, each change is validated not by a single passing run but by win-rate and average depth across a batch of games; the agent had to run the game multiple times in order to test its changes.
 
 ### 3.1.2 adventure — a 1970s classic, made strict and typed
 
 *adventure* rebuilds *Colossal Cave Adventure*, the game that founded interactive fiction. Will Crowther wrote the first version in FORTRAN in 1975–76, mapping his knowledge of Kentucky's Mammoth Cave onto a game for his daughters; Don Woods expanded it in 1977, adding the dwarves, the magic word `XYZZY`, and the famous 350-point score ([adventure](https://github.com/ChristineTham/adventure)). My version forward-ports Eric Raymond's faithful [*open-adventure*](https://gitlab.com/esr/open-adventure) edition into a strictly-typed TypeScript application on Next.js 16 and React 19.
 
-![*adventure* at the starting location: AI-generated art for every room, the scroll-themed message panel, a condition-aware compass and guided-play controls, and the header's map and auto-solve buttons.](../images/projects/adventure.png)
+![*adventure* at the starting location: AI-generated art for every room, the scroll-themed message panel, a condition-aware compass and guided-play controls, and the header's map and auto-solve buttons.](../images/projects/adventure.png){#fig-adventure}
 
 The intent — *port Colossal Cave to a modern Typescript web app* — carried two checks that did the real work: every value fully typed, with no escape hatches, and nothing merged until the tests and the *linter* — a tool that flags error-prone or untidy code — pass. The sharpest of those tests is *parity* — the engine replays the original's own regression suite, ninety-five recorded transcripts, and diffs its output against them line for line, so a change that even consumes the game's random-number stream in the wrong order fails at once. To satisfy it, the agent kept the canonical game data in its historic `adventure.yaml` file and wrote a custom, type-safe parser to load it, preserving the odd legacy structures and folding word synonyms together as it went. A Zustand *state machine* — a small component that tracks exactly what state the game is in and which moves are legal next — holds the world, and AI-generated artwork illustrates every location. That parity check did more to keep the port honest than any design document could have.
 
@@ -70,6 +72,8 @@ Lay the three projects side by side and the pattern is hard to miss. I supplied 
 | [*adventure*](https://github.com/ChristineTham/adventure) | port Colossal Cave to a modern Typescript web app | Faithful to the original data; Australian English throughout | TypeScript on Next.js 16 / React 19, YAML parser, Zustand state machine, AI-generated artwork, build-time metro-map (libavoid), one-click auto-solve | Full type coverage; tests and linter green; output-for-output parity with the original |
 | [*VantageMap*](https://github.com/ChristineTham/vantagemap) | Give business architects one tool to model strategy | Who may see what; how fast it must respond | Next.js and React, Postgres with twenty-two tables, Drizzle, REST and GraphQL, thirteen views | Some five hundred tests |
 
+: The three projects: a sentence of intent, and what the agent built from it. {#tbl-three-projects}
+
 ## 3.2 The Modern AI Dev Stack
 
 The interesting work has moved up the stack. Teams used to compare models; now they compete on the layers above, because every team can draw on the same models.
@@ -83,6 +87,8 @@ None of this arrived as theory. The coding tools climbed rung by rung, and each 
 | Agentic editor | Cursor (2023), aider | Searched the whole codebase, edited many files, ran commands from a plain-language ask | Reviewed the diff |
 | Terminal & async agent | Claude Code, Codex CLI, Gemini CLI (2025); Copilot coding agent | Planned, edited, ran tests, iterated; some opened a pull request from a cloud workspace | Set goals; reviewed results |
 | Agent fleets | Cursor 2.0, Google Antigravity 2.0 | Ran several agents in parallel across a codebase | Supervised from above |
+
+: How coding tools climbed from autocomplete to agent fleets. {#tbl-coding-rungs}
 
 Sources: [Tabnine, *Tabnine*, n.d.](https://www.tabnine.com); [GitHub, *Introducing GitHub Copilot: AI pair programmer*, 2021](https://github.blog/2021-06-29-introducing-github-copilot-ai-pair-programmer/); [GitHub, *GitHub Copilot November 30th update*, 2023](https://github.blog/changelog/2023-11-30-github-copilot-november-30th-update/); [Cursor, *Cursor*, n.d.](https://cursor.com); [aider, *aider*, n.d.](https://aider.chat/); [Anthropic, *Claude Code*, 2025a](https://claude.com/product/claude-code); [GitHub, *GitHub Copilot: The agent awakens*, 2025b](https://github.blog/news-insights/product-news/github-copilot-the-agent-awakens/); [GitHub, *GitHub Copilot: Meet the new coding agent*, 2025a](https://github.blog/news-insights/product-news/github-copilot-meet-the-new-coding-agent/); [Google, *Building the agentic future: Developer highlights from I/O 2026*, 2026](https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-developer-highlights/).
 
@@ -106,6 +112,8 @@ flowchart TD
     class P value
 ```
 
+: The modern dev stack, with the model as the commodity at its base. {#dia-dev-stack}
+
 Each layer is a discipline in its own right. A harness turns a model into an agent; a meta-harness coordinates several of them; memory lets work persist between sessions; an eval decides whether a result is good enough:
 
 | Layer | What it does | Examples (2026) |
@@ -116,6 +124,8 @@ Each layer is a discipline in its own right. A harness turns a model into an age
 | Workflow / async | Fire-and-forget delegation in shared channels | Claude Tag (Slack), Copilot coding agent, Devin, Gemini Spark |
 | Memory | State kept outside the context window | agentmemory, codegraph, channel memory |
 | Eval | Automated judgement of quality | FrontierCode, Terminal-Bench 2.1, SWE-bench Pro |
+
+: Each layer of the dev stack, with 2026 examples. {#tbl-dev-stack}
 
 Greg Brockman makes the same point from inside a frontier lab. The shift of the last couple of years, he says, is that "it's no longer just about the model. It's about the harness" — how the model gets its context, what actions it can take, and how the loop around it works ([Big Technology, *OpenAI President Greg Brockman: AI self-improvement, the superapp bet, path to AGI, scaling compute*, 2026](https://www.youtube.com/watch?v=J6vYvk7R190)). The concrete expression for most teams is the configuration file: studies of hundreds of Claude Code projects show that CLAUDE.md and AGENTS.md files carry the architectural constraints and conventions that decide whether an agent behaves, with architecture the single most-specified concern ([Santos et al., *Decoding the configuration of AI coding agents: Claude Code projects*, 2025](https://arxiv.org/abs/2511.09268)). My own projects bear this out: each carries a config file — an `AGENTS.md`, `CLAUDE.md`, or `GEMINI.md` — that pins the conventions and architecture the agents must respect, alongside a `.agents/skills` folder of reusable know-how. In my experience it is the file, more than the model, that keeps a vibe-coded codebase coherent across months.
 
@@ -132,6 +142,8 @@ Day to day, AI is most useful in pairing, refactoring, debugging, and sketching 
 | Parallelisation | Run subtasks (or votes) concurrently | Speed, or multiple perspectives, matter |
 | Orchestrator-workers | A lead delegates dynamic subtasks | Subtasks are unknown until runtime |
 | Evaluator–optimizer | One generates, one critiques, loop | Clear criteria and iterative gains exist |
+
+: Five AI-assisted coding patterns, and when each one fits. {#tbl-coding-patterns}
 
 Short loops with the agent, backed by evaluations that catch regressions before they ship, work well. What hurts is accepting a large change you cannot read — you pay the speed back later, when someone has to dig through it. Complexity is not free: a multi-agent setup can burn ~15× the tokens of a single call, so reach for one only when the task's value justifies it ([Anthropic, 2024a](https://www.anthropic.com/research/building-effective-agents)). The underlying question is who owns the control flow. Handing deterministic looping and sequencing to a probabilistic model produces token explosion and control-flow hallucination. The durable pattern is to let the program own the loop and the model fill in the judgement — a discipline that lifted an agent on the OSWorld benchmark (agents operating a computer's desktop interface) to 86.8% in 15 steps against 80.4% in 100 ([Qi et al., *LLM-as-code: Agentic programming for agent harness*, 2026](https://arxiv.org/abs/2606.15874)). Where steps must retry, isolate them: runtime-structured decomposition retries only the failed subtask, cutting recovery cost 51.7% over monolithic prompts ([Asthana et al., *Runtime-structured task decomposition for agentic coding systems*, 2026](https://arxiv.org/abs/2605.15425)).
 
@@ -160,6 +172,8 @@ How badly does this end? Ahuja's own forecast is blunt: he argues spec-driven de
 | Vibe coding | None | No | Confident, unread, wrong code |
 | Spec-driven (SDD) | One document fusing intent, spec, and implementation | Strains badly | Context explosion; the agent fills the gaps wrongly |
 | Spec-anchored, code-coupled | One spec per node, drift as a blocking merge gate | Yes, by construction | Demands tooling discipline up front |
+
+: Vibe coding, spec-driven, and spec-anchored development compared. {#tbl-spec-vs-vibe}
 
 Notice what the two sets of limitations have in common. Vibe coding keeps no record of what the software is for. Spec-driven development keeps one document that tries to hold everything at once. Either way, three different concerns — what you want, what the builder needs to know, and how the result will be judged — end up tangled together or missing. The next section builds a method by keeping them apart.
 
@@ -193,6 +207,8 @@ One rule sorts any borderline item: does it change how the builder designs? If y
 | Expectations | The definition of done, and the external evidence that verifies it | You |
 | Implementation | The architecture and the code | The system |
 
+: The four layers of ICE, and who owns each. {#tbl-ice-layers}
+
 > [!NOTE]
 > **Worked example, from *rogoweb*.** Goal: "run Rogue and its bot in the browser" — one sentence, no "and," and two quite different builds could satisfy it. Constraints: the original C should keep working; the whole thing runs client-side, with nothing to install. Failure conditions: the build breaks, or the bot can no longer finish a game. Notice what is absent — I never wrote "WebAssembly," "`SharedArrayBuffer`," "ring buffer," or "two web workers." Those were the system's answers to the constraints, not parts of my intent, and that is exactly the line ICE draws.
 
@@ -212,6 +228,8 @@ flowchart TB
     E -.->|validator checks| Impl
     Impl -.->|fails a check, retry| Ctx
 ```
+
+: ICE: what you own, and what the system owns. {#dia-ice}
 
 My three projects follow the same shape at a larger scale. Each was an intent — "run Rogue and its bot in a browser," "rebuild *Colossal Cave* as a modern, strongly-typed web app," "give business architects one tool to model strategy" — plus a few directional constraints and some binary checks, and nothing about implementation. I never specified WebAssembly, a `SharedArrayBuffer`, Drizzle, or Zustand; those were the system's answers to the constraints, and when an early choice failed a check the agent swapped it out without my touching the goal. That is why ICE works. By refusing to pre-lock the architecture, you let the model do what it is good at: choosing and revising an implementation against a fixed intent and observable checks. You still decide what the thing is for, and how to tell when it has gone wrong.
 
@@ -235,6 +253,8 @@ The gains also land unevenly, which is the deeper point. Across field trials of 
 | --- | --- | --- |
 | Juniors | Field trials across ~5,000 developers | ~25% more tasks completed |
 | Experienced engineers | Their *own* mature repositories | ~19% *slower* — while believing themselves faster |
+
+: Who gains and who slows with AI, by cohort. {#tbl-cohorts}
 
 The tool pays off for people who can say precisely what they want, and who recognise when what comes back falls short.
 
@@ -261,6 +281,8 @@ flowchart TB
     end
     Before ==> After
 ```
+
+: The fifty-year iron triangle, and how agentic coding breaks it. {#dia-iron-triangle}
 
 That changes the question worth asking. Speed no longer comes from a faster model but from running agents in parallel, and the ceiling is your own attention — how many you can drive before you lose the thread, not how quickly any one of them finishes. And the arithmetic of long autonomous runs is unforgiving: chain enough steps and small per-step error compounds — a 95% success rate per step falls to roughly a third over twenty — so it is the human's oversight, not the model's pace, that holds a long run together ([Alenezi, 2026b](https://arxiv.org/abs/2606.28791)). Fast models are a tempting trap: lean on them and the bill arrives in tokens. It is a real bill: Uber exhausted its 2026 AI-coding budget in about four months once Claude Code reached 84% of its engineers at five hundred to two thousand dollars each a month, and its own president and chief operating officer conceded that the link between that spend and shipped value was "not there yet" ([Fortune, *Uber burned through its entire 2026 AI budget in four months*, 2026](https://fortune.com/2026/05/26/uber-coo-ai-spending-tokens-claude-code/)). Token counts make a poor scoreboard — OpenClaw's creator ran up 603 billion tokens and \$1.3 million in a single month across a fleet of coding agents ([Tom's Hardware, *OpenClaw creator burns through \$1.3 million in OpenAI API tokens in a single month*, 2026](https://www.tomshardware.com/tech-industry/artificial-intelligence/openclaw-creator-burns-through-1-3-million-in-openai-api-tokens-in-a-single-month)) — so measuring yourself by tokens burned is measuring the wrong thing.
 

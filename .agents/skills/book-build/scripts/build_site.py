@@ -182,19 +182,39 @@ def mermaid_init(colors):
                                     separators=(",", ":")) + "}%%"
 
 
+DIA_CAP = re.compile(r"^:\s*(.+?)\s*\{#(dia-[A-Za-z0-9_-]+)\}\s*$")
+
+
 def mermaid_cells(lines, init=""):
     """Turn ```mermaid fences into executable ```{mermaid} cells so Quarto
     renders them to images for the PDF/ePub (and client-side SVG for HTML), and
     inject the palette `init` directive as each diagram's first line.
-    Diagrams keep their `<br/>` labels, which Mermaid renders as line breaks."""
-    out = []
-    for l in lines:
-        if re.match(r"^```mermaid\s*$", l):
-            out.append("```{mermaid}")
-            if init:
-                out.append(init)
-        else:
-            out.append(l)
+    Diagrams keep their `<br/>` labels, which Mermaid renders as line breaks.
+
+    A caption line directly after a diagram's closing fence — `: Caption. {#dia-slug}`
+    — is folded into the cell as `%%| label:` + `%%| fig-cap:`, so the diagram
+    becomes a numbered "Diagram N" custom float (see crossref in _quarto.yml)."""
+    out, i, n = [], 0, len(lines)
+    while i < n:
+        if not re.match(r"^```mermaid\s*$", lines[i]):
+            out.append(lines[i]); i += 1; continue
+        body, j = [], i + 1
+        while j < n and not re.match(r"^```\s*$", lines[j]):
+            body.append(lines[j]); j += 1
+        # look past the closing fence (and any blank lines) for a caption line
+        k = j + 1
+        while k < n and not lines[k].strip():
+            k += 1
+        m = DIA_CAP.match(lines[k]) if k < n else None
+        out.append("```{mermaid}")
+        if m:
+            out.append(f"%%| label: {m.group(2)}")
+            out.append(f'%%| fig-cap: "{m.group(1)}"')
+        if init:
+            out.append(init)
+        out.extend(body)
+        out.append("```")
+        i = (k + 1) if m else (j + 1)
     return out
 
 

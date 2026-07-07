@@ -21,6 +21,8 @@ timeline
     2022 : ChatGPT makes large language models mainstream
 ```
 
+: Seventy years from the Dartmouth proposal to ChatGPT. {#dia-history}
+
 I actually used a language model in 2018 whilst consulting for a government client. Lesson 10 in fast.ai's [Practical Deep Learning for Coders](https://course18.fast.ai/) course described ULMFiT, a groundbreaking approach to *transfer learning* — reusing what a model learned on one task as the starting point for another — in natural-language processing. The recipe: take a language model pre-trained on Wikipedia to predict the next word, strip away its final layer, and repurpose it into a highly accurate text classifier. I adapted the lesson's codebase to solve a real-world enterprise problem: automated support-call classification. I built the pipeline on AWS SageMaker, *fine-tuned* the base model — trained it further — on the client's call logs, and it sorted support calls into categories (Procurement, HR, IT, and so on). Even then, the part that made it useful was already the part this book is about: adapting a general-purpose model to a specific problem, rather than the model itself.
 
 ## 1.2 The AI Landscape in 2026
@@ -32,6 +34,8 @@ Two facts about 2026 matter for everything that follows. The first is that these
 | Organisations using AI | ~88% | Access is near-universal |
 | Coding benchmark cleared in a year | ~60% → nearly all | Capability is accelerating |
 | Organisations reporting real value | a minority | Value, not access, is the scarce skill |
+
+: Three signals of where AI stood in 2026. {#tbl-signals-2026}
 
 Sources: [Stanford HAI, 2026](https://hai.stanford.edu/ai-index/2026-ai-index-report); [Benaich, *State of AI report 2025*, 2025](https://www.stateof.ai/). Models can do far more than they could a year ago, but what they can do is patchier than ever. Getting an answer is now easy. Deciding whether the answer is any good is harder.
 
@@ -60,6 +64,8 @@ flowchart TB
     R -.->|competence, not comprehension| V[Verify the output]
 ```
 
+: How next-token prediction gives rise to real reasoning. {#dia-prediction-reasoning}
+
 ## 1.4 From Chatbot to Agent Ecosystem
 
 The tools changed fast, and at each step the kind of work you could trust to them changed too. The story runs from a closed chat box to an ecosystem of agents that can take actions on your behalf.
@@ -72,6 +78,8 @@ timeline
     Agent : A model in a loop — plan, act, observe, retry — until a goal is met
     Ecosystem : Many kinds of agent, from simple assistants to governed enterprise platforms
 ```
+
+: The climb from chatbot to tool use to agent to ecosystem. {#dia-chatbot-agent}
 
 The first mass-market chatbots were articulate but frozen: they answered only from what they had absorbed in training, with no memory of you, no live information, and no way to act in the world. The first real change was giving the model hands — a way to recognise that a task needs a tool and to emit a structured call for it, so it could search, run code, or query data instead of guessing. The predictor of text became something that could also take actions and read back the result.
 
@@ -92,6 +100,8 @@ flowchart TB
     C -->|yes| D[Done]
 ```
 
+: The agent loop: plan, act, observe, and retry until the goal is met. {#dia-agent-loop}
+
 Today, that single loop has fanned out into a whole ecosystem. The same pattern scales from an assistant anyone can open in a browser to a governed platform running fleets of agents across an organisation; what changes along the way is how much you hand off, and how much machinery it takes to do so safely.
 
 | Tier | What it is | Autonomy | Your role |
@@ -102,6 +112,8 @@ Today, that single loop has fanned out into a whole ecosystem. The same pattern 
 | Personal agent | An always-on agent for one person — on your own machine or account, writing its own skills and building a model of your work | Runs continuously, for you | Delegate; check what it ships |
 | Multi-agent system | Agents coordinate; one delegates to another | Runs many tasks at once | Supervise a fleet |
 | Enterprise agentic platform | Fleets wired into an organisation's systems — async, governed, audited, with shared memory and evaluation | Runs continuously, at org scale | Set policy, audit outcomes |
+
+: The tiers of AI tool, from a single assistant to a governed enterprise platform. {#tbl-tiers}
 
 A *personal agent* works for one individual and answers to them, whereas an *enterprise agentic platform* runs fleets under central governance and audit. They share the round-the-clock habit but differ in scale, ownership, and control.
 
@@ -123,6 +135,8 @@ The Stanford Index makes the gap vivid. A model can win a gold medal at the Math
 | Pattern-rich code and refactors | Long-horizon plans without checkpoints |
 | Synthesis over provided context | Recall as context grows — *context rot*, the decay in accuracy as the window fills |
 
+: What a language model does reliably, and where it stays brittle. {#tbl-reliable-brittle}
+
 The brittleness is not anecdotal, and the research explains where it comes from. Huang and colleagues survey hundreds of studies and split hallucination along two axes worth holding apart. *Factuality* asks whether output matches the world; *faithfulness* asks whether it matches the input you gave it — a summary can be perfectly factual yet unfaithful by adding true claims you never supplied. They trace both to three stages: the *data*, with its gaps and bias; the *training*, which rewards fluent guessing over admitting ignorance; and *inference*, where sampling wanders. The unifying idea is the *knowledge boundary* — the edge of what a model has stored, past which it cannot tell what it knows from what it does not ([Huang et al., *A survey on hallucination in large language models: Principles, taxonomy, challenges, and open questions*, 2024](https://arxiv.org/abs/2311.05232)). The studies below all measure that boundary, each in a different way.
 
 ```mermaid
@@ -133,6 +147,8 @@ flowchart TB
     KB --> F1[Factuality — mismatch with the world]
     KB --> F2[Faithfulness — mismatch with your input]
 ```
+
+: The three roots of hallucination, meeting at the knowledge boundary. {#dia-hallucination}
 
 Prato and colleagues make it observable with a clean test. Train a model on synthetic documents, then ask it to recall *exactly* what it was given — no more, no less. Over-recall is fabrication, under-recall is omission, so hitting the right count proves the model knows its own scope. This self-knowledge is *scale-gated*: below a size threshold the count is near-random, and only past it does it come out right, the threshold set by architecture, not parameters alone ([Prato et al., *Do large language models know how much they know?*, 2025](https://arxiv.org/abs/2502.19573)). So self-knowledge is a property of the specific model, and small models are the worst at knowing their own limits.
 
@@ -147,6 +163,8 @@ Code shows the same split, between reading a program and predicting how it *runs
 | [Gu et al., 2026](https://arxiv.org/abs/2602.20122) | Recall vs how often a fact was seen | Accuracy doubles from rare to frequent; ~1% on unseen | Fresh and long-tail facts fail; retrieval can patch the gap |
 | [Bogomolov & Zharov, 2026](https://arxiv.org/abs/2606.27406) | Predicting how code runs | Best model's F1 0.842 (most far lower); profiler recall@5 under 0.2 | Fluent on structure, brittle on execution |
 | [N. F. Liu et al., 2023](https://arxiv.org/abs/2307.03172); [Hsieh et al., 2024](https://arxiv.org/abs/2406.16008) | Fact position in long context | U-shaped recall; the middle sags, +6–15 pts when calibrated | Put the facts that matter at the edges |
+
+: Five studies of the limits, and the lesson each one carries. {#tbl-limits-studies}
 
 A final limitation is subtler than any wrong fact: the model is built to *sound* right whether or not it is. Three mechanisms push it that way. First, the training text carries emotional charge — "differentiation" keeps company with *unique* and *opportunity*, "cost-cutting" with *race to the bottom* — and the model absorbs those associations as statistics about how we write. Anthropic's interpretability team can even read them off as internal "emotion vectors," organised like human affect along an axis from positive to negative; steering a model towards the positive end measurably increases its sycophancy ([Sofroniew et al., *Emotion concepts and their function in a large language model*, 2026](https://transformer-circuits.pub/2026/emotions/index.html)). Second, reinforcement learning from human feedback tunes the model towards answers raters like. Raters can always tell whether a reply sounds confident, but not always whether it is correct, so fluency gets rewarded over accuracy ([Casper et al., *Open problems and fundamental limitations of reinforcement learning from human feedback*, 2023](https://arxiv.org/abs/2307.15217)). Third, generation adds to the bias one token at a time: a sentence that opens "the company should pursue a bold…" rolls on to "differentiation strategy" by momentum alone. The result is a voice that sounds confident and agreeable no matter what it is saying. Treat that confidence as a habit of style; it tells you nothing about whether the answer is right.
 
@@ -167,7 +185,7 @@ I read Ed Zitron — the tech critic whose newsletter [Where's Your Ed At](https
 
 So when a global client hired me to write their AI strategy, I expected the deliverable to be a cautionary tale: be realistic, resist the hype, install guardrails, avoid the traps. Over the last several months, I realised I was the one who was naive. The AI landscape had been transformed. Claude Desktop with Cowork, Microsoft 365 Copilot with WorkIQ, and Google's Gemini Spark turned the ordinary instruments of knowledge work — documents, spreadsheets, inboxes, slide decks — into things an agent could draft, revise, and act on; Claude Code and GitHub Copilot did the same for software, crossing from clever autocomplete to systems that plan, edit across a whole codebase, and run their own work. Personal agents like OpenClaw and Hermes Agent pushed that capability out of the labs and into anyone's hands. Using them in earnest changed my mind: the productivity gains are now genuinely real.
 
-![What turned me from sceptic to practitioner was building real things and watching them work.](../images/illustrations/creative-designer.svg)
+![What turned me from sceptic to practitioner was building real things and watching them work.](../images/illustrations/creative-designer.svg){#fig-sceptic-practitioner}
 
 Creating software using AI has truly arrived. I managed to refactor and clean every line of code I have ever written (not a lot, since my career has never been in software development) and all my projects now feature gleaming, shiny, clean code. I have finished dozens of AI-assisted projects without writing a line of code by hand — reading the diffs that mattered and verifying that the software met expectations, but leaving the typing to the agent. I have come to believe I will rarely write code by hand again.
 
@@ -201,6 +219,8 @@ flowchart TB
     classDef loop fill:#eef,stroke:#88a
     class B,C,D loop
 ```
+
+: The working loop: intent, context, a response, and refinement. {#dia-working-loop}
 
 What you get out of the model depends far more on running that loop than on the wording of any single message. The model rarely gets there on the first pass, and it cannot read intentions you never stated. Your half of the work is to say clearly *what* you want and how you will know it is right. Leave the *how* to the model; filling in plausible detail you would never have thought to specify is what it is best at. Start with one clear ask and add the next only once you have read what came back. That same loop is the right picture for *agent*, a word you will meet constantly.
 

@@ -8,7 +8,7 @@ I describe the pipeline because it is this chapter in miniature. Every step of i
 
 Long before a model reaches your chat window, decisions were made about it that you never see. What is it allowed to become, and who checks? Whose writing did it learn from, and whose voice does it therefore treat as normal? And what can it be made to repeat back out of its training data? These are questions about the artefact itself, and they come before any question of who uses it or for what.
 
-![Governing the model means asking what it may become, and who verifies that before it ships.](../images/illustrations/certification.svg)
+![Governing the model means asking what it may become, and who verifies that before it ships.](../images/illustrations/certification.svg){#fig-model-governance}
 
 ### 5.1.1 Safety Frameworks and Evaluations
 
@@ -25,6 +25,8 @@ The three share a shape; laid side by side:
 | Anthropic | Responsible Scaling Policy (2023–, v3) | AI Safety Levels (ASL) | Safeguards switch on at each level — ASL-3 activated for real in May 2025 |
 | OpenAI | Preparedness Framework (v2) | *High* and *Critical* capability | *High* gates deployment; *Critical* gates development itself |
 | Google DeepMind | Frontier Safety Framework (v3) | Critical capability levels, with early-warning alerts | Release gated on an accepted written safety case |
+
+: The three frontier-lab safety frameworks, compared. {#tbl-safety-frameworks}
 
 What do these evaluations actually test? DeepMind published its suite, and the categories are worth reading slowly: persuasion and deception (can the model talk a person into something against their interest); cyber-offence (can it find and exploit vulnerabilities); self-proliferation (could it acquire resources and copies of itself); and self-reasoning (does it understand its own situation well enough to work around its constraints) ([Phuong et al., *Evaluating frontier models for dangerous capabilities*, 2024](https://arxiv.org/abs/2403.13793)). Run against an early Gemini, the verdict was "no evidence of strong dangerous capabilities" — but "early warning signs". That is exactly the report you want from an early-warning system: nothing burning, alarms wired, and a stated goal of building a rigorous science of these tests before the models that need them arrive.
 
@@ -71,6 +73,8 @@ flowchart TB
     U --> H --> L --> M
 ```
 
+: The EU AI Act as a pyramid of risk. {#dia-eu-pyramid}
+
 None of it arrived overnight. The Act entered into force in August 2024, the bans and an AI-literacy duty bit in February 2025, the general-purpose-model rules in August 2025, and the bulk of the high-risk regime lands in August 2026.
 
 Threaded through the high-risk tier is the article this book has been arguing for all along. Article 14 requires high-risk systems to be built so that a named person can effectively oversee them — understand the system's limits, monitor its operation, resist the pull to over-rely on plausible output, which the Act names *automation bias*, and decide, in any given case, to override the system or not use it at all ([European Union, *Article 14: Human oversight*, 2024a](https://artificialintelligenceact.eu/article/14/)). Article 14 turns that argument into law: oversight is compulsory however confident you feel, and "the model did it" will not work as a defence.
@@ -91,6 +95,8 @@ Closer to home for me, Australia has not legislated yet, and its proposal shows 
 | United States | No federal law; state acts (Colorado SB24-205; California SB 53) | Patchwork, state-led |
 | Australia | Proposed mandatory guardrails; voluntary AI Safety Standard (2024) | Principles-based, still in consultation |
 
+: How five jurisdictions are regulating AI. {#tbl-jurisdictions}
+
 ### 5.2.4 Counting the Cost
 
 None of this is free, and the honest case for regulation has to admit what it costs. A peer-reviewed analysis of the EU Act — written from health care, the most regulated corner of the field — put the compliance burden at roughly €29,000 per AI system per year, with certification adding €16,000 to €23,000 more per unit: pocket change for a tech giant, a real wall for a startup or a hospital lab ([Bignami et al., *Balancing innovation and control: The European Union AI Act in an era of global uncertainty*, 2025](https://ai.jmir.org/2025/1/e75527)). The worry follows directly: rules priced for the biggest players can push small innovators out or away, and a region that regulates hardest may watch the work move elsewhere. What is useful about this particular critique is that it does not conclude "therefore, no rules." It argues for calibration: *regulatory sandboxes*, supervised spaces where a new system can be trialled under a regulator's eye before full compliance falls due; investment in AI literacy so the duties can actually be met rather than merely imposed; and international coordination so a company is not audited five different ways for the same model.
@@ -110,6 +116,8 @@ The most widely used starting point is not ISO at all but NIST, the US standards
 | Measure | How do we quantify those risks? |
 | Manage | How do we mitigate and monitor them? |
 
+: The four functions of the NIST AI risk-management framework. {#tbl-nist}
+
 For generative AI specifically, NIST added a companion *Generative AI Profile*, written under the 2023 US executive order on AI. It names twelve risks that are distinctive to generative systems — confabulation (the framework's word for hallucination), eased access to dangerous information, data privacy, harmful bias, information-integrity attacks, the human-AI configuration problems of Chapter 4 — and lays out more than two hundred concrete actions against them, each mapped to one of the four functions ([NIST, *Artificial intelligence risk management framework: Generative artificial intelligence profile*, 2024](https://doi.org/10.6028/NIST.AI.600-1)). If you need to turn "we should be careful with generative AI" into an actual work plan, this is the document that does it.
 
 A framework like NIST's is voluntary guidance. Alongside it sits the ISO/IEC family — international standards an organisation can be formally audited against — and they stack in a deliberate order. At the base is vocabulary: ISO/IEC 22989 defines the terms — AI system, model, dataset, the human-oversight roles — so that legal, engineering, and a vendor mean the same thing by them ([ISO/IEC, *Artificial intelligence — Concepts and terminology*, 2022](https://www.iso.org/standard/74296.html)). When they do not, governance fails quietly: two teams can both follow "the policy" while meaning different things by every word in it. On the vocabulary sits ISO/IEC 23894, guidance on AI risk management built directly on the established ISO 31000 risk discipline, so AI risk is handled with the same machinery as any other enterprise risk rather than a bespoke one ([ISO/IEC, *Artificial intelligence — Guidance on risk management*, 2023a](https://www.iso.org/standard/77304.html)). And the capstone is ISO/IEC 42001, the first standard an organisation can be *certified* against for an AI management system — the "how do we run this responsibly," in the same Plan-Do-Check-Act shape as the information-security standard ISO 27001 that many firms already hold ([ISO/IEC, *Artificial intelligence — Management system*, 2023b](https://www.iso.org/standard/81230.html)).
@@ -123,6 +131,8 @@ The family has kept growing, and the two newest members close real gaps. ISO/IEC
 | ISO/IEC 42001 (2023) | The certifiable AI management system |
 | ISO/IEC 42005 (2025) | A method for AI impact assessment |
 | ISO/IEC 42006 (2025) | The rules for the certifiers themselves |
+
+: The ISO/IEC family of AI standards, layer by layer. {#tbl-iso}
 
 Why does any of this matter to someone who is not a compliance officer? Because of a specific legal hinge. Under the European system, complying with a *harmonised standard* — one formally listed in the EU's Official Journal — earns a provider a *presumption of conformity* with the law: the burden of proof flips, and it is the regulator who must show you are out of line ([European Commission, *Understanding the standardisation of the AI Act*, 2026](https://digital-strategy.ec.europa.eu/en/faqs/understanding-standardisation-ai-act)). That hinge is why the real regulatory detail is being written not in parliaments but in technical committees: the Commission has tasked the European standards bodies CEN and CENELEC, through their joint committee JTC 21, with producing the AI standards that will carry the presumption ([CEN-CENELEC, *Artificial intelligence (JTC 21)*, n.d.](https://www.cencenelec.eu/areas-of-work/cen-cenelec-topics/artificial-intelligence/)). It is also why the fit is imperfect: the Commission has noted that ISO/IEC 42001, for one, is not aligned with the quality-management system the Act requires, so Europe is writing bespoke standards where the international ones fall short. Holding a certificate and satisfying a law are related, but they are not the same thing, and the gap between them is being closed standard by standard.
 
@@ -144,7 +154,7 @@ The governance response is to protect disagreement deliberately. Reserve genuine
 
 The easiest way to mismanage AI is to assume that today's prices are the real ones. Producing things — a report, a financial model, an analysis, a working application — has fallen close to free, so we now make them simply because we can. When creation costs almost nothing, it is tempting to treat the result as disposable: software you can regenerate or refactor at will, a deck you can rebuild from a prompt, an analysis you can re-run tomorrow. But the artefact is only the cheap part, and the bill is deferred, not escaped. Per-token inference is genuinely cheap and getting cheaper; the exposure is that the all-in economics are capital-funded and negative. OpenAI reportedly lost around five billion dollars in 2024 on roughly a ten-per-cent gross margin, and its own chief executive said even the two-hundred-dollar tier loses money because "people use it much more than we expected." Capital-funded prices do not hold still: in mid-2025 Cursor turned a flat plan into metered credits because newer models spent more tokens per request than the price could carry ([Ahuja, *The trap spec-driven development is setting*, 2026e](https://howtoarchitect.io/48b2ad4f9cdc?sk=e6bd922772cb6798056d597886ec108d)). The question for a leader is what the organisation will have become by the time these tools cost what they truly cost to provide.
 
-![Creation feels free, but the ledger still runs — the bill is deferred, not escaped.](../images/illustrations/budgeting.svg)
+![Creation feels free, but the ledger still runs — the bill is deferred, not escaped.](../images/illustrations/budgeting.svg){#fig-deferred-ledger}
 
 Kapil Viren Ahuja names three debts that accrue while the meter is cheap and come due on enterprises, not hobbyists ([Ahuja, 2026e](https://howtoarchitect.io/48b2ad4f9cdc?sk=e6bd922772cb6798056d597886ec108d)):
 
@@ -153,6 +163,8 @@ Kapil Viren Ahuja names three debts that accrue while the meter is cheap and com
 | Skill | Judgement that is never exercised atrophies | The quarter a hard build-or-don't-build call finally matters |
 | Dependence | Workflows assume generation is free and reliable | When the tool degrades or reprices under you |
 | Carry | Anything built without need becomes inventory — code, models, decks, analyses | Maintained, secured, and repriced for its whole life |
+
+: Three debts that accrue while the tools still look cheap. {#tbl-debts}
 
 Carry is the debt people most want to wave away. If a system can be regenerated from a prompt, the reasoning goes, it is disposable — recreate it, refactor it, throw it away and build again. But disposability is mostly an illusion. Whatever ships still has to be understood, secured, kept correct, and trusted by the people who depend on it, and none of that is regenerated along with the code. The same holds for knowledge work. An analysis nobody validated is really just unfinished work: before anyone can rely on it, somebody still has to check it, maintain it, and answer for it — and none of that got cheaper.
 
@@ -200,6 +212,8 @@ flowchart TB
     class X danger
 ```
 
+: An agent inside a trust boundary: its own identity, scoped tools, an audit trail. {#dia-agent-identity}
+
 The OWASP Top 10 for LLM applications names the attack surface concretely, and each entry maps to a control:
 
 | Risk | Control |
@@ -209,6 +223,8 @@ The OWASP Top 10 for LLM applications names the attack surface concretely, and e
 | Excessive agency | Least-privilege, scoped tools, human checkpoints |
 | Sensitive-info disclosure | Redaction; per-tenant isolation |
 | Overreliance | Verification + reviewer judgement in the loop |
+
+: The OWASP Top 10 for LLM applications, each risk with its control. {#tbl-owasp}
 
 Source: [OWASP, *OWASP top 10 for large language model applications*, n.d.](https://owasp.org/www-project-top-10-for-large-language-model-applications/). Red-teaming under documented rules of engagement turns these from a checklist into a practice.
 
@@ -250,7 +266,7 @@ The configuration layer that steers agents is itself an unmanaged supply chain �
 
 Pull the threads together and they are one duty. Securing an agent, keeping it fair, protecting the data it touches, owning what it says, guarding against convergence, pricing the deferred and environmental bills, governing access — each is a way of keeping a human answerable for what the machine does. The failure mode is the same throughout: capability arrives faster than responsibility for it, and the gap between the two is where organisations get hurt.
 
-![Whatever the frameworks say, a person with a name reviews the work and answers for it.](../images/illustrations/approve.svg)
+![Whatever the frameworks say, a person with a name reviews the work and answers for it.](../images/illustrations/approve.svg){#fig-individual}
 
 And every piece of that machinery, however organisational it sounds, lands finally on a person. The oversight the EU Act requires (§5.2.2) is assigned to someone with a name. The service account that replaced a borrowed login (§5.5.1) exists so that what the agent did and what you did can be told apart. The judgement that atrophies when it is never exercised (§5.4.2) is yours, and so is the view a co-writing tool can move without your noticing (§5.4.1). Whatever your organisation's frameworks say, the working question each day is personal: do I understand this system well enough to answer for what it just did in my name?
 
