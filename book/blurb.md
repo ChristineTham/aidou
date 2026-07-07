@@ -11,3 +11,5 @@ Some AI guides and online articles focus on tools, prompts, and techniques. Thos
 - **Augmentation, not replacement** — AI transforms and amplifies human judgement and creativity rather than replacing them.
 
 Written by a consultant and educator, grounded throughout in primary sources and peer-reviewed research. Each chapter states the concept, then shows how it works with real examples. It is for thoughtful professionals (leaders, consultants, analysts, designers and builders). Read it as a practice guide, not a reference manual or textbook.
+
+With twelve beautiful illustrations by Katerina Limpitsouni ([unDraw](https://undraw.co)), recoloured to the book's palette.

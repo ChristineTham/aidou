@@ -49,6 +49,9 @@
     toolchain that builds the website, PDF, and ePub are on GitHub: \
     #link("https://github.com/ChristineTham/aidou")[github.com/ChristineTham/aidou]
     #v(1.1em)
+    Twelve beautiful illustrations by Katerina Limpitsouni \
+    (#link("https://undraw.co")[unDraw · undraw.co]), recoloured to the book's palette.
+    #v(1.1em)
     First published 2026. \
     © 2026 Chris Tham · Hello Tham (#link("https://christham.net")[christham.net])
   ],
