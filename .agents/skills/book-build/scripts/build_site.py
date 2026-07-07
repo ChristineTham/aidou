@@ -280,6 +280,11 @@ def build(book_dir, out_dir):
         body = convert_alerts(body)
         body = mermaid_cells(body, mermaid_directive)
         body = [strip_section_number(l) for l in body]
+        # Source image links are written relative to the repo (../images/…) so a
+        # raw Markdown preview of book/*.md resolves them; the build stages copies
+        # into the Quarto dir (copy_assets), so strip the prefix to the in-project
+        # path (projects/…, illustrations/…) the .qmd and _book output expect.
+        body = [l.replace("../images/", "") for l in body]
         body = wrap_references(body)
         text = "\n".join(body).lstrip("\n")
         if numbered:

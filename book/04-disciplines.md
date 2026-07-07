@@ -158,7 +158,7 @@ Repetition is the sharpest of those gaps, and one measure makes it concrete. The
 
 The third set is where the two meet: a person and a fleet of agents working as one system. This is the hardest part to get right, because what you are engineering here is a working relationship. A survey of the first sixty-one deployed human–agent systems found they are built from the same five parts every time: an environment the agent acts in, a profile of who it works for, a channel for human feedback, an orchestration layer, and a way to communicate. That is a useful checklist to hold onto, because the failures in this section are almost always a weak version of one of those five parts ([Zou et al., *LLM-based human-agent collaboration and interaction systems: A survey*, 2025](https://arxiv.org/abs/2505.00753)).
 
-![Directing a fleet is a control problem: the human sets the work and reviews what each agent sends back.](illustrations/control-panel.svg)
+![Directing a fleet is a control problem: the human sets the work and reviews what each agent sends back.](../images/illustrations/control-panel.svg)
 
 ### 4.3.1 Division of Labour
 

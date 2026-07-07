@@ -164,9 +164,12 @@ confirm it reads in-palette with nothing washed out or left off-palette.
 ### 6. Save
 
 Write the recoloured SVG to `images/illustrations/<slug>.svg`. The build copies `images/illustrations/*` into
-the site — `build_site.py`'s `copy_assets` handles it, mirroring `images/projects/*` — so in the book it is
-referenced as `illustrations/<slug>.svg`, like `projects/<file>.png`. Keep a one-line provenance note (source
-CDN URL + the accent map used) so it can be re-fetched or re-toned; this is provenance, not a citation.
+the site — `build_site.py`'s `copy_assets` handles it, mirroring `images/projects/*`. Reference it in the book
+**relative to the real file** so a raw Markdown preview (e.g. VS Code) renders it: `../images/illustrations/<slug>.svg`
+(the chapter files are in `book/`, so `../images/…` points at the source). `build_site.py` strips the `../images/`
+prefix when it generates the `.qmd`, so the built site resolves the staged in-project copy — you get both a
+working preview and a working build. Keep a one-line provenance note (source CDN URL + the accent map used) so
+it can be re-fetched or re-toned; this is provenance, not a citation.
 
 ### 7. Place it in the book — only if a section was named, and only where it helps
 
@@ -174,7 +177,7 @@ Insert one Markdown figure in the house style, caption as a full sentence (see t
 in Chapter 3):
 
 ```markdown
-![A single agent working a task in a loop while a person reviews the result.](illustrations/<slug>.svg)
+![A single agent working a task in a loop while a person reviews the result.](../images/illustrations/<slug>.svg)
 ```
 
 Place it where it *earns its place* — a section opener, or beside the idea it depicts. One image per idea;

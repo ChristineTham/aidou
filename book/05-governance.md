@@ -8,7 +8,7 @@ I describe the pipeline because it is this chapter in miniature. Every step of i
 
 Long before a model reaches your chat window, decisions were made about it that you never see. What is it allowed to become, and who checks? Whose writing did it learn from, and whose voice does it therefore treat as normal? And what can it be made to repeat back out of its training data? These are questions about the artefact itself, and they come before any question of who uses it or for what.
 
-![Governing the model means asking what it may become, and who verifies that before it ships.](illustrations/certification.svg)
+![Governing the model means asking what it may become, and who verifies that before it ships.](../images/illustrations/certification.svg)
 
 ### 5.1.1 Safety Frameworks and Evaluations
 
@@ -248,7 +248,7 @@ The configuration layer that steers agents is itself an unmanaged supply chain �
 
 Pull the threads together and they are one duty. Securing an agent, keeping it fair, protecting the data it touches, owning what it says, guarding against convergence, pricing the deferred and environmental bills, governing access — each is a way of keeping a human answerable for what the machine does. The failure mode is the same throughout: capability arrives faster than responsibility for it, and the gap between the two is where organisations get hurt.
 
-![Whatever the frameworks say, a person with a name reviews the work and answers for it.](illustrations/approve.svg)
+![Whatever the frameworks say, a person with a name reviews the work and answers for it.](../images/illustrations/approve.svg)
 
 And every piece of that machinery, however organisational it sounds, lands finally on a person. The oversight the EU Act requires (§5.2.2) is assigned to someone with a name. The service account that replaced a borrowed login (§5.5.1) exists so that what the agent did and what you did can be told apart. The judgement that atrophies when it is never exercised (§5.4.2) is yours, and so is the view a co-writing tool can move without your noticing (§5.4.1). Whatever your organisation's frameworks say, the working question each day is personal: do I understand this system well enough to answer for what it just did in my name?
 

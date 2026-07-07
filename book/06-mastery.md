@@ -32,7 +32,7 @@ That is the recap, and it is the easy part of a retrospective. The harder part i
 
 Chapter 1 observed that we all draw on the same handful of frontier models, and every release narrows the gaps between them. When everyone holds the same tool, the difference between professionals has to live somewhere the tool is not. Three bodies of evidence, gathered over the course of writing this book, say where: in your expertise, in your judgement about when to trust the machine, and in the thinking you keep doing for yourself.
 
-![When everyone holds the same tool, the edge is the taste and expertise the tool cannot supply.](illustrations/creative-woman.svg)
+![When everyone holds the same tool, the edge is the taste and expertise the tool cannot supply.](../images/illustrations/creative-woman.svg)
 
 ### 6.2.1 The Human Edge
 
@@ -140,7 +140,7 @@ Measure value, not output. Counting features shipped feels good, and it quietly 
 
 A 道 has a shape to its learning, and the arts that end in 道 named it long before software did: *shuhari* — 守 *shu*, keep to the form; 破 *ha*, break from it; 離 *ri*, leave it behind and move freely ([Endō, *Shu-ha-ri*, 1998](https://da2el.wordpress.com/2018/06/20/shu-ha-ri-endo-seishiro-aikido-saku-dojocho/)). Read this book as its *shu*. Follow the forms closely at first — one clear ask at a time, intent kept apart from implementation, Markdown as the medium, verification at the boundaries, a human answerable for what ships. As your judgement grows and the tools shift beneath you, enter *ha*: bend the forms, drop the ones that stop fitting, keep what holds. In time comes *ri*, where the forms are instinct and you invent your own — which is only the promise of Chapter 1 come round again: learn the philosophy, and the methods become yours to invent.
 
-![A 道 is a path you keep walking: shuhari is its shape — keep the form, break it, then move freely.](illustrations/adventure-map.svg)
+![A 道 is a path you keep walking: shuhari is its shape — keep the form, break it, then move freely.](../images/illustrations/adventure-map.svg)
 
 The rest is yours to begin, and the first steps are small and specific. First, take one real task you already do and run it as a loop — draft, check, refine — instead of waiting on a perfect prompt. Second, start an LLM wiki: put the context you keep re-explaining into a few Markdown notes the model can draw on. Third, add one verification step at the boundary that matters most, and name the person answerable for what leaves it. Fourth, before you open a chat window on anything that counts, write your own view down first, so you can tell the model's confidence from your own. Fifth, keep a second model on the bench, and ask of everything you make: who is this for, and is it worth building?
 
