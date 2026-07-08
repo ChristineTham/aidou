@@ -104,16 +104,15 @@ flowchart TB
 
 Today, that single loop has fanned out into a whole ecosystem. The same pattern scales from an assistant anyone can open in a browser to a governed platform running fleets of agents across an organisation; what changes along the way is how much you hand off, and how much machinery it takes to do so safely.
 
-| Tier | What it is | Autonomy | Your role |
-| --- | --- | --- | --- |
-| Assistant | Answers from training and the context you supply | None — you drive | Ask, and judge each reply |
-| Tool-using assistant | Calls tools on request — search, code, files | Acts one step at a time | Approve each action |
-| Agent | Loops towards a goal and checks its own work | Runs a whole task | Set the goal, review the result |
-| Personal agent | An always-on agent for one person — on your own machine or account, writing its own skills and building a model of your work | Runs continuously, for you | Delegate; check what it ships |
-| Multi-agent system | Agents coordinate; one delegates to another | Runs many tasks at once | Supervise a fleet |
-| Enterprise agentic platform | Fleets wired into an organisation's systems — async, governed, audited, with shared memory and evaluation | Runs continuously, at org scale | Set policy, audit outcomes |
-
-: The tiers of AI tool, from a single assistant to a governed enterprise platform. {#tbl-tiers}
+> [!NOTE]
+> **The tiers of AI tool, from least to most autonomous.** Each step hands off more, and takes more machinery to do it safely.
+>
+> - An **assistant** answers from its training and the context you supply. It has no autonomy of its own — you drive, asking and judging each reply.
+> - A **tool-using assistant** calls tools on request — search, code, files — one step at a time, with you approving each action.
+> - An **agent** loops towards a goal and checks its own work, running a whole task while you set the goal and review the result.
+> - A **personal agent** is an always-on agent for one person, on your own machine or account, writing its own skills and building a model of your work. It runs continuously for you; you delegate, then check what it ships.
+> - A **multi-agent system** has several agents coordinating, one delegating to another, running many tasks at once while you supervise the fleet.
+> - An **enterprise agentic platform** wires fleets into an organisation's systems — async, governed, audited, with shared memory and evaluation. It runs continuously at organisation scale while you set policy and audit outcomes.
 
 A *personal agent* works for one individual and answers to them, whereas an *enterprise agentic platform* runs fleets under central governance and audit. They share the round-the-clock habit but differ in scale, ownership, and control.
 
