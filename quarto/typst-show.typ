@@ -23,6 +23,18 @@
   v(1.1em)
 }
 
+// Blockquotes: give the PDF the same styling as the web and ePub (a lupine left
+// rule, a warm tint, italic granite text) so quoted prompts read as quotes and
+// not as plain body paragraphs. orange-book ships no quote style of its own.
+#show quote.where(block: true): it => block(
+  width: 100%,
+  fill: c-warm,
+  radius: 2pt,
+  stroke: (left: 2.5pt + c-lupine),
+  inset: (left: 1em, right: 0.8em, y: 0.5em),
+  text(style: "italic", fill: c-granite-gray, it.body),
+)
+
 #set outline(title: none)
 #show outline: it => {
   if it.depth == 3 {
