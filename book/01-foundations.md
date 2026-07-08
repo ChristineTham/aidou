@@ -228,7 +228,7 @@ None of this is just my preference; the evidence points the same way. Human–AI
 
 ## 1.8 Principles to Carry Forward
 
-The rest of this book rests on a stance worth stating plainly: it teaches a way of working, not a kit of methods.
+The rest of this book rests on a set of principles worth stating plainly: they guide a way of working, not a kit of methods.
 
 My reason is pragmatic: tools become commodities — everyone soon has the same ones — and so, in time, do methods. A prompt is one model release from obsolete; a clever technique lasts a little longer before it too is overtaken. What lasts is the way you frame a problem, gather context, and verify a result. Once you have the way of working, you can invent the methods yourself.
 
