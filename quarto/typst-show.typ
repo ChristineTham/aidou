@@ -35,6 +35,22 @@
   text(style: "italic", fill: c-granite-gray, it.body),
 )
 
+// Tables: Rosely styling to match (and enliven) the web/ePub — a pink,
+// orchid-ruled header in bold, warm zebra body rows, heavenly-pink hairlines —
+// instead of orange-book's plain rules.
+#set table(
+  inset: (x: 0.6em, y: 0.45em),
+  stroke: (_, y) => (
+    left: 0.4pt + c-heavenly-pink,
+    right: 0.4pt + c-heavenly-pink,
+    top: 0.4pt + c-heavenly-pink,
+    bottom: if y == 0 { 1.5pt + c-radiant-orchid } else { 0.4pt + c-heavenly-pink },
+  ),
+  fill: (_, y) => if y == 0 { c-heavenly-pink } else if calc.even(y) { c-sugar-swizzle } else { white },
+)
+#show table.cell.where(y: 0): set text(weight: 700, fill: c-black-beauty)
+#show table: set text(size: 0.95em)
+
 #set outline(title: none)
 #show outline: it => {
   if it.depth == 3 {

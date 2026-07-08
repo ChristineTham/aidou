@@ -111,8 +111,8 @@ blockquote {
 
 // ---- Tables ----------------------------------------------------------------
 table { font-size: 0.95em; }
-thead th { background: $r-sugar-swizzle; border-bottom: 2px solid $r-radiant-orchid; }
-tbody tr:nth-child(even) { background: rgba($r-sugar-swizzle, .5); }
+thead th { background: $r-heavenly-pink; border-bottom: 2px solid $r-radiant-orchid; font-weight: 700; }
+tbody tr:nth-child(even) { background: $r-sugar-swizzle; }
 th, td { border-color: $r-heavenly-pink; }
 
 // ---- Code ------------------------------------------------------------------
