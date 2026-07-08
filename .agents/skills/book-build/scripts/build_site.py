@@ -74,6 +74,25 @@ def load_token_accents(out_dir):
     return {}
 
 
+def estimate_title_pt(text, avail_pt=335.0, base=30.0, floor=14.0):
+    """Approximate the font size (pt) at which `text` first fits one line in the
+    PDF's ~335pt text column, in Raleway ExtraBold. Rough per-glyph advances (a
+    CJK glyph is ~1em, capitals wider than lower-case, punctuation narrow); used
+    only to warn when a title would be forced small. Typst does the real fit."""
+    units = 0.0
+    for ch in text:
+        if ord(ch) > 0x2E80:
+            units += 1.0
+        elif ch in " iIl.,;:'!|()":
+            units += 0.32
+        elif ch.isupper():
+            units += 0.70
+        else:
+            units += 0.56
+    fit = avail_pt / units if units else base
+    return max(floor, min(base, fit))
+
+
 def pdf_title(title, number, slug):
     """A clean chapter/front-matter title for the PDF only.
 
@@ -86,12 +105,14 @@ def pdf_title(title, number, slug):
     if number is not None:
         acc = PDF_ACCENT.get(slug, "#B565A7")
         inner = f'#text(fill: rgb("{acc}"))[{number}]#h(0.5em)' + ink
+        est = estimate_title_pt(f"{number} {title}")
+        if est < 20:
+            print(f"WARNING: PDF chapter title '{title}' only fits one line at "
+                  f"~{est:.0f}pt (body is ~10.5pt) — consider shortening it.")
     else:
         inner = ink
-    return ("```{=typst}\n"
-            '#block(below: 0.55em, text(font: "Raleway", weight: 800, '
-            f"size: 30pt)[{inner}])\n"
-            "```\n\n")
+    # fit-title (typst-fonts.typ) shrinks the title until it fits one line.
+    return "```{=typst}\n" f"#block(below: 0.55em, fit-title[{inner}])\n" "```\n\n"
 
 
 def banner_markdown(slug):
@@ -99,13 +120,15 @@ def banner_markdown(slug):
 
     Chapters get their kanji-medallion tide; the preface gets the plain
     (no-kanji) front-matter tide."""
+    # A PDF-only gap so the first paragraph doesn't sit tight under the banner.
+    gap = "```{=typst}\n#v(1.1em)\n```\n\n"
     if slug in BANNER_KANJI:
         alt = (f"Decorative chapter banner: the kanji {BANNER_KANJI[slug]} on a "
                "medallion over a seigaiha wave pattern")
-        return f'![](chapter-art/{slug}.png){{.chapter-banner fig-alt="{alt}"}}\n\n'
+        return f'![](chapter-art/{slug}.png){{.chapter-banner fig-alt="{alt}"}}\n\n' + gap
     if slug == "preface":
         alt = "Decorative banner: a seigaiha wave pattern"
-        return f'![](chapter-art/frontmatter.png){{.chapter-banner fig-alt="{alt}"}}\n\n'
+        return f'![](chapter-art/frontmatter.png){{.chapter-banner fig-alt="{alt}"}}\n\n' + gap
     return ""
 
 
