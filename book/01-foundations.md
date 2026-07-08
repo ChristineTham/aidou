@@ -228,11 +228,11 @@ None of this is just my preference; the evidence points the same way. Human–AI
 
 ## 1.8 Principles to Carry Forward
 
-The rest of this book rests on a set of principles worth stating plainly: they guide a way of working, not a kit of methods.
+The rest of this book rests on a set of principles worth stating plainly: they guide a way of working, not a bag of tips and techniques.
 
-My reason is pragmatic: tools become commodities — everyone soon has the same ones — and so, in time, do methods. A prompt is one model release from obsolete; a clever technique lasts a little longer before it too is overtaken. What lasts is the way you frame a problem, gather context, and verify a result. Once you have the way of working, you can invent the methods yourself.
+My reason is pragmatic: tools become commodities — everyone soon has the same ones — so, follow a structured method. A prompt is one model release from obsolete; a clever technique lasts a little longer before it too is overtaken. What lasts is the way you frame a problem, gather context, and verify a result. Once you have the way of working, you can invent the techniques yourself.
 
-Here are the claims this chapter has made, gathered up to carry forward.
+Here are the principles in this chapter, gathered up to carry forward.
 
 - **Treat it as a loop, not an oracle.** Frame each task as a goal, the context it needs, and a check, then iterate — change one thing at a time, read what comes back, and let the approach evolve rather than demanding the finished answer in a single leap. The quality comes from running the loop, not from any one message, so start simple and add only what the last round showed was missing; the same instinct scales up, growing a throwaway prompt into a reusable skill and then a shared tool (Chapter 2). An agent is just a model running tools in that same loop, so you stay responsible for what it ships.
 - **Say what, not how.** Give the model your *intent* — the goal and the checks that define success — and leave the implementation to it; choosing pattern-rich detail you would never have thought to name is the thing it is genuinely good at, and over-specifying the *how* fights that strength. Separating what you want — and how you will know it is right — from how it is built is the discipline the software chapters sharpen into a method called Intent, Context, Expectations (Chapter 3), where those checks do the deciding.
