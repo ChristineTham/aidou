@@ -106,9 +106,9 @@ def pdf_title(title, number, slug):
         acc = PDF_ACCENT.get(slug, "#B565A7")
         inner = f'#text(fill: rgb("{acc}"))[{number}]#h(0.5em)' + ink
         est = estimate_title_pt(f"{number} {title}")
-        if est < 20:
-            print(f"WARNING: PDF chapter title '{title}' only fits one line at "
-                  f"~{est:.0f}pt (body is ~10.5pt) — consider shortening it.")
+        if est < 22:
+            print(f"note: PDF chapter title '{title}' wraps to two lines "
+                  "(held at the 22pt floor rather than shrinking further).")
     else:
         inner = ink
     # fit-title (typst-fonts.typ) shrinks the title until it fits one line.

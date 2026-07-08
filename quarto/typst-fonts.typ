@@ -2,10 +2,10 @@
 // injected through the body as {=typst} spans and renders them via #make-index().
 #import "@preview/in-dexter:0.7.2": *
 
-// Fit a chapter title to a single line: start at `base` and shrink until it fits
-// the text column, down to `floor`. Long titles in wide Raleway ExtraBold can be
-// forced small — build_site.py prints an approximate warning when they are.
-#let fit-title(body, base: 30pt, floor: 14pt) = context layout(size => {
+// Fit a chapter title: start at `base` and shrink only until it fits the text
+// column OR reaches `floor`; a title too long to fit at `floor` wraps to two
+// lines rather than shrinking further, so titles stay bold and legible.
+#let fit-title(body, base: 30pt, floor: 22pt) = context layout(size => {
   let s = base
   while s > floor and measure(text(font: "Raleway", weight: 800, size: s, body)).width > size.width {
     s = s - 0.5pt
