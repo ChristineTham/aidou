@@ -64,35 +64,33 @@ Around that faithful core grew a modern skin and additional features I hinted at
 
 ### 3.1.3 VantageMap — a platform, vibe-coded across a dozen phases
 
-*VantageMap* is the most ambitious: an open-source platform for business architects and strategy officers to model capabilities, value streams, and outcomes — the kind of system I would once have costed as a team's work for a quarter ([vantagemap](https://github.com/ChristineTham/vantagemap)). It runs on Next.js and React over a Postgres database of twenty-two tables (reached through the Drizzle ORM — the layer that translates between the code and the database), with role-based access, REST and GraphQL APIs (the interfaces other programs use to call it), full-text search, webhooks that notify other systems of changes, and thirteen interlinked views, backed by some five hundred tests.
+*VantageMap* is the most ambitious: an open-source platform for business architects and strategy officers to model capabilities, value streams, and outcomes — the kind of system that once would have taken a team months to build ([vantagemap](https://github.com/ChristineTham/vantagemap)). It runs on Next.js and React over a Postgres database of twenty-two tables (reached through the Drizzle ORM — the layer that translates between the code and the database), with role-based access, REST and GraphQL APIs (the interfaces other programs use to call it), full-text search, webhooks that notify other systems of changes, and thirteen interlinked views, backed by some five hundred tests.
 
-It was built almost entirely by *vibe coding* — described, not specified — across a dozen numbered phases, and it is the clearest case of the agent owning the architecture. I never chose the database layer, nor the shape of the twenty-two tables, nor the division of work between REST and GraphQL; those were answers to constraints about who may see what and how quickly the system has to respond. No master specification held it together over the months. What did was a configuration file and a folder of reusable skills — the *harness*, in the language of the next section — together with the discipline of reading the diffs that mattered.
+It was built almost entirely by *vibe coding* — described, not specified — across a dozen numbered phases, and it is the clearest case of the agent owning the architecture. I never chose the database layer, nor the shape of the twenty-two tables, nor the division of work between REST and GraphQL; those were answers to constraints about who may see what and how quickly the system has to respond. No master specification was created at the beginning - but a set of intent documents were defined and used to create implementation plans. In addition, a configuration file and a folder of reusable skills — the *harness*, in the language of the next section — together with the discipline of reading the diffs guided the entire implementation.
 
 Lay the three projects side by side and the pattern is hard to miss. I supplied a short statement of what I wanted, and it barely changed over the months. Everything large and technical came from the agent.
 
-| Project | One-sentence intent | Constraints I gave | Architecture the agent chose | The checks that gated it |
-| --- | --- | --- | --- | --- |
-| [*rogoweb*](https://github.com/ChristineTham/rogoweb) | port Rogue and Rogomatic to run in the browser | Original C keeps working; runs entirely in the browser | WebAssembly via Emscripten, `emcurses`, dual workers, `SharedArrayBuffer` ring buffer, shared-memory telemetry, genetic self-play with parallel offline pretraining | The bot still finishes a game; win-rate holds across a batch |
-| [*adventure*](https://github.com/ChristineTham/adventure) | port Colossal Cave to a modern Typescript web app | Faithful to the original data; Australian English throughout | TypeScript on Next.js 16 / React 19, YAML parser, Zustand state machine, AI-generated artwork, build-time metro-map (libavoid), one-click auto-solve | Full type coverage; tests and linter green; output-for-output parity with the original |
-| [*VantageMap*](https://github.com/ChristineTham/vantagemap) | Give business architects one tool to model strategy | Who may see what; how fast it must respond | Next.js and React, Postgres with twenty-two tables, Drizzle, REST and GraphQL, thirteen views | Some five hundred tests |
-
-: The three projects: a sentence of intent, and what the agent built from it. {#tbl-three-projects}
+> [!NOTE]
+> **The three projects: a sentence of intent, and what the agent built from it.**
+>
+> - [***rogoweb***](https://github.com/ChristineTham/rogoweb) — intent: *port Rogue and Rogomatic to run in the browser*. My constraints were that the original C keep working and everything run in the browser; the check was that the bot still finishes a game and holds its win-rate across a batch. The agent's architecture: WebAssembly via Emscripten, `emcurses`, dual workers, a `SharedArrayBuffer` ring buffer, shared-memory telemetry, and genetic self-play with parallel offline pretraining.
+> - [***adventure***](https://github.com/ChristineTham/adventure) — intent: *port Colossal Cave to a modern TypeScript web app*. Constraints: faithful to the original data, Australian English throughout; checks: full type coverage, tests and linter green, and output-for-output parity with the original. The agent chose TypeScript on Next.js 16 / React 19, a YAML parser, a Zustand state machine, AI-generated artwork, a build-time metro-map (libavoid), and one-click auto-solve.
+> - [***VantageMap***](https://github.com/ChristineTham/vantagemap) — intent: *give business architects one tool to model strategy*. The constraints were who may see what and how fast it must respond; the check was some five hundred tests. The agent chose Next.js and React, Postgres with twenty-two tables, Drizzle, REST and GraphQL, and thirteen views.
 
 ## 3.2 The Modern AI Dev Stack
 
-The interesting work has moved up the stack. Teams used to compare models; now they compete on the layers above, because every team can draw on the same models.
+The interesting work has moved up the stack. Competing coding tools used to focus on models; now they compete on the layers above, and increasingly tools support multiple models.
 
 None of this arrived as theory. The coding tools climbed rung by rung, and each rung changed what you could safely hand off, moving you from typing each line to directing a fleet.
 
-| Rung | Emblematic tools | What it did | Your role |
-| --- | --- | --- | --- |
-| Autocomplete | Tabnine (2018), GitHub Copilot (2021) | Finished the line, then drafted whole function bodies from a name or comment | Wrote the rest; accepted line by line |
-| Chat in the editor | Copilot Chat (2023) | Explained code, proposed refactors, diagnosed failures on request | Drove; asked and judged |
-| Agentic editor | Cursor (2023), aider | Searched the whole codebase, edited many files, ran commands from a plain-language ask | Reviewed the diff |
-| Terminal & async agent | Claude Code, Codex CLI, Gemini CLI (2025); Copilot coding agent | Planned, edited, ran tests, iterated; some opened a pull request from a cloud workspace | Set goals; reviewed results |
-| Agent fleets | Cursor 2.0, Google Antigravity 2.0 | Ran several agents in parallel across a codebase | Supervised from above |
-
-: How coding tools climbed from autocomplete to agent fleets. {#tbl-coding-rungs}
+> [!NOTE]
+> **How coding tools climbed from autocomplete to agent fleets.**
+>
+> - **Autocomplete** (Tabnine, 2018; GitHub Copilot, 2021) finished the line, then drafted whole function bodies from a name or comment — you wrote the rest, accepting line by line.
+> - **Chat in the editor** (Copilot Chat, 2023) explained code, proposed refactors, and diagnosed failures on request — you drove, asking and judging.
+> - **The agentic editor** (Cursor, 2023; aider) searched the whole codebase, edited many files, and ran commands from a plain-language ask — you reviewed the diff.
+> - **Terminal and async agents** (Claude Code, Codex CLI, Gemini CLI, 2025; Copilot coding agent) planned, edited, ran tests, and iterated, some opening a pull request from a cloud workspace — you set goals and reviewed results.
+> - **Agent fleets** (Cursor 2.0, Google Antigravity 2.0) run several agents in parallel across a codebase — you supervise from above.
 
 Sources: [Tabnine, *Tabnine*, n.d.](https://www.tabnine.com); [GitHub, *Introducing GitHub Copilot: AI pair programmer*, 2021](https://github.blog/2021-06-29-introducing-github-copilot-ai-pair-programmer/); [GitHub, *GitHub Copilot November 30th update*, 2023](https://github.blog/changelog/2023-11-30-github-copilot-november-30th-update/); [Cursor, *Cursor*, n.d.](https://cursor.com); [aider, *aider*, n.d.](https://aider.chat/); [Anthropic, *Claude Code*, 2025a](https://claude.com/product/claude-code); [GitHub, *GitHub Copilot: The agent awakens*, 2025b](https://github.blog/news-insights/product-news/github-copilot-the-agent-awakens/); [GitHub, *GitHub Copilot: Meet the new coding agent*, 2025a](https://github.blog/news-insights/product-news/github-copilot-meet-the-new-coding-agent/); [Google, *Building the agentic future: Developer highlights from I/O 2026*, 2026](https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-developer-highlights/).
 
@@ -102,7 +100,7 @@ By 2026 the editor itself is no longer the centre of gravity: with capable model
 > A **harness** is the runtime wrapped around a model that turns it into an agent: it supplies tools, manages the loop, retries failures, and isolates execution. A **meta-harness** orchestrates several harnesses. **Memory** is state kept outside the *context window* (the span of text a model can consider at once); an **eval** is an automated check that a result meets its contract.
 
 ```mermaid
-flowchart TD
+flowchart TB
     P["Product: UI + economics"] --> WF[Workflow]
     WF --> MH["Meta-harness: orchestrates many harnesses"]
     MH --> H["Harness: tools, retries, sandbox"]
@@ -171,13 +169,12 @@ The trouble starts when the spec grows. A hands-on review of Kiro on Martin Fowl
 
 How badly does this end? Ahuja's own forecast is blunt: he argues spec-driven development will not just strain but collapse under these structural problems ([Ahuja, 2026d](https://howtoarchitect.io/c00609f72496?sk=2da01d7d2abfb5bc0acaed7050a0e797)). The evidence in this section supports a more measured reading. Each approach works inside its natural range: vibe coding for low-stakes work you can check just by using it, specs where the stakes are worth the maintenance. Spec remains a sensible step after vibe for beginners and fragile codebases, though it strains at enterprise scale, and leaning harder makes it strain faster ([Ahuja, *The anatomy of intent (ICE in IDSD): Built from where spec-driven breaks*, 2026a](https://howtoarchitect.io/1597e5a16659?sk=836b8eeaf97cda521f0ad195162011c3)). There are also repairs that keep the spec and fix the drift: one spec per node, agent context scoped to an ownership path, and spec–code divergence made a blocking merge gate, so context explosion and silent drift are prevented by the structure itself rather than by anyone's willpower ([Grabowski, *The spec growth engine: Spec-anchored, code-coupled, drift-enforced*, 2026](https://arxiv.org/abs/2606.27045)).
 
-| Approach | Contract | Scales to enterprise? | Failure mode |
-| --- | --- | --- | --- |
-| Vibe coding | None | No | Confident, unread, wrong code |
-| Spec-driven (SDD) | One document fusing intent, spec, and implementation | Strains badly | Context explosion; the agent fills the gaps wrongly |
-| Spec-anchored, code-coupled | One spec per node, drift as a blocking merge gate | Yes, by construction | Demands tooling discipline up front |
-
-: Vibe coding, spec-driven, and spec-anchored development compared. {#tbl-spec-vs-vibe}
+> [!NOTE]
+> **Vibe coding, spec-driven, and spec-anchored development compared.**
+>
+> - **Vibe coding** keeps no contract at all. It does not scale to the enterprise, and its failure mode is confident, unread, wrong code.
+> - **Spec-driven development (SDD)** keeps one document fusing intent, spec, and implementation. It strains badly at scale: the context explodes and the agent fills the gaps wrongly.
+> - **Spec-anchored, code-coupled development** keeps one spec per node, with drift as a blocking merge gate. It scales by construction, but demands tooling discipline up front.
 
 Notice what the two sets of limitations have in common. Vibe coding keeps no record of what the software is for. Spec-driven development keeps one document that tries to hold everything at once. Either way, three different concerns — what you want, what the builder needs to know, and how the result will be judged — end up tangled together or missing. The next section builds a method by keeping them apart.
 

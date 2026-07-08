@@ -68,7 +68,7 @@ The practical model, then, is narrow and useful: a tireless, fluent junior colle
 
 ### 4.1.4 Accountability
 
-An agent has no agency in the moral sense. A computer cannot be blamed, sued, or fired, so when you hand it a task, the responsibility for that task stays behind with you — and if the agent then ships something broken under your name, the breakage is yours to explain. In practice this means three things: stay close enough to the work to answer for the result, keep a record of what was decided and why, and refuse to delegate the part you cannot afford to get wrong. Nobody has ever been excused by saying the AI did it, so the sensible working assumption is that everything an agent does, you did — with help. Chapter 5 reinforces this duty.
+An agent has no agency in the moral sense. A computer cannot be blamed, sued, or fired, so when you hand it a task, the responsibility for that task stays behind with you — and if the agent then produces something broken under your name, the breakage is yours to explain. In practice this means three things: stay close enough to the work to answer for the result, keep a record of what was decided and why, and refuse to delegate the part you cannot afford to get wrong. Nobody has ever been excused by saying the AI did it, so the sensible working assumption is that everything an agent does, you did — with help. Chapter 5 reinforces this duty.
 
 ### 4.1.5 Independence of Mind
 
@@ -135,13 +135,12 @@ Above a single harness sit harnesses that orchestrate other harnesses — coordi
 
 The shape of the team matters as much as its size, and the research now offers a vocabulary for it that any manager will recognise as org design. Agent teams differ by *type* — cooperating, competing, or a deliberate mix, the way a firm might run internal rivals; by *structure*; and by whether coordination is fixed in advance or negotiated as the work runs ([Tran et al., *Multi-agent collaboration mechanisms: A survey of LLMs*, 2025](https://arxiv.org/abs/2501.06322)). The structures trade off exactly as org charts do:
 
-| Structure | Shape | Strength | Cost |
-| --- | --- | --- | --- |
-| Centralised (star) | One coordinator, many workers | Simple; easy resource allocation | The coordinator is a single point of failure |
-| Decentralised (peer-to-peer) | Agents talk directly | Fault-tolerant; scales out | Communication overhead grows fast |
-| Hierarchical (layered) | Teams of teams | Offloads work in layers | Complexity and latency |
-
-: Three ways to wire a team of agents, with the trade-offs. {#tbl-orchestration}
+> [!NOTE]
+> **Three ways to wire a team of agents, with the trade-offs.**
+>
+> - **Centralised (star)** — one coordinator, many workers. Simple, with easy resource allocation, but the coordinator is a single point of failure.
+> - **Decentralised (peer-to-peer)** — agents talk directly. Fault-tolerant and scales out, but communication overhead grows fast.
+> - **Hierarchical (layered)** — teams of teams. Offloads work in layers, at the cost of complexity and latency.
 
 The survey's warning is one this book has met before: a team of agents with poorly designed channels loses to a single agent with a strong harness. Whether the team is worth having comes down to the quality of those channels rather than the number of agents — the same lesson §2.7 drew from multi-agent failure studies, where most breakdowns traced to misread roles and dropped hand-offs rather than to any model being too weak.
 

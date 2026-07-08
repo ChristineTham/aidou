@@ -260,16 +260,15 @@ flowchart TB
 
 : Layered memory, separated by how long each layer should last. {#dia-memory-layers}
 
-| Pattern | The idea | Strength | Main risk |
-| --- | --- | --- | --- |
-| Retrieval (RAG) | Fetch chunks, inject verbatim | Grounded, auditable | Context bloat; re-discovers each time |
-| Compaction | Summarise history, restart | Keeps long tasks going | Lossy; summary drift |
-| Structured notes / wiki | Durable pages the agent edits | Stable, human-auditable | Curation effort; stale pages |
-| External store + just-in-time | Pointers now, fetch on demand | Huge capacity, tight context | Fails if the agent forgets to look |
-| Layered memory | Split by time horizon | Right tool per layer | Orchestration complexity |
-| Governed memory | Policies write, keep, forget | Safety and consistency | Hard to specify; still maturing |
-
-: The memory patterns, with the strength and the main risk of each. {#tbl-memory-patterns}
+> [!NOTE]
+> **The memory patterns, with the strength and the main risk of each.**
+>
+> - **Retrieval (RAG)** fetches chunks and injects them verbatim: grounded and auditable, but it bloats the context and re-discovers the same things each time.
+> - **Compaction** summarises the history and restarts: it keeps long tasks going, at the cost of lossy summaries that drift.
+> - **Structured notes or a wiki** are durable pages the agent edits: stable and human-auditable, but they take curation effort and go stale.
+> - **An external store with just-in-time fetch** keeps pointers now and fetches on demand: huge capacity and a tight context, but it fails if the agent forgets to look.
+> - **Layered memory** splits storage by time horizon: the right tool per layer, at the price of orchestration complexity.
+> - **Governed memory** sets policies for what to write, keep, and forget: safety and consistency, though it is hard to specify and still maturing.
 
 No single pattern wins, and real systems combine them — a wiki for stable knowledge, compaction for the live thread, an external store fetched just in time, all under a governance layer that decides what gets kept and what gets thrown out. The wiki you just built is one rung on that ladder. This is the point the chapter keeps coming back to: good memory has to be engineered. You decide what gets written down, you manage it, and you make sure the agent reads it. And the moment memory persists and the agent edits it, it becomes a governance question, which is where Chapter 5 picks up.
 
@@ -346,13 +345,12 @@ Worst of all, it blurs your sense of how well you are doing. Giving people AI on
 
 The practical defence is to sort tasks by how much judgement they need. Where the answer is verifiable — pull these quotes, extract these figures, refactor this function — the model is mostly safe to trust. The danger climbs as the task slides from "find what's there" to "decide what matters," and the slide is easy to miss: "summarise these interviews" and "tell me which themes to act on" feel like one request. For the second kind, form your own view first and bring the AI in to test it, not to write it for you.
 
-| Kind of task | Example | Verifiable? | How far to trust it |
-| --- | --- | --- | --- |
-| Find what's there | Pull these quotes; extract these figures; refactor a function | Yes — the answer is checkable | Lean in |
-| Summarise or transform | Condense a report; translate a passage | Mostly | Trust, then spot-check |
-| Decide what matters | Which themes to act on; which strategy to pick | No single right answer | Form your own view first |
-
-: Sorting tasks by how far you can trust the model with them. {#tbl-task-trust}
+> [!NOTE]
+> **How far to trust the model, sorted by kind of task.**
+>
+> - **Find what's there** — pulling quotes, extracting figures, refactoring a function. The answer is checkable, so lean in.
+> - **Summarise or transform** — condensing a report, translating a passage. Mostly verifiable: trust it, then spot-check.
+> - **Decide what matters** — which themes to act on, which strategy to pick. There is no single right answer, so form your own view first.
 
 ## 2.10 Personal Operating Models
 

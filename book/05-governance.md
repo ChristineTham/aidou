@@ -20,13 +20,12 @@ Google DeepMind's *Frontier Safety Framework* is built on the same pattern: "cri
 
 The three share a shape; laid side by side:
 
-| Lab | Framework | Threshold concept | What it gates |
-| --- | --- | --- | --- |
-| Anthropic | Responsible Scaling Policy (2023–, v3) | AI Safety Levels (ASL) | Safeguards switch on at each level — ASL-3 activated for real in May 2025 |
-| OpenAI | Preparedness Framework (v2) | *High* and *Critical* capability | *High* gates deployment; *Critical* gates development itself |
-| Google DeepMind | Frontier Safety Framework (v3) | Critical capability levels, with early-warning alerts | Release gated on an accepted written safety case |
-
-: The three frontier-lab safety frameworks, compared. {#tbl-safety-frameworks}
+> [!NOTE]
+> **The three frontier-lab safety frameworks, compared.**
+>
+> - **Anthropic's Responsible Scaling Policy** (2023–, v3) is built around *AI Safety Levels* (ASL): safeguards switch on at each level, and ASL-3 activated for real in May 2025.
+> - **OpenAI's Preparedness Framework** (v2) turns on *High* and *Critical* capability thresholds: *High* gates deployment, *Critical* gates development itself.
+> - **Google DeepMind's Frontier Safety Framework** (v3) defines critical capability levels with early-warning alerts, and gates release on an accepted written safety case.
 
 What do these evaluations actually test? DeepMind published its suite, and the categories are worth reading slowly: persuasion and deception (can the model talk a person into something against their interest); cyber-offence (can it find and exploit vulnerabilities); self-proliferation (could it acquire resources and copies of itself); and self-reasoning (does it understand its own situation well enough to work around its constraints) ([Phuong et al., *Evaluating frontier models for dangerous capabilities*, 2024](https://arxiv.org/abs/2403.13793)). Run against an early Gemini, the verdict was "no evidence of strong dangerous capabilities" — but "early warning signs". That is exactly the report you want from an early-warning system: nothing burning, alarms wired, and a stated goal of building a rigorous science of these tests before the models that need them arrive.
 
