@@ -10,12 +10,25 @@
 // outlines use depth 2 and the figure/table lists target figures, so keying on
 // the main outline depth (outline-depth = toc-depth = 3) isolates it. Defined
 // before `#show: book` so it is active when the outline is rendered.
+// The plain (no-kanji) seigaiha banner used on the preface, reused on the other
+// front/back-matter pages (Contents, the Figures/Diagrams/Tables lists, the
+// epigraph, the Index) so they carry the same chapter art, with a gap before the
+// content. Defined here (before the outline show-rule that uses it, and before
+// `#show: book`) so it is in scope on the front-matter pages too. The local
+// `show image` cancels the body's diagram-scale rule, so the banner is a clean
+// full-column width whether or not that rule is active where it renders.
+#let frontmatter-art = {
+  v(0.35em)
+  { show image: it => it; image("chapter-art/frontmatter.png", width: 100%) }
+  v(1.1em)
+}
+
 #set outline(title: none)
 #show outline: it => {
   if it.depth == 3 {
     pagebreak(to: "odd")
     block(text(font: "Raleway", weight: 800, size: 24pt, fill: c-black-beauty)[Contents])
-    v(0.5em)
+    frontmatter-art
   }
   it
 }

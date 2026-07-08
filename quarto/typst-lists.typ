@@ -7,7 +7,7 @@
 #let list-title(name) = {
   pagebreak(to: "odd")
   block(text(font: "Raleway", weight: 800, size: 24pt, fill: c-black-beauty)[#name])
-  v(0.5em)
+  frontmatter-art
 }
 
 #list-title[Figures]

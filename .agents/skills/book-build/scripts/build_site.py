@@ -434,7 +434,7 @@ def write_index_chapter(out_dir, index_map):
         "```{=typst}\n"
         "#set page(header: none)\n"
         '#block(text(font: "Raleway", weight: 800, size: 24pt, fill: rgb("#27272a"))[Index])\n'
-        "#v(0.5em)\n"
+        "#frontmatter-art\n"
         "#make-index(title: none)\n"
         "```"
     )

@@ -6,6 +6,7 @@
 
 ```{=typst}
 #block(below: 0.6em, text(font: "Raleway", weight: 900, size: 34pt, fill: rgb("#27272A"))[AI-dō])
+#frontmatter-art
 ```
 
 ::: {.epigraph}
