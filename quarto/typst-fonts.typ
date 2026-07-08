@@ -1,3 +1,7 @@
+// Back-of-book index (page-numbered). in-dexter collects #index[..] markers
+// injected through the body as {=typst} spans and renders them via #make-index().
+#import "@preview/in-dexter:0.7.2": *
+
 // Body font for the PDF. The orange-book template leaves the base font unset
 // (Typst then defaults to Libertinus) and Quarto's brand only wires up the
 // heading font, so we set the body serif here. We deliberately give a single

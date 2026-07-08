@@ -1,0 +1,103 @@
+# Back-of-book index — curated term list.
+#
+# One entry per line: canonical | alias | alias | ...
+#   - The canonical form is what prints in the index (in-dexter capitalises the
+#     first letter, so lower-case concept names are fine; keep proper-noun casing).
+#   - Aliases are extra surface forms searched in the text; every match folds into
+#     the canonical entry (so "LLM" and "large language models" both index under
+#     "large language model").
+# Matching is word-boundary and case-insensitive. Lines starting with # are ignored.
+# gen: consumed by build_site.py to inject Typst #index markers (PDF page numbers)
+# and to build the anchor index (ePub/HTML). Edit here; rebuild to regenerate.
+
+# --- Foundations: how models work ---
+# ("large language model" and "agent" are the book's whole subject — too
+# pervasive to index usefully; their specific sub-concepts are indexed instead.)
+token | tokens | tokenisation | tokeniser
+next-token prediction | next token
+transformer | transformers
+chain of thought | chain-of-thought
+reasoning
+emergent abilities | emergence
+hallucination | hallucinations | hallucinate
+context window
+jagged competence
+benchmark | benchmarks
+
+# --- Agents and the ecosystem ---
+agent loop
+tool use | tool-using | tools
+personal agent | personal agents
+multi-agent system | multi-agent systems | multi-agent
+Model Context Protocol | MCP
+harness | harness engineering
+orchestration | orchestrating
+loop engineering
+evaluation | evals | eval
+scaffolding
+
+# --- Prompting, context, memory ---
+prompt engineering | prompting
+context engineering
+zero-shot
+few-shot
+system prompt
+memory | long-term memory
+retrieval-augmented generation | retrieval augmented generation | RAG
+compaction
+context and memory
+skill | skills
+Markdown
+
+# --- Working method ---
+intent | intent-driven
+specification | spec | specifications
+ICE
+vibe coding | vibe-coding | vibe coder | vibe coders
+spec-driven development | spec-driven | SDD
+verification | verify | verifying
+domain expert | domain experts
+citizen developer | citizen developers
+low-code | no-code | low-code and no-code
+WebAssembly | Wasm
+personal operating model | operating model
+delegation | delegate | delegating
+loop-stacking | loop stacking
+
+# --- Human + agent disciplines ---
+judgement | taste
+metacognition | metacognitive
+accountability
+independence of mind
+calibrated trust | calibration
+division of labour
+presence
+confidence trap
+sycophancy | sycophantic
+software factory | software factories | dark factory | dark factories
+
+# --- Governance and safety ---
+model governance | AI governance
+safety framework | safety frameworks
+AI Safety Levels | ASL
+Responsible Scaling Policy | RSP
+frontier safety framework
+EU AI Act | AI Act
+NIST AI Risk Management Framework | NIST AI RMF | AI RMF
+ISO/IEC 42001 | ISO 42001 | 42001
+regulatory sandbox | regulatory sandboxes | sandbox
+guardrails | mandatory guardrails
+prompt injection
+agent identity
+OWASP
+AI psychosis
+export control | export controls
+overreliance | over-reliance
+privacy | data protection
+fairness | bias | algorithmic discrimination
+
+# --- Mastery ---
+shuhari | shu-ha-ri | shu | ha | ri
+the human edge | human edge
+agentic engineering
+continuous refinement

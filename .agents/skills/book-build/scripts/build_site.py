@@ -282,11 +282,159 @@ def wrap_references(body):
             + body[idx + 1:] + ["", ":::"])
 
 
+INDEX_STOP = re.compile(r"^## References\b")
+SEC_HEADING = re.compile(r"^#{2,4}\s+(\d+(?:\.\d+)*)\s+(.*)$")
+
+
+def load_index_terms(repo_root):
+    """Read index-terms.txt -> [(canonical, [surface_forms])], forms longest-first.
+
+    Each line is `canonical | alias | alias`; blanks and #-comments are ignored.
+    Every surface form (canonical + aliases) is searched in the text and folds
+    into the one canonical entry. Returns [] if the file is absent (index off)."""
+    path = os.path.join(repo_root, "index-terms.txt")
+    entries = []
+    if not os.path.exists(path):
+        return entries
+    for line in open(path, encoding="utf-8"):
+        line = line.strip()
+        if not line or line.startswith("#"):
+            continue
+        parts = [p.strip() for p in line.split("|") if p.strip()]
+        if parts:
+            entries.append((parts[0], sorted(set(parts), key=len, reverse=True)))
+    return entries
+
+
+def pandoc_slug(title):
+    """Approximate Pandoc's auto heading id (Quarto's anchor): lower-case, drop
+    all but word chars/space/hyphen, spaces -> hyphens, must start with a letter."""
+    t = re.sub(r"[*`_]", "", title.strip().lower())
+    t = re.sub(r"[^\w\s-]", "", t)
+    t = re.sub(r"\s+", "-", t.strip())
+    t = re.sub(r"-+", "-", t)
+    return re.sub(r"^[^a-z]+", "", t) or "section"
+
+
+def _has_form(text, forms):
+    return any(re.search(r"(?<![\w-])" + re.escape(f) + r"(?![\w-])", text, re.I)
+               for f in forms)
+
+
+def inject_index(body, chapter_no, chapter_slug, terms, index_map):
+    """Append invisible Typst index markers to prose lines so in-dexter can
+    page-number them in the PDF, and record each (term, section) in index_map
+    for the ePub/HTML anchor index.
+
+    High precision, not high recall: a term is indexed for a section only where
+    the book actually *treats* it — either the term is in the section heading
+    (a primary locator, bold via `#index-main`) or it appears *italicised* in the
+    prose (a definitional use, regular via `#index`). Passing mentions are
+    skipped, so common words like "agent" resolve to the handful of sections
+    about them, not every page. One locator per term per section; stops at the
+    References list. Mutates and returns `body`."""
+    stop = next((i for i, l in enumerate(body) if INDEX_STOP.match(l)), len(body))
+    in_code = False
+    cur_num, cur_anchor = str(chapter_no), ""      # chapter intro -> chapter top
+    marked = {}                                    # canonical -> {section keys}
+    pending_main = []                              # heading terms awaiting a prose line
+
+    def record(canon, main):
+        seckey = (chapter_no, cur_num)
+        if seckey in marked.get(canon, set()):
+            return False
+        marked.setdefault(canon, set()).add(seckey)
+        index_map.setdefault(canon, {})[seckey] = (cur_num, cur_anchor, chapter_slug, main)
+        return True
+
+    for i in range(stop):
+        line = body[i]
+        s = line.lstrip()
+        if s.startswith("```"):
+            in_code = not in_code
+            continue
+        if in_code:
+            continue
+        m = SEC_HEADING.match(line)
+        if m:
+            cur_num, cur_anchor = m.group(1), pandoc_slug(m.group(2))
+            pending_main = [c for c, forms in terms if _has_form(m.group(2), forms)]
+            continue
+        if not s or s[0] in "#:|" or s.startswith("!["):
+            continue
+        hits = []                                  # (is_main, canonical)
+        for c in pending_main:                     # heading topics -> bold, at first prose line
+            if record(c, True):
+                hits.append((True, c))
+        pending_main = []
+        for span in re.findall(r"(?<!\*)\*([^*\n]+)\*(?!\*)", line):   # italic definitional uses
+            for c, forms in terms:
+                if _has_form(span, forms) and record(c, False):
+                    hits.append((False, c))
+        if hits:
+            body[i] = line + "".join(
+                (f"`#index-main[{c}]`{{=typst}}" if main else f"`#index[{c}]`{{=typst}}")
+                for main, c in hits)
+    return body
+
+
+def write_index_chapter(out_dir, index_map):
+    """Write the generated `index-of-terms.qmd` back-matter chapter: a Typst
+    `#make-index()` for the page-numbered PDF index, and a letter-grouped anchor
+    index (term -> section links) for ePub/HTML, split by `content-visible`."""
+    def order(seckey):
+        ch, num = seckey
+        return (ch, [int(x) for x in num.split(".")])
+    lines, letter = [], None
+    for canon in sorted(index_map, key=str.lower):
+        if canon[0].upper() != letter:
+            letter = canon[0].upper()
+            lines.append(f"\n**{letter}**\n")
+        refs = index_map[canon]
+        keys = sorted(refs, key=order)
+        if len(keys) > 8:                          # a term that ran long: keep its
+            primary = [k for k in keys if refs[k][3]]   # primary (heading) locators,
+            keys = (primary or keys)[:8]           # else the first eight
+        parts = []
+        for k in keys:
+            num, anchor, slug, main = refs[k]
+            href = f"{slug}.qmd" + (f"#{anchor}" if anchor else "")
+            link = f"[§{num}]({href})"
+            parts.append(f"**{link}**" if main else link)
+        disp = canon[0].upper() + canon[1:]
+        lines.append(f"{disp} — " + ", ".join(parts) + "  ")
+    # PDF: orange-book blanks level-1 heading rendering and would print a stale
+    # "Chapter 6" running header on this unnumbered back-matter chapter, so we
+    # drop the header and draw our own "Index" title (matching the Figures /
+    # Diagrams / Tables list titles), then let in-dexter lay out the entries.
+    typst = (
+        "```{=typst}\n"
+        "#set page(header: none)\n"
+        '#block(text(font: "Raleway", weight: 800, size: 24pt, fill: rgb("#27272a"))[Index])\n'
+        "#v(0.5em)\n"
+        "#make-index(title: none)\n"
+        "```"
+    )
+    content = (
+        "# Index {.unnumbered}\n\n"
+        '::: {.content-visible when-format="typst"}\n\n'
+        + typst + "\n\n:::\n\n"
+        '::: {.content-visible unless-format="typst"}\n\n'
+        + "\n".join(lines).strip() + "\n\n:::\n"
+    )
+    with open(os.path.join(out_dir, "index-of-terms.qmd"), "w", encoding="utf-8") as f:
+        f.write(content)
+    print(f"index: {len(index_map)} terms -> index-of-terms.qmd")
+
+
 def build(book_dir, out_dir):
     os.makedirs(out_dir, exist_ok=True)
     copy_assets(out_dir, os.path.join(os.path.dirname(book_dir.rstrip("/")) or ".", "images"))
     PDF_ACCENT.update(load_token_accents(out_dir))
     mermaid_directive = mermaid_init(load_token_colors(out_dir))
+    repo_root = os.path.dirname(os.path.abspath(book_dir.rstrip("/")))
+    index_terms = load_index_terms(repo_root)
+    index_map = {}
     chapter_no = 0
     for src, slug, numbered in CHAPTERS:
         path = os.path.join(book_dir, src)
@@ -299,6 +447,10 @@ def build(book_dir, out_dir):
         body = lines[:h1] + lines[h1 + 1:]
         body = convert_alerts(body)
         body = mermaid_cells(body, mermaid_directive)
+        if numbered:
+            chapter_no += 1
+            if index_terms:
+                body = inject_index(body, chapter_no, slug, index_terms, index_map)
         body = [strip_section_number(l) for l in body]
         # Source image links are written relative to the repo (../images/…) so a
         # raw Markdown preview of book/*.md resolves them; the build stages copies
@@ -308,7 +460,6 @@ def build(book_dir, out_dir):
         body = wrap_references(body)
         text = "\n".join(body).lstrip("\n")
         if numbered:
-            chapter_no += 1
             disp = CHAPTER_PREFIX.sub("", title)
             alias = ""
             if slug in ALIASES:
@@ -321,6 +472,8 @@ def build(book_dir, out_dir):
         with open(os.path.join(out_dir, slug + ".qmd"), "w", encoding="utf-8") as f:
             f.write(head + pdf + banner_markdown(slug) + text + "\n")
         print(f"{src} -> {os.path.join(out_dir, slug + '.qmd')}")
+    if index_terms:
+        write_index_chapter(out_dir, index_map)
 
 
 def main():

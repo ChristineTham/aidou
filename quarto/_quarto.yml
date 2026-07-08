@@ -50,6 +50,7 @@ book:
     - disciplines.qmd
     - governance.qmd
     - mastery.qmd
+    - index-of-terms.qmd
 
 crossref:
   # Figures (images) and tables use Quarto's native numbering; Mermaid diagrams
