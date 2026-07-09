@@ -1,0 +1,11 @@
+# Changelog {.unnumbered}
+
+::: {.content-visible when-format="typst"}
+```{=typst}
+#set page(header: none)
+#block(text(font: "Raleway", weight: 800, size: 24pt, fill: rgb("#27272a"))[Changelog])
+#frontmatter-art
+```
+:::
+
+**Edition 1.0** — released 8 July 2026.

@@ -29,6 +29,7 @@ quarto/_tokens.json
 # index.qmd is hand-authored and kept; the rest are ephemeral.
 quarto/*.qmd
 !quarto/index.qmd
+!quarto/changelog.qmd
 
 # Skill-development eval scratch (skill-creator workspaces)
 .agents/skills/*-workspace/

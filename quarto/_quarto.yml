@@ -50,6 +50,7 @@ book:
     - disciplines.qmd
     - governance.qmd
     - mastery.qmd
+    - changelog.qmd
     - index-of-terms.qmd
 
 crossref:

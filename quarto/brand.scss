@@ -104,6 +104,9 @@ blockquote {
   padding: 0.4rem 1rem;
 }
 
+// ---- Edition line (landing page) -------------------------------------------
+.edition { text-align: center; color: $r-granite-gray; font-size: .9rem; margin: .1rem 0 1.4rem; }
+
 // ---- References (APA 7) ----------------------------------------------------
 // Hanging indent on each entry. (No page break on the web — it's a continuous
 // scroll; the new-page rule applies only to the PDF and ePub.)
