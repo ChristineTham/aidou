@@ -65,9 +65,10 @@ def make_glyphs(font_path, weight=600):
 def seigaiha(pid, color, op, tile, sw):
     h = tile / 2
     rs = [h, h * 0.75, h * 0.5, h * 0.25]
-    circles = "".join(f'<circle cx="{cx}" cy="{h}" r="{r}"/>'
+    q = lambda v: f"{v:.4f}".rstrip("0").rstrip(".")
+    circles = "".join(f'<circle cx="{q(cx)}" cy="{q(h)}" r="{q(r)}"/>'
                       for cx in (0, h, tile) for r in rs)
-    return (f'<pattern id="{pid}" width="{tile}" height="{h}" '
+    return (f'<pattern id="{pid}" width="{q(tile)}" height="{q(h)}" '
             f'patternUnits="userSpaceOnUse"><g fill="none" stroke="{color}" '
             f'stroke-opacity="{op}" stroke-width="{sw}">{circles}</g></pattern>')
 
@@ -80,9 +81,11 @@ def banner_svg(slug, ch, acc, glyph):
         mcx, mcy, R, kth = W // 2, 100, 82, 116
         moon = (f'<circle cx="{mcx}" cy="{mcy}" r="{R}" fill="{CREAM}"/>'
                 f'{glyph(ch, kth, mcx, mcy, acc)}')
+    # seigaiha tile = 2*H/3, so the vertical period (h = tile/2) is H/3 — exactly
+    # 3 wave rows fit the banner height with no partial row (and 12 columns across W).
     return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" '
             f'preserveAspectRatio="xMidYMid slice">'
-            f'<defs>{seigaiha("s"+sfx, CREAM, 0.55, 150, 3)}</defs>'
+            f'<defs>{seigaiha("s"+sfx, CREAM, 0.55, 2 * H / 3, 3)}</defs>'
             f'<rect width="{W}" height="{H}" fill="{acc}"/>'
             f'<rect width="{W}" height="{H}" fill="url(#s{sfx})"/>'
             f'{moon}</svg>')
