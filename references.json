@@ -1104,8 +1104,8 @@
   "urls": [
    "https://openai.com/index/open-source-codex-orchestration-symphony/"
   ],
-  "intext": "OpenAI, 2026",
-  "reference": "OpenAI. (2026). *An open-source spec for Codex orchestration: Symphony*. [https://openai.com/index/open-source-codex-orchestration-symphony/](https://openai.com/index/open-source-codex-orchestration-symphony/)",
+  "intext": "OpenAI, 2026a",
+  "reference": "OpenAI. (2026a). *An open-source spec for Codex orchestration: Symphony*. [https://openai.com/index/open-source-codex-orchestration-symphony/](https://openai.com/index/open-source-codex-orchestration-symphony/)",
   "title_authored": false
  },
  {
@@ -2315,6 +2315,38 @@
   ],
   "intext": "FedScoop, 2025",
   "reference": "FedScoop. (2025). *House bill would ban DeepSeek on agency workers' devices*. [https://fedscoop.com/deepseek-ban-government-devices-house-bill/](https://fedscoop.com/deepseek-ban-government-devices-house-bill/)",
+  "title_authored": false
+ },
+ {
+  "urls": [
+   "https://huggingface.co/blog/security-incident-july-2026"
+  ],
+  "intext": "Hugging Face, 2026",
+  "reference": "Hugging Face. (2026). *Security incident disclosure*. [https://huggingface.co/blog/security-incident-july-2026](https://huggingface.co/blog/security-incident-july-2026)",
+  "title_authored": false
+ },
+ {
+  "urls": [
+   "https://openai.com/index/hugging-face-model-evaluation-security-incident/"
+  ],
+  "intext": "OpenAI, 2026b",
+  "reference": "OpenAI. (2026b). *Hugging Face model-evaluation security incident*. [https://openai.com/index/hugging-face-model-evaluation-security-incident/](https://openai.com/index/hugging-face-model-evaluation-security-incident/)",
+  "title_authored": false
+ },
+ {
+  "urls": [
+   "https://arxiv.org/abs/2605.11086"
+  ],
+  "intext": "Wang, Z., et al., 2026",
+  "reference": "Wang, Z., Schiller, N., Li, H., Narayana, S. S., Nasr, M., Carlini, N., Qi, X., Wallace, E., et al. (2026). *ExploitGym: Can AI agents turn security vulnerabilities into real attacks?* arXiv. [https://arxiv.org/abs/2605.11086](https://arxiv.org/abs/2605.11086)",
+  "title_authored": true
+ },
+ {
+  "urls": [
+   "https://simonwillison.net/2026/Jul/22/openai-cyberattack/"
+  ],
+  "intext": "Willison, 2026",
+  "reference": "Willison, S. (2026). *OpenAI's accidental cyberattack against Hugging Face is science fiction that happened*. Simon Willison's Weblog. [https://simonwillison.net/2026/Jul/22/openai-cyberattack/](https://simonwillison.net/2026/Jul/22/openai-cyberattack/)",
   "title_authored": false
  }
 ]
