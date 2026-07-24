@@ -93,7 +93,7 @@
     Twelve beautiful illustrations by Katerina Limpitsouni \
     (#link("https://undraw.co")[unDraw · undraw.co]), recoloured to the book's palette.
     #v(1.1em)
-    #text(font: "Raleway", weight: 800)[Edition 1.0] — released 8 July 2026.
+    #text(font: "Raleway", weight: 800)[Edition 1.1] — released 24 July 2026.
     #v(1.1em)
     First published 2026. \
     © 2026 Chris Tham · Hello Tham (#link("https://christham.net")[christham.net])

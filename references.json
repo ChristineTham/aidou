@@ -2412,5 +2412,61 @@
   "intext": "Riedl & Bogert, 2024",
   "reference": "Riedl, C., & Bogert, E. (2024). *Who benefits from AI? Self-selection, skill gap, and the hidden costs of AI feedback*. arXiv. [https://arxiv.org/abs/2409.18660](https://arxiv.org/abs/2409.18660)",
   "title_authored": true
+ },
+ {
+  "urls": [
+   "https://arxiv.org/abs/2607.13562"
+  ],
+  "intext": "Marcoccia, Quattrociocchi & Capraro, 2026",
+  "reference": "Marcoccia, C., Quattrociocchi, W., & Capraro, V. (2026). *AI advice suppresses people's willingness to say \"I don't know\", even when the advice is wrong and accuracy is incentivized*. arXiv. [https://arxiv.org/abs/2607.13562](https://arxiv.org/abs/2607.13562)",
+  "title_authored": true
+ },
+ {
+  "urls": [
+   "https://arxiv.org/abs/2607.02467"
+  ],
+  "intext": "Ming, 2026",
+  "reference": "Ming, V. (2026). *Human capital, not model benchmarks, predicts hybrid intelligence in forecasting*. arXiv. [https://arxiv.org/abs/2607.02467](https://arxiv.org/abs/2607.02467)",
+  "title_authored": true
+ },
+ {
+  "urls": [
+   "https://arxiv.org/abs/2607.00533"
+  ],
+  "intext": "Choudhuri et al., 2026",
+  "reference": "Choudhuri, R., Bird, C., Badea, C., Gerosa, M., & Sarma, A. (2026). *You shall not pass! Where and why developers draw the line on AI autonomy*. arXiv. [https://arxiv.org/abs/2607.00533](https://arxiv.org/abs/2607.00533)",
+  "title_authored": true
+ },
+ {
+  "urls": [
+   "https://arxiv.org/abs/2607.18966"
+  ],
+  "intext": "Højmark et al., 2026",
+  "reference": "Højmark, A., Scheurer, J., Nitishinskaya, E., Hofstätter, F., Wolfe, J., Ehrenborg, T., Schoen, B., & Meinke, A. (2026). *Measuring reward-seeking via contrastive belief updates*. arXiv. [https://arxiv.org/abs/2607.18966](https://arxiv.org/abs/2607.18966)",
+  "title_authored": true
+ },
+ {
+  "urls": [
+   "https://arxiv.org/abs/2607.08849"
+  ],
+  "intext": "Contractor & Reyes, 2026",
+  "reference": "Contractor, Z., & Reyes, G. (2026). *Experimental evidence on the learning impact of generative AI*. arXiv. [https://arxiv.org/abs/2607.08849](https://arxiv.org/abs/2607.08849)",
+  "title_authored": true
+ },
+ {
+  "urls": [
+   "https://arxiv.org/abs/2607.05404"
+  ],
+  "intext": "Murugan et al., 2026",
+  "reference": "Murugan, A., Aguirre, T., Nagaraj, A., & Bommasani, R. (2026). *The jagged global economy: Frontier AI unevenly exposes national economies*. arXiv. [https://arxiv.org/abs/2607.05404](https://arxiv.org/abs/2607.05404)",
+  "title_authored": true
+ },
+ {
+  "urls": [
+   "https://arxiv.org/abs/2607.17067"
+  ],
+  "intext": "Yu & Moon, 2026",
+  "reference": "Yu, S., & Moon, T. (2026). *Who will become the next senior? How generative AI erodes the development pathway in software engineering*. arXiv. [https://arxiv.org/abs/2607.17067](https://arxiv.org/abs/2607.17067)",
+  "title_authored": true
  }
 ]

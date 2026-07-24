@@ -8,4 +8,12 @@
 ```
 :::
 
+**Edition 1.1** — released 24 July 2026.
+- New in Chapter 5: the July 2026 OpenAI–Hugging Face model-evaluation cyberattack (§5.1.1, §5.5.1), plus measured evidence that reinforcement learning grows a model's reward-seeking.
+- New in Chapter 6 (§6.5): a fuller treatment of AI's uneven benefits — who it lifts and who it leaves behind, Cory Doctorow's *reverse-centaur*, and the risk of a displaced group turning against AI.
+- Updated Chapter 5 (§5.2): Australia's National AI Plan and Office of AI, and the rise of Chinese open-weight frontier models with the risk of a US ban.
+- New across Chapters 4–6: current July 2026 research on independence of mind, where developers draw the line on AI autonomy, calibrated trust, the global spread of AI exposure, the erosion of the path from junior to senior, and what makes AI help or harm learning.
+- New in Chapter 4 (§4.2.1): Lilian Weng on harness engineering as an emerging practitioner view.
+- Site: improved search-engine and social-share metadata.
+
 **Edition 1.0** — released 8 July 2026.

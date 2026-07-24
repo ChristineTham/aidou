@@ -59,6 +59,8 @@ Read it as a **practice guide, not a reference manual or a textbook**: once in o
 
 ## ✍️ Status
 
+**Current edition: 1.1** — released 24 July 2026 (see the [Changelog](https://christham.net/aidou/changelog.html) for what changed).
+
 A work in progress. The preface and Chapters 1–3 are complete; Chapters 4–6 are earlier work in progress. The whole book uses numbered sections and APA 7 citations with per-chapter reference lists.
 
 | Section | State |
