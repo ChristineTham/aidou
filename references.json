@@ -2260,5 +2260,61 @@
   "intext": "Department of Industry, Science and Resources, 2026",
   "reference": "Department of Industry, Science and Resources. (2026). *AI in Australia's interests* [Media release]. Australian Government. [https://www.minister.industry.gov.au/charlton/media/ai-australias-interests](https://www.minister.industry.gov.au/charlton/media/ai-australias-interests)",
   "title_authored": false
+ },
+ {
+  "urls": [
+   "https://venturebeat.com/technology/chinas-moonshot-ai-releases-kimi-k3-the-largest-open-source-model-ever-rivaling-top-u-s-systems"
+  ],
+  "intext": "VentureBeat, 2026",
+  "reference": "VentureBeat. (2026). *China's Moonshot AI releases Kimi K3, the largest open-source model ever*. [https://venturebeat.com/technology/chinas-moonshot-ai-releases-kimi-k3-the-largest-open-source-model-ever-rivaling-top-u-s-systems](https://venturebeat.com/technology/chinas-moonshot-ai-releases-kimi-k3-the-largest-open-source-model-ever-rivaling-top-u-s-systems)",
+  "title_authored": false
+ },
+ {
+  "urls": [
+   "https://github.com/QwenLM/Qwen3.6"
+  ],
+  "intext": "Qwen Team, 2026",
+  "reference": "Qwen Team. (2026). *Qwen3.6*. Alibaba Group. [https://github.com/QwenLM/Qwen3.6](https://github.com/QwenLM/Qwen3.6)",
+  "title_authored": false
+ },
+ {
+  "urls": [
+   "https://openrouter.ai/blog/insights/the-open-weight-models-that-matter-june-2026/"
+  ],
+  "intext": "OpenRouter, 2026",
+  "reference": "OpenRouter. (2026). *The open weight models that matter: June 2026*. [https://openrouter.ai/blog/insights/the-open-weight-models-that-matter-june-2026/](https://openrouter.ai/blog/insights/the-open-weight-models-that-matter-june-2026/)",
+  "title_authored": false
+ },
+ {
+  "urls": [
+   "https://www.csis.org/analysis/what-know-about-chinese-ai-models"
+  ],
+  "intext": "Atalan, 2026",
+  "reference": "Atalan, Y. (2026). *What to know about Chinese AI models*. Center for Strategic and International Studies. [https://www.csis.org/analysis/what-know-about-chinese-ai-models](https://www.csis.org/analysis/what-know-about-chinese-ai-models)",
+  "title_authored": false
+ },
+ {
+  "urls": [
+   "https://arxiv.org/abs/2602.06371"
+  ],
+  "intext": "Ko, 2026",
+  "reference": "Ko, J.-C. (2026). *Bilingual bias in large language models: A Taiwan sovereignty benchmark study*. arXiv. [https://arxiv.org/abs/2602.06371](https://arxiv.org/abs/2602.06371)",
+  "title_authored": false
+ },
+ {
+  "urls": [
+   "https://www.congress.gov/bill/119th-congress/house-bill/4142"
+  ],
+  "intext": "United States Congress, 2025",
+  "reference": "United States Congress. (2025). *No Adversarial AI Act* (H.R. 4142, 119th Congress). [https://www.congress.gov/bill/119th-congress/house-bill/4142](https://www.congress.gov/bill/119th-congress/house-bill/4142)",
+  "title_authored": false
+ },
+ {
+  "urls": [
+   "https://fedscoop.com/deepseek-ban-government-devices-house-bill/"
+  ],
+  "intext": "FedScoop, 2025",
+  "reference": "FedScoop. (2025). *House bill would ban DeepSeek on agency workers' devices*. [https://fedscoop.com/deepseek-ban-government-devices-house-bill/](https://fedscoop.com/deepseek-ban-government-devices-house-bill/)",
+  "title_authored": false
  }
 ]

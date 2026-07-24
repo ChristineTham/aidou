@@ -39,6 +39,22 @@ Two facts about 2026 matter for everything that follows. The first is that these
 
 Sources: [Stanford HAI, 2026](https://hai.stanford.edu/ai-index/2026-ai-index-report); [Benaich, *State of AI report 2025*, 2025](https://www.stateof.ai/). Models can do far more than they could a year ago, but what they can do is patchier than ever. Getting an answer is now easy. Deciding whether the answer is any good is harder.
 
+### 1.2.1 The open-weight frontier
+
+For most of this story the frontier was closed and American: you rented the best models from OpenAI, Anthropic, or Google, and you could not see inside them. That is no longer the whole picture. Several of the strongest 2026 models are *open-weight* — their trained weights are published for anyone to download and run. Alibaba's Qwen 3.6 ships under a permissive Apache-2.0 licence ([Qwen Team, *Qwen3.6*, 2026](https://github.com/QwenLM/Qwen3.6)); Moonshot's Kimi K3, at 2.8 trillion parameters, is the largest open model released so far and, on its makers' own benchmarks, trades blows with the leading closed systems ([VentureBeat, *China's Moonshot AI releases Kimi K3, the largest open-source model ever*, 2026](https://venturebeat.com/technology/chinas-moonshot-ai-releases-kimi-k3-the-largest-open-source-model-ever-rivaling-top-u-s-systems)). Two things stand out. The open models trail the closed American frontier by months, not years — a gap of roughly three to six months that has held steady rather than widened, with the top open model on one independent index sitting about five points below the best closed one ([OpenRouter, *The open weight models that matter: June 2026*, 2026](https://openrouter.ai/blog/insights/the-open-weight-models-that-matter-june-2026/)). And that open tier is now led by Chinese labs rather than an American one: Chinese models already make up something like two in five downloads on Hugging Face, ahead of American ones ([Atalan, *What to know about Chinese AI models*, 2026](https://www.csis.org/analysis/what-know-about-chinese-ai-models)).
+
+That changes what a careful professional can do. When the weights are yours to download, you can run a frontier-class model on your own hardware or in your own cloud. That buys three things a rented API cannot: your data never leaves your control, the cost is the machine rather than a per-token meter, and no single vendor's price rise, outage, or withdrawal can stop your work. The last of these is not hypothetical — §5.2.3 tells how a US export-control order switched Anthropic's Fable 5 off for every foreign user overnight. This book already suggested keeping an open-weights model in reserve (§5.6); the change is that the reserve can now be frontier-class.
+
+None of this is free of risk, and the risks pull in different directions. The most immediate is political: the United States is moving to keep Chinese models out of government hands, which §5.2.3 takes up. The subtler risk travels inside the weights. Because these models are trained under Chinese content rules, their political alignment ships with them. A benchmark of sovereignty questions found every Chinese model it tested failing, often answering *worse* in English than in Chinese — tuning aimed at foreign audiences, the author suggests. The slant even survived running the model locally rather than through an API ([Ko, *Bilingual bias in large language models: A Taiwan sovereignty benchmark study*, 2026](https://arxiv.org/abs/2602.06371)). Read that as a direction rather than a verdict: it is a small study, and one with its own standpoint. Two cautions round it out — cheaper, leaner training tends to buy thinner safety testing, and leaning on any one country's models, American or Chinese, is its own kind of dependence ([Atalan, 2026](https://www.csis.org/analysis/what-know-about-chinese-ai-models)).
+
+> [!NOTE]
+> **The open-weight frontier, in brief.**
+>
+> - **Strengths** — frontier-class capability you can download and run; permissive licences; low, predictable inference cost.
+> - **Weaknesses** — political alignment and censorship baked into the weights; thinner safety testing; specifications often self-reported.
+> - **Opportunities** — data sovereignty, self-hosting, and independence from any one vendor or government.
+> - **Threats** — moves to ban Chinese models (§5.2.3); trust and provenance concerns; trading a vendor's lock-in for a country's.
+
 ## 1.3 How a Language Model Works
 
 Underneath the surface, a large language model does one thing: it predicts the next token. Given all the text so far, it guesses the next word, then the next, then the next. It was trained on vast amounts of text, so it has learned the probability of each possible next token, and it writes by sampling from those probabilities one token at a time. Stephen Wolfram puts it plainly: the system is always just "adding one word at a time," picking a reasonable next token and, with a little randomness in the sampling, favouring variety over the single likeliest word ([Wolfram, *What is ChatGPT doing … and why does it work?*, 2023](https://writings.stephenwolfram.com/2023/02/what-is-chatgpt-doing-and-why-does-it-work/)). Nothing in the mechanism consults a fact store or checks whether the result is true. It simply produces the most plausible continuation.
@@ -247,6 +263,8 @@ Here are the principles in this chapter, gathered up to carry forward.
 
 ## References
 
+Atalan, Y. (2026). *What to know about Chinese AI models*. Center for Strategic and International Studies. [https://www.csis.org/analysis/what-know-about-chinese-ai-models](https://www.csis.org/analysis/what-know-about-chinese-ai-models)
+
 Au Yeung, J., Dalmasso, J., Foschini, L., Dobson, R. J. B., & Kraljevic, Z. (2025). *The psychogenic machine: Simulating AI psychosis, delusion reinforcement and harm enablement in large language models*. arXiv. [https://arxiv.org/abs/2509.10970](https://arxiv.org/abs/2509.10970)
 
 Benaich, N. (2025). *State of AI report 2025*. [https://www.stateof.ai/](https://www.stateof.ai/)
@@ -277,6 +295,8 @@ Johnson Spink, D. (2026). *The AI jester: How AI makes you confident and wrong*.
 
 Karpathy, A. (2026b). *microGPT*. [https://karpathy.github.io/2026/02/12/microgpt/](https://karpathy.github.io/2026/02/12/microgpt/)
 
+Ko, J.-C. (2026). *Bilingual bias in large language models: A Taiwan sovereignty benchmark study*. arXiv. [https://arxiv.org/abs/2602.06371](https://arxiv.org/abs/2602.06371)
+
 Krizhevsky, A., Sutskever, I., & Hinton, G. E. (2012). *ImageNet classification with deep convolutional neural networks*. Advances in Neural Information Processing Systems, 25. [https://papers.nips.cc/paper_files/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html](https://papers.nips.cc/paper_files/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html)
 
 Li, K., Hopkins, A. K., Bau, D., Viégas, F., Pfister, H., & Wattenberg, M. (2023). *Emergent world representations: Exploring a sequence model trained on a synthetic task*. International Conference on Learning Representations. [https://arxiv.org/abs/2210.13382](https://arxiv.org/abs/2210.13382)
@@ -293,9 +313,13 @@ Moore, J., Mehta, A., Agnew, W., Anthis, J. R., Louie, R., Mai, Y., Yin, P., Che
 
 Nilsson, N. J. (2010). *The quest for artificial intelligence: A history of ideas and achievements*. Cambridge University Press. [https://ai.stanford.edu/~nilsson/QAI/qai.pdf](https://ai.stanford.edu/~nilsson/QAI/qai.pdf)
 
+OpenRouter. (2026). *The open weight models that matter: June 2026*. [https://openrouter.ai/blog/insights/the-open-weight-models-that-matter-june-2026/](https://openrouter.ai/blog/insights/the-open-weight-models-that-matter-june-2026/)
+
 Prato, G., Huang, J., Parthasarathi, P., Sodhani, S., & Chandar, S. (2025). *Do large language models know how much they know?* Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing. [https://arxiv.org/abs/2502.19573](https://arxiv.org/abs/2502.19573)
 
 Prystawski, B., Li, M. Y., & Goodman, N. D. (2023). *Why think step by step? Reasoning emerges from the locality of experience*. Advances in Neural Information Processing Systems. [https://arxiv.org/abs/2304.03843](https://arxiv.org/abs/2304.03843)
+
+Qwen Team. (2026). *Qwen3.6*. Alibaba Group. [https://github.com/QwenLM/Qwen3.6](https://github.com/QwenLM/Qwen3.6)
 
 Rosenblatt, F. (1958). *The perceptron: A probabilistic model for information storage and organization in the brain*. Psychological Review, 65(6), 386–408. [https://doi.org/10.1037/h0042519](https://doi.org/10.1037/h0042519)
 
@@ -308,6 +332,8 @@ Stanford Institute for Human-Centered AI. (2026). *The AI index 2026 annual repo
 Vaccaro, M., Almaatouq, A., & Malone, T. (2024). *When combinations of humans and AI are useful: A systematic review and meta-analysis*. Nature Human Behaviour, 8(12), 2293–2303. [https://doi.org/10.1038/s41562-024-02024-1](https://doi.org/10.1038/s41562-024-02024-1)
 
 Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, Ł., & Polosukhin, I. (2017). *Attention is all you need*. Advances in Neural Information Processing Systems. [https://arxiv.org/abs/1706.03762](https://arxiv.org/abs/1706.03762)
+
+VentureBeat. (2026). *China's Moonshot AI releases Kimi K3, the largest open-source model ever*. [https://venturebeat.com/technology/chinas-moonshot-ai-releases-kimi-k3-the-largest-open-source-model-ever-rivaling-top-u-s-systems](https://venturebeat.com/technology/chinas-moonshot-ai-releases-kimi-k3-the-largest-open-source-model-ever-rivaling-top-u-s-systems)
 
 Wei, J., Tay, Y., Bommasani, R., Raffel, C., Zoph, B., Borgeaud, S., Yogatama, D., Bosma, M., Zhou, D., Metzler, D., Chi, E. H., Hashimoto, T., Vinyals, O., Liang, P., Dean, J., & Fedus, W. (2022b). *Emergent abilities of large language models*. Transactions on Machine Learning Research. [https://arxiv.org/abs/2206.07682](https://arxiv.org/abs/2206.07682)
 
