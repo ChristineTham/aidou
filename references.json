@@ -2348,5 +2348,69 @@
   "intext": "Willison, 2026",
   "reference": "Willison, S. (2026). *OpenAI's accidental cyberattack against Hugging Face is science fiction that happened*. Simon Willison's Weblog. [https://simonwillison.net/2026/Jul/22/openai-cyberattack/](https://simonwillison.net/2026/Jul/22/openai-cyberattack/)",
   "title_authored": false
+ },
+ {
+  "urls": [
+   "https://doi.org/10.1073/pnas.2111611118"
+  ],
+  "intext": "Anelli, Colantone & Stanig, 2021",
+  "reference": "Anelli, M., Colantone, I., & Stanig, P. (2021). *Individual vulnerability to industrial robot adoption increases support for the radical right*. Proceedings of the National Academy of Sciences, 118(47), e2111611118. [https://doi.org/10.1073/pnas.2111611118](https://doi.org/10.1073/pnas.2111611118)",
+  "title_authored": true
+ },
+ {
+  "urls": [
+   "https://pluralistic.net/2025/09/11/vulgar-thatcherism/"
+  ],
+  "intext": "Doctorow, 2025",
+  "reference": "Doctorow, C. (2025). *Reverse centaurs are the answer to the AI paradox*. Pluralistic. [https://pluralistic.net/2025/09/11/vulgar-thatcherism/](https://pluralistic.net/2025/09/11/vulgar-thatcherism/)",
+  "title_authored": true
+ },
+ {
+  "urls": [
+   "https://www.versobooks.com/products/3584-the-reverse-centaur-s-guide-to-life-after-ai"
+  ],
+  "intext": "Doctorow, 2026",
+  "reference": "Doctorow, C. (2026). *The Reverse Centaur's guide to life after AI: How to think about artificial intelligence before it's too late*. Verso Books. [https://www.versobooks.com/products/3584-the-reverse-centaur-s-guide-to-life-after-ai](https://www.versobooks.com/products/3584-the-reverse-centaur-s-guide-to-life-after-ai)",
+  "title_authored": true
+ },
+ {
+  "urls": [
+   "https://www.frbsf.org/research-and-insights/publications/community-development-research-briefs/2025/11/job-exposure-to-ai-among-lmi-workers/"
+  ],
+  "intext": "Federal Reserve Bank of San Francisco, 2025",
+  "reference": "Federal Reserve Bank of San Francisco. (2025). *On-the-job exposure to AI among lower-income workers* (Community Development Research Brief No. 2025-03). [https://www.frbsf.org/research-and-insights/publications/community-development-research-briefs/2025/11/job-exposure-to-ai-among-lmi-workers/](https://www.frbsf.org/research-and-insights/publications/community-development-research-briefs/2025/11/job-exposure-to-ai-among-lmi-workers/)",
+  "title_authored": false
+ },
+ {
+  "urls": [
+   "https://arxiv.org/abs/2605.18143"
+  ],
+  "intext": "Idan & Anand, 2026",
+  "reference": "Idan, L., & Anand, B. (2026). *Generative AI and the productivity divide: Human–AI complementarities in education and knowledge work*. arXiv. [https://arxiv.org/abs/2605.18143](https://arxiv.org/abs/2605.18143)",
+  "title_authored": true
+ },
+ {
+  "urls": [
+   "https://www.oecd.org/en/publications/bridging-the-ai-skills-gap_66d0702e-en.html"
+  ],
+  "intext": "OECD, 2025",
+  "reference": "OECD. (2025). *Bridging the AI skills gap: Is training keeping up?* OECD Publishing. [https://www.oecd.org/en/publications/bridging-the-ai-skills-gap_66d0702e-en.html](https://www.oecd.org/en/publications/bridging-the-ai-skills-gap_66d0702e-en.html)",
+  "title_authored": true
+ },
+ {
+  "urls": [
+   "https://poll.qu.edu/poll-release?releaseid=3923"
+  ],
+  "intext": "Quinnipiac University Poll, 2025",
+  "reference": "Quinnipiac University Poll. (2025). *The age of artificial intelligence: Americans wary of impact on daily life, see harm to education, benefits to medical advances* (Release No. 3923). [https://poll.qu.edu/poll-release?releaseid=3923](https://poll.qu.edu/poll-release?releaseid=3923)",
+  "title_authored": true
+ },
+ {
+  "urls": [
+   "https://arxiv.org/abs/2409.18660"
+  ],
+  "intext": "Riedl & Bogert, 2024",
+  "reference": "Riedl, C., & Bogert, E. (2024). *Who benefits from AI? Self-selection, skill gap, and the hidden costs of AI feedback*. arXiv. [https://arxiv.org/abs/2409.18660](https://arxiv.org/abs/2409.18660)",
+  "title_authored": true
  }
 ]
