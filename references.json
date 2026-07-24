@@ -2244,5 +2244,21 @@
   "intext": "Weng, 2026",
   "reference": "Weng, L. (2026). *Harness engineering for self-improvement*. Lil'Log. [https://lilianweng.github.io/posts/2026-07-04-harness/](https://lilianweng.github.io/posts/2026-07-04-harness/)",
   "title_authored": false
+ },
+ {
+  "urls": [
+   "https://www.minister.industry.gov.au/ministers/timayres/media-releases/national-ai-plan-empowering-all-australians"
+  ],
+  "intext": "Department of Industry, Science and Resources, 2025",
+  "reference": "Department of Industry, Science and Resources. (2025). *National AI Plan: Empowering all Australians* [Media release]. Australian Government. [https://www.minister.industry.gov.au/ministers/timayres/media-releases/national-ai-plan-empowering-all-australians](https://www.minister.industry.gov.au/ministers/timayres/media-releases/national-ai-plan-empowering-all-australians)",
+  "title_authored": false
+ },
+ {
+  "urls": [
+   "https://www.minister.industry.gov.au/charlton/media/ai-australias-interests"
+  ],
+  "intext": "Department of Industry, Science and Resources, 2026",
+  "reference": "Department of Industry, Science and Resources. (2026). *AI in Australia's interests* [Media release]. Australian Government. [https://www.minister.industry.gov.au/charlton/media/ai-australias-interests](https://www.minister.industry.gov.au/charlton/media/ai-australias-interests)",
+  "title_authored": false
  }
 ]
