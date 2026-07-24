@@ -2236,5 +2236,13 @@
   "intext": "AI Engineer, 2026",
   "reference": "AI Engineer. (2026). *WF2026: Software factories & keynotes ft. Microsoft, OpenAI, OpenClaw, Z.ai (GLM), MiniMax, HF* [Conference livestream]. YouTube. [https://www.youtube.com/watch?v=htM02KMNZnk](https://www.youtube.com/watch?v=htM02KMNZnk)",
   "title_authored": false
+ },
+ {
+  "urls": [
+   "https://lilianweng.github.io/posts/2026-07-04-harness/"
+  ],
+  "intext": "Weng, 2026",
+  "reference": "Weng, L. (2026). *Harness engineering for self-improvement*. Lil'Log. [https://lilianweng.github.io/posts/2026-07-04-harness/](https://lilianweng.github.io/posts/2026-07-04-harness/)",
+  "title_authored": false
  }
 ]
