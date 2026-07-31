@@ -212,6 +212,8 @@ The skills and Markdown of the last few sections only pay off fully if the model
 
 Karpathy's wiki does the opposite: it accumulates. Add a source and the model reads it once, extracts what matters, and integrates it into interlinked markdown pages — updating entity pages, flagging where new data contradicts old, and tightening the summary pages that draw on both. The cross-references are resolved ahead of the next question rather than reconstructed each time ([Karpathy, *LLM wiki*, 2026a](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f)).
 
+Describing the same setup on X, Karpathy wrote that he expected to need "fancy RAG" and did not: the model kept its own index files and summaries well enough to answer from them. His research wiki stood at about a hundred articles and four hundred thousand words at the time, a size he called small ([Karpathy, *LLM knowledge bases*, 2026d](https://x.com/karpathy/status/2039805659525644595)). That is one person's report rather than a tested result, and his own caveat is worth keeping: a much larger collection may still need the retrieval machinery he managed to skip.
+
 Three layers make it work: read-only raw sources you never let the model edit, an LLM-owned wiki of summaries and concept pages, and a schema file — `AGENTS.md` — that tells the agent how the wiki is structured and how to maintain it.
 
 ```mermaid
@@ -289,6 +291,8 @@ The self-checking loop you built in §2.1 points at a bigger change in how you c
 : A chat assistant set against an ambient teammate. {#tbl-chat-vs-ambient}
 
 The change sounds small, but it moves the bottleneck. As Karpathy puts it, the goal is to remove yourself from the keystroke loop and maximise throughput rather than steer every step ([Latent Space, *Loopcraft: The art of stacking*, 2026b](https://www.latent.space/p/ainews-loopcraft-the-art-of-stacking)). Hand off whole tasks instead of supervising each step and you can get much more done in a day. But a task only counts as done once someone has checked the result, a point the rest of this book keeps insisting on.
+
+Boris Cherny, who created Claude Code and so has every reason to like the arrangement, works this way all day. He says he has "agents running all the time", with his own coding split about evenly between the terminal, a desktop app, and his phone. They run for hours or days without him, and he expects that to become ordinary, so "you don't have to sit there and babysit them anymore". His plainest example is not coding at all: his team keeps a spreadsheet with a row per engineer for weekly status, and every Monday an agent messages whoever has not filled theirs in ([Cherny, *Head of Claude Code: What happens after coding is solved*, 2026b](https://www.youtube.com/watch?v=We7BZVKbCVw)). None of that is measured — it is how one engineer describes his own week.
 
 Making that hand-off work well is a craft in itself — *loop engineering*, designing the loop around the agent rather than perfecting the prompt inside it. Practitioners describe making exactly this shift in their own work ([Latent Space, 2026b](https://www.latent.space/p/ainews-loopcraft-the-art-of-stacking)). The real skill is judging which tasks need a checking loop, and which can safely be handed more of the work.
 
@@ -390,6 +394,8 @@ Cemri, M., et al. (2025). *Why do multi-agent LLM systems fail?* arXiv. [https:/
 
 Chi, V. B., Rietsche, R., Göldi, A., Ungar, L., & Guntuku, S. C. (2026). *Optimized but unowned: How AI-authored goals undermine the motivation they are meant to drive*. arXiv. [https://arxiv.org/abs/2605.12344](https://arxiv.org/abs/2605.12344)
 
+Cherny, B. (2026b). *Head of Claude Code: What happens after coding is solved* [Interview]. Lenny's Podcast, YouTube. [https://www.youtube.com/watch?v=We7BZVKbCVw](https://www.youtube.com/watch?v=We7BZVKbCVw)
+
 Chroma. (2025). *Context rot: How increasing input tokens impacts LLM performance*. [https://research.trychroma.com/context-rot](https://research.trychroma.com/context-rot)
 
 Clark, A., & Chalmers, D. (1998). *The extended mind*. Analysis, 58(1), 7–19. [https://doi.org/10.1093/analys/58.1.7](https://doi.org/10.1093/analys/58.1.7)
@@ -425,6 +431,8 @@ Huschens, M., Briesch, M., Sobania, D., & Rothlauf, F. (2023). *Do you trust Cha
 Jakesch, M., Bhat, A., Buschek, D., Zalmanson, L., & Naaman, M. (2023). *Co-writing with opinionated language models affects users’ views*. Proceedings of the 2023 CHI Conference on Human Factors in Computing Systems. [https://arxiv.org/abs/2302.00560](https://arxiv.org/abs/2302.00560)
 
 Karpathy, A. (2026a). *LLM wiki*. GitHub. [https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f)
+
+Karpathy, A. (2026d). *LLM knowledge bases* [Post]. X. [https://x.com/karpathy/status/2039805659525644595](https://x.com/karpathy/status/2039805659525644595)
 
 Khattab, O., et al. (2023). *DSPy: Compiling declarative language model calls into self-improving pipelines*. arXiv. [https://arxiv.org/abs/2310.03714](https://arxiv.org/abs/2310.03714)
 

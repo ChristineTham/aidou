@@ -156,6 +156,10 @@ An agent *is* a loop — plan, act, observe, retry — and Chapter 2 treated tha
 
 The mature form is a *control loop* laid over the agents — monitor → detect → diagnose → recover → verify — run as a reliability layer kept separate from the work itself. In a controlled study, wrapping tool-using agents in such a self-healing loop lifted task success from the mid-nineties under a plain retry policy to 98.8%, and the gap widened as faults were injected (97.3% against about 86%). The telling detail is that at a *matched* recovery budget it still won, 94.0% against 85%. The gain came from targeting the right fix — a timeout gets a retry, a schema error gets a repair, and stale context gets a refresh — not from simply trying more ([Suresh Babu & Agrawal, *Self-healing agentic orchestrators for reliable tool-augmented LLM systems*, 2026](https://arxiv.org/abs/2606.01416)). The craft is to keep detection, diagnosis, and recovery as separate steps rather than fuse them, and to bound recovery with a budget so a flailing agent cannot burn the fleet's tokens chasing its own tail.
 
+Studies tell you what a loop needs inside it. They say less about what one looks like in daily use, and there the people building the tools have more to offer. The team behind Claude Code sorts loops by two questions: what starts one, and what stops it. You drive a turn-based loop yourself, prompt by prompt. A goal-based loop keeps working until a criterion you wrote is met, or a turn cap halts it. A time-based loop wakes on a schedule — the nightly run that reads yesterday's logs and files a summary. A proactive loop fires on an event, with nobody watching.
+
+Put the four in order and you have a scale of how much you give away: first the check, then the stop condition, then the trigger, then the prompt itself ([de Oliveira & Segner, *Loop engineering: Getting started with loops*, 2026](https://claude.com/blog/getting-started-with-loops)). Anthropic sells the tools the piece describes, and every stage matches a product it ships, so the four types are a way to organise your own thinking rather than evidence that loops must work this way. The scheme is worth keeping because it treats loop design as delegation, the way this book has all along. If you can say up front what done looks like, you can hand over more of the work. When you cannot — and on anything new you usually cannot — you stay in the loop and read every turn yourself.
+
 Whatever else gets simplified, *verify* cannot be skipped, for the reason the last chapters keep returning to: a model cannot reliably judge its own work. Leave the check to the agent's own say-so and silent failures slip through 13–17% of the time — answers that look plausible and pass unquestioned. Put a real verifier inside the loop and that rate falls to zero on the same test ([Suresh Babu & Agrawal, 2026](https://arxiv.org/abs/2606.01416)). It is the same lesson §2.6 taught at personal scale: self-critique alone does not converge, so the loop must close on an external signal, not the model's confidence ([Huang et al., *Large language models cannot self-correct reasoning yet*, 2023](https://arxiv.org/abs/2310.01798)). Loop engineering, at any scale, is the craft of building that check into the cycle.
 
 ### 4.2.5 Evaluation
@@ -193,7 +197,23 @@ How far along is this shift, in practice? Not as far as the demos suggest. In th
 
 Where should the line fall? Developers have strong instincts about this, and they are worth heeding. Asked where they would and would not hand authority to an agent, 448 professional developers drew it not at the tasks they found hardest but at the ones they answer for: most kept the agent to assisting and suggesting rather than deciding or acting alone, and they pulled back hardest on work that carries their name or defines their judgement — design, planning, and anything human-facing ([Choudhuri et al., *You shall not pass! Where and why developers draw the line on AI autonomy*, 2026](https://arxiv.org/abs/2607.00533)). One put the reason plainly: "marking my approval puts my name on it and makes me partially responsible."
 
-There is a structural reason for that, and it sets a hard limit on everything this chapter promises. AI accelerates the *generation* of work, not its *validation*: the drafts multiply, but each one still needs a human hour to review, and that hour has nowhere to come from. Push generation far enough past your review capacity and the arithmetic turns against you — the extra reviewing costs more than the generating saved ([Garousi, *Human oversight and overload: Two hidden and costly burdens of AI-assisted software engineering*, 2026](https://arxiv.org/abs/2606.05770)). Chapter 3 measured a version of the same squeeze: experienced engineers slowed down by AI on their own codebases while believing they had sped up. Two rules keep delegation honest: review the output against the spec you wrote, not a vague feeling that it "looks fine"; and keep the reviews cheap: many small steps you can undo are safer than one big delivery you cannot take back.
+There is a structural reason for that, and it sets a hard limit on everything this chapter promises. AI accelerates the *generation* of work, not its *validation*: the drafts multiply, but each one still needs a human hour to review, and that hour has nowhere to come from. Push generation far enough past your review capacity and the arithmetic turns against you — the extra reviewing costs more than the generating saved ([Garousi, *Human oversight and overload: Two hidden and costly burdens of AI-assisted software engineering*, 2026](https://arxiv.org/abs/2606.05770)). Chapter 3 measured a version of the same squeeze: experienced engineers slowed down by AI on their own codebases while believing they had sped up.
+
+Boris Cherny, who built Claude Code, stages the adoption of coding agents in five steps and names what stops you at each one ([Cherny, *Steps of AI adoption*, 2026a](https://claude.ai/code/artifact/bfdfaef9-bc62-4dfe-ba9e-c58a26c9accf)):
+
+| Step and your role | Agents | What holds you back |
+| --- | --- | --- |
+| 0 · Gated | 0 | Old models only, access gated, and cost per token counted instead of outcomes |
+| 1 · Assisted — you and one agent, a pair | ~1 | Your attention — you feel you must read everything, so you never look away |
+| 2 · Parallel — orchestrator | ~10 | Reviewing the output, now several streams of it at once |
+| 3 · Supervised autonomy — manager of managers | ~100 | Trust in the loop, and how fast your team can decide |
+| 4 · AI-native — steering by intent | ~1,000+ | Finding the work worth automating, and the guardrails each kind of work needs |
+
+: The five steps of AI adoption. {#tbl-adoption-steps}
+
+The original prints an Anthropic tool beside every step, and I have left those lists out; he works for the company selling into this, and none of it is measured. Three of the five entries in the last column are human — attention, review, trust — and the trap he names at step three is a failure of judgement, scaling the agent count before the loop has earned that trust. Garousi measured the same limit from the outside.
+
+Two rules keep delegation honest: review the output against the spec you wrote, not a vague feeling that it "looks fine"; and keep the reviews cheap: many small steps you can undo are safer than one big delivery you cannot take back.
 
 ### 4.3.3 Presence
 
@@ -241,7 +261,11 @@ Casper, S., Davies, X., Shi, C., Gilbert, T. K., Scheurer, J., Rando, J., Freedm
 
 Chen, M., Wang, J., Liu, Z., Wang, Y., Zheng, H., & Wang, Q. (2026). *From failed trajectories to reliable LLM agents: Diagnosing and repairing harness flaws*. arXiv. [https://arxiv.org/abs/2606.06324](https://arxiv.org/abs/2606.06324)
 
+Cherny, B. (2026a). *Steps of AI adoption* [Artifact]. Anthropic. [https://claude.ai/code/artifact/bfdfaef9-bc62-4dfe-ba9e-c58a26c9accf](https://claude.ai/code/artifact/bfdfaef9-bc62-4dfe-ba9e-c58a26c9accf) (may require a Claude account)
+
 Choudhuri, R., Bird, C., Badea, C., Gerosa, M., & Sarma, A. (2026). *You shall not pass! Where and why developers draw the line on AI autonomy*. arXiv. [https://arxiv.org/abs/2607.00533](https://arxiv.org/abs/2607.00533)
+
+de Oliveira, D., & Segner, M. (2026). *Loop engineering: Getting started with loops*. Anthropic (Claude blog). [https://claude.com/blog/getting-started-with-loops](https://claude.com/blog/getting-started-with-loops)
 
 Dhanorkar, S., Passi, S., & Vorvoreanu, M. (2026). *Human oversight of agentic systems in practice: Examining the oversight work, challenges, and heuristics of developers using software agents*. arXiv. [https://arxiv.org/abs/2606.05391](https://arxiv.org/abs/2606.05391)
 

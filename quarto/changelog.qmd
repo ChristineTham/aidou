@@ -8,6 +8,13 @@
 ```
 :::
 
+**Edition 1.2** — released 24 July 2026.
+- New in Chapter 1 (§1.5): why AI capability is so uneven — recent leaps cluster where success can be checked by machine, and where the commercial value sits.
+- New in Chapter 2: Karpathy's own account of the LLM wiki, including the scale at which it works (§2.5), and Boris Cherny on running agents unattended all day (§2.6).
+- New in Chapter 3 (§3.4): Karpathy's original "vibe coding" post, quoted in full — the caveats he attached to it were there from the start and got lost later.
+- New in Chapter 4: a practitioner's four kinds of agent loop, sorted by how much you hand over (§4.2.4), and a five-step map of AI adoption where the limit at every step is human (§4.3.2).
+- Clarified in Chapter 1: reinforcement learning is now explained where it first appears, and distinguished from learning that is tuned on human preference.
+
 **Edition 1.1** — released 24 July 2026.
 - New in Chapter 5: the July 2026 OpenAI–Hugging Face model-evaluation cyberattack (§5.1.1, §5.5.1), plus measured evidence that reinforcement learning grows a model's reward-seeking.
 - New in Chapter 6 (§6.5): a fuller treatment of AI's uneven benefits — who it lifts and who it leaves behind, Cory Doctorow's *reverse-centaur*, and the risk of a displaced group turning against AI.

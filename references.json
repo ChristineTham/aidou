@@ -2468,5 +2468,45 @@
   "intext": "Yu & Moon, 2026",
   "reference": "Yu, S., & Moon, T. (2026). *Who will become the next senior? How generative AI erodes the development pathway in software engineering*. arXiv. [https://arxiv.org/abs/2607.17067](https://arxiv.org/abs/2607.17067)",
   "title_authored": true
+ },
+ {
+  "urls": [
+   "https://claude.com/blog/getting-started-with-loops"
+  ],
+  "intext": "de Oliveira & Segner, 2026",
+  "reference": "de Oliveira, D., & Segner, M. (2026). *Loop engineering: Getting started with loops*. Anthropic (Claude blog). [https://claude.com/blog/getting-started-with-loops](https://claude.com/blog/getting-started-with-loops)",
+  "title_authored": true
+ },
+ {
+  "urls": [
+   "https://claude.ai/code/artifact/bfdfaef9-bc62-4dfe-ba9e-c58a26c9accf"
+  ],
+  "intext": "Cherny, 2026a",
+  "reference": "Cherny, B. (2026a). *Steps of AI adoption* [Artifact]. Anthropic. [https://claude.ai/code/artifact/bfdfaef9-bc62-4dfe-ba9e-c58a26c9accf](https://claude.ai/code/artifact/bfdfaef9-bc62-4dfe-ba9e-c58a26c9accf) (may require a Claude account)",
+  "title_authored": true
+ },
+ {
+  "urls": [
+   "https://x.com/karpathy/status/2042334451611693415"
+  ],
+  "intext": "Karpathy, 2026c",
+  "reference": "Karpathy, A. (2026c). *Judging by my tl there is a growing gap in understanding of AI capability* [Post]. X. [https://x.com/karpathy/status/2042334451611693415](https://x.com/karpathy/status/2042334451611693415)",
+  "title_authored": false
+ },
+ {
+  "urls": [
+   "https://x.com/karpathy/status/2039805659525644595"
+  ],
+  "intext": "Karpathy, 2026d",
+  "reference": "Karpathy, A. (2026d). *LLM knowledge bases* [Post]. X. [https://x.com/karpathy/status/2039805659525644595](https://x.com/karpathy/status/2039805659525644595)",
+  "title_authored": false
+ },
+ {
+  "urls": [
+   "https://www.youtube.com/watch?v=We7BZVKbCVw"
+  ],
+  "intext": "Cherny, 2026b",
+  "reference": "Cherny, B. (2026b). *Head of Claude Code: What happens after coding is solved* [Interview]. Lenny's Podcast, YouTube. [https://www.youtube.com/watch?v=We7BZVKbCVw](https://www.youtube.com/watch?v=We7BZVKbCVw)",
+  "title_authored": true
  }
 ]
