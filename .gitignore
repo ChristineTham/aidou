@@ -36,3 +36,6 @@ quarto/*.qmd
 
 # OS / editor cruft
 .DS_Store
+
+# Python bytecode from running skill scripts
+__pycache__/

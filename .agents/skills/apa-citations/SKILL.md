@@ -46,7 +46,7 @@ To add a source: append an entry, then re-run the engine.
   python scripts/apply_citations.py --refs references.json book/00-preface.md book/0[1-6]*.md
   ```
 
-- **`scripts/audit_citations.py`** — advisory checks: internal-download links, in-text↔References mismatches, brackets in link text.
+- **`scripts/audit_citations.py`** — advisory checks: internal-download links, in-text↔References mismatches, brackets in link text. Chapters 1–3 carry 13 long-standing findings (the author's own project repos, cited inline rather than as APA entries), which drown a genuinely new problem — so when checking your own edits, add `--baseline HEAD` to show only what you introduced.
 
   ```bash
   python scripts/audit_citations.py book/0[1-6]*.md

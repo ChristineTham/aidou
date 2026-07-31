@@ -47,9 +47,10 @@ Read the whole target first for sense; you cannot fix the prose of a section wit
 
 ### Movement 2 — Check
 
-Now read the result with fresh eyes — as a subagent where the environment allows, otherwise as a separate pass after the writing is done. Go paragraph by paragraph and ask one question of each: **"Does this sound like AI?"** Judge it against the two WARNING lists above and the rules, and apply the two quick tests — could you say the sentence out loud to a colleague, and could a high-school student read it without stumbling. Also run the mechanical checks:
+Now read the result with fresh eyes. **Use the `book-style-checker` subagent** (`.claude/agents/book-style-checker.md`) — it carries this skill's brief, checks accuracy against `sources/` as well as style, and is told to say CLEAN plainly so the loop can end. Where subagents are unavailable, do it as a separate pass after the writing is done. Go paragraph by paragraph and ask one question of each: **"Does this sound like AI?"** Judge it against the two WARNING lists above and the rules, and apply the two quick tests — could you say the sentence out loud to a colleague, and could a high-school student read it without stumbling. Also run the mechanical checks:
 
 - `scripts/prose_lint.py <file>` — flags over-long, clause-stuffed sentences (advisory; some earn their length).
+- `scripts/check_repetition.py <file>` — catches phrases and openers the book already leans on. Before adding new prose, save just the new passage to a scratch file and run `check_repetition.py <scratch> --against book/0[1-6]*.md --max-words 3`; a vivid three-word phrase that already appears elsewhere is how a tic starts (*"earns its keep"* reached four uses before anyone noticed).
 - `scripts/check_preservation.py <file>` — confirms the citations and structure survived Movement 1 untouched (compares against git HEAD; see `--help` for other baselines).
 - The Australian-spelling check if available (`.agents/skills/review-chapter/scripts/check_australian_spelling.py`).
 
