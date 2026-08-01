@@ -2,20 +2,24 @@
 
 ## Why this book
 
-Working with artificial intelligence has become strangely easy to do and strangely hard to do well. Anyone can open a chat window and get an answer in seconds. Getting answers you can rely on — accurate, consistent, worth using — is much harder.
+Working with artificial intelligence is easy to do and hard to do well. Anyone can open a chat window and get an answer in seconds. Getting answers you can rely on is much harder, and by that I mean accurate, consistent, and worth using.
 
-We all tend to use the same handful of frontier models, so it is not the model that separates good quality from slop. The *method* matters — the practised habits by which an experienced person turns a capable tool towards a dependable result, the way a practised hand and a beginner, given the same tools, turn out very different work. This book is about that method: a structured way of working with AI, where you start from what you actually want, improve the result over several rounds, and check it before you use it.
+We all tend to use the same handful of frontier models, so the model is rarely what separates good work from slop. What separates them is *method*: the habits an experienced person builds up for turning a capable tool towards a result you can depend on. Give the same tools to a practised hand and to a beginner and you get very different work.
 
-![Using AI well is a practice you learn, not a tool you buy — which is what this book is for.](../images/illustrations/book-lover.svg){#fig-learning}
+This book is about that method. You start from what you actually want, improve the result over several rounds, and check it before you use it.
 
-A quick word on the terms, since they move quickly. When I say *artificial intelligence*, I mean the present generation of large language models — systems trained on enormous quantities of text, and increasingly images and sound, that respond to plain-language requests with fluent prose, working code, and structured analysis ([Zhao et al., *A survey of large language models*, 2023](https://arxiv.org/abs/2303.18223)). The most capable are called *frontier models*: the handful of largest, most general systems from a few well-resourced labs, the ones that set the pace and that everyone else measures against ([Anderljung et al., *Frontier AI regulation: Managing emerging risks to public safety*, 2023](https://arxiv.org/abs/2307.03718)). ChatGPT, Claude, and Gemini are the familiar names; behind them sits a *foundation model*, a single large network trained once at great expense and then adapted to countless tasks ([Bommasani et al., *On the opportunities and risks of foundation models*, 2021](https://arxiv.org/abs/2108.07258)).
+![Using AI well is a practice you learn. Learning it is what this book is for.](../images/illustrations/book-lover.svg){#fig-learning}
+
+A quick word on the terms, since they move quickly. When I say *artificial intelligence*, I mean the present generation of large language models: systems trained on enormous quantities of text, and increasingly images and sound. They answer plain-language requests with fluent prose, working code, and structured analysis ([Zhao et al., *A survey of large language models*, 2023](https://arxiv.org/abs/2303.18223)).
+
+The most capable are called *frontier models*, the handful of largest, most general systems from a few well-resourced labs, the ones that set the pace and that everyone else measures against ([Anderljung et al., *Frontier AI regulation: Managing emerging risks to public safety*, 2023](https://arxiv.org/abs/2307.03718)). ChatGPT, Claude, and Gemini are the familiar names; behind them sits a *foundation model*, a single large network trained once at great expense and then adapted to countless tasks ([Bommasani et al., *On the opportunities and risks of foundation models*, 2021](https://arxiv.org/abs/2108.07258)).
 
 > [!NOTE]
 > A few terms used throughout, defined plainly:
 >
-> - **Large language model (LLM)** — a network trained to predict the next word, which in scale yields fluent prose, code, and analysis.
-> - **Foundation model** — one large model trained once, then adapted to many tasks.
-> - **Frontier model** — the largest, most general foundation models that set the pace (ChatGPT, Claude, Gemini).
+> - **Large language model (LLM)**: a network trained to predict the next word, which in scale yields fluent prose, code, and analysis.
+> - **Foundation model**: one large model trained once, then adapted to many tasks.
+> - **Frontier model**: the largest, most general foundation models that set the pace (ChatGPT, Claude, Gemini).
 
 ## Why I wrote it
 
@@ -25,13 +29,15 @@ This book grew out of my recent experiences using AI in my work, and documents w
 
 ## Why now, and won't it date?
 
-Why write this in 2026? Because method now matters more than the tools. Most organisations have AI somewhere in the building, yet few can point to real results rather than just activity ([Stanford HAI, *The AI index 2026 annual report*, 2026](https://hai.stanford.edu/ai-index/2026-ai-index-report); [McKinsey & Company, *The state of AI*, 2025](https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai)). And as the models improved, which one you use stopped being what sets results apart. What separates good results now is the work you do around the model: how you set up the task, what context you give it, and how you check what comes back.
+Why write this in 2026? Because method now matters more than the tools.
 
-That is also why the book should outlast its examples. The field moves in weeks, and a book of prompts and tool tips would be stale a model release later. This one rests on a steadier layer — *how* the models work, not which model leads this quarter — and those properties have held across generations of models. Where a point is tied to a 2026 product or figure, I mark it as such; the way of working around it is meant to last.
+Most organisations have AI somewhere in the building, yet few can point to real results rather than just activity ([Stanford HAI, *The AI index 2026 annual report*, 2026](https://hai.stanford.edu/ai-index/2026-ai-index-report); [McKinsey & Company, *The state of AI*, 2025](https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai)). As the models improved, the choice of which one to use mattered less and less. The difference now is the work you do around the model: how you set up the task, what context you give it, and how you check what comes back.
+
+That is also why the book should outlast its examples. The field moves in weeks, and a book of prompts and tool tips would be stale a model release later. This one rests on a steadier layer: *how* the models work. Those properties have held across generations of models, while the leaderboard changed every quarter. Where a point is tied to a 2026 product or figure, I mark it as such; the way of working around it is meant to last.
 
 ## Who it is for
 
-This book is for the thoughtful professional — a leader, a consultant, an analyst, a designer, a builder — who wants structured, effective use of AI rather than a bag of prompts. I assume
+I wrote this for the thoughtful professional who wants a structured, effective way of using AI rather than a bag of prompts. You might be a leader, a consultant, an analyst, a designer, or a builder. I assume
 
 - you are numerate and can read a diagram, a code snippet, or a research paper when it helps;
 - you have already used these tools, and seen both what they can do and how often they get things wrong;
@@ -39,11 +45,11 @@ This book is for the thoughtful professional — a leader, a consultant, an anal
 
 None of this is essential, but a little more helps: some feel for how software and information systems are built and used, and enough Python or JavaScript to be able to review code generated by AI. You don't have to work in IT to get a lot from it.
 
-Using AI well is a discipline, and it is the one this book teaches. My promise is practical: an approach you can start using tomorrow, and that keeps improving with practice.
+Using AI well is a discipline you practise, and it is the one this book teaches. What I can promise is practical: an approach you can start using tomorrow, and one that gets better the longer you keep at it.
 
 ## How to read it
 
-The book is six chapters, and they build. The first lays the foundations — what AI is, how it works, and what it cannot do. The middle chapters climb from personal productivity, to building software, to the disciplines that keep that work sound, then to responsibility and governance. The last turns to mastery — what stays human when the tools are this good.
+The book is six chapters, and they build. The first lays the foundations: what AI is, how it works, and what it cannot do. The middle chapters climb from personal productivity, to building software, to the disciplines that keep that work sound, then to responsibility and governance. The last turns to mastery, and asks what stays human when the tools are this good.
 
 | Chapter | Theme | The question it answers |
 | --- | --- | --- |
@@ -60,17 +66,23 @@ Read it once in order, to see how the ideas rest on one another, then come back 
 
 ## How this book was made
 
-This book is built the way it argues you should work, so it is worth a short note on how. Every chapter is a single plain-text file written in GitHub-Flavoured Markdown — the same lightweight format the models read and write best — with the diagrams drawn in [Mermaid](https://mermaid.js.org/), a text notation for flowcharts and timelines. There is one source. The website you may be reading, the PDF, and the ePub are all generated from those files; nothing is laid out twice by hand.
+This book is built the way it argues you should work, so it is worth a short note on how. Every chapter is a single plain-text file written in GitHub-Flavoured Markdown, the lightweight format the models read and write best, with the diagrams drawn in [Mermaid](https://mermaid.js.org/), a text notation for flowcharts and timelines. There is one source. The website you may be reading, the PDF, and the ePub are all generated from those files; nothing is laid out twice by hand.
 
-The look comes from a single file of *design tokens*. Every colour, type size, and per-chapter accent lives in one `theme.yml`, and a small script turns it into the separate stylesheets each format needs — so adjusting a heading weight or a shade of pink is one edit that flows to the website, the PDF, and the ePub at once. The palette is [Rosely](https://rosely.hellotham.com), a set of soft, Pantone-named tones: a near-black ink it calls *black-beauty*, *radiant-orchid* for accents, *raspberry-sorbet* for links, chosen to stay calm across a long read. The type pairs [Raleway](https://fonts.google.com/specimen/Raleway) for headings — its heaviest Black weight for titles — with [Noto Serif](https://fonts.google.com/noto) for the body and Noto's Japanese cut for the two kanji, 愛 and 道, that give the book its name. Both families are open-licensed and travel with the book, so it renders the same on any machine.
+The look comes from a single file of *design tokens*. Every colour, type size, and per-chapter accent lives in one `theme.yml`, and a small script turns it into the separate stylesheets each format needs. Adjusting a heading weight or a shade of pink is one edit, and it flows to the website, the PDF, and the ePub at once.
+
+The palette is [Rosely](https://rosely.hellotham.com), a set of soft, Pantone-named tones: a near-black ink it calls *black-beauty*, *radiant-orchid* for accents, *raspberry-sorbet* for links, chosen to stay calm across a long read. The type pairs [Raleway](https://fonts.google.com/specimen/Raleway) for headings, in its heaviest Black weight for titles, with [Noto Serif](https://fonts.google.com/noto) for the body and Noto's Japanese cut for the two kanji, 愛 and 道, that give the book its name. Both families are open-licensed and travel with the book, so it renders the same on any machine.
 
 The build is [Quarto](https://quarto.org). It renders the Markdown to a searchable website and, through the [Typst](https://typst.app) typesetting engine, to a six-by-nine-inch PDF laid out like a printed trade book, and to a reflowable ePub for e-readers. The Mermaid diagrams are tinted to the same Rosely palette in every format, so a flowchart looks the same on the web, on the page, and on an e-reader. Push a change to the repository and a GitHub Action runs the same pipeline and publishes the result to the web.
 
-I designed the cover myself, using AI to help create it in SVG — a text format a model can write directly. The design has three parts: the title *AI-dō* set in Raleway Black, a crumbling, glitching "AI" in the display face *Rubik Glitch Pop*, and, sweeping over both, the character 道 in *KokuryuSou*, a brush font of raw, dragon-like strokes. A heart-shaped 愛 is hidden inside the "A". According to Chinese astrology, I am a wood dragon. The lettering is then flattened to vector outlines, so the finished file needs none of those fonts to display; a headless browser turns it into the cover image, and the same artwork, re-laid out wide, becomes the card you see when the book is shared online.
+I designed the cover myself, using AI to help create it in SVG, a text format a model can write directly. The design has three parts: the title *AI-dō* set in Raleway Black, a crumbling, glitching "AI" in the display face *Rubik Glitch Pop*, and, sweeping over both, the character 道 in *KokuryuSou*, a brush font of raw, dragon-like strokes. A heart-shaped 愛 is hidden inside the "A". According to Chinese astrology, I am a wood dragon.
 
-The Japanese motif is not confined to the cover; it runs through the whole book, and it is personal — the fruit of three years spent learning the language and immersing myself in the culture. The title is the seed: *AI-dō*, where 道 (*dō*) is the *way*, the lifelong disciplined practice behind arts like *judō*, and 愛 (*ai*) is love, the care for the people the work touches. Both characters, brushed in that same dragon-stroke hand, open every chapter over a *seigaiha* wave pattern drawn from classical Japanese design. The theme reaches into the argument as well. Chapter 2 is subtitled *愛 in practice*, and Chapter 6 closes on *shuhari* (守破離) — the martial-arts progression from keeping the form, to breaking it, to leaving it behind.
+The lettering is then flattened to vector outlines, so the finished file needs none of those fonts to display. A headless browser turns it into the cover image, and the same artwork, re-laid out wide, becomes the card you see when the book is shared online.
 
-Much of this toolchain was built the way the book describes: I said what I wanted, let the tools work out how, and checked what came back. The whole toolchain is open source, alongside the text, at [github.com/ChristineTham/aidou](https://github.com/ChristineTham/aidou).
+The Japanese motif is not confined to the cover. It runs through the whole book, and it is personal: the fruit of three years spent learning the language and immersing myself in the culture. The title is the seed: *AI-dō*, where 道 (*dō*) is the *way*, the lifelong disciplined practice behind arts like *judō*, and 愛 (*ai*) is love, the care for the people the work touches.
+
+Both characters, brushed in that same dragon-stroke hand, open every chapter over a *seigaiha* wave pattern drawn from classical Japanese design. The theme reaches into the argument as well: Chapter 2 is subtitled *愛 in practice*, and Chapter 6 closes on *shuhari* (守破離), the martial-arts progression from keeping the form, to breaking it, to leaving it behind.
+
+Much of this toolchain was built the way the book describes: I said what I wanted, let the tools work out how, and checked what came back. That last step is not optional. The text and the toolchain are both open source at [github.com/ChristineTham/aidou](https://github.com/ChristineTham/aidou), so you can judge for yourself how well it worked.
 
 ## References
 
