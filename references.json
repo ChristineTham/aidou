@@ -2508,5 +2508,37 @@
   "intext": "Cherny, 2026b",
   "reference": "Cherny, B. (2026b). *Head of Claude Code: What happens after coding is solved* [Interview]. Lenny's Podcast, YouTube. [https://www.youtube.com/watch?v=We7BZVKbCVw](https://www.youtube.com/watch?v=We7BZVKbCVw)",
   "title_authored": true
+ },
+ {
+  "urls": [
+   "https://www.govinfo.gov/content/pkg/DCPD-202600376/pdf/DCPD-202600376.pdf"
+  ],
+  "intext": "White House, 2026a",
+  "reference": "White House. (2026a). *Promoting advanced artificial intelligence innovation and security* (Executive Order 14409). [https://www.govinfo.gov/content/pkg/DCPD-202600376/pdf/DCPD-202600376.pdf](https://www.govinfo.gov/content/pkg/DCPD-202600376/pdf/DCPD-202600376.pdf)",
+  "title_authored": true
+ },
+ {
+  "urls": [
+   "https://www.whitehouse.gov/presidential-actions/2026/06/national-security-presidential-memorandum-nspm-11/"
+  ],
+  "intext": "White House, 2026b",
+  "reference": "White House. (2026b). *National Security Presidential Memorandum/NSPM-11: Artificial intelligence in the national security enterprise*. [https://www.whitehouse.gov/presidential-actions/2026/06/national-security-presidential-memorandum-nspm-11/](https://www.whitehouse.gov/presidential-actions/2026/06/national-security-presidential-memorandum-nspm-11/)",
+  "title_authored": true
+ },
+ {
+  "urls": [
+   "https://www.congress.gov/crs-product/IF13268"
+  ],
+  "intext": "Congressional Research Service, 2026",
+  "reference": "Congressional Research Service. (2026). *Controlling advanced artificial intelligence: Executive Order 14409 explained* (CRS In Focus No. IF13268, Version 2). [https://www.congress.gov/crs-product/IF13268](https://www.congress.gov/crs-product/IF13268)",
+  "title_authored": true
+ },
+ {
+  "urls": [
+   "https://www.techpolicy.press/transparency-and-accountability-gaps-in-trumps-new-ai-executive-order/"
+  ],
+  "intext": "Hickok, 2026",
+  "reference": "Hickok, M. (2026). *Transparency and accountability gaps in Trump's new AI executive order*. Tech Policy Press. [https://www.techpolicy.press/transparency-and-accountability-gaps-in-trumps-new-ai-executive-order/](https://www.techpolicy.press/transparency-and-accountability-gaps-in-trumps-new-ai-executive-order/)",
+  "title_authored": true
  }
 ]

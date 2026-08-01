@@ -40,7 +40,7 @@ Let's start with the evidence, before any theory. Each project below began as a 
 
 ### 3.1.1 rogoweb - two dead C programs, alive in the browser
 
-*rogoweb* fuses two pieces of computing history. *Rogue* is the 1980 dungeon crawler by Michael Toy, Glenn Wichman, and Ken Arnold that gave the *roguelike* genre its name. *Rog-O-Matic* is the expert system built at Carnegie Mellon in 1981 by Michael Mauldin and colleagues to play Rogue on its own, and beat it: over 106 games it achieved the highest median score of any player on the university's system, humans included ([Mauldin et al., *Rog-O-Matic: A belligerent expert system*, 1983](https://kilthub.cmu.edu/articles/journal_contribution/Rog-O-Matic_a_belligerent_expert_system/6609137/1); [rogoweb](https://github.com/ChristineTham/rogoweb)).
+*rogoweb* fuses two pieces of computing history. *Rogue* is the 1980 dungeon crawler by Michael Toy, Glenn Wichman, and Ken Arnold that gave the *roguelike* genre its name. *Rog-O-Matic* is the expert system built at Carnegie Mellon in 1981 by Michael Mauldin and colleagues to play Rogue on its own, and beat it: over 106 games it achieved the highest median score among the sixteen best players at the university, fifteen humans and the bot ([Mauldin et al., *Rog-O-Matic: A belligerent expert system*, 1983](https://kilthub.cmu.edu/articles/journal_contribution/Rog-O-Matic_a_belligerent_expert_system/6609137/1); [rogoweb](https://github.com/ChristineTham/rogoweb)).
 
 On Unix `rogue` and `rogomatic` ran as separate processes, `rogomatic` launching `rogue` and talking to it through the standard input and output *pipes*, the channels one program uses to feed another. A browser has none of that machinery: no processes, no `fork`, no pipes.
 
@@ -90,7 +90,7 @@ The hardest single feature in any of the three projects was the interactive cave
 
 Laying a graph out orthogonally means routing its edges only along horizontal, vertical, and 45° lines, the way a metro map does. It is an academic problem with no maintained JavaScript implementation, and Gemini, which had built much of the game, could not do it. Its best attempt was a physics simulation computed in the browser that came out different every time and ran its connecting lines straight through the rooms.
 
-I handed the same intent to Fable, a newer model, which solved it within 30 minutes with something that worked straight away: a compass grid refined by hill-climbing, then orthogonal routing through the `libavoid` library. The map appears instantly and never crosses a room. The intent and the check never changed.
+I handed the same intent to Anthropic's Fable 5, a newer model, which solved it within 30 minutes with something that worked straight away: a compass grid refined by hill-climbing, then orthogonal routing through the `libavoid` library. The map appears instantly and never crosses a room. The intent and the check never changed.
 
 ### 3.1.3 VantageMap - a platform, vibe-coded across a dozen phases
 
@@ -264,7 +264,7 @@ The third is the contract: a checkable statement of what "done" means, and the o
 
 And one part is deliberately missing. Nothing pre-locks the architecture, because that is the choice a model makes better than you do.
 
-Kapil Viren Ahuja calls this way of working *intent-driven software development*, and names the three parts **I**ntent, **C**ontext, and **E**xpectations ([Ahuja, 2026a](https://howtoarchitect.io/1597e5a16659?sk=836b8eeaf97cda521f0ad195162011c3)). We will call it **ICE** for the rest of this book. The split is not Ahuja's alone: reviewing agentic practice, Christian Koch arrives independently at the same three components: "conversation discovers intent; structured artifacts control implementation; evidence controls acceptance". That is some assurance we are looking at a real pattern rather than one commentator's taste ([Koch, *Agentic Agile-V: From vibe coding to verified engineering*, 2026](https://arxiv.org/abs/2605.20456)).
+Kapil Viren Ahuja calls this way of working *intent-driven software development*, and names the three parts **I**ntent, **C**ontext, and **E**xpectations ([Ahuja, 2026a](https://howtoarchitect.io/1597e5a16659?sk=836b8eeaf97cda521f0ad195162011c3)). We will call it **ICE** for the rest of this book. The split is not Ahuja's alone. Reviewing agentic practice, Christian Koch arrives independently at a three-part model of his own: "Conversation discovers intent. Structured artifacts control implementation. Evidence controls acceptance." The two ends match ICE closely, intent at one and evidence at the other. The middle differs, because Koch keeps a structured artifact where ICE puts context, which is close to the specification Ahuja is arguing against. Two thinkers landing on the same shape from different directions is some assurance we are looking at a real pattern rather than one commentator's taste ([Koch, *Agentic Agile-V: From vibe coding to verified engineering*, 2026](https://arxiv.org/abs/2605.20456)).
 
 > [!NOTE]
 > **ICE, in one breath.**

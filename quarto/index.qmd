@@ -21,7 +21,7 @@ by [Chris Tham](https://christham.net)
 :::
 
 ::: {.edition}
-Edition 1.2 · released 24 July 2026 · [Changelog](changelog.qmd)
+Edition 1.2.1 · released 1 August 2026 · [Changelog](changelog.qmd)
 :::
 
 {{< include _blurb.md >}}
@@ -48,7 +48,7 @@ This book is open source — the text, the code it discusses, and the toolchain
 that builds it — on GitHub:
 [github.com/ChristineTham/aidou](https://github.com/ChristineTham/aidou).
 
-**Edition 1.2** — released 24 July 2026.
+**Edition 1.2.1** — released 1 August 2026.
 
 First published 2026. © 2026 Chris Tham · Hello Tham.
 :::
