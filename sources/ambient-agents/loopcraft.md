@@ -1,3 +1,14 @@
+> [!WARNING]
+> **The Boris Cherny quote below is a misquotation.** This digest relays it as
+> "I don't prompt Claude anymore. I write loops, the loops do the work." Those
+> words appear nowhere in any Cherny source. What he actually said, at Acquired
+> Unplugged on 2 June 2026, was: "I don't prompt Claude anymore. I have loops that
+> are running. They're the ones that are prompting Claude and kind of figuring out
+> what to do. My job is to write loops."
+>
+> Verified primary source: [[cherny-acquired-unplugged]]
+> (https://www.youtube.com/watch?v=RkQQ7WEor7w). Cite that, never this.
+
 # \[AINews\] Loopcraft: The Art of Stacking Loops
 ### a quiet day lets us highlight a great concept from Peter Steinberger, Boris Cherny, and Andrej Karpathy
 Jun 12, 2026

@@ -226,6 +226,12 @@ Studies tell you what a loop needs inside it. They say less about how one behave
 
 Put the four in order and you have a scale of how much you give away: first the check, then the stop condition, then the trigger, then the prompt itself ([de Oliveira & Segner, *Loop engineering: Getting started with loops*, 2026](https://claude.com/blog/getting-started-with-loops)). Every stage of that scale happens to match a product Anthropic ships, which tells you something about where the scheme came from.
 
+Boris Cherny, who built Claude Code, describes climbing that scale himself. He had already uninstalled his editor, not having opened it in a month, and was running five or ten Claudes at once. Then, on stage in June 2026:
+
+> I don't prompt Claude anymore. I have loops that are running. They're the ones that are prompting Claude and kind of figuring out what to do. My job is to write loops.
+
+He expects the shift to spread over the following months ([Cherny, *Claude Code and the future of engineering*, 2026c](https://www.youtube.com/watch?v=RkQQ7WEor7w)). Discount it as you would any account from someone describing the product he runs. What survives the discount is the job description, because it is the top rung of the same scale: he has handed over the prompt and kept the loop.
+
 It is still a good way to organise your own thinking, because it treats loop design as delegation, the way this book has all along. If you can say up front what done looks like, you can hand over more of the work. When you cannot, and on anything new you usually cannot, you stay in the loop and read every turn yourself.
 
 Whatever else gets simplified, *verify* cannot be skipped, for the reason the last chapters keep returning to: a model cannot reliably judge its own work. Leave the check to the agent's own say-so and silent failures slip through 13–17% of the time, in answers that look plausible and pass unquestioned. Put a real verifier inside the loop and that rate falls to zero on the same test ([Suresh Babu & Agrawal, 2026](https://arxiv.org/abs/2606.01416)). It is the same lesson §2.6 taught at personal scale: self-critique alone does not converge, so the loop must close on an external signal rather than the model's confidence ([Huang et al., *Large language models cannot self-correct reasoning yet*, 2023](https://arxiv.org/abs/2310.01798)). Loop engineering, at any scale, is the craft of building that check into the cycle.
@@ -348,6 +354,8 @@ Casper, S., Davies, X., Shi, C., Gilbert, T. K., Scheurer, J., Rando, J., Freedm
 Chen, M., Wang, J., Liu, Z., Wang, Y., Zheng, H., & Wang, Q. (2026). *From failed trajectories to reliable LLM agents: Diagnosing and repairing harness flaws*. arXiv. [https://arxiv.org/abs/2606.06324](https://arxiv.org/abs/2606.06324)
 
 Cherny, B. (2026a). *Steps of AI adoption* [Artifact]. Anthropic. [https://claude.ai/code/artifact/bfdfaef9-bc62-4dfe-ba9e-c58a26c9accf](https://claude.ai/code/artifact/bfdfaef9-bc62-4dfe-ba9e-c58a26c9accf) (may require a Claude account)
+
+Cherny, B. (2026c). *Boris Cherny: Claude Code & the future of engineering* [Interview]. Acquired Unplugged, presented by WorkOS. YouTube. [https://www.youtube.com/watch?v=RkQQ7WEor7w](https://www.youtube.com/watch?v=RkQQ7WEor7w)
 
 Choudhuri, R., Bird, C., Badea, C., Gerosa, M., & Sarma, A. (2026). *You shall not pass! Where and why developers draw the line on AI autonomy*. arXiv. [https://arxiv.org/abs/2607.00533](https://arxiv.org/abs/2607.00533)
 

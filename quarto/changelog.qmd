@@ -8,6 +8,10 @@
 ```
 :::
 
+**Edition 1.2.2** — released 1 August 2026.
+- New in Chapter 4 (§4.2.4): Boris Cherny, who built Claude Code, on having stopped prompting it at all and writing the loops that prompt it instead.
+- Traced that quotation to its primary source. It had been circulating in six different wordings, none from Cherny himself, and the version most often repeated turns out to be words he never said.
+
 **Edition 1.2.1** — released 1 August 2026.
 - Rewritten throughout in the author's own voice, following an analysis of four of her own pieces: no em dashes, shorter and unevenly cut paragraphs, and section endings that turn rather than recap. No arguments or sources were changed.
 - New in Chapter 5 (§5.2.3): the second Trump AI executive order, EO 14409 of June 2026, which shifts the federal focus from AI safety to AI security, and the national-security memorandum three days later that promises civil-liberties protection but makes it unenforceable.
